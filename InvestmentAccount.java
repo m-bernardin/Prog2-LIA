@@ -17,4 +17,9 @@ public class InvestmentAccount extends EarningsAccount{
         // TODO throws clause
         throw new UnsupportedOperationException("Unimplemented method 'withdraw'");
     }
+    @Override
+    public boolean applyInterest() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'applyInterest'");
+    }
 }

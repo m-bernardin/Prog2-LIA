@@ -1,4 +1,4 @@
-public abstract class EarningsAccount extends Account{
+public abstract class EarningsAccount extends Account implements InterestBearing{
     protected double interestRate;
     public EarningsAccount(double balance, double interestRate) {
         super(balance);
