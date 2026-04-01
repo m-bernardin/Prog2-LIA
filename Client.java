@@ -1,6 +1,6 @@
 import java.sql.Date;
 import java.util.ArrayList;
-public abstract class Client {
+public abstract class Client implements Maintainable{
     // fields
     private String clientID;
     protected ArrayList<String> accounts=new ArrayList<>();

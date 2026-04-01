@@ -10,4 +10,9 @@ public class IndividualClient extends StandardClient{
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'maintain'");
     }
+    @Override
+    public boolean applyMonthlyFee() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'applyMonthlyFee'");
+    }
 }
