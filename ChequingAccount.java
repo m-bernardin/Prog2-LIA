@@ -1,6 +1,6 @@
 public class ChequingAccount extends Account{
-    public ChequingAccount(double balance) {
-        super(balance);
+    public ChequingAccount(double balance, String accountID) {
+        super(balance, accountID);
         //TODO Auto-generated constructor stub
     }
     @Override

@@ -1,9 +1,11 @@
 public abstract class Account {
     // fields
     protected double balance;
+    private String accountID;
     // constructors
-    public Account(double balance) {
+    public Account(double balance, String accountID) {
         this.balance = balance;
+        this.accountID = accountID;
     }
     // getters and setters
     public double getBalance() {
@@ -11,6 +13,12 @@ public abstract class Account {
     }
     public void setBalance(double balance) {
         this.balance = balance;
+    }
+    public String getAccountID() {
+        return accountID;
+    }
+    public void setAccountID(String accountID) {
+        this.accountID = accountID;
     }
     // abstract methods
     public abstract boolean withdraw(double amnt);

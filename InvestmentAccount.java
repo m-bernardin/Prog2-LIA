@@ -1,8 +1,8 @@
 import java.time.LocalDate;
 public class InvestmentAccount extends EarningsAccount{
     private LocalDate dateOpened;
-    public InvestmentAccount(double balance,LocalDate dateOpened) {
-        super(balance, 0.05);
+    public InvestmentAccount(double balance,LocalDate dateOpened, String accountID) {
+        super(balance, 0.05, accountID);
         this.dateOpened = dateOpened;
     }
     public LocalDate getDateOpened() {

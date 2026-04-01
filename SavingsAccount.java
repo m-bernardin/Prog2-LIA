@@ -1,6 +1,6 @@
 public class SavingsAccount extends EarningsAccount{
-    public SavingsAccount(double balance) {
-        super(balance, 0.02);
+    public SavingsAccount(double balance, String accountID) {
+        super(balance, 0.02, accountID);
     }
     @Override
     public boolean withdraw(double amnt) {
