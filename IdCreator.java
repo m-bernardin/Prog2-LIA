@@ -1,42 +1,55 @@
 import java.util.Random;
-import java.util.Scanner;
+import java.util.Scanner; // TODO remove after testing done
 
 public class IdCreator {
     public static String createID(int type,int subtype) throws InvalidTypeException{
+        String ID;
         switch(type){
             case 1:
-                // TODO client
-                return createClientID(subtype);
+                ID=createClientID(subtype);
+                break;
             case 2:
-                // TODO account
-                return createAccountID(subtype);
+                ID=createAccountID(subtype);
+                break;
             case 3:
-                // TODO transaction
-                return createTransactionID();
+                ID=createTransactionID();
+                break;
             default:
-                throw new InvalidTypeException();
+                ID="?";
         }
+        if(ID.equals("?"))throw new InvalidTypeException();
+        ID+=generateRandom();
+        int checksum=0;
+        for(int i=0;i<ID.length();++i){
+            checksum+=convertBase10(ID.charAt(i)+"");
+        }
+        ID+=convertBase64(checksum);
+        return ID;
     }
     private static String createTransactionID() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'createTransactionID'");
+        return "3";
     }
     private static String createAccountID(int subtype) throws InvalidTypeException{
-        // TODO Auto-generated method stub
         String ID="2";
         switch (subtype) {
             case 1:
-                // TODO chequing
+                ID+=1;
+                break;
             case 2:
-                // TODO investment
+                ID+=2;
+                break;
             case 3:
-                // TODO savings
+                ID+=3;
+                break;
             default:
-                throw new InvalidTypeException();
+                ID+=9;
+                break;
         }
+        if(ID.charAt(1)=='9')throw new InvalidTypeException();
+        ID=convertBase64(Integer.parseInt(ID));
+        return ID;
     }
     private static String createClientID(int subtype) throws InvalidTypeException{
-        // TODO Auto-generated method stub
         String ID="1";
         switch (subtype) {
             case 1:
@@ -57,12 +70,6 @@ public class IdCreator {
         }
         if(ID.charAt(1)=='9')throw new InvalidTypeException();
         ID=convertBase64(Integer.parseInt(ID));
-        ID+=generateRandom();
-        int checksum=0;
-        for(int i=0;i<ID.length();++i){
-            checksum+=convertBase10(ID.charAt(i)+"");
-        }
-        ID+=convertBase64(checksum);
         return ID;
     }
     private static String generateRandom() {
@@ -70,38 +77,65 @@ public class IdCreator {
         Random gen=new Random();
         return convertBase64(gen.nextInt(1073741823));
     }
-    // public static void main(String[] args) {
-    //     boolean running=true;
-    //     Scanner input=new Scanner(System.in);
-    //     while(running){
-    //         System.out.print("Please select an option\n1. convert to base 64\n2. convert to base 10\n3. create client ID\n4. quit\n> ");
-    //         switch (input.nextInt()) {
-    //             case 1:
-    //                 System.out.print("enter a number\n> ");
-    //                 System.out.println(convertBase64(input.nextInt()));
-    //                 break;
-    //             case 2:
-    //                 System.out.print("enter a number\n> ");
-    //                 System.out.println(convertBase10(input.next()));
-    //                 break;
-    //             case 3:
-    //                 System.out.print("enter a subtype (1-4)\n> ");
-    //                 try {
-    //                     System.out.println(createClientID(input.nextInt()));
-    //                 } catch (InvalidTypeException e) {
-    //                     System.out.println("invalid type");
-    //                 }
-    //                 break;
-    //             case 4:
-    //                 input.close();
-    //                 running=false;
-    //                 break;
-    //             default:
-    //                 System.out.println("Please select a valid option...");
-    //                 break;
-    //         }
-    //     }
-    // }
+    public static void main(String[] args) {
+        // TODO remove after testing done
+        boolean running=true;
+        Scanner input=new Scanner(System.in);
+        while(running){
+            System.out.print("Please select an option\n1. convert to base 64\n2. convert to base 10\n3. create client ID\n4. quit\n> ");
+            switch (input.nextInt()) {
+                case 1:
+                    System.out.print("enter a number\n> ");
+                    System.out.println(convertBase64(input.nextInt()));
+                    break;
+                case 2:
+                    System.out.print("enter a number\n> ");
+                    System.out.println(convertBase10(input.next()));
+                    break;
+                case 3:
+                    System.out.print("enter type (1-3)\n> ");
+                    switch (input.nextInt()) {
+                        case 1:
+                            System.out.print("enter subtype (1-4)\n> ");
+                            try {
+                                System.out.println(createID(1, input.nextInt()));
+                            } catch (InvalidTypeException e) {
+                                // TODO Auto-generated catch block
+                                e.printStackTrace();
+                            }
+                            break;
+                        case 2:
+                                System.out.print("enter subtype (1-3)\n> ");
+                            try {
+                                System.out.println(createID(2, input.nextInt()));
+                            } catch (InvalidTypeException e) {
+                                // TODO Auto-generated catch block
+                                e.printStackTrace();
+                            }
+                            break;
+                        case 3:
+                            try {
+                                System.out.println(createID(3, 0));
+                            } catch (InvalidTypeException e) {
+                                // TODO Auto-generated catch block
+                                e.printStackTrace();
+                            }
+                            break;
+                        default:
+                            System.out.println("invalid");
+                            break;
+                    }
+                    break;
+                case 4:
+                    input.close();
+                    running=false;
+                    break;
+                default:
+                    System.out.println("Please select a valid option...");
+                    break;
+            }
+        }
+    }
     private static String convertBase64(int num){
         int digits=0,digitsAid=num,arrayPointer=0;
         while(digitsAid>0){
