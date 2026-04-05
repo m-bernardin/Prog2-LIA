@@ -12,14 +12,14 @@ public class InvestmentAccount extends EarningsAccount{
         this.dateOpened = dateOpened;
     }
     @Override
-    public boolean withdraw(double amnt) {
-        // TODO Auto-generated method stub
-        // TODO throws clause
-        throw new UnsupportedOperationException("Unimplemented method 'withdraw'");
-    }
-    @Override
-    public boolean applyInterest() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'applyInterest'");
+    public boolean withdraw(double amnt) throws InvestmentLockException {
+        if(dateOpened.plusYears(1).isBefore(LocalDate.now())){
+            if(balance>=amnt){
+                balance-=amnt;
+                return true;
+            }
+            return false;
+        }
+        throw new InvestmentLockException(LocalDate.now().until(dateOpened.plusYears(1)).toString());
     }
 }

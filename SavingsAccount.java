@@ -4,13 +4,10 @@ public class SavingsAccount extends EarningsAccount{
     }
     @Override
     public boolean withdraw(double amnt) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'withdraw'");
+        if(balance>=amnt){
+            balance-=amnt;
+            return true;
+        }
+        return false;
     }
-    @Override
-    public boolean applyInterest() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'applyInterest'");
-    }
-
 }

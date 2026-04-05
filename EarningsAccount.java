@@ -10,4 +10,11 @@ public abstract class EarningsAccount extends Account implements InterestBearing
     public void setInterestRate(double interestRate) {
         this.interestRate = interestRate;
     }
+    @Override
+    public boolean applyInterest() {
+        // TODO find insatnce of failure?? (int overflow?)
+        boolean success=true;
+        balance+=balance*interestRate;
+        return success;
+    }
 }

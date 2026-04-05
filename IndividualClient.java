@@ -8,7 +8,9 @@ public class IndividualClient extends StandardClient{
     @Override
     protected boolean maintain() {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'maintain'");
+        boolean success=true;
+        applyMonthlyFee();
+        return success;
     }
     @Override
     public boolean applyMonthlyFee() {
