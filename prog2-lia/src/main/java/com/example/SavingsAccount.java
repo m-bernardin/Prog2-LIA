@@ -1,3 +1,5 @@
+package com.example;
+
 public class SavingsAccount extends EarningsAccount{
     public SavingsAccount(double balance, String accountID) {
         super(balance, 0.02, accountID);

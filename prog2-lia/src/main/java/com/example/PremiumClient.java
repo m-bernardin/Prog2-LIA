@@ -1,4 +1,5 @@
-import java.sql.Date;
+package com.example;
+
 public abstract class PremiumClient extends Client{
     private boolean rewardsProgramMember;
     public PremiumClient(String clientID, String username, String password, Date dateLastOpened, Date dateOpened,

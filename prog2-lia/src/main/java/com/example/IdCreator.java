@@ -1,3 +1,5 @@
+package com.example;
+
 import java.util.Random;
 import java.util.Scanner; // TODO remove after testing done
 /**

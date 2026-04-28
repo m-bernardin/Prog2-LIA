@@ -1,3 +1,5 @@
+package com.example;
+
 /**
  * Implementing this interface allows a class to apply an interest rate to its balance.
  * @author Mathieu Bernardin

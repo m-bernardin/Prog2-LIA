@@ -1,3 +1,5 @@
+package com.example;
+
 /**
  * Thrown when an incorrect type is used in a selector.
  * @author Mathieu Bernardin

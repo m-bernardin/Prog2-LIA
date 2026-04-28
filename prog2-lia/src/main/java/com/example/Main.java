@@ -1,3 +1,5 @@
+package com.example;
+
 import java.util.*;
 public class Main{
     private ArrayList<Client> clients;
@@ -38,7 +40,7 @@ public class Main{
         }
     }
     private void login() {
-        // TODO Auto-generated method stub
+        // TODO verify this works
         boolean loggingIn=true;
         Scanner input=new Scanner(System.in);
         while(loggingIn){

@@ -1,3 +1,5 @@
+package com.example;
+
 public class Transaction{
     private String transactionID;
     private double amnt;

@@ -1,4 +1,5 @@
-import java.sql.Date;
+package com.example;
+
 public class VipClient extends PremiumClient{
     private final static double EXTRA_INTEREST=0.01;
     public static double getExtraInterest() {

@@ -1,4 +1,4 @@
-import java.sql.Date;
+package com.example;
 import java.util.ArrayList;
 public abstract class Client implements Maintainable{
     // fields

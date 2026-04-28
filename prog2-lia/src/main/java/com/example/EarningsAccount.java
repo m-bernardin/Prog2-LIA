@@ -1,3 +1,5 @@
+package com.example;
+
 public abstract class EarningsAccount extends Account implements InterestBearing{
     protected double interestRate;
     public EarningsAccount(double balance, double interestRate, String accountID) {

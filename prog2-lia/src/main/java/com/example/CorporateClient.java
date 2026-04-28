@@ -1,4 +1,5 @@
-import java.sql.Date;
+package com.example;
+
 import java.util.ArrayList;
 public class CorporateClient extends PremiumClient{
     private String companyName;

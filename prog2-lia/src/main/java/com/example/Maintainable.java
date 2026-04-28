@@ -1,3 +1,5 @@
+package com.example;
+
 /**
  * Implementing this interface allows the class to be the target of a maintainance operation.
  * @author Mathieu Bernardin

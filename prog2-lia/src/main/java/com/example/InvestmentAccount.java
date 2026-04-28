@@ -1,3 +1,5 @@
+package com.example;
+
 import java.time.LocalDate;
 public class InvestmentAccount extends EarningsAccount{
     private LocalDate dateOpened;

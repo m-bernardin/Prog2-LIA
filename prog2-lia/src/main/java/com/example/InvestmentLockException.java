@@ -1,3 +1,5 @@
+package com.example;
+
 /**
  * Thrown when a user tries to withdraw from an investment account which has not yet been active for a year.
  * @author Mathieu Bernardin

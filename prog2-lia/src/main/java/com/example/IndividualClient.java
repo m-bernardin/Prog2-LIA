@@ -1,4 +1,5 @@
-import java.sql.Date;
+package com.example;
+
 public class IndividualClient extends StandardClient{
     public IndividualClient(String clientID, String username, String password, Date dateLastOpened, Date dateOpened,
             String name, String contact) {

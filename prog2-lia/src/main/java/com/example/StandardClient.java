@@ -1,4 +1,5 @@
-import java.sql.Date;
+package com.example;
+
 public abstract class StandardClient extends Client{
     private String name;
     private String contact;
