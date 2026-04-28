@@ -1,4 +1,5 @@
 package com.example;
+import java.time.LocalDate;
 import java.util.ArrayList;
 public abstract class Client implements Maintainable{
     // fields
@@ -7,8 +8,8 @@ public abstract class Client implements Maintainable{
     private String username;
     private String password;
     protected ArrayList<String> transactions=new ArrayList<>();
-    private Date dateLastOpened;
-    private Date dateOpened;
+    private LocalDate dateLastOpened;
+    private LocalDate dateOpened;
     protected int monthlyFee=10;
     // constructors
     /**
@@ -20,7 +21,7 @@ public abstract class Client implements Maintainable{
      * @param dateLastOpened
      * @param dateOpened
      */
-    public Client(String clientID, String username, String password, Date dateLastOpened, Date dateOpened) {
+    public Client(String clientID, String username, String password, LocalDate dateLastOpened, LocalDate dateOpened) {
         this.clientID = clientID;
         this.username = username;
         this.password = password;
@@ -28,7 +29,7 @@ public abstract class Client implements Maintainable{
         this.dateOpened = dateOpened;
     }
     public Client(String clientID, ArrayList<String> accounts, String username, String password,
-            ArrayList<String> transactions, Date dateLastOpened, Date dateOpened, int monthlyFee) {
+            ArrayList<String> transactions, LocalDate dateLastOpened, LocalDate dateOpened, int monthlyFee) {
         this.clientID = clientID;
         this.accounts = accounts;
         this.username = username;
@@ -69,16 +70,16 @@ public abstract class Client implements Maintainable{
     public void setTransactions(ArrayList<String> transactions) {
         this.transactions = transactions;
     }
-    public Date getDateLastOpened() {
+    public LocalDate getDateLastOpened() {
         return dateLastOpened;
     }
-    public void setDateLastOpened(Date dateLastOpened) {
+    public void setDateLastOpened(LocalDate dateLastOpened) {
         this.dateLastOpened = dateLastOpened;
     }
-    public Date getDateOpened() {
+    public LocalDate getDateOpened() {
         return dateOpened;
     }
-    public void setDateOpened(Date dateOpened) {
+    public void setDateOpened(LocalDate dateOpened) {
         this.dateOpened = dateOpened;
     }
     public int getMonthlyFee() {

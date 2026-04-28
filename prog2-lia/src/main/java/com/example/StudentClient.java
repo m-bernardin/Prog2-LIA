@@ -4,7 +4,7 @@ import java.time.LocalDate;
 public class StudentClient extends StandardClient{
     private LocalDate dateStatusRenewed;
     private boolean statusValid;
-    public StudentClient(String clientID, String username, String password, Date dateLastOpened, Date dateOpened,
+    public StudentClient(String clientID, String username, String password, LocalDate dateLastOpened, LocalDate dateOpened,
             String name, String contact, LocalDate dateStatusRenewed, boolean statusValid) {
         super(clientID, username, password, dateLastOpened, dateOpened, name, contact);
         this.dateStatusRenewed = dateStatusRenewed;

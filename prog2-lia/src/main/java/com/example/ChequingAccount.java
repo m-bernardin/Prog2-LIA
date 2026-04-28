@@ -1,3 +1,5 @@
+package com.example;
+
 public class ChequingAccount extends Account{
     public ChequingAccount(double balance, String accountID) {
         super(balance, accountID);

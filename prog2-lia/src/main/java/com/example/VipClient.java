@@ -1,5 +1,6 @@
 package com.example;
 
+import java.time.LocalDate;
 public class VipClient extends PremiumClient{
     private final static double EXTRA_INTEREST=0.01;
     public static double getExtraInterest() {
@@ -7,7 +8,7 @@ public class VipClient extends PremiumClient{
     }
     private String name;
     private String contact;
-    public VipClient(String clientID, String username, String password, Date dateLastOpened, Date dateOpened,
+    public VipClient(String clientID, String username, String password, LocalDate dateLastOpened, LocalDate dateOpened,
             boolean rewardsProgramMember, String name, String contact) {
         super(clientID, username, password, dateLastOpened, dateOpened, rewardsProgramMember);
         this.name = name;

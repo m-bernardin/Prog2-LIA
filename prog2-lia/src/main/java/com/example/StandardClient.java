@@ -1,9 +1,10 @@
 package com.example;
 
+import java.time.LocalDate;
 public abstract class StandardClient extends Client{
     private String name;
     private String contact;
-    public StandardClient(String clientID, String username, String password, Date dateLastOpened, Date dateOpened,
+    public StandardClient(String clientID, String username, String password, LocalDate dateLastOpened, LocalDate dateOpened,
             String name, String contact) {
         super(clientID, username, password, dateLastOpened, dateOpened);
         this.name = name;

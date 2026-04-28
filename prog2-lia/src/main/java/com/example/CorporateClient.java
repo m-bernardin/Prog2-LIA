@@ -1,10 +1,11 @@
 package com.example;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 public class CorporateClient extends PremiumClient{
     private String companyName;
     private ArrayList<String> clientManagerContacts=new ArrayList<>();
-    public CorporateClient(String clientID, String username, String password, Date dateLastOpened, Date dateOpened,
+    public CorporateClient(String clientID, String username, String password, LocalDate dateLastOpened, LocalDate dateOpened,
             boolean rewardsProgramMember, String companyName, ArrayList<String> clientManagerContacts) {
         super(clientID, username, password, dateLastOpened, dateOpened, rewardsProgramMember);
         this.companyName = companyName;
