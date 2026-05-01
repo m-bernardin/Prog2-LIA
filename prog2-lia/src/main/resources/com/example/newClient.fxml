@@ -6,13 +6,12 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.geometry.Insets?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.LoginController">
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.NewClientController">
    <children>
       <Label text="Login" />
       <TextField fx:id="usernameField" text="" promptText="username" />
       <TextField fx:id="passwordField" text="" promptText="password" />
-      <Button fx:id="loginButton" text="Enter" onAction="#login"/>
-      <Button fx:id="createClientButton" text="New user? Create an account" onAction="#newClient" />
+      <Button fx:id="createButton" text="Enter" onAction="#create"/>
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

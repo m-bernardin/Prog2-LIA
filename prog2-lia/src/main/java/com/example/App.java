@@ -12,7 +12,7 @@ import java.io.IOException;
  * JavaFX App
  */
 public class App extends Application {
-
+    public static Driver driver;
     private static Scene scene;
 
     @Override
@@ -32,6 +32,7 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
+        driver=new Driver();
         launch();
     }
 

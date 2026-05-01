@@ -11,7 +11,8 @@
       <Label text="Login" />
       <TextField fx:id="usernameField" text="" promptText="username" />
       <TextField fx:id="passwordField" text="" promptText="password" />
-      <Button fx:id="login" text="Enter" onAction="#login"/>
+      <Button fx:id="loginButton" text="Enter" onAction="#login"/>
+      <Button fx:id="createClientButton" text="New user? Create an account" onAction="#newClient" />
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

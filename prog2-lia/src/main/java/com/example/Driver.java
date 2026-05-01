@@ -2,22 +2,22 @@ package com.example;
 
 import java.util.*;
 public class Driver{
-    private ArrayList<Client> clients;
-    private Client activeClient;
-    public Client getActiveClient() {
-        return activeClient;
-    }
-    public void setActiveClient(Client activeClient) {
-        this.activeClient = activeClient;
-    }
-    private ArrayList<Account> accounts;
-    private ArrayList<Account> activeAccounts;
-    private ArrayList<Transaction> transactions;
     public static void main(String[] args){
         Driver runner=new Driver();
         System.out.println("Running application...");
         runner.run();
         System.out.println("Application close... Goodbye :)");
+    }
+    private ArrayList<Client> clients;
+    private Client activeClient;
+    private ArrayList<Account> accounts;
+    private ArrayList<Account> activeAccounts;
+    private ArrayList<Transaction> transactions;
+    public Client getActiveClient() {
+        return activeClient;
+    }
+    public void setActiveClient(Client activeClient) {
+        this.activeClient = activeClient;
     }
     public void run(){
         // TODO complete method
@@ -62,6 +62,21 @@ public class Driver{
             }
             else System.out.println("Username or password incorrect... Please try again");
         }
+    }
+    public boolean login(String username,String password){
+        Client client=verifyCredentials(username,password);
+        if(client!=null){
+            setActiveClient(client);
+            for(String clientAccountID:getActiveClient().getAccounts()){
+                for(Account loadedAccount:accounts){
+                    if(loadedAccount.getAccountID().equals(clientAccountID)){
+                        activeAccounts.add(loadedAccount);
+                    }
+                }
+            }
+            return true;
+        }
+        return false;
     }
     private Client verifyCredentials(String username, String password) {
         // TODO Auto-generated method stub
