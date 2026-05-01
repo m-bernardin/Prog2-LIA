@@ -16,14 +16,18 @@ public class Driver{
         System.out.println("Application close... Goodbye :)");
     }
     private ArrayList<Client> clients;
-    private Client activeClient;
+    public ArrayList<Client> getClients() {
+        // TODO remove after testing
+        return clients;
+    }
+    private String activeClient;
     private ArrayList<Account> accounts;
-    private ArrayList<Account> activeAccounts;
+    private ArrayList<String> activeAccounts;
     private ArrayList<Transaction> transactions;
-    public Client getActiveClient() {
+    public String getActiveClient() {
         return activeClient;
     }
-    public void setActiveClient(Client activeClient) {
+    public void setActiveClient(String activeClient) {
         this.activeClient = activeClient;
     }
     public void run() throws MissingFileException{
@@ -50,6 +54,62 @@ public class Driver{
         loadAccounts();
         loadTransactions();
     }
+    public void saveData() throws IOException{
+        saveClients();
+        saveAccounts();
+        saveTransactions();
+    }
+    private void saveClients() throws IOException {
+        File clientJsons=new File("src/main/resources/com/example/json/clients.json");
+        clientJsons.delete();
+        clientJsons.createNewFile();
+        Gson gson=new GsonBuilder().setPrettyPrinting().create();
+        JsonArray clientJsonArray=new JsonArray();
+        FileWriter writer=new FileWriter(clientJsons);
+        for (Client client : clients) {
+            String clientJsonString=gson.toJson(client);
+            JsonElement clientJson=gson.fromJson(clientJsonString, JsonElement.class);
+            clientJsonArray.add(clientJson);
+        }
+        String clientJsonArrayString=gson.toJson(clientJsonArray);
+        writer.append(clientJsonArrayString);
+        writer.flush();
+        writer.close();
+    }
+    private void saveAccounts() throws IOException {
+        File accountJsons=new File("src/main/resources/com/example/json/accounts.json");
+        accountJsons.delete();
+        accountJsons.createNewFile();
+        Gson gson=new GsonBuilder().setPrettyPrinting().create();
+        JsonArray accountJsonArray=new JsonArray();
+        FileWriter writer=new FileWriter(accountJsons);
+        for (Account account : accounts) {
+            String accountJsonString=gson.toJson(account);
+            JsonElement accountJson=gson.fromJson(accountJsonString, JsonElement.class);
+            accountJsonArray.add(accountJson);
+        }
+        String accountJsonArrayString=gson.toJson(accountJsonArray);
+        writer.append(accountJsonArrayString);
+        writer.flush();
+        writer.close();
+    }
+    private void saveTransactions() throws IOException {
+        File transactionJsons=new File("src/main/resources/com/example/json/transactions.json");
+        transactionJsons.delete();
+        transactionJsons.createNewFile();
+        Gson gson=new GsonBuilder().setPrettyPrinting().create();
+        JsonArray transactionJsonArray=new JsonArray();
+        FileWriter writer=new FileWriter(transactionJsons);
+        for (Transaction transaction : transactions) {
+            String transactionJsonString=gson.toJson(transaction);
+            JsonElement transactionJson=gson.fromJson(transactionJsonString, JsonElement.class);
+            transactionJsonArray.add(transactionJson);
+        }
+        String transactionJsonArrayString=gson.toJson(transactionJsonArray);
+        writer.append(transactionJsonArrayString);
+        writer.flush();
+        writer.close();
+    }
     private void login() {
         // TODO verify this works
         boolean loggingIn=true;
@@ -61,11 +121,11 @@ public class Driver{
             String password=input.next();
             Client client=verifyCredentials(username,password);
             if(client!=null){
-                setActiveClient(client);
-                for(String clientAccountID:getActiveClient().getAccounts()){
+                setActiveClient(client.getClientID());
+                for(String clientAccountID:client.getAccounts()){
                     for(Account loadedAccount:accounts){
                         if(loadedAccount.getAccountID().equals(clientAccountID)){
-                            activeAccounts.add(loadedAccount);
+                            activeAccounts.add(loadedAccount.getAccountID());
                         }
                     }
                 }
@@ -77,11 +137,11 @@ public class Driver{
     public boolean login(String username,String password){
         Client client=verifyCredentials(username,password);
         if(client!=null){
-            setActiveClient(client);
-            for(String clientAccountID:getActiveClient().getAccounts()){
+            setActiveClient(client.getClientID());
+            for(String clientAccountID:client.getAccounts()){
                 for(Account loadedAccount:accounts){
                     if(loadedAccount.getAccountID().equals(clientAccountID)){
-                        activeAccounts.add(loadedAccount);
+                        activeAccounts.add(loadedAccount.getAccountID());
                     }
                 }
             }
@@ -96,6 +156,7 @@ public class Driver{
         return null;
     }
     private void loadClients() throws MissingFileException{
+        clients=new ArrayList<>();
         File here=new File("."); // **
         System.out.println("**execution path (absolute): "+here.getAbsolutePath());
         File clientJsons=new File("src/main/resources/com/example/json/clients.json");
@@ -131,9 +192,10 @@ public class Driver{
         }
     }
     private void loadAccounts() throws MissingFileException {
+        accounts=new ArrayList<>();
         File here=new File("."); // **
         System.out.println("**execution path (absolute): "+here.getAbsolutePath());
-        File clientJsons=new File("src/main/resources/com/example/json/acounts.json");
+        File clientJsons=new File("src/main/resources/com/example/json/accounts.json");
         FileReader fileReader;
         try {
             fileReader=new FileReader(clientJsons);
@@ -163,6 +225,7 @@ public class Driver{
         }
     }
     private void loadTransactions() throws MissingFileException {
+        transactions=new ArrayList<>();
         File here=new File("."); // **
         System.out.println("**execution path (absolute): "+here.getAbsolutePath());
         File transactionJsons=new File("src/main/resources/com/example/json/transactions.json");
@@ -198,6 +261,7 @@ public class Driver{
                 break;
             case 4:
                 newClient=new VipClient(clientID, username, password, null, dateOpened, false, null, null);
+                break;
             default:
                 throw new InvalidTypeException();
         }

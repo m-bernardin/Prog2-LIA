@@ -1,3 +1,70 @@
-{
-    
-}
+[
+  {
+    "clientID": "b7Brih-1R",
+    "accounts": [],
+    "username": "ojf",
+    "password": "o3",
+    "transactions": [],
+    "dateOpened": {
+      "year": 2026,
+      "month": 5,
+      "day": 1
+    },
+    "monthlyFee": 10
+  },
+  {
+    "statusValid": true,
+    "clientID": "c3i5tJ-1M",
+    "accounts": [],
+    "username": "madi",
+    "password": "00h8",
+    "transactions": [],
+    "dateOpened": {
+      "year": 2026,
+      "month": 5,
+      "day": 1
+    },
+    "monthlyFee": 0
+  },
+  {
+    "rewardsProgramMember": false,
+    "clientID": "dLb41Q-20",
+    "accounts": [],
+    "username": "jerm",
+    "password": "j78f",
+    "transactions": [],
+    "dateOpened": {
+      "year": 2026,
+      "month": 5,
+      "day": 1
+    },
+    "monthlyFee": 10
+  },
+  {
+    "rewardsProgramMember": false,
+    "clientID": "ewn7A8-1U",
+    "accounts": [],
+    "username": "lile",
+    "password": "0h702",
+    "transactions": [],
+    "dateOpened": {
+      "year": 2026,
+      "month": 5,
+      "day": 1
+    },
+    "monthlyFee": 0
+  },
+  {
+    "clientID": "bVa4;E-2V",
+    "accounts": [],
+    "username": "asd",
+    "password": "asd",
+    "transactions": [],
+    "dateOpened": {
+      "year": 2026,
+      "month": 5,
+      "day": 1
+    },
+    "monthlyFee": 10
+  }
+]

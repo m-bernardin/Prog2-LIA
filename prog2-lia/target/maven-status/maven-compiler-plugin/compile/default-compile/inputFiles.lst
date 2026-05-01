@@ -3,9 +3,9 @@
 /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/PremiumClient.java
 /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/IndividualClient.java
 /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/JsonDecoder.java
+/home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/MissingFileException.java
 /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/StandardClient.java
 /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/Driver.java
-/home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/module-info.java
 /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/IdCreator.java
 /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/DashboardController.java
 /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/InvalidTypeException.java
@@ -19,6 +19,7 @@
 /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/JsonEncoder.java
 /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/InvestmentLockException.java
 /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/Transaction.java
+/home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/module-info.java
 /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/App.java
 /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/Maintainable.java
 /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/VipClient.java

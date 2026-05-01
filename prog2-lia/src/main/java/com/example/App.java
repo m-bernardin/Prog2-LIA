@@ -1,6 +1,7 @@
 package com.example;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -37,9 +38,14 @@ public class App extends Application {
             driver.loadData();
         } catch (MissingFileException e) {
             System.out.println("Fatal error occured: "+e.getMessage());
-            return;
+            Platform.exit();
         }
         launch();
+        try {
+            driver.saveData();
+        } catch (IOException e) {
+            System.out.println("**Error saving data; Some data loss may have occured...");
+        }
     }
 
 }
