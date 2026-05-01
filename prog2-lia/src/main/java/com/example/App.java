@@ -33,6 +33,12 @@ public class App extends Application {
 
     public static void main(String[] args) {
         driver=new Driver();
+        try {
+            driver.loadData();
+        } catch (MissingFileException e) {
+            System.out.println("Fatal error occured: "+e.getMessage());
+            return;
+        }
         launch();
     }
 

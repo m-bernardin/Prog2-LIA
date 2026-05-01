@@ -40,6 +40,69 @@ public class IdCreator {
         return ID;
     }
     /**
+     * debug method for testing base 64 conversion and id creation
+     * @param args
+     */
+    public static void main(String[] args) {
+        // TODO remove after testing done
+        boolean running=true;
+        Scanner input=new Scanner(System.in);
+        while(running){
+            System.out.print("Please select an option\n1. convert to base 64\n2. convert to base 10\n3. create client ID\n4. quit\n> ");
+            switch (input.nextInt()) {
+                case 1:
+                    System.out.print("enter a number\n> ");
+                    System.out.println(convertBase64(input.nextInt()));
+                    break;
+                case 2:
+                    System.out.print("enter a number\n> ");
+                    System.out.println(convertBase10(input.next()));
+                    break;
+                case 3:
+                    System.out.print("enter type (1-3)\n> ");
+                    switch (input.nextInt()) {
+                        case 1:
+                            System.out.print("enter subtype (1-4)\n> ");
+                            try {
+                                System.out.println(createID(1, input.nextInt()));
+                            } catch (InvalidTypeException e) {
+                                // TODO Auto-generated catch block
+                                e.printStackTrace();
+                            }
+                            break;
+                        case 2:
+                                System.out.print("enter subtype (1-3)\n> ");
+                            try {
+                                System.out.println(createID(2, input.nextInt()));
+                            } catch (InvalidTypeException e) {
+                                // TODO Auto-generated catch block
+                                e.printStackTrace();
+                            }
+                            break;
+                        case 3:
+                            try {
+                                System.out.println(createID(3, 0));
+                            } catch (InvalidTypeException e) {
+                                // TODO Auto-generated catch block
+                                e.printStackTrace();
+                            }
+                            break;
+                        default:
+                            System.out.println("invalid");
+                            break;
+                    }
+                    break;
+                case 4:
+                    input.close();
+                    running=false;
+                    break;
+                default:
+                    System.out.println("Please select a valid option...");
+                    break;
+            }
+        }
+    }
+    /**
      * Generates the identifier component for an ID of type Transaction.
      * @return the identifier component generated.
      */
@@ -109,69 +172,6 @@ public class IdCreator {
         // TODO add reserved IDs
         Random gen=new Random();
         return convertBase64(gen.nextInt(1073741823));
-    }
-    /**
-     * debug method for testing base 64 conversion and id creation
-     * @param args
-     */
-    public static void main(String[] args) {
-        // TODO remove after testing done
-        boolean running=true;
-        Scanner input=new Scanner(System.in);
-        while(running){
-            System.out.print("Please select an option\n1. convert to base 64\n2. convert to base 10\n3. create client ID\n4. quit\n> ");
-            switch (input.nextInt()) {
-                case 1:
-                    System.out.print("enter a number\n> ");
-                    System.out.println(convertBase64(input.nextInt()));
-                    break;
-                case 2:
-                    System.out.print("enter a number\n> ");
-                    System.out.println(convertBase10(input.next()));
-                    break;
-                case 3:
-                    System.out.print("enter type (1-3)\n> ");
-                    switch (input.nextInt()) {
-                        case 1:
-                            System.out.print("enter subtype (1-4)\n> ");
-                            try {
-                                System.out.println(createID(1, input.nextInt()));
-                            } catch (InvalidTypeException e) {
-                                // TODO Auto-generated catch block
-                                e.printStackTrace();
-                            }
-                            break;
-                        case 2:
-                                System.out.print("enter subtype (1-3)\n> ");
-                            try {
-                                System.out.println(createID(2, input.nextInt()));
-                            } catch (InvalidTypeException e) {
-                                // TODO Auto-generated catch block
-                                e.printStackTrace();
-                            }
-                            break;
-                        case 3:
-                            try {
-                                System.out.println(createID(3, 0));
-                            } catch (InvalidTypeException e) {
-                                // TODO Auto-generated catch block
-                                e.printStackTrace();
-                            }
-                            break;
-                        default:
-                            System.out.println("invalid");
-                            break;
-                    }
-                    break;
-                case 4:
-                    input.close();
-                    running=false;
-                    break;
-                default:
-                    System.out.println("Please select a valid option...");
-                    break;
-            }
-        }
     }
     /**
      * Converts a given number to base 64 numbering.

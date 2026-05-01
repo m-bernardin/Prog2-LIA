@@ -1,11 +1,17 @@
 package com.example;
 
+import java.io.*;
 import java.util.*;
+import com.google.gson.*;
 public class Driver{
     public static void main(String[] args){
         Driver runner=new Driver();
         System.out.println("Running application...");
-        runner.run();
+        try {
+            runner.run();
+        } catch (MissingFileException e) {
+            System.out.println("Fatal error occured: "+e.getMessage());
+        }
         System.out.println("Application close... Goodbye :)");
     }
     private ArrayList<Client> clients;
@@ -19,11 +25,9 @@ public class Driver{
     public void setActiveClient(Client activeClient) {
         this.activeClient = activeClient;
     }
-    public void run(){
+    public void run() throws MissingFileException{
         // TODO complete method
-        loadClients();
-        loadAccounts();
-        loadTransactions();
+        loadData();
         boolean running=true;
         Scanner input=new Scanner(System.in);
         login();
@@ -38,6 +42,12 @@ public class Driver{
                     break;
             }
         }
+    }
+    public void loadData() throws MissingFileException {
+        // TODO verify this works
+        loadClients();
+        loadAccounts();
+        loadTransactions();
     }
     private void login() {
         // TODO verify this works
@@ -79,19 +89,94 @@ public class Driver{
         return false;
     }
     private Client verifyCredentials(String username, String password) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'verifyCredentials'");
+        for(Client client:clients){
+            if(client.getUsername().equals(username)&&client.getPassword().equals(password))return client;
+        }
+        return null;
     }
-    private void loadClients() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'loadClients'");
+    private void loadClients() throws MissingFileException{
+        File here=new File("."); // **
+        System.out.println("**execution path (absolute): "+here.getAbsolutePath());
+        File clientJsons=new File("src/main/resources/com/example/json/clients.json");
+        FileReader fileReader;
+        try {
+            fileReader=new FileReader(clientJsons);
+        } catch (FileNotFoundException e) {
+            throw new MissingFileException("Could not find client data file...");
+        }
+        Gson clientGsons=new Gson();
+        JsonArray clientJsonArray;
+        clientJsonArray=clientGsons.fromJson(fileReader,JsonArray.class);
+        for (JsonElement jsonElement : clientJsonArray) {
+            JsonObject client=jsonElement.getAsJsonObject();
+            String clientID=new Gson().fromJson(client.get("clientID"),String.class);
+            switch (clientID.charAt(0)) {
+                case 'b':
+                    clients.add(new Gson().fromJson(client, IndividualClient.class));
+                    break;
+                case 'c':
+                    clients.add(new Gson().fromJson(client, StudentClient.class));
+                    break;
+                case 'd':
+                    clients.add(new Gson().fromJson(client, CorporateClient.class));
+                    break;
+                case 'e':
+                    clients.add(new Gson().fromJson(client, VipClient.class));
+                    break;
+                default:
+                    System.out.println("## could not find type...");
+                    break;
+            }
+        }
     }
-    private void loadAccounts() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'loadAccounts'");
+    private void loadAccounts() throws MissingFileException {
+        File here=new File("."); // **
+        System.out.println("**execution path (absolute): "+here.getAbsolutePath());
+        File clientJsons=new File("src/main/resources/com/example/json/acounts.json");
+        FileReader fileReader;
+        try {
+            fileReader=new FileReader(clientJsons);
+        } catch (FileNotFoundException e) {
+            throw new MissingFileException("Could not find account data file...");
+        }
+        Gson accountGsons=new Gson();
+        JsonArray accountJsonArray;
+        accountJsonArray=accountGsons.fromJson(fileReader,JsonArray.class);
+        for (JsonElement jsonElement : accountJsonArray) {
+            JsonObject account=jsonElement.getAsJsonObject();
+            String accountID=new Gson().fromJson(account.get("accountID"),String.class);
+            switch (accountID.charAt(0)) {
+                case 'l':
+                    accounts.add(new Gson().fromJson(account, ChequingAccount.class));
+                    break;
+                case 'm':
+                    accounts.add(new Gson().fromJson(account, SavingsAccount.class));
+                    break;
+                case 'n':
+                    accounts.add(new Gson().fromJson(account, InvestmentAccount.class));
+                    break;
+                default:
+                    System.out.println("## could not find type...");
+                    break;
+            }
+        }
     }
-    private void loadTransactions() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'loadTransactions'");
+    private void loadTransactions() throws MissingFileException {
+        File here=new File("."); // **
+        System.out.println("**execution path (absolute): "+here.getAbsolutePath());
+        File transactionJsons=new File("src/main/resources/com/example/json/transactions.json");
+        FileReader fileReader;
+        try {
+            fileReader=new FileReader(transactionJsons);
+        } catch (FileNotFoundException e) {
+            throw new MissingFileException("Could not find transaction data file...");
+        }
+        Gson transactionGsons=new Gson();
+        JsonArray transactionJsonArray;
+        transactionJsonArray=transactionGsons.fromJson(fileReader,JsonArray.class);
+        for (JsonElement jsonElement : transactionJsonArray) {
+            JsonObject transaction=jsonElement.getAsJsonObject();
+            transactions.add(new Gson().fromJson(transaction, Transaction.class));
+        }
     }
 }

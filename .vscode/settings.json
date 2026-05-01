@@ -1,0 +1,9 @@
+{
+    "java.project.sourcePaths": [
+        "."
+    ],
+    "java.project.referencedLibraries": [
+        "prog2-lia/src/main/resources/com/example/lib/gson-2.10.1.jar"
+    ],
+    "java.configuration.updateBuildConfiguration": "interactive"
+}
