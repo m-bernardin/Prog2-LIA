@@ -13,13 +13,14 @@ public class CorporateClient extends PremiumClient{
     }
     @Override
     public boolean applyMonthlyFee() {
-        // TODO Auto-generated method stub
+        // TODO find way to interact with accounts directly
         throw new UnsupportedOperationException("Unimplemented method 'applyMonthlyFee'");
     }
     @Override
     protected boolean maintain() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'maintain'");
+        applyMonthlyFee();
+        // TODO find way to interact with accounts directly
+        return true;
     }
     public String getCompanyName() {
         return companyName;
@@ -34,11 +35,16 @@ public class CorporateClient extends PremiumClient{
         this.clientManagerContacts = clientManagerContacts;
     }
     public boolean addManager(String manager){
-        // TODO complete method
-        throw new UnsupportedOperationException();
+        clientManagerContacts.add(manager);
+        return true;
     }
-    public boolean removeManager(String Manager){
-        // TODO complete method
-        throw new UnsupportedOperationException();
+    public boolean removeManager(String manager){
+        for(int i=0;i<clientManagerContacts.size();++i){
+            if(clientManagerContacts.get(i).equals(manager)){
+                clientManagerContacts.remove(i);
+                return true;
+            }
+        }
+        return false;
     }
 }

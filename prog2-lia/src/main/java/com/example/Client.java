@@ -92,11 +92,10 @@ public abstract class Client implements Maintainable{
     protected abstract boolean maintain();
     // concrete methods
     protected boolean addAccount(String account){
-        // TODO complete method
-        throw new UnsupportedOperationException();
+        accounts.add(account);
+        return true;
     }
     protected int calculateTotalMonthlyFee(){
-        // TODO complete method
-        throw new UnsupportedOperationException();
+        return monthlyFee*accounts.size();
     }
 }

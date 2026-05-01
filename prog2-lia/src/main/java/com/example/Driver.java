@@ -1,7 +1,7 @@
 package com.example;
 
 import java.util.*;
-public class Main{
+public class Driver{
     private ArrayList<Client> clients;
     private Client activeClient;
     public Client getActiveClient() {
@@ -14,7 +14,7 @@ public class Main{
     private ArrayList<Account> activeAccounts;
     private ArrayList<Transaction> transactions;
     public static void main(String[] args){
-        Main runner=new Main();
+        Driver runner=new Driver();
         System.out.println("Running application...");
         runner.run();
         System.out.println("Application close... Goodbye :)");
