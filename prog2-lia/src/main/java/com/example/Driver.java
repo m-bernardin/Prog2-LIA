@@ -1,6 +1,7 @@
 package com.example;
 
 import java.io.*;
+import java.time.LocalDate;
 import java.util.*;
 import com.google.gson.*;
 public class Driver{
@@ -178,5 +179,28 @@ public class Driver{
             JsonObject transaction=jsonElement.getAsJsonObject();
             transactions.add(new Gson().fromJson(transaction, Transaction.class));
         }
+    }
+    public void createClient(String username,String password,int type) throws InvalidTypeException{
+        // TODO find way to take unique things for each type (split???)
+        boolean success=true;
+        LocalDate dateOpened=LocalDate.now();
+        String clientID=IdCreator.createID(1, type);
+        Client newClient;
+        switch (type) {
+            case 1:
+                newClient=new IndividualClient(clientID, username, password, null, dateOpened, null, null);
+                break;
+            case 2:
+                newClient=new StudentClient(clientID, username, password, null, dateOpened, null, null, null, true);
+                break;
+            case 3:
+                newClient=new CorporateClient(clientID, username, password, null, dateOpened, false, null, null);
+                break;
+            case 4:
+                newClient=new VipClient(clientID, username, password, null, dateOpened, false, null, null);
+            default:
+                throw new InvalidTypeException();
+        }
+        clients.add(newClient);
     }
 }

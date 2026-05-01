@@ -8,9 +8,10 @@
 
 <VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.NewClientController">
    <children>
-      <Label text="Login" />
-      <TextField fx:id="usernameField" text="" promptText="username" />
-      <TextField fx:id="passwordField" text="" promptText="password" />
+      <Label text="Please enter your info" />
+      <TextField fx:id="usernameField" promptText="username" />
+      <TextField fx:id="passwordField" promptText="password" />
+      <TextField fx:id="typeField" promptText="type (1-4)" />
       <Button fx:id="createButton" text="Enter" onAction="#create"/>
    </children>
    <padding>
