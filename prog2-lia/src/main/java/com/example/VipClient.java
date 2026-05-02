@@ -9,11 +9,6 @@ public class VipClient extends PremiumClient{
     public final static double EXTRA_INTEREST=0.01;
     private String name;
     private String contact;
-    @Override
-    public boolean applyMonthlyFee() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'applyMonthlyFee'");
-    }
     public String getName() {
         return name;
     }
@@ -25,10 +20,5 @@ public class VipClient extends PremiumClient{
     }
     public void setContact(String contact) {
         this.contact = contact;
-    }
-    @Override
-    protected boolean maintain() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'maintain'");
     }
 }

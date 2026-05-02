@@ -10,18 +10,6 @@ public class CorporateClient extends PremiumClient{
     }
     private String companyName;
     private ArrayList<String> clientManagerContacts=new ArrayList<>();
-    
-    @Override
-    public boolean applyMonthlyFee() {
-        // TODO find way to interact with accounts directly
-        throw new UnsupportedOperationException("Unimplemented method 'applyMonthlyFee'");
-    }
-    @Override
-    protected boolean maintain() {
-        applyMonthlyFee();
-        // TODO find way to interact with accounts directly
-        return true;
-    }
     public String getCompanyName() {
         return companyName;
     }
