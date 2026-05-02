@@ -79,6 +79,7 @@ public class NewClientController {
             return;
         }
         App.driver.createCorporateClient(username, passsword, name, clientManagerContacts, rewardsProgramMember);
+        App.setRoot("login");
     }
     private ArrayList<String> parseEmails(String contact) {
         Scanner parser=new Scanner(contact).useDelimiter(",");
@@ -88,6 +89,22 @@ public class NewClientController {
             email.trim();
             emails.add(email);
         }
+        parser.close();
         return emails;
+    }
+    @FXML
+    private void createVipClient(ActionEvent event) throws IOException, InvalidTypeException{
+        String username=usernameField.getText();
+        String passsword=passwordField.getText();
+        String name=nameField.getText();
+        String contact=emailField.getText();
+        String[] fields={username,passsword,name,contact};
+        boolean rewardsProgramMember=rewardsProgramCheck.isSelected();
+        if(hasEmptyFields(fields)){
+            App.displayError("Please fill all information...");
+            return;
+        }
+        App.driver.createVipClient(username, passsword, rewardsProgramMember, name, contact);
+        App.setRoot("login");
     }
 }

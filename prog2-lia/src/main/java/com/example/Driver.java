@@ -256,4 +256,8 @@ public class Driver{
         CorporateClient client=new CorporateClient(username, password, rewardsProgramMember, companyName, clientManagerContacts);
         clients.add(client);
     }
+    public void createVipClient(String username,String password,boolean rewardsProgramMember,String name,String contact) throws InvalidTypeException{
+        VipClient client=new VipClient(username, password, rewardsProgramMember, name, contact);
+        clients.add(client);
+    }
 }

@@ -6,26 +6,33 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.CheckBox?>
 
-<HBox spacing="20.0" alignment="CENTER" xmnls:fx="http://javafx.com/fxml" fx:controller="com.example.NewClientController">
+<VBox spacing="20.0" alignment="CENTER" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.NewClientController">
    <children>
-      <VBox spacing="20.0" alignment="CENTER" xmnls:fx="http://javafx.com/fxml">
+      <HBox spacing="20.0" alignment="CENTER" >
          <children>
-            <Label text="Choose a username." />
-            <Label text="Choose a password." />
-            <Label text="What's your name?" />
-            <Label text="How can we contact you?" />
+            <VBox spacing="22.5" alignment="CENTER">
+               <children>
+                  <Label text="Choose a username." />
+                  <Label text="Choose a password." />
+                  <Label text="What's your name name?" />
+                  <Label text="How can we contact you?" />
+                  <Label text="Would you like to participate in our rewards program?" />
+               </children>
+            </VBox>
+            <VBox spacing="15.0" alignment="CENTER">
+               <children>
+                  <TextField fx:id="usernameField" promptText="exampleUser" />
+                  <TextField fx:id="passwordField" promptText="Example01!" />
+                  <TextField fx:id="nameField" promptText="Uno Who" />
+                  <TextField fx:id="emailField" promptText="example@example.com" />
+                  <CheckBox fx:id="rewardsProgramCheck" />
+               </children>
+            </VBox>
          </children>
-      </VBox>
-      <VBox spacing="20.0" alignment="CENTER" xmnls:fx="http://javafx.com/fxml">
-         <children>
-            <TextField fx:id="usernameField" promptText="Username" />
-            <!-- TODO make password field hide entered text -->
-            <TextField fx:id="passwordField" promptText="Password"  /> 
-            <TextField fx:id="nameField" promptText="Full Name" />
-            <TextField fx:id="emailField" promptText="Email" />
-            <Button fx:id="confirmButton" text="Create Account"  onAction="#createIndividualClient" />
-         </children>
-      </VBox>
+      </HBox>
+      <Button fx:id="confirmButton" text="Create Account" onAction="#createVipClient" />
+      <Label text="(!) For more information on our rewards program, contact a sales representative or, visit our website." />
    </children>
-</HBox>
+</VBox>
