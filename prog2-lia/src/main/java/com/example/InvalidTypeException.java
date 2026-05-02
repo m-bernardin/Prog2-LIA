@@ -5,5 +5,9 @@ package com.example;
  * @author Mathieu Bernardin
  */
 public class InvalidTypeException extends Exception{
+
+    public InvalidTypeException(String message) {
+        super(message);
+    }
     
 }

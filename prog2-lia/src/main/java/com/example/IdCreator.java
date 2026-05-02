@@ -30,7 +30,7 @@ public class IdCreator {
             default:
                 ID="?";
         }
-        if(ID.equals("?"))throw new InvalidTypeException();
+        if(ID.equals("?"))throw new InvalidTypeException("Unknown type");
         ID+=generateRandom();
         int checksum=0;
         for(int i=0;i<ID.length();++i){
@@ -131,7 +131,7 @@ public class IdCreator {
                 ID+=9;
                 break;
         }
-        if(ID.charAt(1)=='9')throw new InvalidTypeException();
+        if(ID.charAt(1)=='9')throw new InvalidTypeException("Invalid subtype");
         ID=convertBase64(Integer.parseInt(ID));
         return ID;
     }
@@ -160,7 +160,7 @@ public class IdCreator {
                 ID+=9;
                 break;
         }
-        if(ID.charAt(1)=='9')throw new InvalidTypeException();
+        if(ID.charAt(1)=='9')throw new InvalidTypeException("Invalid subtype");
         ID=convertBase64(Integer.parseInt(ID));
         return ID;
     }

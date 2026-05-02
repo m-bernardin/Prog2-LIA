@@ -53,6 +53,6 @@ public abstract class Account {
         if(currencyCode.equals("EUR"))return amnt*1.5782;
         if(currencyCode.equals("AUD"))return amnt*0.9009;
         if(currencyCode.equals("CHF"))return amnt*1.6846;
-        throw new InvalidTypeException();
+        throw new InvalidTypeException("Invalid currency code");
     }
 }

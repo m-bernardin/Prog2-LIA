@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.geometry.Insets?>
+
+<HBox spacing="20.0" alignment="CENTER" xmnls:fx="http://javafx.com/fxml" fx:controller="com.example.NewClientController">
+   <children>
+      <VBox spacing="20.0" alignment="CENTER" xmnls:fx="http://javafx.com/fxml">
+         <children>
+            <Label text="Choose a username." />
+            <Label text="Choose a password." />
+            <Label text="What's your name?" />
+            <Label text="How can we contact you?" />
+         </children>
+      </Vbox>
+      <VBox spacing="20.0" alignment="CENTER" xmnls:fx="http://javafx.com/fxml">
+         <children>
+            <TextField fx:id="usernameField" promptText="Username" />
+            <!-- TODO make password field hide entered text -->
+            <TextField fx:id="passwordField" promptText="Password"  /> 
+            <TextField fx:id="nameField" promptText="Full Name" />
+            <TextField fx:id="emailField" promptText="Email" />
+            <Button fx:id="confirmButton" text="Create Account"  onAction="#createIndividualClient" />
+         </children>
+      </Vbox>
+   </children>
+</HBox>

@@ -2,7 +2,6 @@
 /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/SavingsAccount.java
 /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/PremiumClient.java
 /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/IndividualClient.java
-/home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/JsonDecoder.java
 /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/MissingFileException.java
 /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/StandardClient.java
 /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/Driver.java
@@ -16,7 +15,6 @@
 /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/InterestBearing.java
 /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/EarningsAccount.java
 /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/MissingChequingException.java
-/home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/JsonEncoder.java
 /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/InvestmentLockException.java
 /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/Transaction.java
 /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/module-info.java

@@ -4,6 +4,7 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.Alert.AlertType;
 public class LoginController{
     @FXML private TextField usernameField;
     @FXML private TextField passwordField;
@@ -20,6 +21,9 @@ public class LoginController{
         {
             usernameField.clear();
             passwordField.clear();
+            Alert invalidAlert=new Alert(AlertType.ERROR);
+            invalidAlert.setContentText("Invalid username or password... Please try again");
+            invalidAlert.show();
             System.out.println("**invalid username or password... Please try again");
             // TODO add alert box
         }
