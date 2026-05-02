@@ -243,34 +243,12 @@ public class Driver{
             transactions.add(new Gson().fromJson(transaction, Transaction.class));
         }
     }
-    @Deprecated
-    public void createClient(String username,String password,int type) throws InvalidTypeException{
-        // TODO find way to take unique things for each type (split???)
-        boolean success=true;
-        LocalDate dateOpened=LocalDate.now();
-        String clientID=IdCreator.createID(1, type);
-        Client newClient;
-        switch (type) {
-            case 1:
-                newClient=new IndividualClient(clientID, username, password, null, dateOpened, null, null);
-                break;
-            case 2:
-                newClient=new StudentClient(clientID, username, password, null, dateOpened, null, null, null, true);
-                break;
-            case 3:
-                newClient=new CorporateClient(clientID, username, password, null, dateOpened, false, null, null);
-                break;
-            case 4:
-                newClient=new VipClient(clientID, username, password, null, dateOpened, false, null, null);
-                break;
-            default:
-                throw new InvalidTypeException("Invalid subtype");
-        }
-        clients.add(newClient);
-    }
     public void createIndividualClient(String username,String password,String name,String contact) throws InvalidTypeException{
-        LocalDate dateOpened=LocalDate.now();
-        String clientID=IdCreator.createID(1, 1);
-        IndividualClient client=new IndividualClient(clientID, username, password, null, dateOpened, name, contact);
+        IndividualClient client=new IndividualClient(username, password, name, contact);
+        clients.add(client);
+    }
+    public void createStudentClient(String username,String password,String name,String contact) throws InvalidTypeException{
+        StudentClient client=new StudentClient(username, password, name, contact);
+        clients.add(client);
     }
 }

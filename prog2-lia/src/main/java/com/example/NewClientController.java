@@ -1,13 +1,9 @@
 package com.example;
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 
 public class NewClientController {
     @FXML TextField usernameField;
@@ -16,7 +12,6 @@ public class NewClientController {
     @FXML TextField emailField;
     @FXML ComboBox<String> typeSelector;
     @FXML
-    @Deprecated
     private void createIndividualClient(ActionEvent event) throws IOException, InvalidTypeException{
         String username=usernameField.getText();
         String passsword=passwordField.getText();
@@ -50,5 +45,19 @@ public class NewClientController {
             if(field.equals(""))return true;
         }
         return false;
+    }
+    @FXML
+    private void createStudentClient(ActionEvent event) throws IOException, InvalidTypeException{
+        String username=usernameField.getText();
+        String passsword=passwordField.getText();
+        String name=nameField.getText();
+        String contact=emailField.getText();
+        String[] fields={username,passsword,name,contact};
+        if(hasEmptyFields(fields)){
+            App.displayError("Please fill all information...");
+            return;
+        }
+        App.driver.createStudentClient(username, passsword, name, contact);
+        App.setRoot("login");
     }
 }
