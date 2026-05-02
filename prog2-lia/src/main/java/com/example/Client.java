@@ -11,6 +11,7 @@ public abstract class Client implements Maintainable{
     private LocalDate dateLastOpened;
     private LocalDate dateOpened;
     protected int monthlyFee=10;
+    protected static final double EXTRA_INTEREST=0;
     // constructors
     public Client(String username,String password){
         this.username=username;
@@ -70,7 +71,13 @@ public abstract class Client implements Maintainable{
         this.monthlyFee = monthlyFee;
     }
     // abstract methods
-    protected abstract boolean maintain();
+    protected boolean applyMonthlyFee(){
+        try {
+            return App.driver.withdraw(calculateTotalMonthlyFee(),App.driver.getChequing(getClientID()));
+        } catch (NullPointerException e) {
+            return false;
+        }
+    }
     // concrete methods
     protected boolean addAccount(String account){
         accounts.add(account);
@@ -78,5 +85,18 @@ public abstract class Client implements Maintainable{
     }
     protected int calculateTotalMonthlyFee(){
         return monthlyFee*accounts.size();
+    }
+    @Override
+    public boolean maintain() {
+        boolean sufficientFunds=applyMonthlyFee();
+        setDateLastOpened(LocalDate.now());
+        for (String accountID : App.driver.getOwnedEarningsAccounts(clientID)) {
+            try {
+                App.driver.getEarningsAccount(accountID).applyInterest();
+            } catch (Exception e) {
+                System.out.println("**non eaarnings account");
+            }
+        }
+        return sufficientFunds;
     }
 }

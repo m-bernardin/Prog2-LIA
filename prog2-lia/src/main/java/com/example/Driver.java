@@ -304,12 +304,8 @@ public class Driver{
         return false;
     }
     public String getChequing(String clientID) throws NullPointerException{
-        for (Client client : clients) {
-            if(client.getClientID().equals(clientID)){
-                for (String accountID : client.getAccounts()) {
-                    if(getAccount(accountID).getClass()==ChequingAccount.class)return accountID;
-                }
-            }
+        for (String accountID : getClient(clientID).getAccounts()) {
+            if(getAccount(accountID).getClass()==ChequingAccount.class)return accountID;
         }
         throw new NullPointerException();
     }
@@ -317,6 +313,23 @@ public class Driver{
         for (Account account : accounts) {
             if(account.getAccountID().equals(accountID))return account;
         }
+        throw new NullPointerException();
+    }
+    public Client getClient(String clientID) throws NullPointerException{
+        for (Client client : clients) {
+            if(client.getClientID().equals(clientID))return client;
+        }
+        throw new NullPointerException();
+    }
+    public ArrayList<String> getOwnedEarningsAccounts(String clientID){
+        ArrayList<String> ownedAccounts=new ArrayList<>();
+        for (String accountID : getClient(clientID).getAccounts()) {
+            if(getAccount(accountID).getClass()==InvestmentAccount.class||getAccount(accountID).getClass()==SavingsAccount.class)ownedAccounts.add(accountID);
+        }
+        return ownedAccounts;
+    }
+    public EarningsAccount getEarningsAccount(String accountID) throws NullPointerException{
+        if(getAccount(accountID).getClass()==InvestmentAccount.class||getAccount(accountID).getClass()==SavingsAccount.class)return (EarningsAccount)getAccount(accountID);
         throw new NullPointerException();
     }
 }

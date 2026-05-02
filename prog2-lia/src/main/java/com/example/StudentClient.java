@@ -2,23 +2,18 @@ package com.example;
 
 import java.time.LocalDate;
 public class StudentClient extends StandardClient{
+    private LocalDate statusExpiryDate;
+    private boolean statusValid;
     public StudentClient(String username, String password, String name, String contact) throws InvalidTypeException {
         super(username, password, name, contact);
         setClientID(IdCreator.createID(1,2));
         statusValid=false;
     }
-    private LocalDate dateStatusRenewed;
-    private boolean statusValid;
-    @Override
-    public boolean applyMonthlyFee() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'applyMonthlyFee'");
+    public LocalDate getStatusExpiryDate() {
+        return statusExpiryDate;
     }
-    public LocalDate getDateStatusRenewed() {
-        return dateStatusRenewed;
-    }
-    public void setDateStatusRenewed(LocalDate dateStatusRenewed) {
-        this.dateStatusRenewed = dateStatusRenewed;
+    public void setStatusExpiryDate(LocalDate statusExpiryDate) {
+        this.statusExpiryDate = statusExpiryDate;
     }
     public boolean isStatusValid() {
         return statusValid;
@@ -27,8 +22,9 @@ public class StudentClient extends StandardClient{
         this.statusValid = statusValid;
     }
     @Override
-    protected boolean maintain() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'maintain'");
+    public boolean maintain() {
+        boolean sufficientFunds=super.maintain();
+        if(LocalDate.now().isAfter(statusExpiryDate))statusValid=false;
+        return sufficientFunds;
     }
 }
