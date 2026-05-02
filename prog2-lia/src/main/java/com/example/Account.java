@@ -31,19 +31,27 @@ public abstract class Account {
         return success;
     }
     public boolean deposit(double amnt,String currency){
-        // TODO add failure instance from regular deposit
-        // TODO add logic for checking if from a premium acc
-        boolean success=true;
+        if(!App.driver.isPremium(App.driver.getOwner(this.accountID)))return false;
         try {
-            balance+=convert(amnt, currency);
+            deposit(convert(amnt, currency));
         } catch (InvalidTypeException e) {
-            success=false;
+            return false;
         }
-        return success;
+        return true;
     }
     public boolean transfer(double amnt,String transferToID){
-        // TODO complete method
-        throw new UnsupportedOperationException();
+        // TODO test
+        try {
+            withdraw(amnt);
+        } catch (Exception e) {
+            return false;
+        }
+        boolean validTransfer=App.driver.deposit(amnt,transferToID);
+        if(!validTransfer){
+            App.driver.deposit(amnt,this.accountID);
+            return false;
+        }
+        return true;
     }
     // Data pulled from https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/; averages for 2025
     double convert(double amnt,String currencyCode) throws InvalidTypeException{

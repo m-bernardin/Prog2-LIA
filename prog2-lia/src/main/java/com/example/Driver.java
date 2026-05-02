@@ -16,14 +16,13 @@ public class Driver{
         System.out.println("Application close... Goodbye :)");
     }
     private ArrayList<Client> clients;
-    public ArrayList<Client> getClients() {
-        // TODO remove after testing
-        return clients;
-    }
     private String activeClient;
     private ArrayList<Account> accounts;
     private ArrayList<String> activeAccounts;
     private ArrayList<Transaction> transactions;
+    public ArrayList<Account> getAccounts() {
+        return accounts;
+    }
     public String getActiveClient() {
         return activeClient;
     }
@@ -32,7 +31,6 @@ public class Driver{
     }
     @Deprecated
     public void run() throws MissingFileException{
-        // TODO complete method
         loadData();
         boolean running=true;
         Scanner input=new Scanner(System.in);
@@ -48,6 +46,7 @@ public class Driver{
                     break;
             }
         }
+        input.close();
     }
     public void loadData() throws MissingFileException {
         loadClients();
@@ -58,6 +57,37 @@ public class Driver{
         saveClients();
         saveAccounts();
         saveTransactions();
+    }
+    public boolean login(String username,String password){
+        Client client=verifyCredentials(username,password);
+        if(client!=null){
+            setActiveClient(client.getClientID());
+            for(String clientAccountID:client.getAccounts()){
+                for(Account loadedAccount:accounts){
+                    if(loadedAccount.getAccountID().equals(clientAccountID)){
+                        activeAccounts.add(loadedAccount.getAccountID());
+                    }
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+    public void createIndividualClient(String username,String password,String name,String contact) throws InvalidTypeException{
+        IndividualClient client=new IndividualClient(username, password, name, contact);
+        clients.add(client);
+    }
+    public void createStudentClient(String username,String password,String name,String contact) throws InvalidTypeException{
+        StudentClient client=new StudentClient(username, password, name, contact);
+        clients.add(client);
+    }
+    public void createCorporateClient(String username,String password,String companyName,ArrayList<String> clientManagerContacts,boolean rewardsProgramMember) throws InvalidTypeException{
+        CorporateClient client=new CorporateClient(username, password, rewardsProgramMember, companyName, clientManagerContacts);
+        clients.add(client);
+    }
+    public void createVipClient(String username,String password,boolean rewardsProgramMember,String name,String contact) throws InvalidTypeException{
+        VipClient client=new VipClient(username, password, rewardsProgramMember, name, contact);
+        clients.add(client);
     }
     private void saveClients() throws IOException {
         File clientJsons=new File("src/main/resources/com/example/json/clients.json");
@@ -134,21 +164,6 @@ public class Driver{
             else System.out.println("Username or password incorrect... Please try again");
         }
         input.close();
-    }
-    public boolean login(String username,String password){
-        Client client=verifyCredentials(username,password);
-        if(client!=null){
-            setActiveClient(client.getClientID());
-            for(String clientAccountID:client.getAccounts()){
-                for(Account loadedAccount:accounts){
-                    if(loadedAccount.getAccountID().equals(clientAccountID)){
-                        activeAccounts.add(loadedAccount.getAccountID());
-                    }
-                }
-            }
-            return true;
-        }
-        return false;
     }
     private Client verifyCredentials(String username, String password) {
         for(Client client:clients){
@@ -244,20 +259,64 @@ public class Driver{
             transactions.add(new Gson().fromJson(transaction, Transaction.class));
         }
     }
-    public void createIndividualClient(String username,String password,String name,String contact) throws InvalidTypeException{
-        IndividualClient client=new IndividualClient(username, password, name, contact);
-        clients.add(client);
+    public boolean deposit(double amnt,String depositToId){
+        for (Account account : accounts) {
+            if(account.getAccountID().equals(depositToId)){
+                account.deposit(amnt);
+                return true;
+            }
+        }
+        return false;
     }
-    public void createStudentClient(String username,String password,String name,String contact) throws InvalidTypeException{
-        StudentClient client=new StudentClient(username, password, name, contact);
-        clients.add(client);
+    public boolean isPremium(String clientID){
+        Client client=null;
+        if(clientID==null)return false;
+        for (Client search : clients) {
+            if(search.getClientID().equals(clientID)){
+                client=search;
+                break;
+            }
+        }
+        if(client==null)return false;
+        if(client.getClass()==VipClient.class||client.getClass()==CorporateClient.class)return true;
+        return false;
     }
-    public void createCorporateClient(String username,String password,String companyName,ArrayList<String> clientManagerContacts,boolean rewardsProgramMember) throws InvalidTypeException{
-        CorporateClient client=new CorporateClient(username, password, rewardsProgramMember, companyName, clientManagerContacts);
-        clients.add(client);
+    public String getOwner(String accountID) throws NullPointerException{
+        for (Client client : clients) {
+            ArrayList<String> ownedAccounts=client.getAccounts();
+            for (String ownedAccount : ownedAccounts) {
+                if(ownedAccount.equals(accountID))return client.getClientID();
+            }
+        }
+        throw new NullPointerException();
     }
-    public void createVipClient(String username,String password,boolean rewardsProgramMember,String name,String contact) throws InvalidTypeException{
-        VipClient client=new VipClient(username, password, rewardsProgramMember, name, contact);
-        clients.add(client);
+    public boolean withdraw(double amnt,String accountID){
+        if(accountID==null)return false;
+        for (Account account : accounts) {
+            if(account.getAccountID().equals(accountID)){
+                try {
+                    return account.withdraw(amnt);
+                } catch (InvestmentLockException e) {
+                    return false;
+                }
+            }
+        }
+        return false;
+    }
+    public String getChequing(String clientID) throws NullPointerException{
+        for (Client client : clients) {
+            if(client.getClientID().equals(clientID)){
+                for (String accountID : client.getAccounts()) {
+                    if(getAccount(accountID).getClass()==ChequingAccount.class)return accountID;
+                }
+            }
+        }
+        throw new NullPointerException();
+    }
+    public Account getAccount(String accountID) throws NullPointerException{
+        for (Account account : accounts) {
+            if(account.getAccountID().equals(accountID))return account;
+        }
+        throw new NullPointerException();
     }
 }
