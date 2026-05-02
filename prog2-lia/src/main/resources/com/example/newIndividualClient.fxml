@@ -30,5 +30,6 @@
          </children>
       </HBox>
       <Button fx:id="confirmButton" text="Create Account" onAction="#createIndividualClient" />
+      <Button fx:id="backButton" text="Cancel" onAction="#cancel" />
    </children>
 </VBox>

@@ -33,6 +33,7 @@
          </children>
       </HBox>
       <Button fx:id="confirmButton" text="Create Account" onAction="#createVipClient" />
+      <Button fx:id="backButton" text="Cancel" onAction="#cancel" />
       <Label text="(!) For more information on our rewards program, contact a sales representative or, visit our website." />
    </children>
 </VBox>

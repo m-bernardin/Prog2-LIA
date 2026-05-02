@@ -30,6 +30,7 @@
          </children>
       </HBox>
       <Button fx:id="confirmButton" text="Create Account" onAction="#createStudentClient" />
+      <Button fx:id="backButton" text="Cancel" onAction="#cancel" />
       <Label text="(!) Please contact a company associate as soon as possible to confirm your full time student status." />
    </children>
 </VBox>

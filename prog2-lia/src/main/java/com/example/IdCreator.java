@@ -66,7 +66,6 @@ public class IdCreator {
                             try {
                                 System.out.println(createID(1, input.nextInt()));
                             } catch (InvalidTypeException e) {
-                                // TODO Auto-generated catch block
                                 e.printStackTrace();
                             }
                             break;
@@ -75,7 +74,6 @@ public class IdCreator {
                             try {
                                 System.out.println(createID(2, input.nextInt()));
                             } catch (InvalidTypeException e) {
-                                // TODO Auto-generated catch block
                                 e.printStackTrace();
                             }
                             break;
@@ -83,7 +81,6 @@ public class IdCreator {
                             try {
                                 System.out.println(createID(3, 0));
                             } catch (InvalidTypeException e) {
-                                // TODO Auto-generated catch block
                                 e.printStackTrace();
                             }
                             break;

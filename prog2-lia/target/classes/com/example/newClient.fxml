@@ -27,5 +27,6 @@
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
    </padding>
+   <Button fx:id="backButton" text="Cancel" onAction="#cancel" />
    <Label text="(!) For more information on the these types, please contact a sales representative or, visit our website." />
 </VBox>

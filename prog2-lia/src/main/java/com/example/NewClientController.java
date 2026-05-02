@@ -107,4 +107,8 @@ public class NewClientController {
         App.driver.createVipClient(username, passsword, rewardsProgramMember, name, contact);
         App.setRoot("login");
     }
+    @FXML
+    private void cancel() throws IOException{
+        App.setRoot("login");
+    }
 }
