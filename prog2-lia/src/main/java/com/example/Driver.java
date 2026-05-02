@@ -252,4 +252,8 @@ public class Driver{
         StudentClient client=new StudentClient(username, password, name, contact);
         clients.add(client);
     }
+    public void createCorporateClient(String username,String password,String companyName,ArrayList<String> clientManagerContacts,boolean rewardsProgramMember) throws InvalidTypeException{
+        CorporateClient client=new CorporateClient(username, password, rewardsProgramMember, companyName, clientManagerContacts);
+        clients.add(client);
+    }
 }

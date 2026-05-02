@@ -1,9 +1,13 @@
 package com.example;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.control.CheckBox;
 
 public class NewClientController {
     @FXML TextField usernameField;
@@ -11,6 +15,7 @@ public class NewClientController {
     @FXML TextField nameField;
     @FXML TextField emailField;
     @FXML ComboBox<String> typeSelector;
+    @FXML CheckBox rewardsProgramCheck;
     @FXML
     private void createIndividualClient(ActionEvent event) throws IOException, InvalidTypeException{
         String username=usernameField.getText();
@@ -59,5 +64,30 @@ public class NewClientController {
         }
         App.driver.createStudentClient(username, passsword, name, contact);
         App.setRoot("login");
+    }
+    @FXML
+    private void createCorporateClient(ActionEvent event) throws IOException, InvalidTypeException{
+        String username=usernameField.getText();
+        String passsword=passwordField.getText();
+        String name=nameField.getText();
+        String contact=emailField.getText();
+        ArrayList<String> clientManagerContacts=parseEmails(contact);
+        boolean rewardsProgramMember=rewardsProgramCheck.isSelected();
+        String[] fields={username,passsword,name,contact};
+        if(hasEmptyFields(fields)){
+            App.displayError("Please fill all information...");
+            return;
+        }
+        App.driver.createCorporateClient(username, passsword, name, clientManagerContacts, rewardsProgramMember);
+    }
+    private ArrayList<String> parseEmails(String contact) {
+        Scanner parser=new Scanner(contact).useDelimiter(",");
+        ArrayList<String> emails=new ArrayList<>();
+        while (parser.hasNext()) {
+            String email=parser.next();
+            email.trim();
+            emails.add(email);
+        }
+        return emails;
     }
 }

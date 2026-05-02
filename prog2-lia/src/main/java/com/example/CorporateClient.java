@@ -2,9 +2,10 @@ package com.example;
 
 import java.util.ArrayList;
 public class CorporateClient extends PremiumClient{
-    public CorporateClient(String username, String password, boolean rewardsProgramMember,String companyName) throws InvalidTypeException {
+    public CorporateClient(String username, String password, boolean rewardsProgramMember,String companyName,ArrayList<String> clientManagerContacts) throws InvalidTypeException {
         super(username, password, rewardsProgramMember);
         this.companyName=companyName;
+        this.clientManagerContacts=clientManagerContacts;
         setClientID(IdCreator.createID(1,3));
     }
     private String companyName;
