@@ -24,8 +24,6 @@ public class LoginController{
             Alert invalidAlert=new Alert(AlertType.ERROR);
             invalidAlert.setContentText("Invalid username or password... Please try again");
             invalidAlert.show();
-            System.out.println("**invalid username or password... Please try again");
-            // TODO add alert box
         }
     }
     @FXML

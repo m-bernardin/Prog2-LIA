@@ -4,8 +4,11 @@ import java.util.ArrayList;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
+
 public class NewClientController {
     @FXML TextField usernameField;
     @FXML TextField passwordField;
@@ -13,25 +16,39 @@ public class NewClientController {
     @FXML TextField emailField;
     @FXML ComboBox<String> typeSelector;
     @FXML
+    @Deprecated
     private void createIndividualClient(ActionEvent event) throws IOException, InvalidTypeException{
         String username=usernameField.getText();
         String passsword=passwordField.getText();
         String name=nameField.getText();
         String contact=emailField.getText();
-        App.driver.createIndividualClient(username, passsword, name, contact);
-        ArrayList<Client> clients=App.driver.getClients();
-        for (Client client : clients) {
-            System.out.println(client);
+        String[] fields={username,passsword,name,contact};
+        if(hasEmptyFields(fields)){
+            App.displayError("Please fill all information...");
+            return;
         }
+        App.driver.createIndividualClient(username, passsword, name, contact);
+        App.setRoot("login");
     }
     @FXML
     private void confirmSelection(ActionEvent event) throws IOException{
         String choice=typeSelector.getValue();
-        System.out.println("**found choice: "+choice);
-        if(choice.equals("Individual"))App.setRoot("newIndividualClient");
+        System.out.println("**found choice: <"+choice+">");
+        if(choice==null){
+            App.displayError("Please make a selection...");
+        }
+        else if(choice.equals("Individual"))App.setRoot("newIndividualClient");
         else if(choice.equals("Student"))App.setRoot("newStudentClient");
         else if(choice.equals("Corporate"))App.setRoot("newCorporateClient");
         else if(choice.equals("Vip"))App.setRoot("newVipClient");
-        else System.out.println("**error getting selection...");
+        else {
+            App.displayError("Invalid selection...");
+        }
+    }
+    private boolean hasEmptyFields(String[] fields){
+        for (String field : fields) {
+            if(field.equals(""))return true;
+        }
+        return false;
     }
 }

@@ -16,7 +16,7 @@
             <Label text="What's your name?" />
             <Label text="How can we contact you?" />
          </children>
-      </Vbox>
+      </VBox>
       <VBox spacing="20.0" alignment="CENTER" xmnls:fx="http://javafx.com/fxml">
          <children>
             <TextField fx:id="usernameField" promptText="Username" />
@@ -26,6 +26,6 @@
             <TextField fx:id="emailField" promptText="Email" />
             <Button fx:id="confirmButton" text="Create Account"  onAction="#createIndividualClient" />
          </children>
-      </Vbox>
+      </VBox>
    </children>
 </HBox>

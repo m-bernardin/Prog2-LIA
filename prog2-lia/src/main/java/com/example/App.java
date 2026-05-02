@@ -5,6 +5,8 @@ import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -47,5 +49,9 @@ public class App extends Application {
             System.out.println("**Error saving data; Some data loss may have occured...");
         }
     }
-
+    public static void displayError(String message){
+        Alert alert=new Alert(AlertType.ERROR);
+        alert.setContentText(message);
+        alert.show();
+    }
 }
