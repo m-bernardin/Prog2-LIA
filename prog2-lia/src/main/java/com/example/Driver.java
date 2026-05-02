@@ -73,6 +73,10 @@ public class Driver{
         }
         return false;
     }
+    public void logout(){
+        activeAccounts=null;
+        activeClient=null;
+    }
     public void createIndividualClient(String username,String password,String name,String contact) throws InvalidTypeException{
         IndividualClient client=new IndividualClient(username, password, name, contact);
         clients.add(client);

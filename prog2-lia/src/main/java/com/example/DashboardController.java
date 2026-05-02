@@ -14,4 +14,9 @@ public class DashboardController {
     private void deposit(ActionEvent event) throws IOException{
 
     }
+    @FXML
+    private void logout() throws IOException{
+        App.driver.logout();
+        App.setRoot("login");
+    }
 }

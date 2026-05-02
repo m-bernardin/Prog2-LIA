@@ -20,6 +20,7 @@
             <VBox fx:id="accountCentreBox" alignment="CENTER_LEFT" spacing="15.0">
                <children>
                   <Label text="Account Centre" />
+
                </children>
             </VBox>
             <VBox fx:id="transactionManagerBox" alignment="CENTER_LEFT" spacing="15.0">
@@ -35,3 +36,4 @@
          </children>
       </HBox>
    </children>
+</VBox>
