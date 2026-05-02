@@ -1,5 +1,6 @@
 package com.example;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 public abstract class Client implements Maintainable{
     // fields
@@ -88,15 +89,20 @@ public abstract class Client implements Maintainable{
     }
     @Override
     public boolean maintain() {
-        boolean sufficientFunds=applyMonthlyFee();
-        setDateLastOpened(LocalDate.now());
-        for (String accountID : App.driver.getOwnedEarningsAccounts(clientID)) {
+        Period periodSinceLastOpened=Period.between(LocalDate.now(), dateLastOpened);
+        int monthsSinceLastOpened=periodSinceLastOpened.getMonths()+periodSinceLastOpened.getYears()*12;
+        boolean sufficientFunds=true;
+        for(int i=0;i<monthsSinceLastOpened;++i){
+            sufficientFunds=applyMonthlyFee();
+            for (String accountID : App.driver.getOwnedEarningsAccounts(clientID)) {
             try {
                 App.driver.getEarningsAccount(accountID).applyInterest();
             } catch (Exception e) {
                 System.out.println("**non eaarnings account");
             }
+            }
         }
+        setDateLastOpened(LocalDate.now());
         return sufficientFunds;
     }
 }

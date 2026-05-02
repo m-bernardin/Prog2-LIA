@@ -66,5 +66,20 @@
       "day": 1
     },
     "monthlyFee": 10
+  },
+  {
+    "name": "Mathieu Bernardin",
+    "contact": "mjrb4mjrb@gmail.com",
+    "clientID": "bU;MNc-3L",
+    "accounts": [],
+    "username": "mBernardin",
+    "password": "9166",
+    "transactions": [],
+    "dateOpened": {
+      "year": 2026,
+      "month": 5,
+      "day": 2
+    },
+    "monthlyFee": 10
   }
 ]
