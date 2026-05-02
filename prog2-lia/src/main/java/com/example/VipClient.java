@@ -1,20 +1,14 @@
 package com.example;
 
-import java.time.LocalDate;
 public class VipClient extends PremiumClient{
-    private final static double EXTRA_INTEREST=0.01;
-    public static double getExtraInterest() {
-        return EXTRA_INTEREST;
-    }
-    private String name;
-    private String contact;
-    public VipClient(String clientID, String username, String password, LocalDate dateLastOpened, LocalDate dateOpened,
-            boolean rewardsProgramMember, String name, String contact) {
-        super(clientID, username, password, dateLastOpened, dateOpened, rewardsProgramMember);
-        this.name = name;
-        this.contact = contact;
+    public VipClient(String username, String password, boolean rewardsProgramMember,String name,String contact) throws InvalidTypeException {
+        super(username, password, rewardsProgramMember);
+        setClientID(IdCreator.createID(1,4));
         monthlyFee=0;
     }
+    public final static double EXTRA_INTEREST=0.01;
+    private String name;
+    private String contact;
     @Override
     public boolean applyMonthlyFee() {
         // TODO Auto-generated method stub

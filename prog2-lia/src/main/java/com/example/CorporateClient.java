@@ -1,16 +1,15 @@
 package com.example;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 public class CorporateClient extends PremiumClient{
+    public CorporateClient(String username, String password, boolean rewardsProgramMember,String companyName) throws InvalidTypeException {
+        super(username, password, rewardsProgramMember);
+        this.companyName=companyName;
+        setClientID(IdCreator.createID(1,3));
+    }
     private String companyName;
     private ArrayList<String> clientManagerContacts=new ArrayList<>();
-    public CorporateClient(String clientID, String username, String password, LocalDate dateLastOpened, LocalDate dateOpened,
-            boolean rewardsProgramMember, String companyName, ArrayList<String> clientManagerContacts) {
-        super(clientID, username, password, dateLastOpened, dateOpened, rewardsProgramMember);
-        this.companyName = companyName;
-        this.clientManagerContacts = clientManagerContacts;
-    }
+    
     @Override
     public boolean applyMonthlyFee() {
         // TODO find way to interact with accounts directly

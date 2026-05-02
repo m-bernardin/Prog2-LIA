@@ -12,32 +12,13 @@ public abstract class Client implements Maintainable{
     private LocalDate dateOpened;
     protected int monthlyFee=10;
     // constructors
-    /**
-     * constructor for new account
-     * TODO finish javadoc
-     * @param clientID
-     * @param username
-     * @param password
-     * @param dateLastOpened
-     * @param dateOpened
-     */
-    public Client(String clientID, String username, String password, LocalDate dateLastOpened, LocalDate dateOpened) {
-        this.clientID = clientID;
-        this.username = username;
-        this.password = password;
-        this.dateLastOpened = dateLastOpened;
-        this.dateOpened = dateOpened;
-    }
-    public Client(String clientID, ArrayList<String> accounts, String username, String password,
-            ArrayList<String> transactions, LocalDate dateLastOpened, LocalDate dateOpened, int monthlyFee) {
-        this.clientID = clientID;
-        this.accounts = accounts;
-        this.username = username;
-        this.password = password;
-        this.transactions = transactions;
-        this.dateLastOpened = dateLastOpened;
-        this.dateOpened = dateOpened;
-        this.monthlyFee = monthlyFee;
+    public Client(String username,String password){
+        this.username=username;
+        this.password=password;
+        accounts=new ArrayList<>();
+        transactions=new ArrayList<>();
+        clientID="XXXXXX";
+        dateOpened=LocalDate.now();
     }
     // getters and setters
     public String getClientID() {

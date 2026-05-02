@@ -1,10 +1,9 @@
 package com.example;
-
-import java.time.LocalDate;
 public class IndividualClient extends StandardClient{
-    public IndividualClient(String clientID, String username, String password, LocalDate dateLastOpened, LocalDate dateOpened,
-            String name, String contact) {
-        super(clientID, username, password, dateLastOpened, dateOpened, name, contact);
+    
+    public IndividualClient(String username, String password, String name, String contact) throws InvalidTypeException {
+        super(username, password, name, contact);
+        setClientID(IdCreator.createID(1,1));
     }
     @Override
     protected boolean maintain() {

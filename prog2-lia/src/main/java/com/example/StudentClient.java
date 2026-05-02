@@ -2,15 +2,13 @@ package com.example;
 
 import java.time.LocalDate;
 public class StudentClient extends StandardClient{
+    public StudentClient(String username, String password, String name, String contact) throws InvalidTypeException {
+        super(username, password, name, contact);
+        setClientID(IdCreator.createID(1,2));
+        statusValid=false;
+    }
     private LocalDate dateStatusRenewed;
     private boolean statusValid;
-    public StudentClient(String clientID, String username, String password, LocalDate dateLastOpened, LocalDate dateOpened,
-            String name, String contact, LocalDate dateStatusRenewed, boolean statusValid) {
-        super(clientID, username, password, dateLastOpened, dateOpened, name, contact);
-        this.dateStatusRenewed = dateStatusRenewed;
-        this.statusValid = statusValid;
-        monthlyFee=0;
-    }
     @Override
     public boolean applyMonthlyFee() {
         // TODO Auto-generated method stub
