@@ -1,10 +1,10 @@
 package com.example;
 
 import java.io.*;
-import java.time.LocalDate;
 import java.util.*;
 import com.google.gson.*;
 public class Driver{
+    @Deprecated
     public static void main(String[] args){
         Driver runner=new Driver();
         System.out.println("Running application...");
@@ -30,6 +30,7 @@ public class Driver{
     public void setActiveClient(String activeClient) {
         this.activeClient = activeClient;
     }
+    @Deprecated
     public void run() throws MissingFileException{
         // TODO complete method
         loadData();
@@ -49,7 +50,6 @@ public class Driver{
         }
     }
     public void loadData() throws MissingFileException {
-        // TODO verify this works
         loadClients();
         loadAccounts();
         loadTransactions();
@@ -110,8 +110,8 @@ public class Driver{
         writer.flush();
         writer.close();
     }
+    @Deprecated
     private void login() {
-        // TODO verify this works
         boolean loggingIn=true;
         Scanner input=new Scanner(System.in);
         while(loggingIn){
@@ -133,6 +133,7 @@ public class Driver{
             }
             else System.out.println("Username or password incorrect... Please try again");
         }
+        input.close();
     }
     public boolean login(String username,String password){
         Client client=verifyCredentials(username,password);
