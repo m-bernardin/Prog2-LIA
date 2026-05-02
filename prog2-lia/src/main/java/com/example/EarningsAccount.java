@@ -14,9 +14,11 @@ public abstract class EarningsAccount extends Account implements InterestBearing
     }
     @Override
     public boolean applyInterest() {
-        // TODO find insatnce of failure?? (int overflow?)
+        // TODO find failure instance?
         boolean success=true;
-        balance+=balance*interestRate;
+        balance+=balance*(interestRate+App.driver.getClient(App.driver.getOwner(getAccountID())).EXTRA_INTEREST);
+        double amnt=balance*(interestRate+App.driver.getClient(App.driver.getOwner(getAccountID())).EXTRA_INTEREST);
+        System.out.println("**amount added to "+getAccountID()+": "+amnt);
         return success;
     }
 }
