@@ -7,24 +7,29 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.geometry.Insets?>
 
-<HBox spacing="20.0" alignment="CENTER" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.NewClientController">
+<VBox spacing="20.0" alignment="CENTER" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.NewClientController">
    <children>
-      <VBox spacing="30.0" alignment="CENTER">
+      <HBox spacing="20.0" alignment="CENTER" >
          <children>
-            <Label text="Choose a username." />
-            <Label text="Choose a password." />
-            <Label text="What's your name?" />
-            <Label text="How can we contact you?" />
+            <VBox spacing="22.5" alignment="CENTER">
+               <children>
+                  <Label text="Choose a username." />
+                  <Label text="Choose a password." />
+                  <Label text="What the companies name?" />
+                  <Label text="Who manages the comapny finances?" />
+               </children>
+            </VBox>
+            <VBox spacing="15.0" alignment="CENTER">
+               <children>
+                  <TextField fx:id="usernameField" promptText="exampleUser" />
+                  <TextField fx:id="passwordField" promptText="Example01!" />
+                  <TextField fx:id="nameField" promptText="Business inc." />
+                  <TextField fx:id="emailField" promptText="example@business.com, sample@business.com, model@business.com..." />
+               </children>
+            </VBox>
          </children>
-      </VBox>
-      <VBox spacing="20.0" alignment="CENTER">
-         <children>
-            <TextField fx:id="usernameField" promptText="Username" />
-            <TextField fx:id="passwordField" promptText="Password" />
-            <TextField fx:id="nameField" promptText="Full Name" />
-            <TextField fx:id="emailField" promptText="Email" />
-            <Button fx:id="confirmButton" text="Create Account" onAction="#createIndividualClient" />
-         </children>
-      </VBox>
+      </HBox>
+      <Button fx:id="confirmButton" text="Create Account" onAction="#createCorporateClient" />
+      <Label text="(!) Please enter finance managers contacts as a comma-seperated list.">
    </children>
-</HBox>
+</VBox>

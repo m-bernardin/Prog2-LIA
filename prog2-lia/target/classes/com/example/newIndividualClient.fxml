@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.geometry.Insets?>
+
 <VBox spacing="20.0" alignment="CENTER" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.NewClientController">
    <children>
       <HBox spacing="20.0" alignment="CENTER" >
@@ -20,10 +21,10 @@
             </VBox>
             <VBox spacing="15.0" alignment="CENTER">
                <children>
-                  <TextField fx:id="usernameField" promptText="Username" />
-                  <TextField fx:id="passwordField" promptText="Password" />
-                  <TextField fx:id="nameField" promptText="Full Name" />
-                  <TextField fx:id="emailField" promptText="Email" />
+                  <TextField fx:id="usernameField" promptText="exampleUser" />
+                  <TextField fx:id="passwordField" promptText="Example01!" />
+                  <TextField fx:id="nameField" promptText="John Smith" />
+                  <TextField fx:id="emailField" promptText="example@example.com" />
                </children>
             </VBox>
          </children>
