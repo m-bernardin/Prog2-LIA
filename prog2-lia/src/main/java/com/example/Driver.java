@@ -3,24 +3,20 @@ package com.example;
 import java.io.*;
 import java.util.*;
 import com.google.gson.*;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 public class Driver{
     private ArrayList<Client> clients;
     private String activeClient;
     private ArrayList<Account> accounts;
     private HashSet<String> activeAccounts;
     private ArrayList<Transaction> transactions;
-    public FilteredList<Transaction> latestTransactions;
-    private ObservableList<Account> observableAccounts;
+    public ObservableList<Transaction> latestTransactions=FXCollections.observableArrayList();
     public FilteredList<Account> observableActiveAccounts;
-    public final ObjectProperty<FilteredList<Account>> observableActiveAccountsProperty=new SimpleObjectProperty<>();
-    public ObjectProperty<FilteredList<Account>> getObservableActiveAccountsProperty() {
-        return observableActiveAccountsProperty;
-    }
+    public String selectedAccount;
     public ArrayList<Account> getAccounts() {
         return accounts;
     }
@@ -52,9 +48,14 @@ public class Driver{
                     }
                 }
             }
-            observableAccounts=FXCollections.observableArrayList(accounts);
+            ObservableList<Account> observableAccounts=FXCollections.observableArrayList(accounts);
             observableActiveAccounts=new FilteredList<>(observableAccounts, account -> activeAccounts.contains(account.getAccountID()));
-            observableActiveAccountsProperty.set(observableActiveAccounts);
+            ObservableList<Transaction> observableTransactions=FXCollections.observableArrayList(transactions);
+            FilteredList<Transaction> filteredTransactions=new FilteredList<>(observableTransactions, transaction -> transaction.getGivingAccount().equals(selectedAccount)||transaction.getReceivingAccount().equals(selectedAccount));
+            SortedList<Transaction> sortedTransactions=new SortedList<>(filteredTransactions,Comparator.comparing(Transaction::getDate).reversed());
+            sortedTransactions.addListener((ListChangeListener<Transaction>) change -> {
+                latestTransactions.setAll(sortedTransactions.subList(0,Math.min(10,sortedTransactions.size())));
+            });
             return true;
         }
         return false;
@@ -62,7 +63,6 @@ public class Driver{
     public void logout(){
         activeAccounts=null;
         activeClient=null;
-        observableAccounts=null;
         observableActiveAccounts=null;
     }
     public void createIndividualClient(String username,String password,String name,String contact) throws InvalidTypeException{

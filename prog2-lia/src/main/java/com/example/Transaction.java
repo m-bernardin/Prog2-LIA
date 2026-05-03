@@ -7,6 +7,9 @@ public class Transaction{
     private String receivingAccount;
     private String givingAccount;
     private LocalDate date;
+    public LocalDate getDate() {
+        return date;
+    }
     public Transaction(double amnt, String receivingAccount, String givingAccount) throws InvalidTypeException {
         transactionID=IdCreator.createID(3,0);
         date=LocalDate.now();
