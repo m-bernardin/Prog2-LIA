@@ -46,13 +46,13 @@ public class Driver{
         if(client!=null){
             setActiveClient(client.getClientID());
             System.out.println("**loading accounts");
-            activeAccounts=getClient(activeClient).getAccounts();
-            observableAccounts=FXCollections.observableArrayList(accounts);
-            observableActiveAccounts=new FilteredList<>(observableAccounts, account -> activeAccounts.contains(account.getAccountID()));
+            // activeAccounts=getClient(activeClient).getAccounts();
+            // observableAccounts=FXCollections.observableArrayList(accounts);
+            observableActiveAccounts=new FilteredList<>(FXCollections.observableArrayList(accounts), account -> FXCollections.observableArrayList(getClient(activeClient).getAccounts()).contains(account.getAccountID()));
             System.out.println("**loaded accounts: "+accounts);
             System.out.println("**active accounts:"+activeAccounts);
             accounts.forEach(acc -> {
-                System.out.println("**"+acc.getAccountID()+": "+activeAccounts.contains(acc.getAccountID()));
+                System.out.println("**"+acc.getAccountID()+": "+FXCollections.observableArrayList(getClient(activeClient).getAccounts()).contains(acc.getAccountID()));
             });
             ObservableList<Transaction> observableTransactions=FXCollections.observableArrayList(transactions);
             FilteredList<Transaction> filteredTransactions=new FilteredList<>(observableTransactions, transaction -> transaction.getGivingAccount().equals(selectedAccount.get())||transaction.getReceivingAccount().equals(selectedAccount.get()));

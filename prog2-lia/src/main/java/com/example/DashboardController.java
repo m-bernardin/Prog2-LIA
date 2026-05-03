@@ -86,19 +86,19 @@ public class DashboardController {
     }
     @FXML
     public void initialize(){
-        System.out.println("**views initialized");
         if(App.driver.observableActiveAccounts.isEmpty()){
             try {
                 accountsView.setItems(FXCollections.observableArrayList(new BlankAccount()));
             } catch (InvalidTypeException e) {}
         } else accountsView.setItems(App.driver.observableActiveAccounts);
-        // try {
-        //     accountsView.setItems(FXCollections.observableArrayList(new ChequeingAccount(),new InvestmentAccount()));
-        // } catch (InvalidTypeException e) {
-        //     System.out.println("**error getting hardcoded types");
-        // }
         System.out.println("**accounts items: "+accountsView.getItems());
-        transactionsView.setItems(App.driver.latestTransactions);
+        if(App.driver.latestTransactions.isEmpty()){
+            try {
+                transactionsView.setItems(FXCollections.observableArrayList(new Transaction(0, null, null)));
+            } catch (InvalidTypeException e) {}
+        }
+        else transactionsView.setItems(App.driver.latestTransactions);
+
         System.out.println("**transactions items: "+transactionsView.getItems());
         accountsView.getSelectionModel().selectedItemProperty().addListener((obs,old,newSelection)->App.driver.selectedAccount.set(newSelection.getAccountID()));
     }

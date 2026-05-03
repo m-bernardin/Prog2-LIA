@@ -43,6 +43,7 @@ public class Transaction{
     }
     @Override
     public String toString() {
+        if(givingAccount==null&&receivingAccount==null)return "No transactions to show...";
         if(receivingAccount==null)return "("+date+") Withdrawal from account no. "+givingAccount+" of "+amnt+"$";
         if(givingAccount==null)return "("+date+") Deposit to account no. "+receivingAccount+" of "+amnt+"$";
         return "("+date+") Transfer from account no. "+givingAccount+" to account no. "+receivingAccount+" of "+amnt+"$";
