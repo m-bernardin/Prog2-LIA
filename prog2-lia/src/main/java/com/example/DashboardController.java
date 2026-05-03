@@ -35,6 +35,8 @@ public class DashboardController {
             App.displayError("Cannot withdraw from an investment account less than a year after it has been opened...");
         } catch (InsufficientFundsException e){
             App.displayError("Insufficient funds in this account.");
+        } catch (InvalidTypeException e) {
+            App.displayError("System error: error getting type");
         }
     }
     @FXML
@@ -50,6 +52,8 @@ public class DashboardController {
             App.driver.deposit(amnt, accountsView.getSelectionModel().getSelectedItem().getAccountID());
         } catch (NullPointerException e) {
             App.displayError("Please select an account.");
+        } catch (InvalidTypeException e) {
+            App.displayError("System error: error getting type");
         }
     }
     @FXML
@@ -66,11 +70,11 @@ public class DashboardController {
         } catch (NullPointerException e) {
             App.displayError("Please select an account.");
         } catch (InvestmentLockException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            App.displayError("Cannot withdraw from an investment account less than a year after it has been opened...");
         } catch (InsufficientFundsException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            App.displayError("Insufficient funds in this account.");
+        } catch (InvalidTypeException e) {
+            App.displayError("System error: error getting type");
         }
     }
     @FXML
@@ -96,5 +100,6 @@ public class DashboardController {
         } catch (NullPointerException e){
             App.displayError("Please select an account type.");
         }
+        App.displayMessage("New "+selection.toLowerCase()+" account opened.");
     }
 }

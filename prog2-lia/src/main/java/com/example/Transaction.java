@@ -5,8 +5,8 @@ public class Transaction{
     private double amnt;
     private String receivingAccount;
     private String givingAccount;
-    public Transaction(String transactionID, double amnt, String receivingAccount, String givingAccount) {
-        this.transactionID = transactionID;
+    public Transaction(double amnt, String receivingAccount, String givingAccount) throws InvalidTypeException {
+        transactionID=IdCreator.createID(3,0);
         this.amnt = amnt;
         this.receivingAccount = receivingAccount;
         this.givingAccount = givingAccount;
