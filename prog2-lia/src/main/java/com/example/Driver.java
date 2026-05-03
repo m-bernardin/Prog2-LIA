@@ -19,6 +19,7 @@ public class Driver{
     private ArrayList<Transaction> transactions;
     public ObservableList<Transaction> latestTransactions=FXCollections.observableArrayList();
     public FilteredList<Account> observableActiveAccounts;
+    private ObservableList<Account> observableAccounts;
     public final StringProperty selectedAccount=new SimpleStringProperty();
     public ArrayList<Account> getAccounts() {
         return accounts;
@@ -44,15 +45,15 @@ public class Driver{
         activeAccounts=new HashSet<>();
         if(client!=null){
             setActiveClient(client.getClientID());
-            for(String clientAccountID:client.getAccounts()){
-                for(Account loadedAccount:accounts){
-                    if(loadedAccount.getAccountID().equals(clientAccountID)){
-                        activeAccounts.add(loadedAccount.getAccountID());
-                    }
-                }
-            }
-            ObservableList<Account> observableAccounts=FXCollections.observableArrayList(accounts);
+            System.out.println("**loading accounts");
+            activeAccounts=getClient(activeClient).getAccounts();
+            observableAccounts=FXCollections.observableArrayList(accounts);
             observableActiveAccounts=new FilteredList<>(observableAccounts, account -> activeAccounts.contains(account.getAccountID()));
+            System.out.println("**loaded accounts: "+accounts);
+            System.out.println("**active accounts:"+activeAccounts);
+            accounts.forEach(acc -> {
+                System.out.println("**"+acc.getAccountID()+": "+activeAccounts.contains(acc.getAccountID()));
+            });
             ObservableList<Transaction> observableTransactions=FXCollections.observableArrayList(transactions);
             FilteredList<Transaction> filteredTransactions=new FilteredList<>(observableTransactions, transaction -> transaction.getGivingAccount().equals(selectedAccount.get())||transaction.getReceivingAccount().equals(selectedAccount.get()));
             SortedList<Transaction> sortedTransactions=new SortedList<>(filteredTransactions,Comparator.comparing(Transaction::getDate).reversed());
@@ -67,6 +68,7 @@ public class Driver{
         activeAccounts=null;
         activeClient=null;
         observableActiveAccounts=null;
+        latestTransactions=null;
     }
     public void createIndividualClient(String username,String password,String name,String contact) throws InvalidTypeException{
         IndividualClient client=new IndividualClient(username, password, name, contact);
@@ -243,7 +245,7 @@ public class Driver{
     }
     public String getOwner(String accountID) throws NullPointerException{
         for (Client client : clients) {
-            ArrayList<String> ownedAccounts=client.getAccounts();
+            HashSet<String> ownedAccounts=client.getAccounts();
             for (String ownedAccount : ownedAccounts) {
                 if(ownedAccount.equals(accountID))return client.getClientID();
             }
@@ -294,21 +296,18 @@ public class Driver{
         return success;
     }
     public void openChequeing() throws InvalidTypeException{
-        String accountID=IdCreator.createID(2,1);
         Account newAccount=new ChequeingAccount();
-        getClient(activeClient).addAccount(accountID);
+        getClient(activeClient).addAccount(newAccount.getAccountID());
         accounts.add(newAccount);
     }
     public void openSavings() throws InvalidTypeException {
-        String accountID=IdCreator.createID(2,2);
         Account newAccount=new SavingsAccount();
-        getClient(activeClient).addAccount(accountID);
+        getClient(activeClient).addAccount(newAccount.getAccountID());
         accounts.add(newAccount);
     }
     public void openInvestment() throws InvalidTypeException {
-        String accountID=IdCreator.createID(2,3);
         Account newAccount=new InvestmentAccount();
-        getClient(activeClient).addAccount(accountID);
+        getClient(activeClient).addAccount(newAccount.getAccountID());
         accounts.add(newAccount);
     }
     private void recordTransaction(String donner,String recipient,double amnt) throws InvalidTypeException{

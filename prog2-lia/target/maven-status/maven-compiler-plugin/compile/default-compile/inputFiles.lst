@@ -16,6 +16,7 @@
 /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/EarningsAccount.java
 /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/MissingChequingException.java
 /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/InvestmentLockException.java
+/home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/BlankAccount.java
 /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/Transaction.java
 /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/module-info.java
 /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/App.java

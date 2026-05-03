@@ -1,6 +1,7 @@
 package com.example;
 import java.io.IOException;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -85,8 +86,20 @@ public class DashboardController {
     }
     @FXML
     public void initialize(){
-        accountsView.setItems(App.driver.observableActiveAccounts);
+        System.out.println("**views initialized");
+        if(App.driver.observableActiveAccounts.isEmpty()){
+            try {
+                accountsView.setItems(FXCollections.observableArrayList(new BlankAccount()));
+            } catch (InvalidTypeException e) {}
+        } else accountsView.setItems(App.driver.observableActiveAccounts);
+        // try {
+        //     accountsView.setItems(FXCollections.observableArrayList(new ChequeingAccount(),new InvestmentAccount()));
+        // } catch (InvalidTypeException e) {
+        //     System.out.println("**error getting hardcoded types");
+        // }
+        System.out.println("**accounts items: "+accountsView.getItems());
         transactionsView.setItems(App.driver.latestTransactions);
+        System.out.println("**transactions items: "+transactionsView.getItems());
         accountsView.getSelectionModel().selectedItemProperty().addListener((obs,old,newSelection)->App.driver.selectedAccount.set(newSelection.getAccountID()));
     }
     @FXML

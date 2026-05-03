@@ -2,13 +2,14 @@ package com.example;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
+import java.util.HashSet;
 public abstract class Client implements Maintainable{
     // fields
     private String clientID;
-    protected ArrayList<String> accounts=new ArrayList<>();
+    protected HashSet<String> accounts=new HashSet<>();
     private String username;
     private String password;
-    protected ArrayList<String> transactions=new ArrayList<>();
+    protected HashSet<String> transactions=new HashSet<>();
     private LocalDate dateLastOpened;
     private LocalDate dateOpened;
     protected int monthlyFee=10;
@@ -17,8 +18,8 @@ public abstract class Client implements Maintainable{
     public Client(String username,String password){
         this.username=username;
         this.password=password;
-        accounts=new ArrayList<>();
-        transactions=new ArrayList<>();
+        accounts=new HashSet<>();
+        transactions=new HashSet<>();
         clientID="XXXXXX";
         dateOpened=LocalDate.now();
     }
@@ -29,10 +30,10 @@ public abstract class Client implements Maintainable{
     public void setClientID(String clientID) {
         this.clientID = clientID;
     }
-    public ArrayList<String> getAccounts() {
+    public HashSet<String> getAccounts() {
         return accounts;
     }
-    public void setAccounts(ArrayList<String> accounts) {
+    public void setAccounts(HashSet<String> accounts) {
         this.accounts = accounts;
     }
     public String getUsername() {
@@ -47,10 +48,10 @@ public abstract class Client implements Maintainable{
     public void setPassword(String password) {
         this.password = password;
     }
-    public ArrayList<String> getTransactions() {
+    public HashSet<String> getTransactions() {
         return transactions;
     }
-    public void setTransactions(ArrayList<String> transactions) {
+    public void setTransactions(HashSet<String> transactions) {
         this.transactions = transactions;
     }
     public LocalDate getDateLastOpened() {

@@ -13,4 +13,8 @@ public class SavingsAccount extends EarningsAccount{
         }
         throw new InsufficientFundsException();
     }
+    @Override
+    public String toString() {
+        return "Savings account no. "+accountID+"\tbalance: "+balance+"$";
+    }
 }

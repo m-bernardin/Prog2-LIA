@@ -14,6 +14,7 @@ com/example/StudentClient.class
 com/example/InvalidTypeException.class
 com/example/Transaction.class
 com/example/DashboardController.class
+com/example/BlankAccount.class
 com/example/MissingChequingException.class
 com/example/PremiumClient.class
 com/example/MissingFileException.class

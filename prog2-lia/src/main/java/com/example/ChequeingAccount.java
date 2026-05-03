@@ -12,4 +12,8 @@ public class ChequeingAccount extends Account{
         }
         throw new InsufficientFundsException();
     }
+    @Override
+    public String toString() {
+        return "Chequeing account no. "+accountID+"\tbalance: "+balance+"$";
+    }
 }

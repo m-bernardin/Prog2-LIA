@@ -26,4 +26,8 @@ public class InvestmentAccount extends EarningsAccount{
         }
         throw new InvestmentLockException(LocalDate.now().until(dateOpened.plusYears(1)).toString());
     }
+    @Override
+    public String toString() {
+        return "Investment account no. "+accountID+"\tbalance: "+balance+"$";
+    }
 }
