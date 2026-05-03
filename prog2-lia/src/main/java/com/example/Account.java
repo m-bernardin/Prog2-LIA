@@ -1,19 +1,23 @@
 package com.example;
+
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+
 public abstract class Account {
     // fields
-    protected double balance;
+    protected final DoubleProperty balance=new SimpleDoubleProperty();
     private String accountID;
     // constructors
     public Account(double balance, String accountID) {
-        this.balance = balance;
+        setBalance(balance);
         this.accountID = accountID;
     }
     // getters and setters
     public double getBalance() {
-        return balance;
+        return balance.get();
     }
     public void setBalance(double balance) {
-        this.balance = balance;
+        this.balance.set(balance);
     }
     public String getAccountID() {
         return accountID;
@@ -27,7 +31,7 @@ public abstract class Account {
     public boolean deposit(double amnt){
         // TODO find failure instance???
         boolean success=true;
-        balance+=amnt;
+        balance.add(amnt);
         return success;
     }
     public boolean deposit(double amnt,String currency){

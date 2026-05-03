@@ -6,9 +6,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 public class DashboardController {
     @FXML TextField depositField;
+    @FXML TextField transferToField;
+    @FXML TextField amntField;
     @FXML
     private void transfer(ActionEvent event) throws IOException{
-        System.out.println(depositField.getText()+"$ deposited!");
+        // App.driver.
     }
     @FXML
     private void deposit(ActionEvent event) throws IOException{
@@ -19,4 +21,5 @@ public class DashboardController {
         App.driver.logout();
         App.setRoot("login");
     }
+
 }

@@ -16,8 +16,8 @@ public class InvestmentAccount extends EarningsAccount{
     @Override
     public boolean withdraw(double amnt) throws InvestmentLockException {
         if(dateOpened.plusYears(1).isBefore(LocalDate.now())){
-            if(balance>=amnt){
-                balance-=amnt;
+            if(balance.get()>=amnt){
+                balance.subtract(amnt);
                 return true;
             }
             return false;
