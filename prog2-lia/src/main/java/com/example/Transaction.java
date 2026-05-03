@@ -1,12 +1,15 @@
 package com.example;
 
+import java.time.LocalDate;
 public class Transaction{
     private String transactionID;
     private double amnt;
     private String receivingAccount;
     private String givingAccount;
+    private LocalDate date;
     public Transaction(double amnt, String receivingAccount, String givingAccount) throws InvalidTypeException {
         transactionID=IdCreator.createID(3,0);
+        date=LocalDate.now();
         this.amnt = amnt;
         this.receivingAccount = receivingAccount;
         this.givingAccount = givingAccount;
@@ -34,5 +37,11 @@ public class Transaction{
     }
     public void setGivingAccount(String givingAccount) {
         this.givingAccount = givingAccount;
+    }
+    @Override
+    public String toString() {
+        if(receivingAccount==null)return "("+date+") Withdrawal from account no. "+givingAccount+" of "+amnt+"$";
+        if(givingAccount==null)return "("+date+") Deposit to account no. "+receivingAccount+" of "+amnt+"$";
+        return "("+date+") Transfer from account no. "+givingAccount+" to account no. "+receivingAccount+" of "+amnt+"$";
     }
 }
