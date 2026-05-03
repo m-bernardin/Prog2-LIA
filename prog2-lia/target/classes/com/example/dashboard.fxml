@@ -36,7 +36,8 @@
                      </items>
                   </ComboBox>
                   <Button fx:id="" text="Open" onAction="#openAccount" />
-                  <Label text="(!) Each open account will costs you %monthlyFee% per month." />
+                  <Label text="(!) Each open account will cost you %monthlyFee% each month." />
+                  <Label text="(!) Please contact a bank associate to close an account." />
                </children>
             </VBox>
             <VBox fx:id="transactionManagerBox" alignment="TOP_LEFT" spacing="15.0">

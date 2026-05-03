@@ -16,9 +16,8 @@ public class Driver{
     private String activeClient;
     private ObservableList<Account> accounts;
     public FilteredList<Account> filteredAccounts;
-    private ArrayList<Transaction> transactions;
+    private ObservableList<Transaction> transactions;
     public ObservableList<Transaction> latestTransactions=FXCollections.observableArrayList();
-    public FilteredList<Account> observableActiveAccounts;
     public final StringProperty selectedAccount=new SimpleStringProperty();
     public ObservableList<Account> getAccounts() {
         return accounts;
@@ -199,7 +198,7 @@ public class Driver{
         }
     }
     private void loadTransactions() throws MissingFileException {
-        transactions=new ArrayList<>();
+        transactions=FXCollections.observableArrayList();
         File transactionJsons=new File("src/main/resources/com/example/json/transactions.json");
         FileReader fileReader;
         try {

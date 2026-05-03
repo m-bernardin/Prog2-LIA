@@ -90,7 +90,11 @@ public class DashboardController {
             try {
                 accountsView.setItems(FXCollections.observableArrayList(new BlankAccount()));
             } catch (InvalidTypeException e) {}
-        } else accountsView.setItems(App.driver.observableActiveAccounts);
+            System.out.println("**no accounts detected...");
+        } else {
+            accountsView.setItems(App.driver.filteredAccounts);
+            System.out.println("**filled accountsView with items: "+App.driver.filteredAccounts);
+        }
         if(App.driver.latestTransactions.isEmpty()){
             try {
                 transactionsView.setItems(FXCollections.observableArrayList(new Transaction(0, null, null)));
