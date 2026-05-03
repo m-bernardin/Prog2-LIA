@@ -284,13 +284,7 @@ public class Driver{
         }
     }
     public boolean deposit(double amnt,String depositToId){
-        for (Account account : accounts) {
-            if(account.getAccountID().equals(depositToId)){
-                account.deposit(amnt);
-                return true;
-            }
-        }
-        return false;
+        return getAccount(depositToId).deposit(amnt);
     }
     public boolean isPremium(String clientID){
         Client client=null;
@@ -314,18 +308,13 @@ public class Driver{
         }
         throw new NullPointerException();
     }
-    public boolean withdraw(double amnt,String accountID){
-        if(accountID==null)return false;
+    public void withdraw(double amnt,String accountID) throws InvestmentLockException, InsufficientFundsException, NullPointerException{
+        if(accountID==null)throw new NullPointerException();
         for (Account account : accounts) {
             if(account.getAccountID().equals(accountID)){
-                try {
-                    return account.withdraw(amnt);
-                } catch (InvestmentLockException e) {
-                    return false;
-                }
+                account.withdraw(amnt);
             }
         }
-        return false;
     }
     public String getChequing(String clientID) throws NullPointerException{
         for (String accountID : getClient(clientID).getAccounts()) {
@@ -356,7 +345,7 @@ public class Driver{
         if(getAccount(accountID).getClass()==InvestmentAccount.class||getAccount(accountID).getClass()==SavingsAccount.class)return (EarningsAccount)getAccount(accountID);
         throw new NullPointerException();
     }
-    public boolean transfer(String donner,String recipient,double amnt) throws NullPointerException, InvestmentLockException{
+    public boolean transfer(String donner,String recipient,double amnt) throws NullPointerException, InvestmentLockException, InsufficientFundsException{
         return getAccount(donner).transfer(amnt, recipient);
     }
 }

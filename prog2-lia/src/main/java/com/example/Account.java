@@ -26,7 +26,7 @@ public abstract class Account {
         this.accountID = accountID;
     }
     // abstract methods
-    public abstract boolean withdraw(double amnt) throws InvestmentLockException;
+    public abstract void withdraw(double amnt) throws InvestmentLockException, InsufficientFundsException;
     // concrete methods
     public boolean deposit(double amnt){
         // TODO find failure instance???
@@ -43,7 +43,7 @@ public abstract class Account {
         }
         return true;
     }
-    public boolean transfer(double amnt,String transferToID) throws InvestmentLockException{
+    public boolean transfer(double amnt,String transferToID) throws InvestmentLockException, InsufficientFundsException{
         // TODO test
         withdraw(amnt);
         boolean validTransfer=App.driver.deposit(amnt,transferToID);
@@ -62,5 +62,9 @@ public abstract class Account {
         if(currencyCode.equals("AUD"))return amnt*0.9009;
         if(currencyCode.equals("CHF"))return amnt*1.6846;
         throw new InvalidTypeException("Invalid currency code");
+    }
+    @Override
+    public String toString() {
+        return "account ID: "+accountID+"\tbalance: "+balance.get()+"$";
     }
 }

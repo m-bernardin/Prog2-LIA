@@ -14,13 +14,13 @@ public class InvestmentAccount extends EarningsAccount{
         this.dateOpened = dateOpened;
     }
     @Override
-    public boolean withdraw(double amnt) throws InvestmentLockException {
+    public void withdraw(double amnt) throws InvestmentLockException, InsufficientFundsException {
         if(dateOpened.plusYears(1).isBefore(LocalDate.now())){
             if(balance.get()>=amnt){
                 balance.subtract(amnt);
-                return true;
+                return;
             }
-            return false;
+            throw new InsufficientFundsException();
         }
         throw new InvestmentLockException(LocalDate.now().until(dateOpened.plusYears(1)).toString());
     }

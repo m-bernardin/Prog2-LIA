@@ -5,11 +5,11 @@ public class SavingsAccount extends EarningsAccount{
         super(balance, 0.02, accountID);
     }
     @Override
-    public boolean withdraw(double amnt) {
+    public void withdraw(double amnt) throws InsufficientFundsException {
         if(balance.get()>=amnt){
             balance.subtract(amnt);
-            return true;
+            return;
         }
-        return false;
+        throw new InsufficientFundsException();
     }
 }

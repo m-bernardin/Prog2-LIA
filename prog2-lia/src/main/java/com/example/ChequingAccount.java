@@ -5,11 +5,11 @@ public class ChequingAccount extends Account{
         super(balance, accountID);
     }
     @Override
-    public boolean withdraw(double amnt) {
+    public void withdraw(double amnt) throws InsufficientFundsException{
         if(balance.get()>=amnt){
             balance.subtract(amnt);
-            return true;
+            return;
         }
-        return false;
+        throw new InsufficientFundsException();
     }
 }

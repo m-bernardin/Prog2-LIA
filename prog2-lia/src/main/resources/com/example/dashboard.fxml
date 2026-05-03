@@ -29,10 +29,12 @@
             </VBox>
             <VBox fx:id="transactionManagerBox" alignment="TOP_LEFT" spacing="15.0">
                <children>
-                  <Label text="Make a Transfer" />
+                  <Label text="Manage This Account" />
                   <TextField fx:id="transferToField" promptText="Where? (accountID)" />
                   <TextField fx:id="amntField" promptText="How much?" />
                   <Button fx:id="transferButton" text="Transfer" onAction="#transfer" />
+                  <Button fx:id="depositButton" text="Deposit" onAction="#deposit" />
+                  <Button fx:id="withdrawButton" text="Withdraw" onAction="#withdraw" />
                </children>
             </VBox>
             <VBox fx:id="transactionHistoryBox" alignment="TOP_LEFT" spacing="15.0">
