@@ -42,7 +42,7 @@ public abstract class Account {
         }
         return true;
     }
-    public boolean transfer(double amnt,String transferToID) throws InvestmentLockException, InsufficientFundsException{
+    public boolean transfer(double amnt,String transferToID) throws InvestmentLockException, InsufficientFundsException, InvalidTypeException{
         // TODO test
         withdraw(amnt);
         boolean validTransfer=App.driver.deposit(amnt,transferToID);

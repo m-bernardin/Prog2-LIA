@@ -8,6 +8,7 @@ public interface Maintainable {
     /**
      * Deducts a monthly fee from the Client's primary chequing account.
      * @return true if the operation was successful; false otherwise.
+     * @throws InvalidTypeException 
      */
-    boolean maintain();
+    boolean maintain() throws InvalidTypeException;
 }

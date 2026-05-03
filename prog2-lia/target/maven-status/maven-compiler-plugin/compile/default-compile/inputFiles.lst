@@ -3,6 +3,7 @@
 /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/PremiumClient.java
 /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/IndividualClient.java
 /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/MissingFileException.java
+/home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/ChequeingAccount.java
 /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/StandardClient.java
 /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/Driver.java
 /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/IdCreator.java
@@ -11,7 +12,6 @@
 /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/Account.java
 /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/InvestmentAccount.java
 /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/NewClientController.java
-/home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/ChequingAccount.java
 /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/InterestBearing.java
 /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/EarningsAccount.java
 /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/MissingChequingException.java

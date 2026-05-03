@@ -22,7 +22,7 @@ public class StudentClient extends StandardClient{
         this.statusValid = statusValid;
     }
     @Override
-    public boolean maintain() {
+    public boolean maintain() throws InvalidTypeException {
         boolean sufficientFunds=super.maintain();
         if(LocalDate.now().isAfter(statusExpiryDate))statusValid=false;
         return sufficientFunds;

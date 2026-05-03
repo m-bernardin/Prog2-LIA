@@ -1,27 +1,14 @@
 package com.example;
 
 import java.io.*;
-import java.time.LocalDate;
 import java.util.*;
 import com.google.gson.*;
-
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 public class Driver{
-    @Deprecated
-    public static void main(String[] args){
-        Driver runner=new Driver();
-        System.out.println("Running application...");
-        try {
-            runner.run();
-        } catch (MissingFileException e) {
-            System.out.println("Fatal error occured: "+e.getMessage());
-        }
-        System.out.println("Application close... Goodbye :)");
-    }
     private ArrayList<Client> clients;
     private String activeClient;
     private ArrayList<Account> accounts;
@@ -42,25 +29,6 @@ public class Driver{
     }
     public void setActiveClient(String activeClient) {
         this.activeClient = activeClient;
-    }
-    @Deprecated
-    public void run() throws MissingFileException{
-        loadData();
-        boolean running=true;
-        Scanner input=new Scanner(System.in);
-        login();
-        while(running){
-            System.out.print("Please select an option\n1. \n> ");
-            switch (input.nextInt()) {
-                case 1:
-                    
-                    break;
-                default:
-                    System.out.println("Please select a valid option...");
-                    break;
-            }
-        }
-        input.close();
     }
     public void loadData() throws MissingFileException {
         loadClients();
@@ -96,7 +64,6 @@ public class Driver{
         activeClient=null;
         observableAccounts=null;
         observableActiveAccounts=null;
-
     }
     public void createIndividualClient(String username,String password,String name,String contact) throws InvalidTypeException{
         IndividualClient client=new IndividualClient(username, password, name, contact);
@@ -165,31 +132,6 @@ public class Driver{
         writer.flush();
         writer.close();
     }
-    @Deprecated
-    private void login() {
-        boolean loggingIn=true;
-        Scanner input=new Scanner(System.in);
-        while(loggingIn){
-            System.out.print("Please enter your username\n> ");
-            String username=input.next();
-            System.out.print("Please enter your passsword\n> ");
-            String password=input.next();
-            Client client=verifyCredentials(username,password);
-            if(client!=null){
-                setActiveClient(client.getClientID());
-                for(String clientAccountID:client.getAccounts()){
-                    for(Account loadedAccount:accounts){
-                        if(loadedAccount.getAccountID().equals(clientAccountID)){
-                            activeAccounts.add(loadedAccount.getAccountID());
-                        }
-                    }
-                }
-                System.out.println("Logged in!");
-            }
-            else System.out.println("Username or password incorrect... Please try again");
-        }
-        input.close();
-    }
     private Client verifyCredentials(String username, String password) {
         for(Client client:clients){
             if(client.getUsername().equals(username)&&client.getPassword().equals(password))return client;
@@ -198,8 +140,6 @@ public class Driver{
     }
     private void loadClients() throws MissingFileException{
         clients=new ArrayList<>();
-        File here=new File("."); // **
-        System.out.println("**execution path (absolute): "+here.getAbsolutePath());
         File clientJsons=new File("src/main/resources/com/example/json/clients.json");
         FileReader fileReader;
         try {
@@ -234,8 +174,6 @@ public class Driver{
     }
     private void loadAccounts() throws MissingFileException {
         accounts=new ArrayList<>();
-        File here=new File("."); // **
-        System.out.println("**execution path (absolute): "+here.getAbsolutePath());
         File clientJsons=new File("src/main/resources/com/example/json/accounts.json");
         FileReader fileReader;
         try {
@@ -267,8 +205,6 @@ public class Driver{
     }
     private void loadTransactions() throws MissingFileException {
         transactions=new ArrayList<>();
-        File here=new File("."); // **
-        System.out.println("**execution path (absolute): "+here.getAbsolutePath());
         File transactionJsons=new File("src/main/resources/com/example/json/transactions.json");
         FileReader fileReader;
         try {
@@ -284,7 +220,7 @@ public class Driver{
             transactions.add(new Gson().fromJson(transaction, Transaction.class));
         }
     }
-    public boolean deposit(double amnt,String depositToId){
+    public boolean deposit(double amnt,String depositToId) throws InvalidTypeException{
         boolean success=getAccount(depositToId).deposit(amnt);
         if(success)recordTransaction(null, depositToId, amnt);
         return success;

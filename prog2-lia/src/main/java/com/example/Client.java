@@ -72,7 +72,7 @@ public abstract class Client implements Maintainable{
         this.monthlyFee = monthlyFee;
     }
     // abstract methods
-    protected boolean applyMonthlyFee(){
+    protected boolean applyMonthlyFee() throws InvalidTypeException{
         boolean success=true;
         try {
             App.driver.withdraw(calculateTotalMonthlyFee(),App.driver.getChequing(getClientID()));
@@ -95,7 +95,7 @@ public abstract class Client implements Maintainable{
         return monthlyFee*accounts.size();
     }
     @Override
-    public boolean maintain() {
+    public boolean maintain() throws InvalidTypeException {
         Period periodSinceLastOpened=Period.between(LocalDate.now(), dateLastOpened);
         int monthsSinceLastOpened=periodSinceLastOpened.getMonths()+periodSinceLastOpened.getYears()*12;
         boolean sufficientFunds=true;
