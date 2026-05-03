@@ -3,6 +3,12 @@ package com.example;
 import java.io.*;
 import java.util.*;
 import com.google.gson.*;
+
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 public class Driver{
     @Deprecated
     public static void main(String[] args){
@@ -18,8 +24,15 @@ public class Driver{
     private ArrayList<Client> clients;
     private String activeClient;
     private ArrayList<Account> accounts;
-    private ArrayList<String> activeAccounts;
+    private HashSet<String> activeAccounts;
     private ArrayList<Transaction> transactions;
+    public FilteredList<Transaction> latestTransactions;
+    private ObservableList<Account> observableAccounts;
+    public FilteredList<Account> observableActiveAccounts;
+    public final ObjectProperty<FilteredList<Account>> observableActiveAccountsProperty=new SimpleObjectProperty<>();
+    public ObjectProperty<FilteredList<Account>> getObservableActiveAccountsProperty() {
+        return observableActiveAccountsProperty;
+    }
     public ArrayList<Account> getAccounts() {
         return accounts;
     }
@@ -60,6 +73,7 @@ public class Driver{
     }
     public boolean login(String username,String password){
         Client client=verifyCredentials(username,password);
+        activeAccounts=new HashSet<>();
         if(client!=null){
             setActiveClient(client.getClientID());
             for(String clientAccountID:client.getAccounts()){
@@ -69,6 +83,9 @@ public class Driver{
                     }
                 }
             }
+            observableAccounts=FXCollections.observableArrayList(accounts);
+            observableActiveAccounts=new FilteredList<>(observableAccounts, account -> activeAccounts.contains(account.getAccountID()));
+            observableActiveAccountsProperty.set(observableActiveAccounts);
             return true;
         }
         return false;
@@ -76,6 +93,9 @@ public class Driver{
     public void logout(){
         activeAccounts=null;
         activeClient=null;
+        observableAccounts=null;
+        observableActiveAccounts=null;
+
     }
     public void createIndividualClient(String username,String password,String name,String contact) throws InvalidTypeException{
         IndividualClient client=new IndividualClient(username, password, name, contact);

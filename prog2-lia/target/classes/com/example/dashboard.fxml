@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.ListView?>
 
 <VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.DashboardController">
    <children>
@@ -22,10 +23,10 @@
             <VBox fx:id="accountCentreBox" alignment="CENTER_LEFT" spacing="15.0">
                <children>
                   <Label text="Account Centre" />
-
+                  <ListView fx:id="accountsView" />
                </children>
             </VBox>
-            <VBox fx:id="transactionManagerBox" alignment="CENTER_LEFT" spacing="15.0">
+            <VBox fx:id="transactionManagerBox" alignment="TOP_LEFT" spacing="15.0">
                <children>
                   <Label text="Make a Transfer" />
                   <TextField fx:id="transferToField" promptText="Where? (accountID)" />
@@ -33,7 +34,7 @@
                   <Button fx:id="transferButton" text="Transfer" onAction="#transfer" />
                </children>
             </VBox>
-            <VBox fx:id="transactionHistoryBox" alignment="CENTER_LEFT" spacing="15.0">
+            <VBox fx:id="transactionHistoryBox" alignment="TOP_LEFT" spacing="15.0">
                <children>
                   <Label text="Your Recent Transactions" />
                </children>
