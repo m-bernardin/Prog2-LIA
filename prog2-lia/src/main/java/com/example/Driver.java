@@ -14,14 +14,13 @@ import javafx.collections.transformation.SortedList;
 public class Driver{
     private ArrayList<Client> clients;
     private String activeClient;
-    private ArrayList<Account> accounts;
-    private HashSet<String> activeAccounts;
+    private ObservableList<Account> accounts;
+    public FilteredList<Account> filteredAccounts;
     private ArrayList<Transaction> transactions;
     public ObservableList<Transaction> latestTransactions=FXCollections.observableArrayList();
     public FilteredList<Account> observableActiveAccounts;
-    private ObservableList<Account> observableAccounts;
     public final StringProperty selectedAccount=new SimpleStringProperty();
-    public ArrayList<Account> getAccounts() {
+    public ObservableList<Account> getAccounts() {
         return accounts;
     }
     public String getActiveClient() {
@@ -42,18 +41,11 @@ public class Driver{
     }
     public boolean login(String username,String password){
         Client client=verifyCredentials(username,password);
-        activeAccounts=new HashSet<>();
         if(client!=null){
             setActiveClient(client.getClientID());
-            System.out.println("**loading accounts");
-            // activeAccounts=getClient(activeClient).getAccounts();
-            // observableAccounts=FXCollections.observableArrayList(accounts);
-            observableActiveAccounts=new FilteredList<>(FXCollections.observableArrayList(accounts), account -> FXCollections.observableArrayList(getClient(activeClient).getAccounts()).contains(account.getAccountID()));
-            System.out.println("**loaded accounts: "+accounts);
-            System.out.println("**active accounts:"+activeAccounts);
-            accounts.forEach(acc -> {
-                System.out.println("**"+acc.getAccountID()+": "+FXCollections.observableArrayList(getClient(activeClient).getAccounts()).contains(acc.getAccountID()));
-            });
+            System.out.println("**client: "+getClient(activeClient));
+            System.out.println("**owned accounts: "+getClient(activeClient).getAccounts());
+            filteredAccounts=new FilteredList<>(accounts, account -> getClient(activeClient).getAccounts().contains(account.getAccountID()));
             ObservableList<Transaction> observableTransactions=FXCollections.observableArrayList(transactions);
             FilteredList<Transaction> filteredTransactions=new FilteredList<>(observableTransactions, transaction -> transaction.getGivingAccount().equals(selectedAccount.get())||transaction.getReceivingAccount().equals(selectedAccount.get()));
             SortedList<Transaction> sortedTransactions=new SortedList<>(filteredTransactions,Comparator.comparing(Transaction::getDate).reversed());
@@ -65,9 +57,7 @@ public class Driver{
         return false;
     }
     public void logout(){
-        activeAccounts=null;
         activeClient=null;
-        observableActiveAccounts=null;
         latestTransactions=null;
     }
     public void createIndividualClient(String username,String password,String name,String contact) throws InvalidTypeException{
@@ -178,7 +168,7 @@ public class Driver{
         }
     }
     private void loadAccounts() throws MissingFileException {
-        accounts=new ArrayList<>();
+        accounts=FXCollections.observableArrayList();
         File clientJsons=new File("src/main/resources/com/example/json/accounts.json");
         FileReader fileReader;
         try {

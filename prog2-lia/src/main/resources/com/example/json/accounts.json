@@ -30,5 +30,9 @@
     "interestRate": 0.05,
     "balance": 0.0,
     "accountID": "nwLxEG-3p"
+  },
+  {
+    "balance": 0.0,
+    "accountID": "lzrRCs-3a"
   }
 ]
