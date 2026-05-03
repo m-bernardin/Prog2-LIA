@@ -12,6 +12,7 @@ public class DashboardController {
     @FXML TextField amntField;
     @FXML ListView<Account> accountsView;
     @FXML ComboBox<String> typeSelector;
+    @FXML ListView<Transaction> transactionsView;
     @FXML
     private void transfer(ActionEvent event) throws IOException{
         String transferTo=transferToField.getText();
@@ -85,7 +86,8 @@ public class DashboardController {
     @FXML
     public void initialize(){
         accountsView.setItems(App.driver.observableActiveAccounts);
-        
+        transactionsView.setItems(App.driver.latestTransactions);
+        accountsView.getSelectionModel().selectedItemProperty().addListener((obs,old,newSelection)->App.driver.selectedAccount.set(newSelection.getAccountID()));
     }
     @FXML
     public void openAccount() throws IOException{

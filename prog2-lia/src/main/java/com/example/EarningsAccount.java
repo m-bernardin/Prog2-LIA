@@ -13,6 +13,6 @@ public abstract class EarningsAccount extends Account implements InterestBearing
     }
     @Override
     public void applyInterest() {
-        balance.add(balance.get()*(interestRate+App.driver.getClient(App.driver.getOwner(getAccountID())).EXTRA_INTEREST));
+        balance+=balance*(interestRate+App.driver.getClient(App.driver.getOwner(getAccountID())).EXTRA_INTEREST);
     }
 }

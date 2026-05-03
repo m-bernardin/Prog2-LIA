@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "balance": 0.0,
+    "accountID": "lShys;-3p"
+  },
+  {
+    "dateOpened": {
+      "year": 2026,
+      "month": 5,
+      "day": 3
+    },
+    "interestRate": 0.05,
+    "balance": 0.0,
+    "accountID": "nQvoNo-3b"
+  }
+]

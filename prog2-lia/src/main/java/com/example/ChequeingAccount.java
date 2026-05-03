@@ -6,8 +6,8 @@ public class ChequeingAccount extends Account{
     }
     @Override
     public void withdraw(double amnt) throws InsufficientFundsException{
-        if(balance.get()>=amnt){
-            balance.subtract(amnt);
+        if(balance>=amnt){
+            balance-=amnt;
             return;
         }
         throw new InsufficientFundsException();

@@ -18,8 +18,8 @@ public class InvestmentAccount extends EarningsAccount{
     @Override
     public void withdraw(double amnt) throws InvestmentLockException, InsufficientFundsException {
         if(dateOpened.plusYears(1).isBefore(LocalDate.now())){
-            if(balance.get()>=amnt){
-                balance.subtract(amnt);
+            if(balance>=amnt){
+                balance-=amnt;
                 return;
             }
             throw new InsufficientFundsException();

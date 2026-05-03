@@ -56,7 +56,10 @@
   },
   {
     "clientID": "bVa4;E-2V",
-    "accounts": [],
+    "accounts": [
+      "luE6tn-2l",
+      "nfvfSP-2Z"
+    ],
     "username": "asd",
     "password": "asd",
     "transactions": [],

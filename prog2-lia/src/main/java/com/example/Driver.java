@@ -3,6 +3,9 @@ package com.example;
 import java.io.*;
 import java.util.*;
 import com.google.gson.*;
+
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -16,7 +19,7 @@ public class Driver{
     private ArrayList<Transaction> transactions;
     public ObservableList<Transaction> latestTransactions=FXCollections.observableArrayList();
     public FilteredList<Account> observableActiveAccounts;
-    public String selectedAccount;
+    public final StringProperty selectedAccount=new SimpleStringProperty();
     public ArrayList<Account> getAccounts() {
         return accounts;
     }
@@ -51,7 +54,7 @@ public class Driver{
             ObservableList<Account> observableAccounts=FXCollections.observableArrayList(accounts);
             observableActiveAccounts=new FilteredList<>(observableAccounts, account -> activeAccounts.contains(account.getAccountID()));
             ObservableList<Transaction> observableTransactions=FXCollections.observableArrayList(transactions);
-            FilteredList<Transaction> filteredTransactions=new FilteredList<>(observableTransactions, transaction -> transaction.getGivingAccount().equals(selectedAccount)||transaction.getReceivingAccount().equals(selectedAccount));
+            FilteredList<Transaction> filteredTransactions=new FilteredList<>(observableTransactions, transaction -> transaction.getGivingAccount().equals(selectedAccount.get())||transaction.getReceivingAccount().equals(selectedAccount.get()));
             SortedList<Transaction> sortedTransactions=new SortedList<>(filteredTransactions,Comparator.comparing(Transaction::getDate).reversed());
             sortedTransactions.addListener((ListChangeListener<Transaction>) change -> {
                 latestTransactions.setAll(sortedTransactions.subList(0,Math.min(10,sortedTransactions.size())));

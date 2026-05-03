@@ -22,5 +22,6 @@
 hs_err_pid*
 replay_pid*
 
-# ssh token for github
+# extra files 
 githubSsh.txt
+origin.txt
