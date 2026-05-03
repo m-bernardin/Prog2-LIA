@@ -73,11 +73,18 @@ public abstract class Client implements Maintainable{
     }
     // abstract methods
     protected boolean applyMonthlyFee(){
+        boolean success=true;
         try {
-            return App.driver.withdraw(calculateTotalMonthlyFee(),App.driver.getChequing(getClientID()));
+            App.driver.withdraw(calculateTotalMonthlyFee(),App.driver.getChequing(getClientID()));
         } catch (NullPointerException e) {
-            return false;
-        }
+            App.displayError("No chequing account found to charge for monthly fees.");
+            success=false;
+        } catch (InvestmentLockException e) {
+            App.displayError("System error: monthly fee was charged to locked investment account.");
+            success=false;
+        } catch (InsufficientFundsException e) {
+            App.displayError("Insufficient funds to charge monthly fees");
+        } return success;
     }
     // concrete methods
     protected boolean addAccount(String account){
