@@ -23,7 +23,7 @@ public class NewClientController {
         String name=nameField.getText();
         String contact=emailField.getText();
         String[] fields={username,passsword,name,contact};
-        if(hasEmptyFields(fields)){
+        if(App.hasEmptyFields(fields)){
             App.displayError("Please fill all information...");
             return;
         }
@@ -45,12 +45,7 @@ public class NewClientController {
             App.displayError("Invalid selection...");
         }
     }
-    private boolean hasEmptyFields(String[] fields){
-        for (String field : fields) {
-            if(field.equals(""))return true;
-        }
-        return false;
-    }
+
     @FXML
     private void createStudentClient(ActionEvent event) throws IOException, InvalidTypeException{
         String username=usernameField.getText();
@@ -58,7 +53,7 @@ public class NewClientController {
         String name=nameField.getText();
         String contact=emailField.getText();
         String[] fields={username,passsword,name,contact};
-        if(hasEmptyFields(fields)){
+        if(App.hasEmptyFields(fields)){
             App.displayError("Please fill all information...");
             return;
         }
@@ -74,7 +69,7 @@ public class NewClientController {
         ArrayList<String> clientManagerContacts=parseEmails(contact);
         boolean rewardsProgramMember=rewardsProgramCheck.isSelected();
         String[] fields={username,passsword,name,contact};
-        if(hasEmptyFields(fields)){
+        if(App.hasEmptyFields(fields)){
             App.displayError("Please fill all information...");
             return;
         }
@@ -100,7 +95,7 @@ public class NewClientController {
         String contact=emailField.getText();
         String[] fields={username,passsword,name,contact};
         boolean rewardsProgramMember=rewardsProgramCheck.isSelected();
-        if(hasEmptyFields(fields)){
+        if(App.hasEmptyFields(fields)){
             App.displayError("Please fill all information...");
             return;
         }

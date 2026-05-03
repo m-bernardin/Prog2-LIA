@@ -54,4 +54,10 @@ public class App extends Application {
         alert.setContentText(message);
         alert.show();
     }
+    public static boolean hasEmptyFields(String[] fields){
+        for (String field : fields) {
+            if(field.equals(""))return true;
+        }
+        return false;
+    }
 }

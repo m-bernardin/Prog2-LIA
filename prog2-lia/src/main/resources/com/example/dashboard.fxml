@@ -24,6 +24,7 @@
                <children>
                   <Label text="Account Centre" />
                   <ListView fx:id="accountsView" />
+                  <Button fx:id="" text="Open New Account" onAction="#openAccount" />
                </children>
             </VBox>
             <VBox fx:id="transactionManagerBox" alignment="TOP_LEFT" spacing="15.0">

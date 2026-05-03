@@ -43,13 +43,9 @@ public abstract class Account {
         }
         return true;
     }
-    public boolean transfer(double amnt,String transferToID){
+    public boolean transfer(double amnt,String transferToID) throws InvestmentLockException{
         // TODO test
-        try {
-            withdraw(amnt);
-        } catch (Exception e) {
-            return false;
-        }
+        withdraw(amnt);
         boolean validTransfer=App.driver.deposit(amnt,transferToID);
         if(!validTransfer){
             App.driver.deposit(amnt,this.accountID);

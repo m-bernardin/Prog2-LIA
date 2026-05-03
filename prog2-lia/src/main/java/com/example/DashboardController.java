@@ -12,7 +12,26 @@ public class DashboardController {
     @FXML ListView<Account> accountsView;
     @FXML
     private void transfer(ActionEvent event) throws IOException{
-        // App.driver.
+        String transferTo=transferToField.getText();
+        double amnt=0;
+        String[] fields={transferToField.getText(),amntField.getText()};
+        if(App.hasEmptyFields(fields)){
+            App.displayError("Please enter a value for all fields.");
+            return;
+        }
+        try {
+            amnt=Double.parseDouble(amntField.getText());
+        } catch (Exception e) {
+            App.displayError("Please enter a decimal value for transfer amnt.");
+            return;
+        }
+        try {
+            App.driver.transfer(accountsView.getSelectionModel().getSelectedItem().getAccountID(), transferTo, amnt);
+        } catch (NullPointerException e) {
+            App.displayError("Please enter a valid accountID...");
+        } catch (InvestmentLockException e) {
+            App.displayError("Cannot withdraw from an investment account less than a year after it has been opened...");
+        }
     }
     @FXML
     private void deposit(ActionEvent event) throws IOException{
@@ -26,5 +45,9 @@ public class DashboardController {
     @FXML
     public void initialize(){
         accountsView.setItems(App.driver.observableActiveAccounts);
+    }
+    @FXML
+    public void openAccount() throws IOException{
+
     }
 }

@@ -356,4 +356,7 @@ public class Driver{
         if(getAccount(accountID).getClass()==InvestmentAccount.class||getAccount(accountID).getClass()==SavingsAccount.class)return (EarningsAccount)getAccount(accountID);
         throw new NullPointerException();
     }
+    public boolean transfer(String donner,String recipient,double amnt) throws NullPointerException, InvestmentLockException{
+        return getAccount(donner).transfer(amnt, recipient);
+    }
 }
