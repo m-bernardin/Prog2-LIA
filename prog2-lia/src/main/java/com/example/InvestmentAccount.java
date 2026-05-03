@@ -3,9 +3,11 @@ package com.example;
 import java.time.LocalDate;
 public class InvestmentAccount extends EarningsAccount{
     private LocalDate dateOpened;
-    public InvestmentAccount(double balance,LocalDate dateOpened, String accountID) {
-        super(balance, 0.05, accountID);
-        this.dateOpened = dateOpened;
+    public InvestmentAccount() throws InvalidTypeException {
+        super();
+        accountID=IdCreator.createID(2,3);
+        interestRate=0.05;
+        dateOpened=LocalDate.now();
     }
     public LocalDate getDateOpened() {
         return dateOpened;

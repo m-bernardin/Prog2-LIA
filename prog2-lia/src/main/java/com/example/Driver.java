@@ -1,6 +1,7 @@
 package com.example;
 
 import java.io.*;
+import java.time.LocalDate;
 import java.util.*;
 import com.google.gson.*;
 
@@ -350,7 +351,19 @@ public class Driver{
     }
     public void openChequeing() throws InvalidTypeException{
         String accountID=IdCreator.createID(2,1);
-        Account newAccount=new ChequeingAccount(0, accountID);
+        Account newAccount=new ChequeingAccount();
+        getClient(activeClient).addAccount(accountID);
+        accounts.add(newAccount);
+    }
+    public void openSavings() throws InvalidTypeException {
+        String accountID=IdCreator.createID(2,2);
+        Account newAccount=new SavingsAccount();
+        getClient(activeClient).addAccount(accountID);
+        accounts.add(newAccount);
+    }
+    public void openInvestment() throws InvalidTypeException {
+        String accountID=IdCreator.createID(2,3);
+        Account newAccount=new InvestmentAccount();
         getClient(activeClient).addAccount(accountID);
         accounts.add(newAccount);
     }

@@ -1,8 +1,9 @@
 package com.example;
 
 public class SavingsAccount extends EarningsAccount{
-    public SavingsAccount(double balance, String accountID) {
-        super(balance, 0.02, accountID);
+    public SavingsAccount() throws InvalidTypeException {
+        accountID=IdCreator.createID(2,2);
+        interestRate=0.02;
     }
     @Override
     public void withdraw(double amnt) throws InsufficientFundsException {

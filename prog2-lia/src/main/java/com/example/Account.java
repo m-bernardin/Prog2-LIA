@@ -6,11 +6,10 @@ import javafx.beans.property.SimpleDoubleProperty;
 public abstract class Account {
     // fields
     protected final DoubleProperty balance=new SimpleDoubleProperty();
-    private String accountID;
+    protected String accountID;
     // constructors
-    public Account(double balance, String accountID) {
-        setBalance(balance);
-        this.accountID = accountID;
+    public Account() throws InvalidTypeException{
+        balance.set(0);
     }
     // getters and setters
     public double getBalance() {

@@ -2,9 +2,8 @@ package com.example;
 
 public abstract class EarningsAccount extends Account implements InterestBearing{
     protected double interestRate;
-    public EarningsAccount(double balance, double interestRate, String accountID) {
-        super(balance, accountID);
-        this.interestRate = interestRate;
+    public EarningsAccount() throws InvalidTypeException {
+        super();
     }
     public double getInterestRate() {
         return interestRate;
