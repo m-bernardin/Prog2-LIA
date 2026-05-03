@@ -3,6 +3,7 @@ import java.io.IOException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 public class DashboardController {
@@ -10,6 +11,7 @@ public class DashboardController {
     @FXML TextField transferToField;
     @FXML TextField amntField;
     @FXML ListView<Account> accountsView;
+    @FXML ComboBox<String> typeSelector;
     @FXML
     private void transfer(ActionEvent event) throws IOException{
         String transferTo=transferToField.getText();
@@ -83,6 +85,16 @@ public class DashboardController {
     }
     @FXML
     public void openAccount() throws IOException{
-        
+        String selection=typeSelector.getValue();
+        try {
+            if(selection.equals("Chequeing"))App.driver.openChequeing();
+            else if(selection.equals("Savings"))App.driver.openSavings();
+            else if(selection.equals("Investment"))App.driver.openInvestment();
+            else App.displayError("Please make choose a valid option.");
+        } catch (InvalidTypeException e) {
+            App.displayError("System error: error finding account type");
+        } catch (NullPointerException e){
+            App.displayError("Please select an account type.");
+        }
     }
 }

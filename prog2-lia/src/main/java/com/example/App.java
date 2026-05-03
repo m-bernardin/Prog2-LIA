@@ -61,4 +61,9 @@ public class App extends Application {
         }
         return false;
     }
+    public static void displayMessage(String message){
+        Alert alert=new Alert(AlertType.INFORMATION);
+        alert.setContentText(message);
+        alert.show();
+    }
 }

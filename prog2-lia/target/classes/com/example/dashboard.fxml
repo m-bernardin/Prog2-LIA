@@ -24,7 +24,18 @@
                <children>
                   <Label text="Account Centre" />
                   <ListView fx:id="accountsView" />
-                  <Button fx:id="" text="Open New Account" onAction="#openAccount" />
+                  <Label text="Open a New Account" />
+                  <ComboBox fx:id="typeSelector" >
+                     <items>
+                        <FXCollections fx:factory="observableArrayList">
+                           <String fx:value="Chequeing" />
+                           <String fx:value="Savings" />
+                           <String fx:value="Investment" />
+                        </FXCollections>
+                     </items>
+                  </ComboBox>
+                  <Button fx:id="" text="Open" onAction="#openAccount" />
+                  <Label text="(!) Each open account will costs you %monthlyFee% per month." />
                </children>
             </VBox>
             <VBox fx:id="transactionManagerBox" alignment="TOP_LEFT" spacing="15.0">

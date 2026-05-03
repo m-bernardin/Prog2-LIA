@@ -250,7 +250,7 @@ public class Driver{
             String accountID=new Gson().fromJson(account.get("accountID"),String.class);
             switch (accountID.charAt(0)) {
                 case 'l':
-                    accounts.add(new Gson().fromJson(account, ChequingAccount.class));
+                    accounts.add(new Gson().fromJson(account, ChequeingAccount.class));
                     break;
                 case 'm':
                     accounts.add(new Gson().fromJson(account, SavingsAccount.class));
@@ -318,7 +318,7 @@ public class Driver{
     }
     public String getChequing(String clientID) throws NullPointerException{
         for (String accountID : getClient(clientID).getAccounts()) {
-            if(getAccount(accountID).getClass()==ChequingAccount.class)return accountID;
+            if(getAccount(accountID).getClass()==ChequeingAccount.class)return accountID;
         }
         throw new NullPointerException();
     }
@@ -347,5 +347,11 @@ public class Driver{
     }
     public boolean transfer(String donner,String recipient,double amnt) throws NullPointerException, InvestmentLockException, InsufficientFundsException{
         return getAccount(donner).transfer(amnt, recipient);
+    }
+    public void openChequeing() throws InvalidTypeException{
+        String accountID=IdCreator.createID(2,1);
+        Account newAccount=new ChequeingAccount(0, accountID);
+        getClient(activeClient).addAccount(accountID);
+        accounts.add(newAccount);
     }
 }

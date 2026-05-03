@@ -54,7 +54,7 @@ public class NewClientController {
         String contact=emailField.getText();
         String[] fields={username,passsword,name,contact};
         if(App.hasEmptyFields(fields)){
-            App.displayError("Please fill all information...");
+            App.displayError("Please fill all information.");
             return;
         }
         App.driver.createStudentClient(username, passsword, name, contact);
