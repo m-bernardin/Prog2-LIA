@@ -28,7 +28,7 @@ public class DashboardController {
         try {
             App.driver.transfer(accountsView.getSelectionModel().getSelectedItem().getAccountID(), transferTo, amnt);
         } catch (NullPointerException e) {
-            App.displayError("Please enter a valid account ID or select an account.");
+            App.displayError("Please select an account.");
         } catch (InvestmentLockException e) {
             App.displayError("Cannot withdraw from an investment account less than a year after it has been opened...");
         } catch (InsufficientFundsException e){
@@ -41,7 +41,7 @@ public class DashboardController {
         try {
             amnt=Double.parseDouble(amntField.getText());
         } catch (Exception e) {
-            App.displayError("Please enter a decimal value for transfer amnt.");
+            App.displayError("Please enter a decimal value for deposit amnt.");
             return;
         }
         try {
@@ -52,7 +52,24 @@ public class DashboardController {
     }
     @FXML
     private void withdraw(ActionEvent event) throws IOException{
-
+        double amnt=0;
+        try {
+            amnt=Double.parseDouble(amntField.getText());
+        } catch (Exception e) {
+            App.displayError("Please enter a decimal value for transfer amnt.");
+            return;
+        }
+        try {
+            App.driver.withdraw(amnt, accountsView.getSelectionModel().getSelectedItem().getAccountID());
+        } catch (NullPointerException e) {
+            App.displayError("Please select an account.");
+        } catch (InvestmentLockException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (InsufficientFundsException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
     @FXML
     private void logout() throws IOException{
