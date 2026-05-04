@@ -34,5 +34,19 @@
   {
     "balance": 0.0,
     "accountID": "lzrRCs-3a"
+  },
+  {
+    "balance": 0.0,
+    "accountID": "lVW3zE-3m"
+  },
+  {
+    "dateOpened": {
+      "year": 2026,
+      "month": 5,
+      "day": 4
+    },
+    "interestRate": 0.05,
+    "balance": 0.0,
+    "accountID": "n;ka22-1U"
   }
 ]
