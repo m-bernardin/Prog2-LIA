@@ -48,4 +48,13 @@ public class Transaction{
         if(givingAccount==null)return "("+date+") Deposit to account no. "+receivingAccount+" of "+amnt+"$";
         return "("+date+") Transfer from account no. "+givingAccount+" to account no. "+receivingAccount+" of "+amnt+"$";
     }
+    public boolean isAssociatedTo(String acconutID){
+        try {
+            if(givingAccount.equals(acconutID))return true;
+            if(receivingAccount.equals(acconutID))return true;
+        } catch (NullPointerException e) {
+            return false;
+        }
+        return false;
+    }
 }

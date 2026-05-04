@@ -1,6 +1,8 @@
 package com.example;
 import java.io.IOException;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -90,18 +92,29 @@ public class DashboardController {
             try {
                 accountsView.setItems(FXCollections.observableArrayList(new BlankAccount()));
             } catch (InvalidTypeException e) {}
-            System.out.println("**no accounts detected...");
         } else {
             accountsView.setItems(App.driver.filteredAccounts);
-            System.out.println("**filled accountsView with items: "+App.driver.filteredAccounts);
         }
-        if(App.driver.latestTransactions.isEmpty()){
+        System.out.println("**latest transactions: "+App.driver.latestTransactions);
+        accountsView.getSelectionModel().selectedItemProperty().addListener((obs,old,newSelection)->changeAccount(newSelection));
+        try {
+            if(App.driver.latestTransactions.isEmpty()){
+                try {
+                    transactionsView.setItems(FXCollections.observableArrayList(new Transaction(0, null, null)));
+                } catch (InvalidTypeException e) {}
+            }
+            else transactionsView.setItems(App.driver.latestTransactions);
+        } catch (NullPointerException e) {
             try {
                 transactionsView.setItems(FXCollections.observableArrayList(new Transaction(0, null, null)));
-            } catch (InvalidTypeException e) {}
+            } catch (InvalidTypeException e2) {}
         }
-        else transactionsView.setItems(App.driver.latestTransactions);
-        accountsView.getSelectionModel().selectedItemProperty().addListener((obs,old,newSelection)->App.driver.selectedAccount.set(newSelection.getAccountID()));
+        // accountsView.getSelectionModel().select(0);
+        // App.driver.selectedAccount.bind(new SimpleStringProperty(accountsView.getSelectionModel().selectedItemProperty().get().accountID));
+    }
+    private void changeAccount(Account newSelection) {
+        App.driver.selectedAccount.set(newSelection.getAccountID());
+        System.out.println("**new account selected: "+newSelection.accountID);
     }
     @FXML
     public void openAccount() throws IOException{

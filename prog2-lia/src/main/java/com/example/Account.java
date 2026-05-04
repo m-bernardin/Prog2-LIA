@@ -1,46 +1,81 @@
 package com.example;
-
+/**
+ * This class represents the most generic user account.
+ */
+// TODO finish javadoc
 public abstract class Account {
-    // fields
+    /**
+     * The current balance of this account.
+     */
     protected double balance;
+    /**
+     * This accounts unique ID.
+     * IdCreator type 2.
+     */
     protected String accountID;
-    // constructors
+    /**
+     * This classes basic constructor. Sets balance to 0, but leaves accountID blank.
+     * @throws InvalidTypeException if somehow an invalid type or subtype was supplied by a child's constructor  to the IdCCreator.
+     */
     public Account() throws InvalidTypeException{
         balance=0;
     }
-    // getters and setters
+    /**
+     * Returns this accounts current balance.
+     * @return balance
+     */
     public double getBalance() {
         return balance;
     }
-    public void setBalance(double balance) {
-        this.balance=balance;
-    }
+    /**
+     * Returns this accounts ID.
+     * @return accountID
+     */
     public String getAccountID() {
         return accountID;
     }
-    public void setAccountID(String accountID) {
-        this.accountID = accountID;
-    }
-    // abstract methods
+    /**
+     * Takes a specified amount away from this account's balance.
+     * @param amnt - the amount to be withdrawn.
+     * @throws InvestmentLockException if a user attempts to withdraw from an Investment account which has not been open for at least a year.
+     * @throws InsufficientFundsException if a user attempts to withdraw more than this accounts current balance from this account 
+     */
     public abstract void withdraw(double amnt) throws InvestmentLockException, InsufficientFundsException;
-    // concrete methods
+    /**
+     * Adds the specified amount to this account's balance.
+     * @param amnt - the amount to be deposited.
+     * @return true if the deposit was successful; false otherwise.
+     */
     public boolean deposit(double amnt){
-        // TODO find failure instance???
         boolean success=true;
         balance+=amnt;
         return success;
     }
-    public boolean deposit(double amnt,String currency){
+    /**
+     * Adds the specified amount to this account's balance, in the specified currency.
+     * @param amnt - the amount to be deposited.
+     * @param currencyCode - the ISO code for the currency to be converted from.
+     * @return true if the deposit was successful; false otherwise.
+     */
+    public boolean deposit(double amnt,String currencyCode){
         if(!App.driver.isPremium(App.driver.getOwner(this.accountID)))return false;
         try {
-            deposit(convert(amnt, currency));
+            deposit(convert(amnt, currencyCode));
         } catch (InvalidTypeException e) {
             return false;
         }
         return true;
     }
+    /**
+     * Transfers a specified amount from this account to another specified account.
+     * @param amnt - the amount to be transfered.
+     * @param transferToID - the ID of the account to be transfered to.
+     * @return true if the transfer was succesful; false otherwise.
+     * @throws InvestmentLockException if this account is an Investment account which has not been open for more than a year.
+     * @throws InsufficientFundsException if this account does not have enough funds for this transfer.
+     * @throws InvalidTypeException if an invalid type was provided to the IdCreator by the Transaction record creator.
+     */
     public boolean transfer(double amnt,String transferToID) throws InvestmentLockException, InsufficientFundsException, InvalidTypeException{
-        // TODO test
         withdraw(amnt);
         boolean validTransfer=App.driver.deposit(amnt,transferToID);
         if(!validTransfer){
@@ -50,7 +85,14 @@ public abstract class Account {
         return true;
     }
     // Data pulled from https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/; averages for 2025
-    double convert(double amnt,String currencyCode) throws InvalidTypeException{
+    /**
+     * Converts a specified amount to its equivalent in a specified currency.
+     * @param amnt - the amount to be converted.
+     * @param currencyCode - the ISO currency code of the currency to be converted to.
+     * @return the converted amount.
+     * @throws InvalidTypeException if the specified ISO currency code is not recognized by the system.
+     */
+    private double convert(double amnt,String currencyCode) throws InvalidTypeException{
         if(currencyCode.equals("USD"))return amnt*1.3978;
         if(currencyCode.equals("GBP"))return amnt*1.8420;
         if(currencyCode.equals("JPY"))return amnt*0.009350;
@@ -59,6 +101,9 @@ public abstract class Account {
         if(currencyCode.equals("CHF"))return amnt*1.6846;
         throw new InvalidTypeException("Invalid currency code");
     }
+    /**
+     * Provides a String representation of this account.
+     */
     @Override
     public String toString() {
         return "account ID: "+accountID+"\tbalance: "+balance+"$";

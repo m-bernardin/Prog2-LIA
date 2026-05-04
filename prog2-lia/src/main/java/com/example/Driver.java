@@ -19,6 +19,7 @@ public class Driver{
     private ObservableList<Transaction> transactions;
     public ObservableList<Transaction> latestTransactions=FXCollections.observableArrayList();
     public final StringProperty selectedAccount=new SimpleStringProperty();
+    private SortedList<Transaction>  sortedTransactions;
     public ObservableList<Account> getAccounts() {
         return accounts;
     }
@@ -42,12 +43,13 @@ public class Driver{
         Client client=verifyCredentials(username,password);
         if(client!=null){
             setActiveClient(client.getClientID());
-            System.out.println("**client: "+getClient(activeClient));
+            System.out.println("**client: "+getClient(activeClient).getClientID());
             System.out.println("**owned accounts: "+getClient(activeClient).getAccounts());
-            filteredAccounts=new FilteredList<>(accounts, account -> getClient(activeClient).getAccounts().contains(account.getAccountID()));
-            ObservableList<Transaction> observableTransactions=FXCollections.observableArrayList(transactions);
-            FilteredList<Transaction> filteredTransactions=new FilteredList<>(observableTransactions, transaction -> transaction.getGivingAccount().equals(selectedAccount.get())||transaction.getReceivingAccount().equals(selectedAccount.get()));
-            SortedList<Transaction> sortedTransactions=new SortedList<>(filteredTransactions,Comparator.comparing(Transaction::getDate).reversed());
+            filteredAccounts=new FilteredList<>(accounts,
+                                                account -> getClient(activeClient).getAccounts().contains(account.getAccountID()));
+            sortedTransactions=new SortedList<>(new FilteredList<>(transactions, transaction -> transaction.isAssociatedTo(selectedAccount.get()))
+                                                ,Comparator.comparing(Transaction::getDate).reversed());
+            System.out.println("**transactions sorted: "+sortedTransactions);
             sortedTransactions.addListener((ListChangeListener<Transaction>) change -> {
                 latestTransactions.setAll(sortedTransactions.subList(0,Math.min(10,sortedTransactions.size())));
             });
