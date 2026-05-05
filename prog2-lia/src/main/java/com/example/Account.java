@@ -84,9 +84,16 @@ public abstract class Account {
         }
         return true;
     }
-    // Data pulled from https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/; averages for 2025
+    /**
+     * Provides a String representation of this account.
+     */
+    @Override
+    public String toString() {
+        return "account ID: "+accountID+"\tbalance: "+balance+"$";
+    }
     /**
      * Converts a specified amount to its equivalent in a specified currency.
+     * Data pulled from https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/; averages for 2025
      * @param amnt - the amount to be converted.
      * @param currencyCode - the ISO currency code of the currency to be converted to.
      * @return the converted amount.
@@ -100,12 +107,5 @@ public abstract class Account {
         if(currencyCode.equals("AUD"))return amnt*0.9009;
         if(currencyCode.equals("CHF"))return amnt*1.6846;
         throw new InvalidTypeException("Invalid currency code");
-    }
-    /**
-     * Provides a String representation of this account.
-     */
-    @Override
-    public String toString() {
-        return "account ID: "+accountID+"\tbalance: "+balance+"$";
     }
 }
