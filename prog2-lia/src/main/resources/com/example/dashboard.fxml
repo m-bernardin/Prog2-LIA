@@ -35,7 +35,7 @@
                         </FXCollections>
                      </items>
                   </ComboBox>
-                  <Button fx:id="" text="Open" onAction="#openAccount" />
+                  <Button fx:id="openAccountButton" text="Open" onAction="#openAccount" />
                   <Label text="(!) Each open account will cost you %monthlyFee% each month." />
                   <Label text="(!) Please contact a bank associate to close an account." />
                </children>

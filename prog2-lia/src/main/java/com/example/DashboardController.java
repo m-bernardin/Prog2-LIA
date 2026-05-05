@@ -1,21 +1,89 @@
 package com.example;
-import java.io.IOException;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import java.io.IOException;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+/**
+ * FXML controller for the client dashboard.
+ */
 public class DashboardController {
-    @FXML TextField depositField;
+    /**
+     * Link to the field where the user enters the ID for a transfer, if appplicable.
+     */
     @FXML TextField transferToField;
+    /**
+     * Link to the field where the user enters the amount for a transfer.
+     */
     @FXML TextField amntField;
+    /**
+     * Link to the list of accounts for the active client.
+     */
     @FXML ListView<Account> accountsView;
+    /**
+     * Link to the selector for account opening.
+     */
     @FXML ComboBox<String> typeSelector;
+    /**
+     * Link to the list of transactions for the active client.
+     */
     @FXML ListView<Transaction> transactionsView;
+    /**
+     * Called when the scene is intialised.
+     */
+    @FXML
+    public void initialize(){
+        if(App.driver.filteredAccounts.isEmpty()){
+            try {
+                accountsView.setItems(FXCollections.observableArrayList(new BlankAccount()));
+            } catch (InvalidTypeException e) {}
+        } else {
+            accountsView.setItems(App.driver.filteredAccounts);
+        }
+        System.out.println("**latest transactions: "+App.driver.latestTransactions);
+        accountsView.getSelectionModel().selectedItemProperty().addListener((obs,old,newSelection)->changeAccount(newSelection));
+        try {
+            if(App.driver.latestTransactions.isEmpty()){
+                try {
+                    transactionsView.setItems(FXCollections.observableArrayList(new Transaction(0, null, null)));
+                } catch (InvalidTypeException e) {}
+            }
+            else transactionsView.setItems(App.driver.latestTransactions);
+        } catch (NullPointerException e) {
+            try {
+                transactionsView.setItems(FXCollections.observableArrayList(new Transaction(0, null, null)));
+            } catch (InvalidTypeException e2) {}
+        }
+        // accountsView.getSelectionModel().select(0);
+        // App.driver.selectedAccount.bind(new SimpleStringProperty(accountsView.getSelectionModel().selectedItemProperty().get().accountID));
+    }
+    /**
+     * Allows the openAccountButton to function. Opens an account of the type selected in the typeSelector for the active client.
+     * @throws IOException if something goes wrong.
+     */
+    @FXML
+    public void openAccount() throws IOException{
+        String selection=typeSelector.getValue();
+        try {
+            if(selection.equals("Chequeing"))App.driver.openChequeing();
+            else if(selection.equals("Savings"))App.driver.openSavings();
+            else if(selection.equals("Investment"))App.driver.openInvestment();
+            else App.displayError("Please make choose a valid option.");
+        } catch (InvalidTypeException e) {
+            App.displayError("System error: error finding account type");
+        } catch (NullPointerException e){
+            App.displayError("Please select an account type.");
+        }
+        App.displayMessage("New "+selection.toLowerCase()+" account opened.");
+    }
+    /**
+     * Allows the transferButton to function. Transfers an amnt specified in the amntField from the selected account to the account specified in the transferToIDField;
+     * @param event - the FXML event.
+     * @throws IOException if something goes wrong.
+     */
     @FXML
     private void transfer(ActionEvent event) throws IOException{
         String transferTo=transferToField.getText();
@@ -43,6 +111,11 @@ public class DashboardController {
             App.displayError("System error: error getting type");
         }
     }
+    /**
+     * Allows the depositButton to function. Deposits the amount specified in the amntField to the currently selected account.
+     * @param event - the FXML event.
+     * @throws IOException if something goes wrong.
+     */
     @FXML
     private void deposit(ActionEvent event) throws IOException{
         double amnt=0;
@@ -60,6 +133,11 @@ public class DashboardController {
             App.displayError("System error: error getting type");
         }
     }
+    /**
+     * Allows the withdrawButton to function. Withdraws the amount specified in the amntField from the currently selected account.
+     * @param event - the FXML event.
+     * @throws IOException if something goes wrong.
+     */
     @FXML
     private void withdraw(ActionEvent event) throws IOException{
         double amnt=0;
@@ -81,54 +159,18 @@ public class DashboardController {
             App.displayError("System error: error getting type");
         }
     }
+    /**
+     * Allows logoutButton to function.
+     * @throws IOException if something goes wrong.
+     */
     @FXML
     private void logout() throws IOException{
         App.driver.logout();
         App.setRoot("login");
     }
-    @FXML
-    public void initialize(){
-        if(App.driver.filteredAccounts.isEmpty()){
-            try {
-                accountsView.setItems(FXCollections.observableArrayList(new BlankAccount()));
-            } catch (InvalidTypeException e) {}
-        } else {
-            accountsView.setItems(App.driver.filteredAccounts);
-        }
-        System.out.println("**latest transactions: "+App.driver.latestTransactions);
-        accountsView.getSelectionModel().selectedItemProperty().addListener((obs,old,newSelection)->changeAccount(newSelection));
-        try {
-            if(App.driver.latestTransactions.isEmpty()){
-                try {
-                    transactionsView.setItems(FXCollections.observableArrayList(new Transaction(0, null, null)));
-                } catch (InvalidTypeException e) {}
-            }
-            else transactionsView.setItems(App.driver.latestTransactions);
-        } catch (NullPointerException e) {
-            try {
-                transactionsView.setItems(FXCollections.observableArrayList(new Transaction(0, null, null)));
-            } catch (InvalidTypeException e2) {}
-        }
-        // accountsView.getSelectionModel().select(0);
-        // App.driver.selectedAccount.bind(new SimpleStringProperty(accountsView.getSelectionModel().selectedItemProperty().get().accountID));
-    }
+    // TODO fold back into initialize?
     private void changeAccount(Account newSelection) {
         App.driver.selectedAccount.set(newSelection.getAccountID());
         System.out.println("**new account selected: "+newSelection.accountID);
-    }
-    @FXML
-    public void openAccount() throws IOException{
-        String selection=typeSelector.getValue();
-        try {
-            if(selection.equals("Chequeing"))App.driver.openChequeing();
-            else if(selection.equals("Savings"))App.driver.openSavings();
-            else if(selection.equals("Investment"))App.driver.openInvestment();
-            else App.displayError("Please make choose a valid option.");
-        } catch (InvalidTypeException e) {
-            App.displayError("System error: error finding account type");
-        } catch (NullPointerException e){
-            App.displayError("Please select an account type.");
-        }
-        App.displayMessage("New "+selection.toLowerCase()+" account opened.");
     }
 }
