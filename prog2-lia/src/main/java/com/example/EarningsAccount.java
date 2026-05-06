@@ -1,6 +1,7 @@
 package com.example;
 /**
  * Represents an account which can earn interest on its balance.
+ * @author Mathieu Bernardin
  */
 public abstract class EarningsAccount extends Account implements InterestBearing{
     /**

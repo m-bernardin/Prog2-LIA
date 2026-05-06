@@ -9,6 +9,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 /**
  * FXML controller for the client dashboard.
+ * @author Mathieu Bernardin
  */
 public class DashboardController {
     /**

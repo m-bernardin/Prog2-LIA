@@ -3,6 +3,7 @@ package com.example;
 import java.util.ArrayList;
 /**
  * Represents a client who is a corporation or business. Allows for multiple owners/managers.
+ * @author Mathieu Bernardin
  */
 public class CorporateClient extends PremiumClient{
     private String companyName;

@@ -2,6 +2,7 @@ package com.example;
 /**
  * A child of Account which describes an account with no details. Used by the DashboardController when a Client has no open Accounts.
  * @see DashboardController
+ * @author Mathieu Bernardin
  */
 public class BlankAccount extends Account{
     /**

@@ -1,6 +1,6 @@
 package com.example;
 /**
- * Represents the most basic kind of client.
+ * Represents the most basic kind of client. Essentialy a concrete implementation of the super account.
  */
 public class IndividualClient extends StandardClient{
     /**

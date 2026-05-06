@@ -5,6 +5,7 @@ import java.time.Period;
 import java.util.HashSet;
 /**
  * Represents a client at its most basic form.
+ * @author Mathieu Bernardin
  */
 public abstract class Client implements Maintainable{
     /**

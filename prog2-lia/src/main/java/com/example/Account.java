@@ -1,6 +1,7 @@
 package com.example;
 /**
  * This class represents the most generic user account.
+ * @author Mathieu Bernardin
  */
 public abstract class Account {
     /**

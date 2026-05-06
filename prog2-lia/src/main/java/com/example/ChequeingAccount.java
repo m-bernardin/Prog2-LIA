@@ -1,6 +1,7 @@
 package com.example;
 /**
- * Represents a chequeing account. Essentially a concrete implementtion of the parent.
+ * Represents a chequeing account. Essentially a concrete implementation of the parent.
+ * @author Mathieu Bernardin
  */
 public class ChequeingAccount extends Account{
     /**

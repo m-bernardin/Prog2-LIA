@@ -12,6 +12,7 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 /**
  * The main manager for objects in the app. Allows clients to interact with accounts and controllers to interact with the app's data.
+ * @author Mathieu Bernardin
  */
 public class Driver{
     /**
