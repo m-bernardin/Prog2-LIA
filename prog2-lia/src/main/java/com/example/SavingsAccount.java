@@ -1,6 +1,13 @@
 package com.example;
-
+/**
+ * The basic type of earnings account. Essentialy a concrete implementation of super.
+ * @author Mathieu Bernardin
+ */
 public class SavingsAccount extends EarningsAccount{
+    /**
+     * Constructor for this class. Automatically generates account ID (type (2,2)) and sets interest rate.
+     * @throws InvalidTypeException if something goes wrong.
+     */
     public SavingsAccount() throws InvalidTypeException {
         super();
         boolean validID=false;
@@ -10,6 +17,11 @@ public class SavingsAccount extends EarningsAccount{
         }
         interestRate=0.02;
     }
+    /**
+     * Withdraws a specified amount from this account.
+     * @param amnt - the amount to be withdrawn.
+     * @throws InsufficientFundsException if there are insufficient funds for this withdrawal.
+     */
     @Override
     public void withdraw(double amnt) throws InsufficientFundsException {
         if(balance>=amnt){
@@ -18,6 +30,10 @@ public class SavingsAccount extends EarningsAccount{
         }
         throw new InsufficientFundsException();
     }
+    /**
+     * Gets a representation of this account as a String.
+     * @return the representation of this account.
+     */
     @Override
     public String toString() {
         return "Savings account no. "+accountID+"\tbalance: "+balance+"$";
