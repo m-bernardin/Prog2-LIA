@@ -2,7 +2,6 @@ package com.example;
 /**
  * This class represents the most generic user account.
  */
-// TODO finish javadoc
 public abstract class Account {
     /**
      * The current balance of this account.

@@ -8,9 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
-
 import java.io.IOException;
-
 /**
  * Main class for this application.
  */
