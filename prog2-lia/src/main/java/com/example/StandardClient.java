@@ -1,29 +1,41 @@
 package com.example;
-
+/**
+ * Represents a standard client.
+ * @author Mathieu Bernardin
+ */
 public abstract class StandardClient extends Client{
+    /**
+     * This client's name.
+     */
     private String name;
+    /**
+     * This client's contact.
+     */
     private String contact;
+    /**
+     * Constrcutor for this class.
+     * @param username - this client's username.
+     * @param password - this client's password.
+     * @param name - this client's name.
+     * @param contact - this client's contact.
+     */
     public StandardClient(String username, String password, String name, String contact) {
         super(username, password);
         this.name = name;
         this.contact = contact;
     }
-    // public StandardClient(String clientID, String username, String password, LocalDate dateLastOpened, LocalDate dateOpened,
-    //         String name, String contact) {
-    //     super(clientID, username, password, dateLastOpened, dateOpened);
-    //     this.name = name;
-    //     this.contact = contact;
-    // }
+    /**
+     * Gets this client's name.
+     * @return this client's name.
+     */
     public String getName() {
         return name;
     }
-    public void setName(String name) {
-        this.name = name;
-    }
+    /**
+     * Gets this client's contact.
+     * @return this client's contact.
+     */
     public String getContact() {
         return contact;
-    }
-    public void setContact(String contact) {
-        this.contact = contact;
     }
 }
