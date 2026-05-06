@@ -67,6 +67,7 @@ public class StudentClient extends StandardClient{
     @Override
     public boolean maintain() throws InvalidTypeException {
         if(LocalDate.now().isAfter(statusExpiryDate))statusValid=false;
+        setDateLastOpened(LocalDate.now());
         return true;
     }
 }

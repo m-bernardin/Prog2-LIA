@@ -1,6 +1,31 @@
 package com.example;
-
+/**
+ * A type of premium client which is a individual.
+ * Earns extra interest on all owned earnings accounts and has account ownership fees waived.
+ * @author Mathieu Bernardin
+ */
 public class VipClient extends PremiumClient{
+    /**
+     * The extra interest earned by this client.
+     */
+    public final static double EXTRA_INTEREST=0.01;
+    /**
+     * This client's name.
+     */
+    private String name;
+    /**
+     * This client's contact.
+     */
+    private String contact;
+    /**
+     * Constructor for this class. Automatically generates an ID (type (1,4)) and sets monthlyFees to 0.
+     * @param username - this client's username.
+     * @param password - this client's password.
+     * @param rewardsProgramMember - if this client has opted into the rewards program.
+     * @param name - this client's name.
+     * @param contact - this client's contact.
+     * @throws InvalidTypeException if somethin goes wrong.
+     */
     public VipClient(String username, String password, boolean rewardsProgramMember,String name,String contact) throws InvalidTypeException {
         super(username, password, rewardsProgramMember);
         boolean validID=false;
@@ -12,19 +37,18 @@ public class VipClient extends PremiumClient{
         setClientID(ID);
         monthlyFee=0;
     }
-    public final static double EXTRA_INTEREST=0.01;
-    private String name;
-    private String contact;
+    /**
+     * Gets this client's name.
+     * @return this client's name.
+     */
     public String getName() {
         return name;
     }
-    public void setName(String name) {
-        this.name = name;
-    }
+    /**
+     * Gets this client's contact.
+     * @return this client's contact.
+     */
     public String getContact() {
         return contact;
-    }
-    public void setContact(String contact) {
-        this.contact = contact;
     }
 }
