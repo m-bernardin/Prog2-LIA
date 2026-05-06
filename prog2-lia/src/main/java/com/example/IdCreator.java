@@ -3,7 +3,7 @@ package com.example;
 import java.util.Random;
 import java.util.Scanner; // TODO remove after testing done
 /**
- * Allows for creation of pseudo-random IDs for use with Client, Account, and Transactions classes; Generates IDs based on type of ID and, where applicable subtype.
+ * Allows for creation of pseudo-random IDs for use with Client, Account, and Transactions classes; Generates IDs based on type of ID and, where applicable, subtype.
  * IDs are composed of a type-subtype identifier, and a unique pseudo-random identifier, appended with a checksum validator, all in base 64 numbering for brevity.
  * @author Mathieu Bernardin
  */
@@ -166,7 +166,6 @@ public class IdCreator {
      * @return the identifier generated.
      */
     private static String generateRandom() {
-        // TODO add reserved IDs
         Random gen=new Random();
         return convertBase64(gen.nextInt(1073741823));
     }

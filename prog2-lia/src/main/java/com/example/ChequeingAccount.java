@@ -7,7 +7,12 @@ public class ChequeingAccount extends Account{
      * Basic constrcutor for this class. IdCreator type (2,1).
      */
     public ChequeingAccount() throws InvalidTypeException {
-        accountID=IdCreator.createID(2,1);
+        super();
+        boolean validID=false;
+        while(!validID){
+            accountID=IdCreator.createID(2,1);
+            if(!App.driver.exists(accountID))validID=true;
+        }
     }
     /**
      * Withdraws a specified amount from this account.

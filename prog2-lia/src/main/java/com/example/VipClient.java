@@ -3,7 +3,13 @@ package com.example;
 public class VipClient extends PremiumClient{
     public VipClient(String username, String password, boolean rewardsProgramMember,String name,String contact) throws InvalidTypeException {
         super(username, password, rewardsProgramMember);
-        setClientID(IdCreator.createID(1,4));
+        boolean validID=false;
+        String ID="";
+        while(!validID){
+            ID=IdCreator.createID(1,4);
+            if(!App.driver.exists(ID))validID=true;
+        }
+        setClientID(ID);
         monthlyFee=0;
     }
     public final static double EXTRA_INTEREST=0.01;

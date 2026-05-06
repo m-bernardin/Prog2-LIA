@@ -20,7 +20,13 @@ public class CorporateClient extends PremiumClient{
         super(username, password, rewardsProgramMember);
         this.companyName=companyName;
         this.clientManagerContacts=clientManagerContacts;
-        setClientID(IdCreator.createID(1,3));
+        boolean validID=false;
+        String ID="";
+        while(!validID){
+            ID=IdCreator.createID(1,3);
+            if(!App.driver.exists(ID))validID=true;
+        }
+        setClientID(ID);
     }
     /**
      * Gets the name of this company.

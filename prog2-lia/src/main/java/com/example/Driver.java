@@ -512,4 +512,16 @@ public class Driver{
         Transaction transaction=new Transaction(amnt, recipient, donner);
         transactions.add(transaction);
     }
+    public boolean exists(String ID){
+        for(Transaction transaction:transactions){
+            if(transaction.getTransactionID().equals(ID))return true;
+        }
+        for (Account account:accounts){
+            if(account.getAccountID().equals(ID))return true;
+        }
+        for(Client client:clients){
+            if(client.getClientID().equals(ID))return true;
+        }
+        return false;
+    }
 }

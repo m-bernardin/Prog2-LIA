@@ -6,7 +6,13 @@ public class StudentClient extends StandardClient{
     private boolean statusValid;
     public StudentClient(String username, String password, String name, String contact) throws InvalidTypeException {
         super(username, password, name, contact);
-        setClientID(IdCreator.createID(1,2));
+        boolean validID=false;
+        String ID="";
+        while(!validID){
+            ID=IdCreator.createID(1,2);
+            if(!App.driver.exists(ID))validID=true;
+        }
+        setClientID(ID);
         statusValid=false;
     }
     public LocalDate getStatusExpiryDate() {

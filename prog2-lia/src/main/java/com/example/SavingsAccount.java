@@ -2,7 +2,12 @@ package com.example;
 
 public class SavingsAccount extends EarningsAccount{
     public SavingsAccount() throws InvalidTypeException {
-        accountID=IdCreator.createID(2,2);
+        super();
+        boolean validID=false;
+        while(!validID){
+            accountID=IdCreator.createID(2,2);
+            if(!App.driver.exists(accountID))validID=true;
+        }
         interestRate=0.02;
     }
     @Override

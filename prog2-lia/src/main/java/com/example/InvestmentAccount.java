@@ -5,7 +5,11 @@ public class InvestmentAccount extends EarningsAccount{
     private LocalDate dateOpened;
     public InvestmentAccount() throws InvalidTypeException {
         super();
-        accountID=IdCreator.createID(2,3);
+        boolean validID=false;
+        while(!validID){
+            accountID=IdCreator.createID(2,3);
+            if(!App.driver.exists(accountID))validID=true;
+        }
         interestRate=0.05;
         dateOpened=LocalDate.now();
     }

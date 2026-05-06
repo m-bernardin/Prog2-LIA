@@ -11,7 +11,11 @@ public class Transaction{
         return date;
     }
     public Transaction(double amnt, String receivingAccount, String givingAccount) throws InvalidTypeException {
-        transactionID=IdCreator.createID(3,0);
+        boolean validID=false;
+        while(!validID){
+            transactionID=IdCreator.createID(3,0);
+            if(!App.driver.exists(transactionID))validID=true;
+        }
         date=LocalDate.now();
         this.amnt = amnt;
         this.receivingAccount = receivingAccount;
