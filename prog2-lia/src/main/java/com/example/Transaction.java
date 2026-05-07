@@ -81,7 +81,7 @@ public class Transaction{
      */
     @Override
     public String toString() {
-        if(givingAccount==null&&receivingAccount==null)return "No transactions to show...";
+        if(givingAccount==null&&receivingAccount==null)return "No more transactions to show...";
         if(receivingAccount==null)return "("+simpleDate+") Withdrawal from account no. "+givingAccount+" of "+amnt+"$";
         if(givingAccount==null)return "("+simpleDate+") Deposit to account no. "+receivingAccount+" of "+amnt+"$";
         return "("+simpleDate+") Transfer from account no. "+givingAccount+" to account no. "+receivingAccount+" of "+amnt+"$";
@@ -93,6 +93,7 @@ public class Transaction{
      */
     public boolean isAssociatedTo(String accountID){
         if(accountID==null)return false;
+        if(givingAccount==null&&receivingAccount==null)return true;
         if(givingAccount!=null){
             if(givingAccount.equals(accountID))return true;
         }

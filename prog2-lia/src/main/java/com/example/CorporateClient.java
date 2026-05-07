@@ -6,7 +6,13 @@ import java.util.ArrayList;
  * @author Mathieu Bernardin
  */
 public class CorporateClient extends PremiumClient{
+    /**
+     * The client's company's name.
+     */
     private String companyName;
+    /**
+     * The list of this clinet's company's finance manager's contacts.
+     */
     private ArrayList<String> clientManagerContacts=new ArrayList<>();
     /**
      * Constructor for this class. Automatically generates an ID as IdCreator type (1,3).

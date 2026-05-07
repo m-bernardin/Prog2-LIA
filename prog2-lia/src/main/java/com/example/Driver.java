@@ -511,6 +511,8 @@ public class Driver{
                 case 'n':
                     accounts.add(new Gson().fromJson(account, InvestmentAccount.class));
                     break;
+                case 'X':
+                    accounts.add(new Gson().fromJson(account, BlankAccount.class));
                 default:
                     System.out.println("## could not find type...");
                     break;

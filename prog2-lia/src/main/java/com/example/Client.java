@@ -54,6 +54,7 @@ public abstract class Client implements Maintainable{
         this.username=username;
         this.password=password;
         accounts=new HashSet<>();
+        accounts.add("X");
         transactions=new HashSet<>();
         clientID="";
         dateOpened=LocalDate.now();

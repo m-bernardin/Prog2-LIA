@@ -18,7 +18,7 @@ public class BlankAccount extends Account{
      */
     @Override
     public String toString() {
-        return "No accounts to show...";
+        return "No more accounts to show...";
     }
     /**
      * Implements the parent's method to do nothing.
