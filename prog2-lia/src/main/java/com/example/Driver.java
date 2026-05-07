@@ -38,19 +38,26 @@ public class Driver{
      * List of all loaded transactions. Observable by controllers.
      */
     private final ObservableList<Transaction> transactions=FXCollections.observableArrayList();
-    // TODO javadoc
+    /**
+     * List of all transactions, filtered to only those associated with the selected account. Observing transactions and observable.
+     */
     private final FilteredList<Transaction> filteredTransactions=new FilteredList<>(transactions);
-    // TODO javadoc
+    /**
+     * List of all filtered transactions, sorted by date and time. Observing filtertedTransactions and observable.
+     */
     private final SortedList<Transaction> sortedTransactions=new SortedList<>(filteredTransactions);
     /**
-     * List of the ten latest transactions associated with the currently selected account. Observing sortedTransactions and observable by controllers.
+     * List of the ten latest transactions associated with the currently selected account. Observing sortedTransactions and observable.
      */
     private final FilteredList<Transaction> latestTransactions=new FilteredList<>(sortedTransactions);
     /**
      * Property holding the ID of the currently selected account. Bound by the dashboard controller to the selection of accountView.
      */
     public final StringProperty selectedAccount=new SimpleStringProperty();
-    // TODO javadoc
+    /**
+     * Gets the ten latest transactions associated with the currently selected account.
+     * @return the ten latest transactions associated with the currently selected account.
+     */
     public ObservableList<Transaction> getLatestTransactions() {
         return latestTransactions;
     }
@@ -124,7 +131,9 @@ public class Driver{
         }
         return false;
     }
-    // TODO jaavdoc
+    /**
+     * Refreshes latestTransactions when a new transactions is added.
+     */
     private void refreshLatest() {
         latestTransactions.setPredicate(transaction->sortedTransactions.indexOf(transaction)<10);
     }
@@ -362,13 +371,6 @@ public class Driver{
         }
         return false;
     }
-    // TODO remove if unnesecary
-    // private ObservableList<Transaction> getAssociatedTransactions(String accountID){
-    //     return transactions.filtered(transaction -> transaction.isAssociatedTo(accountID));
-    // }
-    // private ObservableList<Transaction> sortTransactions(ObservableList<Transaction> toSort){
-    //     return toSort.sorted(Comparator.comparing(Transaction::getDate).reversed());
-    // }
     /**
      * Saves client data in memory to json.
      * @throws IOException if something goes wrong.

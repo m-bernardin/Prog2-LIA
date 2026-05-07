@@ -48,8 +48,14 @@ public class Transaction{
             transactionID=IdCreator.createID(3,0);
             if(!App.driver.exists(transactionID))validID=true;
         }
-        date=LocalDateTime.now();
-        simpleDate=LocalDate.now();
+        if(receivingAccount==null&&givingAccount==null){
+            date=LocalDateTime.ofEpochSecond(0, 0, null);
+            simpleDate=LocalDate.ofEpochDay(0);
+        }
+        else{
+            date=LocalDateTime.now();
+            simpleDate=LocalDate.now();
+        }
         this.amnt = amnt;
         this.receivingAccount = receivingAccount;
         this.givingAccount = givingAccount;
