@@ -7,13 +7,13 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.PasswordField?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.LoginController">
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.LoginController" stylesheets="@fonts.css" >
    <children>
-      <Label text="Login" />
-      <TextField fx:id="usernameField" text="" promptText="username" />
-      <PasswordField fx:id="passwordField" text="" promptText="password" />
-      <Button fx:id="loginButton" text="Enter" onAction="#login"/>
-      <Button fx:id="createClientButton" text="New user? Create an account" onAction="#newClient" />
+      <Label text="Login" styleClass="header" />
+      <TextField fx:id="usernameField" text="" promptText="username" styleClass="info-field" maxWidth="600" />
+      <PasswordField fx:id="passwordField" text="" promptText="password" styleClass="info-field" maxWidth="600" />
+      <Button fx:id="loginButton" text="Enter" onAction="#login" styleClass="continue-button" />
+      <Button fx:id="createClientButton" text="New user? Create an account" onAction="#newClient" styleClass="continue-button" />
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

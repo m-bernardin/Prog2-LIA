@@ -1,0 +1,12 @@
+.header{
+    -fx-font-family: "Arial";
+    -fx-font-size: 120px;
+}
+.info-field{
+    -fx-font-family: "Arial";
+    -fx-font-size: 35px; 
+}
+.continue-button{
+    -fx-font-family: "Arial";
+    -fx-font-size: 25px;
+}
