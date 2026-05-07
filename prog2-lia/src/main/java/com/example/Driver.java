@@ -29,11 +29,11 @@ public class Driver{
     /**
      * List of all loaded accounts. Observable by controllers.
      */
-    private ObservableList<Account> accounts;
+    private final ObservableList<Account> accounts=FXCollections.observableArrayList();
     /**
      * List of loaded accounts, filtered to accounts owned by the currently logged in client. Observing accounts and observable by controllers.
      */
-    public FilteredList<Account> filteredAccounts;
+    public final FilteredList<Account> filteredAccounts=new FilteredList<>(accounts);
     /**
      * List of all loaded transactions. Observable by controllers.
      */
@@ -88,7 +88,6 @@ public class Driver{
      */
     public void loadData() throws MissingFileException {
         clients=new ArrayList<>();
-        accounts=FXCollections.observableArrayList();
         loadClients();
         loadAccounts();
         loadTransactions();
@@ -115,8 +114,7 @@ public class Driver{
             System.out.println("**client: "+getClient(activeClient).getClientID());
             System.out.println("**owned accounts: "+getClient(activeClient).getAccounts());
             System.out.println("**active transactions: "+transactions);
-            filteredAccounts=new FilteredList<>(accounts,
-                                                account -> getClient(activeClient).getAccounts().contains(account.getAccountID()));
+            refreshAccounts();
             selectedAccount.addListener((obs,oldAccount,newAccount)->{
                 if(newAccount==null||newAccount.isBlank()){
                     filteredTransactions.setPredicate(transaction->true);
@@ -127,9 +125,16 @@ public class Driver{
             sortedTransactions.setComparator(Comparator.comparing(Transaction::getDateTime).reversed());
             refreshLatest();
             transactions.addListener((ListChangeListener<Transaction>)transaction->refreshLatest());
+            transactions.addListener((ListChangeListener<Transaction>)transaction->refreshAccounts());
             return true;
         }
         return false;
+    }
+    /**
+     * Refreshes filteredAccounts when a new transactions is added.
+     */
+    private void refreshAccounts() {
+        filteredAccounts.setPredicate(account -> getClient(activeClient).getAccounts().contains(account.getAccountID()));
     }
     /**
      * Refreshes latestTransactions when a new transactions is added.

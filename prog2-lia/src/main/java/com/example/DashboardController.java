@@ -38,13 +38,7 @@ public class DashboardController {
      */
     @FXML
     public void initialize(){
-        if(App.driver.filteredAccounts.isEmpty()){
-            try {
-                accountsView.setItems(FXCollections.observableArrayList(new BlankAccount()));
-            } catch (InvalidTypeException e) {}
-        } else {
-            accountsView.setItems(App.driver.filteredAccounts);
-        }
+        accountsView.setItems(App.driver.filteredAccounts);
         System.out.println("**latest transactions: "+App.driver.getLatestTransactions());
         accountsView.getSelectionModel().selectedItemProperty().addListener((obs,old,newSelection)->changeAccount(newSelection));
         transactionsView.setItems(App.driver.getLatestTransactions());

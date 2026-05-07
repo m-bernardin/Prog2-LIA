@@ -1,60 +1,5 @@
 [
   {
-    "clientID": "b7Brih-1R",
-    "accounts": [],
-    "username": "ojf",
-    "password": "o3",
-    "transactions": [],
-    "dateOpened": {
-      "year": 2026,
-      "month": 5,
-      "day": 1
-    },
-    "monthlyFee": 10
-  },
-  {
-    "statusValid": true,
-    "clientID": "c3i5tJ-1M",
-    "accounts": [],
-    "username": "madi",
-    "password": "00h8",
-    "transactions": [],
-    "dateOpened": {
-      "year": 2026,
-      "month": 5,
-      "day": 1
-    },
-    "monthlyFee": 0
-  },
-  {
-    "rewardsProgramMember": false,
-    "clientID": "dLb41Q-20",
-    "accounts": [],
-    "username": "jerm",
-    "password": "j78f",
-    "transactions": [],
-    "dateOpened": {
-      "year": 2026,
-      "month": 5,
-      "day": 1
-    },
-    "monthlyFee": 10
-  },
-  {
-    "rewardsProgramMember": false,
-    "clientID": "ewn7A8-1U",
-    "accounts": [],
-    "username": "lile",
-    "password": "0h702",
-    "transactions": [],
-    "dateOpened": {
-      "year": 2026,
-      "month": 5,
-      "day": 1
-    },
-    "monthlyFee": 0
-  },
-  {
     "clientID": "bVa4;E-2V",
     "accounts": [
       "lUgzy6-2E",
@@ -89,6 +34,61 @@
       "year": 2026,
       "month": 5,
       "day": 2
+    },
+    "monthlyFee": 10
+  },
+  {
+    "rewardsProgramMember": true,
+    "clientID": "eyN7ZX-3w",
+    "accounts": [
+      "X"
+    ],
+    "username": "gooner",
+    "password": "gonner123",
+    "transactions": [],
+    "dateOpened": {
+      "year": 2026,
+      "month": 5,
+      "day": 7
+    },
+    "monthlyFee": 0
+  },
+  {
+    "name": "gooner",
+    "contact": "gooner",
+    "clientID": "bMamIG-2N",
+    "accounts": [
+      "X",
+      "na8fnc-1r",
+      "ld3bt0-1d"
+    ],
+    "username": "gooner",
+    "password": "gooner",
+    "transactions": [],
+    "dateOpened": {
+      "year": 2026,
+      "month": 5,
+      "day": 7
+    },
+    "monthlyFee": 10
+  },
+  {
+    "statusValid": false,
+    "name": "Maddy Siwick",
+    "contact": "5142377284",
+    "clientID": "cK9dm-1C",
+    "accounts": [
+      "nvklwO-2N",
+      "lMBE3O-37",
+      "X"
+    ],
+    "username": "maddyIsAwesome",
+    "password": "password123",
+    "transactions": [],
+    "dateOpened": {
+      "year": 2026,
+      "month": 5,
+      "day": 7
     },
     "monthlyFee": 10
   }

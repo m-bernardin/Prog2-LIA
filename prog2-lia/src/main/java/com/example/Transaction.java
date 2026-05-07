@@ -2,7 +2,6 @@ package com.example;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 /**
  * Represents a single transfer between two accounts or, a deposit or withdrawal from a single account.
  * A withdrawal is represented by having a null giving account.
