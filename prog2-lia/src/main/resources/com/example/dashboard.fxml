@@ -15,7 +15,7 @@
    <children>
       <HBox fx:id="ribbonBox" alignment="CENTER" spacing="50.0">
          <children>
-            <Label text="Welcome, %name%" />
+            <Label fx:id="welcomeLabel" text="" />
             <Button fx:id="logoutButton" text="Log Out" onAction="#logout" />
          </children>
       </HBox>
@@ -36,7 +36,7 @@
                      </items>
                   </ComboBox>
                   <Button fx:id="openAccountButton" text="Open" onAction="#openAccount" />
-                  <Label text="(!) Each open account will cost you %monthlyFee% each month." />
+                  <Label fx:id="monthlyFeeLabel" text="" />
                   <Label text="(!) Please contact a bank associate to close an account." />
                </children>
             </VBox>

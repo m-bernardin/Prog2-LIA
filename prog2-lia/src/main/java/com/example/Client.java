@@ -61,6 +61,13 @@ public abstract class Client implements Maintainable{
         dateOpened=LocalDate.now();
     }
     /**
+     * Gets the fee this client must pay each per account each month.
+     * @return the fee this client must pay each per account each month.
+     */
+    public int getMonthlyFee() {
+        return monthlyFee;
+    }
+    /**
      * Sets the client's ID to the specified ID.
      * @param clientID - the ID to be changed to.
      */

@@ -111,7 +111,7 @@ public class Driver{
             refreshAccounts();
             selectedAccount.addListener((obs,oldAccount,newAccount)->{
                 if(newAccount==null||newAccount.isBlank()){
-                    filteredTransactions.setPredicate(transaction->true);
+                    filteredTransactions.setPredicate(transaction->false);
                     return;
                 }
                 filteredTransactions.setPredicate(transaction->transaction.isAssociatedTo(newAccount));

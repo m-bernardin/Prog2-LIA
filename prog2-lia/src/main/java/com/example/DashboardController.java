@@ -1,12 +1,12 @@
 package com.example;
 
 import java.io.IOException;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
 /**
  * FXML controller for the client dashboard.
  * @author Mathieu Bernardin
@@ -33,15 +33,35 @@ public class DashboardController {
      */
     @FXML ListView<Transaction> transactionsView;
     /**
+     * Link to the label where the welcome text is displayed.
+     */
+    @FXML
+    private Label welcomeLabel;
+    /**
+     * Link to the label where the message for the user's monthly account fees is displayed.
+     */
+    @FXML
+    private Label monthlyFeeLabel;
+    /**
      * Called when the scene is intialised.
      * Sets up the accountView and transactionView.
      */
     @FXML
     public void initialize(){
         accountsView.setItems(App.driver.filteredAccounts);
-        System.out.println("**latest transactions: "+App.driver.getLatestTransactions());
         accountsView.getSelectionModel().selectedItemProperty().addListener((obs,old,newSelection)->App.driver.selectedAccount.set(newSelection.getAccountID()));
         transactionsView.setItems(App.driver.getLatestTransactions());
+        String activeClientID=App.driver.getActiveClient();
+        Class clientType=App.driver.getClient(activeClientID).getClass();
+        String name;
+        if(clientType==IndividualClient.class)name=((IndividualClient)App.driver.getClient(activeClientID)).getName();
+        else if(clientType==StudentClient.class)name=((StudentClient)App.driver.getClient(activeClientID)).getName();
+        else if(clientType==VipClient.class)name=((VipClient)App.driver.getClient(activeClientID)).getName();
+        else if(clientType==CorporateClient.class)name=((CorporateClient)App.driver.getClient(activeClientID)).getCompanyName();
+        else name="Invalid Name";
+        String monthlyFee=App.driver.getClient(activeClientID).getMonthlyFee()+"";
+        monthlyFeeLabel.setText("(!) Each open account will cost you "+monthlyFee+"$ each month.");
+        welcomeLabel.setText("Welcome, "+name+"!");
     }
     /**
      * Allows the openAccountButton to function. Opens an account of the type selected in the typeSelector for the active client.
