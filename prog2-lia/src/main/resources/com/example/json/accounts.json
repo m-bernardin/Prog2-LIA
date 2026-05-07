@@ -1,6 +1,6 @@
 [
   {
-    "balance": 0.0,
+    "balance": 36.0,
     "accountID": "leczpo-23"
   },
   {
@@ -28,7 +28,7 @@
       "day": 3
     },
     "interestRate": 0.05,
-    "balance": 610.0,
+    "balance": 5089.0,
     "accountID": "nwLxEG-3p"
   },
   {

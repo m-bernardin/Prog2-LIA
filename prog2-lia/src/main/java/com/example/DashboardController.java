@@ -34,6 +34,7 @@ public class DashboardController {
     @FXML ListView<Transaction> transactionsView;
     /**
      * Called when the scene is intialised.
+     * Sets up the accountView and transactionView.
      */
     @FXML
     public void initialize(){
@@ -44,20 +45,9 @@ public class DashboardController {
         } else {
             accountsView.setItems(App.driver.filteredAccounts);
         }
-        System.out.println("**latest transactions: "+App.driver.latestTransactions);
+        System.out.println("**latest transactions: "+App.driver.getLatestTransactions());
         accountsView.getSelectionModel().selectedItemProperty().addListener((obs,old,newSelection)->changeAccount(newSelection));
-        try {
-            if(App.driver.latestTransactions.isEmpty()){
-                try {
-                    transactionsView.setItems(FXCollections.observableArrayList(new Transaction(0, null, null)));
-                } catch (InvalidTypeException e) {}
-            }
-            else transactionsView.setItems(App.driver.latestTransactions);
-        } catch (NullPointerException e) {
-            try {
-                transactionsView.setItems(FXCollections.observableArrayList(new Transaction(0, null, null)));
-            } catch (InvalidTypeException e2) {}
-        }
+        transactionsView.setItems(App.driver.getLatestTransactions());
         // accountsView.getSelectionModel().select(0);
         // App.driver.selectedAccount.bind(new SimpleStringProperty(accountsView.getSelectionModel().selectedItemProperty().get().accountID));
     }
@@ -102,6 +92,8 @@ public class DashboardController {
         }
         try {
             App.driver.transfer(accountsView.getSelectionModel().getSelectedItem().getAccountID(), transferTo, amnt);
+            amntField.clear();
+            transferToField.clear();
         } catch (NullPointerException e) {
             App.displayError("Please select an account.");
         } catch (InvestmentLockException e) {
@@ -128,6 +120,7 @@ public class DashboardController {
         }
         try {
             App.driver.deposit(amnt, accountsView.getSelectionModel().getSelectedItem().getAccountID());
+            amntField.clear();
         } catch (NullPointerException e) {
             App.displayError("Please select an account.");
         } catch (InvalidTypeException e) {
@@ -150,6 +143,7 @@ public class DashboardController {
         }
         try {
             App.driver.withdraw(amnt, accountsView.getSelectionModel().getSelectedItem().getAccountID());
+            amntField.clear();
         } catch (NullPointerException e) {
             App.displayError("Please select an account.");
         } catch (InvestmentLockException e) {
@@ -173,5 +167,6 @@ public class DashboardController {
     private void changeAccount(Account newSelection) {
         App.driver.selectedAccount.set(newSelection.getAccountID());
         System.out.println("**new account selected: "+newSelection.accountID);
+        System.out.println("**associated transactions: "+App.driver.getLatestTransactions());
     }
 }

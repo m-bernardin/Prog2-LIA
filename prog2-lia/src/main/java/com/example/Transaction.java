@@ -1,6 +1,8 @@
 package com.example;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 /**
  * Represents a single transfer between two accounts or, a deposit or withdrawal from a single account.
  * A withdrawal is represented by having a null giving account.
@@ -26,9 +28,13 @@ public class Transaction{
      */
     private String givingAccount;
     /**
+     * The date and time of this transaction.
+     */
+    private LocalDateTime date;
+    /**
      * The date of this transaction.
      */
-    private LocalDate date;
+    private LocalDate simpleDate; 
     /**
      * Constructor for this class. Automatically generates an ID (type (3,0)).
      * @param amnt - the amount involved in this transaction.
@@ -42,10 +48,25 @@ public class Transaction{
             transactionID=IdCreator.createID(3,0);
             if(!App.driver.exists(transactionID))validID=true;
         }
-        date=LocalDate.now();
+        date=LocalDateTime.now();
+        simpleDate=LocalDate.now();
         this.amnt = amnt;
         this.receivingAccount = receivingAccount;
         this.givingAccount = givingAccount;
+    }
+    /**
+     * Gets the date and time this transaction was made.
+     * @return this transaction's date.
+     */
+    public LocalDateTime getDateTime() {
+        return date;
+    }
+    /**
+     * Gets this transaction's unique ID.
+     * @return this transaction's ID.
+     */
+    public String getTransactionID() {
+        return transactionID;
     }
     /**
      * Gets a representation of this transaction as a String.
@@ -55,9 +76,9 @@ public class Transaction{
     @Override
     public String toString() {
         if(givingAccount==null&&receivingAccount==null)return "No transactions to show...";
-        if(receivingAccount==null)return "("+date+") Withdrawal from account no. "+givingAccount+" of "+amnt+"$ on "+date;
-        if(givingAccount==null)return "("+date+") Deposit to account no. "+receivingAccount+" of "+amnt+"$ on "+date;
-        return "("+date+") Transfer from account no. "+givingAccount+" to account no. "+receivingAccount+" of "+amnt+"$ on "+date;
+        if(receivingAccount==null)return "("+simpleDate+") Withdrawal from account no. "+givingAccount+" of "+amnt+"$";
+        if(givingAccount==null)return "("+simpleDate+") Deposit to account no. "+receivingAccount+" of "+amnt+"$";
+        return "("+simpleDate+") Transfer from account no. "+givingAccount+" to account no. "+receivingAccount+" of "+amnt+"$";
     }
     /**
      * Checks if an account is associated (i.e. is on the giving or recieving end) of this transaction.
@@ -65,11 +86,12 @@ public class Transaction{
      * @return true if it is; false otherwise.
      */
     public boolean isAssociatedTo(String accountID){
-        try {
+        if(accountID==null)return false;
+        if(givingAccount!=null){
             if(givingAccount.equals(accountID))return true;
+        }
+        if(receivingAccount!=null){
             if(receivingAccount.equals(accountID))return true;
-        } catch (NullPointerException e) {
-            return false;
         }
         return false;
     }

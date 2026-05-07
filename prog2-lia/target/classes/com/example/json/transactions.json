@@ -1,152 +1,164 @@
 [
   {
-    "transactionID": "usPN4h-2P",
-    "amnt": 56.0,
+    "transactionID": "uLYxWF-4d",
+    "amnt": 8.0,
     "receivingAccount": "nwLxEG-3p",
     "date": {
+      "date": {
+        "year": 2026,
+        "month": 5,
+        "day": 7
+      },
+      "time": {
+        "hour": 0,
+        "minute": 43,
+        "second": 3,
+        "nano": 33792991
+      }
+    },
+    "simpleDate": {
       "year": 2026,
       "month": 5,
-      "day": 3
+      "day": 7
     }
   },
   {
-    "transactionID": "uYUTTF-4F",
-    "amnt": 56.0,
+    "transactionID": "uYu520-1;",
+    "amnt": 4794.0,
     "receivingAccount": "nwLxEG-3p",
     "date": {
+      "date": {
+        "year": 2026,
+        "month": 5,
+        "day": 7
+      },
+      "time": {
+        "hour": 0,
+        "minute": 43,
+        "second": 12,
+        "nano": 567326731
+      }
+    },
+    "simpleDate": {
       "year": 2026,
       "month": 5,
-      "day": 3
+      "day": 7
     }
   },
   {
-    "transactionID": "uhsBwo-2E",
-    "amnt": 56.0,
+    "transactionID": "uqHosD-2:",
+    "amnt": 195.0,
     "receivingAccount": "nwLxEG-3p",
     "date": {
+      "date": {
+        "year": 2026,
+        "month": 5,
+        "day": 7
+      },
+      "time": {
+        "hour": 0,
+        "minute": 43,
+        "second": 17,
+        "nano": 516937758
+      }
+    },
+    "simpleDate": {
       "year": 2026,
       "month": 5,
-      "day": 3
+      "day": 7
     }
   },
   {
-    "transactionID": "uC:VG-3B",
-    "amnt": 56.0,
-    "receivingAccount": "nwLxEG-3p",
+    "transactionID": "umzsYw-3f",
+    "amnt": 48.0,
+    "receivingAccount": "leczpo-23",
     "date": {
+      "date": {
+        "year": 2026,
+        "month": 5,
+        "day": 7
+      },
+      "time": {
+        "hour": 0,
+        "minute": 43,
+        "second": 25,
+        "nano": 404126328
+      }
+    },
+    "simpleDate": {
       "year": 2026,
       "month": 5,
-      "day": 3
+      "day": 7
     }
   },
   {
-    "transactionID": "uelzfm-29",
-    "amnt": 56.0,
+    "transactionID": "uWTBQi-3W",
+    "amnt": 12.0,
     "receivingAccount": "nwLxEG-3p",
     "date": {
+      "date": {
+        "year": 2026,
+        "month": 5,
+        "day": 7
+      },
+      "time": {
+        "hour": 0,
+        "minute": 44,
+        "second": 0,
+        "nano": 960371957
+      }
+    },
+    "simpleDate": {
       "year": 2026,
       "month": 5,
-      "day": 3
+      "day": 7
     }
   },
   {
-    "transactionID": "ufc5dU-23",
-    "amnt": 56.0,
+    "transactionID": "uUm86o-2i",
+    "amnt": 12.0,
     "receivingAccount": "nwLxEG-3p",
+    "givingAccount": "leczpo-23",
     "date": {
+      "date": {
+        "year": 2026,
+        "month": 5,
+        "day": 7
+      },
+      "time": {
+        "hour": 0,
+        "minute": 44,
+        "second": 0,
+        "nano": 960878100
+      }
+    },
+    "simpleDate": {
       "year": 2026,
       "month": 5,
-      "day": 3
+      "day": 7
     }
   },
   {
-    "transactionID": "ur4AyS-2V",
-    "amnt": 56.0,
+    "transactionID": "uzkXXC-3N",
+    "amnt": 80.0,
     "receivingAccount": "nwLxEG-3p",
     "date": {
+      "date": {
+        "year": 2026,
+        "month": 5,
+        "day": 7
+      },
+      "time": {
+        "hour": 0,
+        "minute": 44,
+        "second": 21,
+        "nano": 166736652
+      }
+    },
+    "simpleDate": {
       "year": 2026,
       "month": 5,
-      "day": 3
-    }
-  },
-  {
-    "transactionID": "uDT:jy-3L",
-    "amnt": 56.0,
-    "receivingAccount": "nwLxEG-3p",
-    "date": {
-      "year": 2026,
-      "month": 5,
-      "day": 3
-    }
-  },
-  {
-    "transactionID": "uS23BG-2E",
-    "amnt": 56.0,
-    "receivingAccount": "nwLxEG-3p",
-    "date": {
-      "year": 2026,
-      "month": 5,
-      "day": 3
-    }
-  },
-  {
-    "transactionID": "uG4cMw-2E",
-    "amnt": 56.0,
-    "receivingAccount": "nwLxEG-3p",
-    "date": {
-      "year": 2026,
-      "month": 5,
-      "day": 3
-    }
-  },
-  {
-    "transactionID": "uN1nH9-2r",
-    "amnt": 10.0,
-    "receivingAccount": "nwLxEG-3p",
-    "date": {
-      "year": 2026,
-      "month": 5,
-      "day": 3
-    }
-  },
-  {
-    "transactionID": "uHEOws-3v",
-    "amnt": 10.0,
-    "receivingAccount": "nwLxEG-3p",
-    "date": {
-      "year": 2026,
-      "month": 5,
-      "day": 3
-    }
-  },
-  {
-    "transactionID": "uGhYWo-3D",
-    "amnt": 10.0,
-    "receivingAccount": "nwLxEG-3p",
-    "date": {
-      "year": 2026,
-      "month": 5,
-      "day": 3
-    }
-  },
-  {
-    "transactionID": "uuXyIz-3E",
-    "amnt": 10.0,
-    "receivingAccount": "nwLxEG-3p",
-    "date": {
-      "year": 2026,
-      "month": 5,
-      "day": 3
-    }
-  },
-  {
-    "transactionID": "uJOyRE-3Y",
-    "amnt": 10.0,
-    "receivingAccount": "nwLxEG-3p",
-    "date": {
-      "year": 2026,
-      "month": 5,
-      "day": 3
+      "day": 7
     }
   }
 ]

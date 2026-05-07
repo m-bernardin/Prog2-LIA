@@ -2,6 +2,9 @@ package com.example;
 
 import java.io.*;
 import java.util.*;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
 import com.google.gson.*;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -34,19 +37,23 @@ public class Driver{
     /**
      * List of all loaded transactions. Observable by controllers.
      */
-    private ObservableList<Transaction> transactions;
+    private final ObservableList<Transaction> transactions=FXCollections.observableArrayList();
+    // TODO javadoc
+    private final FilteredList<Transaction> filteredTransactions=new FilteredList<>(transactions);
+    // TODO javadoc
+    private final SortedList<Transaction> sortedTransactions=new SortedList<>(filteredTransactions);
     /**
      * List of the ten latest transactions associated with the currently selected account. Observing sortedTransactions and observable by controllers.
      */
-    public ObservableList<Transaction> latestTransactions=FXCollections.observableArrayList();
+    private final FilteredList<Transaction> latestTransactions=new FilteredList<>(sortedTransactions);
     /**
      * Property holding the ID of the currently selected account. Bound by the dashboard controller to the selection of accountView.
      */
     public final StringProperty selectedAccount=new SimpleStringProperty();
-    /**
-     * List of transactions filtered to the currently selected account and sorted by date made. Observing transactions and observable by controllers.
-     */
-    private SortedList<Transaction>  sortedTransactions;
+    // TODO javadoc
+    public ObservableList<Transaction> getLatestTransactions() {
+        return latestTransactions;
+    }
     /**
      * Gets the list of loaded accounts.
      * @return the list of loaded accounts.
@@ -73,6 +80,8 @@ public class Driver{
      * @throws MissingFileException if a json file has been deleted or is unreadable.
      */
     public void loadData() throws MissingFileException {
+        clients=new ArrayList<>();
+        accounts=FXCollections.observableArrayList();
         loadClients();
         loadAccounts();
         loadTransactions();
@@ -98,24 +107,32 @@ public class Driver{
             setActiveClient(client.getClientID());
             System.out.println("**client: "+getClient(activeClient).getClientID());
             System.out.println("**owned accounts: "+getClient(activeClient).getAccounts());
+            System.out.println("**active transactions: "+transactions);
             filteredAccounts=new FilteredList<>(accounts,
                                                 account -> getClient(activeClient).getAccounts().contains(account.getAccountID()));
-            sortedTransactions=new SortedList<>(new FilteredList<>(transactions, transaction -> transaction.isAssociatedTo(selectedAccount.get()))
-                                                ,Comparator.comparing(Transaction::getDate).reversed());
-            System.out.println("**transactions sorted: "+sortedTransactions);
-            sortedTransactions.addListener((ListChangeListener<Transaction>) change -> {
-                latestTransactions.setAll(sortedTransactions.subList(0,Math.min(10,sortedTransactions.size())));
+            selectedAccount.addListener((obs,oldAccount,newAccount)->{
+                if(newAccount==null||newAccount.isBlank()){
+                    filteredTransactions.setPredicate(transaction->true);
+                    return;
+                }
+                filteredTransactions.setPredicate(transaction->transaction.isAssociatedTo(newAccount));
             });
+            sortedTransactions.setComparator(Comparator.comparing(Transaction::getDateTime).reversed());
+            refreshLatest();
+            transactions.addListener((ListChangeListener<Transaction>)transaction->refreshLatest());
             return true;
         }
         return false;
+    }
+    // TODO jaavdoc
+    private void refreshLatest() {
+        latestTransactions.setPredicate(transaction->sortedTransactions.indexOf(transaction)<10);
     }
     /**
      * Logs out the current user.
      */
     public void logout(){
         activeClient=null;
-        latestTransactions=null;
     }
     /**
      * Allows the new client controller to create individual clients.
@@ -166,175 +183,6 @@ public class Driver{
     public void createVipClient(String username,String password,boolean rewardsProgramMember,String name,String contact) throws InvalidTypeException{
         VipClient client=new VipClient(username, password, rewardsProgramMember, name, contact);
         clients.add(client);
-    }
-    /**
-     * Saves client data in memory to json.
-     * @throws IOException if something goes wrong.
-     */
-    private void saveClients() throws IOException {
-        File clientJsons=new File("src/main/resources/com/example/json/clients.json");
-        clientJsons.delete();
-        clientJsons.createNewFile();
-        Gson gson=new GsonBuilder().setPrettyPrinting().create();
-        JsonArray clientJsonArray=new JsonArray();
-        FileWriter writer=new FileWriter(clientJsons);
-        for (Client client : clients) {
-            String clientJsonString=gson.toJson(client);
-            JsonElement clientJson=gson.fromJson(clientJsonString, JsonElement.class);
-            clientJsonArray.add(clientJson);
-        }
-        String clientJsonArrayString=gson.toJson(clientJsonArray);
-        writer.append(clientJsonArrayString);
-        writer.flush();
-        writer.close();
-    }
-    /**
-     * Saves account data in memory to json.
-     * @throws IOException if something goes wrong.
-     */
-    private void saveAccounts() throws IOException {
-        File accountJsons=new File("src/main/resources/com/example/json/accounts.json");
-        accountJsons.delete();
-        accountJsons.createNewFile();
-        Gson gson=new GsonBuilder().setPrettyPrinting().create();
-        JsonArray accountJsonArray=new JsonArray();
-        FileWriter writer=new FileWriter(accountJsons);
-        for (Account account : accounts) {
-            String accountJsonString=gson.toJson(account);
-            JsonElement accountJson=gson.fromJson(accountJsonString, JsonElement.class);
-            accountJsonArray.add(accountJson);
-        }
-        String accountJsonArrayString=gson.toJson(accountJsonArray);
-        writer.append(accountJsonArrayString);
-        writer.flush();
-        writer.close();
-    }
-    /**
-     * Saves transaction data in memory to json.
-     * @throws IOException if something goes wrong.
-     */
-    private void saveTransactions() throws IOException {
-        File transactionJsons=new File("src/main/resources/com/example/json/transactions.json");
-        transactionJsons.delete();
-        transactionJsons.createNewFile();
-        Gson gson=new GsonBuilder().setPrettyPrinting().create();
-        JsonArray transactionJsonArray=new JsonArray();
-        FileWriter writer=new FileWriter(transactionJsons);
-        for (Transaction transaction : transactions) {
-            String transactionJsonString=gson.toJson(transaction);
-            JsonElement transactionJson=gson.fromJson(transactionJsonString, JsonElement.class);
-            transactionJsonArray.add(transactionJson);
-        }
-        String transactionJsonArrayString=gson.toJson(transactionJsonArray);
-        writer.append(transactionJsonArrayString);
-        writer.flush();
-        writer.close();
-    }
-    /**
-     * Verifies provided credentials with all loaded clients.
-     * @param username - the username to be verified.
-     * @param password - the password to be verified.
-     * @return the client with the provided credentials; null if none found.
-     */
-    private Client verifyCredentials(String username, String password) {
-        for(Client client:clients){
-            if(client.getUsername().equals(username)&&client.getPassword().equals(password))return client;
-        }
-        return null;
-    }
-    /**
-     * Loads all client data from json.
-     * @throws MissingFileException if the file is missing or otherwise unreachable.
-     */
-    private void loadClients() throws MissingFileException{
-        clients=new ArrayList<>();
-        File clientJsons=new File("src/main/resources/com/example/json/clients.json");
-        FileReader fileReader;
-        try {
-            fileReader=new FileReader(clientJsons);
-        } catch (FileNotFoundException e) {
-            throw new MissingFileException("Could not find client data file...");
-        }
-        Gson clientGsons=new Gson();
-        JsonArray clientJsonArray;
-        clientJsonArray=clientGsons.fromJson(fileReader,JsonArray.class);
-        for (JsonElement jsonElement : clientJsonArray) {
-            JsonObject client=jsonElement.getAsJsonObject();
-            String clientID=new Gson().fromJson(client.get("clientID"),String.class);
-            switch (clientID.charAt(0)) {
-                case 'b':
-                    clients.add(new Gson().fromJson(client, IndividualClient.class));
-                    break;
-                case 'c':
-                    clients.add(new Gson().fromJson(client, StudentClient.class));
-                    break;
-                case 'd':
-                    clients.add(new Gson().fromJson(client, CorporateClient.class));
-                    break;
-                case 'e':
-                    clients.add(new Gson().fromJson(client, VipClient.class));
-                    break;
-                default:
-                    System.out.println("## could not find type...");
-                    break;
-            }
-        }
-    }
-    /**
-     * Loads all account data from json.
-     * @throws MissingFileException if the file is missing or otherwise unreachable.
-     */
-    private void loadAccounts() throws MissingFileException {
-        accounts=FXCollections.observableArrayList();
-        File clientJsons=new File("src/main/resources/com/example/json/accounts.json");
-        FileReader fileReader;
-        try {
-            fileReader=new FileReader(clientJsons);
-        } catch (FileNotFoundException e) {
-            throw new MissingFileException("Could not find account data file...");
-        }
-        Gson accountGsons=new Gson();
-        JsonArray accountJsonArray;
-        accountJsonArray=accountGsons.fromJson(fileReader,JsonArray.class);
-        for (JsonElement jsonElement : accountJsonArray) {
-            JsonObject account=jsonElement.getAsJsonObject();
-            String accountID=new Gson().fromJson(account.get("accountID"),String.class);
-            switch (accountID.charAt(0)) {
-                case 'l':
-                    accounts.add(new Gson().fromJson(account, ChequeingAccount.class));
-                    break;
-                case 'm':
-                    accounts.add(new Gson().fromJson(account, SavingsAccount.class));
-                    break;
-                case 'n':
-                    accounts.add(new Gson().fromJson(account, InvestmentAccount.class));
-                    break;
-                default:
-                    System.out.println("## could not find type...");
-                    break;
-            }
-        }
-    }
-    /**
-     * Loads all transactions data from json.
-     * @throws MissingFileException if the file is missing or otherwise unreachable.
-     */
-    private void loadTransactions() throws MissingFileException {
-        transactions=FXCollections.observableArrayList();
-        File transactionJsons=new File("src/main/resources/com/example/json/transactions.json");
-        FileReader fileReader;
-        try {
-            fileReader=new FileReader(transactionJsons);
-        } catch (FileNotFoundException e) {
-            throw new MissingFileException("Could not find transaction data file...");
-        }
-        Gson transactionGsons=new Gson();
-        JsonArray transactionJsonArray;
-        transactionJsonArray=transactionGsons.fromJson(fileReader,JsonArray.class);
-        for (JsonElement jsonElement : transactionJsonArray) {
-            JsonObject transaction=jsonElement.getAsJsonObject();
-            transactions.add(new Gson().fromJson(transaction, Transaction.class));
-        }
     }
     /**
      * Allows controllers and clients to deposit into accounts.
@@ -502,17 +350,6 @@ public class Driver{
         getClient(activeClient).addAccount(newAccount.getAccountID());
         accounts.add(newAccount);
     }
-    /**
-     * Records a transaction.
-     * @param donner - the ID of the account making the transaction.
-     * @param recipient - the ID of the account recieving the transaction.
-     * @param amnt - the amount involved in the transaction.
-     * @throws InvalidTypeException if something goes wrong.
-     */
-    private void recordTransaction(String donner,String recipient,double amnt) throws InvalidTypeException{
-        Transaction transaction=new Transaction(amnt, recipient, donner);
-        transactions.add(transaction);
-    }
     public boolean exists(String ID){
         for(Transaction transaction:transactions){
             if(transaction.getTransactionID().equals(ID))return true;
@@ -524,5 +361,189 @@ public class Driver{
             if(client.getClientID().equals(ID))return true;
         }
         return false;
+    }
+    // TODO remove if unnesecary
+    // private ObservableList<Transaction> getAssociatedTransactions(String accountID){
+    //     return transactions.filtered(transaction -> transaction.isAssociatedTo(accountID));
+    // }
+    // private ObservableList<Transaction> sortTransactions(ObservableList<Transaction> toSort){
+    //     return toSort.sorted(Comparator.comparing(Transaction::getDate).reversed());
+    // }
+    /**
+     * Saves client data in memory to json.
+     * @throws IOException if something goes wrong.
+     */
+    private void saveClients() throws IOException {
+        File clientJsons=new File("src/main/resources/com/example/json/clients.json");
+        clientJsons.delete();
+        clientJsons.createNewFile();
+        Gson gson=new GsonBuilder().setPrettyPrinting().create();
+        JsonArray clientJsonArray=new JsonArray();
+        FileWriter writer=new FileWriter(clientJsons);
+        for (Client client : clients) {
+            String clientJsonString=gson.toJson(client);
+            JsonElement clientJson=gson.fromJson(clientJsonString, JsonElement.class);
+            clientJsonArray.add(clientJson);
+        }
+        String clientJsonArrayString=gson.toJson(clientJsonArray);
+        writer.append(clientJsonArrayString);
+        writer.flush();
+        writer.close();
+    }
+    /**
+     * Saves account data in memory to json.
+     * @throws IOException if something goes wrong.
+     */
+    private void saveAccounts() throws IOException {
+        File accountJsons=new File("src/main/resources/com/example/json/accounts.json");
+        accountJsons.delete();
+        accountJsons.createNewFile();
+        Gson gson=new GsonBuilder().setPrettyPrinting().create();
+        JsonArray accountJsonArray=new JsonArray();
+        FileWriter writer=new FileWriter(accountJsons);
+        for (Account account : accounts) {
+            String accountJsonString=gson.toJson(account);
+            JsonElement accountJson=gson.fromJson(accountJsonString, JsonElement.class);
+            accountJsonArray.add(accountJson);
+        }
+        String accountJsonArrayString=gson.toJson(accountJsonArray);
+        writer.append(accountJsonArrayString);
+        writer.flush();
+        writer.close();
+    }
+    /**
+     * Saves transaction data in memory to json.
+     * @throws IOException if something goes wrong.
+     */
+    private void saveTransactions() throws IOException {
+        File transactionJsons=new File("src/main/resources/com/example/json/transactions.json");
+        transactionJsons.delete();
+        transactionJsons.createNewFile();
+        Gson gson=new GsonBuilder().setPrettyPrinting().create();
+        JsonArray transactionJsonArray=new JsonArray();
+        FileWriter writer=new FileWriter(transactionJsons);
+        for (Transaction transaction : transactions) {
+            String transactionJsonString=gson.toJson(transaction);
+            JsonElement transactionJson=gson.fromJson(transactionJsonString, JsonElement.class);
+            transactionJsonArray.add(transactionJson);
+        }
+        String transactionJsonArrayString=gson.toJson(transactionJsonArray);
+        writer.append(transactionJsonArrayString);
+        writer.flush();
+        writer.close();
+    }
+    /**
+     * Verifies provided credentials with all loaded clients.
+     * @param username - the username to be verified.
+     * @param password - the password to be verified.
+     * @return the client with the provided credentials; null if none found.
+     */
+    private Client verifyCredentials(String username, String password) {
+        for(Client client:clients){
+            if(client.getUsername().equals(username)&&client.getPassword().equals(password))return client;
+        }
+        return null;
+    }
+    /**
+     * Loads all client data from json.
+     * @throws MissingFileException if the file is missing or otherwise unreachable.
+     */
+    private void loadClients() throws MissingFileException{
+        File clientJsons=new File("src/main/resources/com/example/json/clients.json");
+        FileReader fileReader;
+        try {
+            fileReader=new FileReader(clientJsons);
+        } catch (FileNotFoundException e) {
+            throw new MissingFileException("Could not find client data file...");
+        }
+        Gson clientGsons=new Gson();
+        JsonArray clientJsonArray;
+        clientJsonArray=clientGsons.fromJson(fileReader,JsonArray.class);
+        for (JsonElement jsonElement : clientJsonArray) {
+            JsonObject client=jsonElement.getAsJsonObject();
+            String clientID=new Gson().fromJson(client.get("clientID"),String.class);
+            switch (clientID.charAt(0)) {
+                case 'b':
+                    clients.add(new Gson().fromJson(client, IndividualClient.class));
+                    break;
+                case 'c':
+                    clients.add(new Gson().fromJson(client, StudentClient.class));
+                    break;
+                case 'd':
+                    clients.add(new Gson().fromJson(client, CorporateClient.class));
+                    break;
+                case 'e':
+                    clients.add(new Gson().fromJson(client, VipClient.class));
+                    break;
+                default:
+                    System.out.println("## could not find type...");
+                    break;
+            }
+        }
+    }
+    /**
+     * Loads all account data from json.
+     * @throws MissingFileException if the file is missing or otherwise unreachable.
+     */
+    private void loadAccounts() throws MissingFileException {
+        File clientJsons=new File("src/main/resources/com/example/json/accounts.json");
+        FileReader fileReader;
+        try {
+            fileReader=new FileReader(clientJsons);
+        } catch (FileNotFoundException e) {
+            throw new MissingFileException("Could not find account data file...");
+        }
+        Gson accountGsons=new Gson();
+        JsonArray accountJsonArray;
+        accountJsonArray=accountGsons.fromJson(fileReader,JsonArray.class);
+        for (JsonElement jsonElement : accountJsonArray) {
+            JsonObject account=jsonElement.getAsJsonObject();
+            String accountID=new Gson().fromJson(account.get("accountID"),String.class);
+            switch (accountID.charAt(0)) {
+                case 'l':
+                    accounts.add(new Gson().fromJson(account, ChequeingAccount.class));
+                    break;
+                case 'm':
+                    accounts.add(new Gson().fromJson(account, SavingsAccount.class));
+                    break;
+                case 'n':
+                    accounts.add(new Gson().fromJson(account, InvestmentAccount.class));
+                    break;
+                default:
+                    System.out.println("## could not find type...");
+                    break;
+            }
+        }
+    }
+    /**
+     * Loads all transactions data from json.
+     * @throws MissingFileException if the file is missing or otherwise unreachable.
+     */
+    private void loadTransactions() throws MissingFileException {
+        File transactionJsons=new File("src/main/resources/com/example/json/transactions.json");
+        FileReader fileReader;
+        try {
+            fileReader=new FileReader(transactionJsons);
+        } catch (FileNotFoundException e) {
+            throw new MissingFileException("Could not find transaction data file...");
+        }
+        Gson transactionGsons=new Gson();
+        JsonArray transactionJsonArray;
+        transactionJsonArray=transactionGsons.fromJson(fileReader,JsonArray.class);
+        for (JsonElement jsonElement : transactionJsonArray) {
+            JsonObject transaction=jsonElement.getAsJsonObject();
+            transactions.add(new Gson().fromJson(transaction, Transaction.class));
+        }
+    }
+    /**
+     * Records a transaction.
+     * @param donner - the ID of the account making the transaction.
+     * @param recipient - the ID of the account recieving the transaction.
+     * @param amnt - the amount involved in the transaction.
+     * @throws InvalidTypeException if something goes wrong.
+     */
+    private void recordTransaction(String donner,String recipient,double amnt) throws InvalidTypeException{
+        Transaction transaction=new Transaction(amnt, recipient, donner);
+        transactions.add(transaction);
     }
 }
