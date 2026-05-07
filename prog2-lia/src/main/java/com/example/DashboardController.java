@@ -52,6 +52,7 @@ public class DashboardController {
         accountsView.getSelectionModel().selectedItemProperty().addListener((obs,old,newSelection)->App.driver.selectedAccount.set(newSelection.getAccountID()));
         transactionsView.setItems(App.driver.getLatestTransactions());
         String activeClientID=App.driver.getActiveClient();
+        @SuppressWarnings("rawtypes")
         Class clientType=App.driver.getClient(activeClientID).getClass();
         String name;
         if(clientType==IndividualClient.class)name=((IndividualClient)App.driver.getClient(activeClientID)).getName();
