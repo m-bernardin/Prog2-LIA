@@ -2,9 +2,6 @@ package com.example;
 
 import java.io.*;
 import java.util.*;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
-
 import com.google.gson.*;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -111,9 +108,6 @@ public class Driver{
         Client client=verifyCredentials(username,password);
         if(client!=null){
             setActiveClient(client.getClientID());
-            System.out.println("**client: "+getClient(activeClient).getClientID());
-            System.out.println("**owned accounts: "+getClient(activeClient).getAccounts());
-            System.out.println("**active transactions: "+transactions);
             refreshAccounts();
             selectedAccount.addListener((obs,oldAccount,newAccount)->{
                 if(newAccount==null||newAccount.isBlank()){
@@ -236,7 +230,7 @@ public class Driver{
      */
     public String getOwner(String accountID) throws NullPointerException{
         for (Client client : clients) {
-            HashSet<String> ownedAccounts=client.getAccounts();
+            ArrayList<String> ownedAccounts=client.getAccounts();
             for (String ownedAccount : ownedAccounts) {
                 if(ownedAccount.equals(accountID))return client.getClientID();
             }
@@ -305,7 +299,7 @@ public class Driver{
      */
     public ArrayList<String> getOwnedEarningsAccounts(String clientID) throws NullPointerException{
         ArrayList<String> ownedAccounts=new ArrayList<>();
-        HashSet<String> clientAccounts=getClient(clientID).getAccounts();
+        ArrayList<String> clientAccounts=getClient(clientID).getAccounts();
         for (String accountID : clientAccounts) {
             if(getAccount(accountID).getClass()==InvestmentAccount.class||getAccount(accountID).getClass()==SavingsAccount.class)ownedAccounts.add(accountID);
         }

@@ -2,6 +2,7 @@ package com.example;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
 import java.util.HashSet;
 /**
  * Represents a client at its most basic form.
@@ -20,7 +21,7 @@ public abstract class Client implements Maintainable{
     /**
      * Set of the unqiue IDs of all accounts owned by this client.
      */
-    protected HashSet<String> accounts=new HashSet<>();
+    protected ArrayList<String> accounts=new ArrayList<>();
     /**
      * This client's username, used for login.
      */
@@ -53,7 +54,7 @@ public abstract class Client implements Maintainable{
     public Client(String username,String password){
         this.username=username;
         this.password=password;
-        accounts=new HashSet<>();
+        accounts=new ArrayList<>();
         accounts.add("X");
         transactions=new HashSet<>();
         clientID="";
@@ -98,7 +99,7 @@ public abstract class Client implements Maintainable{
      * Gets the client's owned accounts' IDs.
      * @return a set of the accounts' IDs.
      */
-    public HashSet<String> getAccounts() {
+    public ArrayList<String> getAccounts() {
         return accounts;
     }
     /**

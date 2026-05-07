@@ -40,10 +40,8 @@ public class DashboardController {
     public void initialize(){
         accountsView.setItems(App.driver.filteredAccounts);
         System.out.println("**latest transactions: "+App.driver.getLatestTransactions());
-        accountsView.getSelectionModel().selectedItemProperty().addListener((obs,old,newSelection)->changeAccount(newSelection));
+        accountsView.getSelectionModel().selectedItemProperty().addListener((obs,old,newSelection)->App.driver.selectedAccount.set(newSelection.getAccountID()));
         transactionsView.setItems(App.driver.getLatestTransactions());
-        // accountsView.getSelectionModel().select(0);
-        // App.driver.selectedAccount.bind(new SimpleStringProperty(accountsView.getSelectionModel().selectedItemProperty().get().accountID));
     }
     /**
      * Allows the openAccountButton to function. Opens an account of the type selected in the typeSelector for the active client.
@@ -156,11 +154,5 @@ public class DashboardController {
     private void logout() throws IOException{
         App.driver.logout();
         App.setRoot("login");
-    }
-    // TODO fold back into initialize?
-    private void changeAccount(Account newSelection) {
-        App.driver.selectedAccount.set(newSelection.getAccountID());
-        System.out.println("**new account selected: "+newSelection.accountID);
-        System.out.println("**associated transactions: "+App.driver.getLatestTransactions());
     }
 }
