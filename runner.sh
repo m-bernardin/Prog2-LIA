@@ -1,5 +1,5 @@
 #!/usr/bin
-cd ~/GitHub/Prog2-LIA/
+cd ~/GitHub/Prog2-LIA/prog2-lia/
 echo starting application...
 mvn clean javafx:run
 echo application closed...
