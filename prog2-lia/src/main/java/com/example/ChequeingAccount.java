@@ -34,6 +34,6 @@ public class ChequeingAccount extends Account{
      */
     @Override
     public String toString() {
-        return "Chequeing account no. "+accountID+"\tbalance: "+balance+"$";
+        return "Chequeing account no. "+accountID+"\t balance: "+balance+"$";
     }
 }

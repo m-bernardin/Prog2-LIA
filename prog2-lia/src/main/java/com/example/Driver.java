@@ -50,6 +50,7 @@ public class Driver{
     /**
      * Property holding the ID of the currently selected account. Bound by the dashboard controller to the selection of accountView.
      */
+    @SuppressWarnings("exports")
     public final StringProperty selectedAccount=new SimpleStringProperty();
     /**
      * Gets the ten latest transactions associated with the currently selected account.

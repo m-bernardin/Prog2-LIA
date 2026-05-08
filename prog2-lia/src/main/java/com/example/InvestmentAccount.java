@@ -54,6 +54,6 @@ public class InvestmentAccount extends EarningsAccount{
      */
     @Override
     public String toString() {
-        return "Investment account no. "+accountID+"\tbalance: "+balance+"$";
+        return "Investment account no. "+accountID+"\t balance: "+balance+"$";
     }
 }

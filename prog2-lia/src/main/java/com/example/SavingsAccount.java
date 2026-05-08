@@ -36,6 +36,6 @@ public class SavingsAccount extends EarningsAccount{
      */
     @Override
     public String toString() {
-        return "Savings account no. "+accountID+"\tbalance: "+balance+"$";
+        return "Savings account no. "+accountID+"\t balance: "+balance+"$";
     }
 }
