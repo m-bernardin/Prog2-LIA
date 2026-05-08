@@ -450,7 +450,7 @@ public class Driver{
      * @throws MissingFileException if the file is missing or otherwise unreachable.
      */
     private void loadClients() throws MissingFileException{
-        File clientJsons=new File("src/main/resources/com/example/json/clients.json");
+        File clientJsons=new File("prog2-lia/src/main/resources/com/example/json/clients.json");
         FileReader fileReader;
         try {
             fileReader=new FileReader(clientJsons);
@@ -487,7 +487,7 @@ public class Driver{
      * @throws MissingFileException if the file is missing or otherwise unreachable.
      */
     private void loadAccounts() throws MissingFileException {
-        File clientJsons=new File("src/main/resources/com/example/json/accounts.json");
+        File clientJsons=new File("prog2-lia/src/main/resources/com/example/json/accounts.json");
         FileReader fileReader;
         try {
             fileReader=new FileReader(clientJsons);
@@ -523,7 +523,7 @@ public class Driver{
      * @throws MissingFileException if the file is missing or otherwise unreachable.
      */
     private void loadTransactions() throws MissingFileException {
-        File transactionJsons=new File("src/main/resources/com/example/json/transactions.json");
+        File transactionJsons=new File("prog2-lia/src/main/resources/com/example/json/transactions.json");
         FileReader fileReader;
         try {
             fileReader=new FileReader(transactionJsons);
