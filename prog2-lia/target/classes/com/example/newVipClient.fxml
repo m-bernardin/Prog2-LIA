@@ -8,32 +8,32 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.CheckBox?>
 
-<VBox spacing="20.0" alignment="CENTER" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.NewClientController">
+<VBox spacing="20.0" alignment="CENTER" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.NewClientController" stylesheets="@fonts.css" >
    <children>
-      <HBox spacing="20.0" alignment="CENTER" >
+      <HBox spacing="30.0" alignment="CENTER" >
          <children>
-            <VBox spacing="22.5" alignment="CENTER">
+            <VBox spacing="15.0" alignment="CENTER_RIGHT">
                <children>
-                  <Label text="Choose a username." />
-                  <Label text="Choose a password." />
-                  <Label text="What's your name name?" />
-                  <Label text="How can we contact you?" />
-                  <Label text="Would you like to participate in our rewards program?" />
+                  <TextField fx:id="usernameField" promptText="exampleUser" styleClass="normaltext" />
+                  <TextField fx:id="passwordField" promptText="Example01!" styleClass="normaltext" />
+                  <TextField fx:id="nameField" promptText="Uno Who" styleClass="normaltext" />
+                  <TextField fx:id="emailField" promptText="example@example.com" styleClass="normaltext" />
+                  <CheckBox fx:id="rewardsProgramCheck" styleClass="normaltext" />
                </children>
             </VBox>
-            <VBox spacing="15.0" alignment="CENTER">
+            <VBox spacing="40.0" alignment="CENTER_LEFT">
                <children>
-                  <TextField fx:id="usernameField" promptText="exampleUser" />
-                  <TextField fx:id="passwordField" promptText="Example01!" />
-                  <TextField fx:id="nameField" promptText="Uno Who" />
-                  <TextField fx:id="emailField" promptText="example@example.com" />
-                  <CheckBox fx:id="rewardsProgramCheck" />
+                  <Label text="Choose a username." styleClass="normaltext" />
+                  <Label text="Choose a password." styleClass="normaltext" />
+                  <Label text="What's your name name?" styleClass="normaltext" />
+                  <Label text="How can we contact you?" styleClass="normaltext" />
+                  <Label text="Would you like to participate in our rewards program?" styleClass="normaltext" />
                </children>
             </VBox>
          </children>
       </HBox>
-      <Button fx:id="confirmButton" text="Create Account" onAction="#createVipClient" />
-      <Button fx:id="backButton" text="Cancel" onAction="#cancel" />
-      <Label text="(!) For more information on our rewards program, contact a sales representative or, visit our website." />
+      <Button fx:id="confirmButton" text="Create Account" onAction="#createVipClient" styleClass="continue-button" />
+      <Button fx:id="backButton" text="Cancel" onAction="#cancel" styleClass="continue-button" />
+      <Label text="(!) For more information on our rewards program, contact a sales representative or, visit our website." styleClass="subtext" />
    </children>
 </VBox>
