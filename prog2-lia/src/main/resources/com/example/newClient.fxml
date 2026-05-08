@@ -9,10 +9,10 @@
 <?import javafx.collections.FXCollections?>
 <?import java.lang.String?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.NewClientController">
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.NewClientController" stylesheets="@fonts.css" >
    <children>
-      <Label text="select type" styleSheet="header" />
-      <ComboBox fx:id="typeSelector" >
+      <Label text="How would you like to&#10;register with us?" styleClass="header" alignment="CENTER" />
+      <ComboBox fx:id="typeSelector" styleClass="big-selector" >
          <items>
             <FXCollections fx:factory="observableArrayList">
                <String fx:value="Individual" />
@@ -22,11 +22,11 @@
             </FXCollections>
          </items>
       </ComboBox>
-      <Button fx:id="confirmSelection" text="Confirm" onAction="#confirmSelection"/>
+      <Button fx:id="confirmSelection" text="Confirm" onAction="#confirmSelection" styleClass="continue-button" />
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
    </padding>
-   <Button fx:id="backButton" text="Cancel" onAction="#cancel" />
-   <Label text="(!) For more information on the these types, please contact a sales representative or, visit our website." />
+   <Button fx:id="backButton" text="Cancel" onAction="#cancel" styleClass="continue-button" />
+   <Label text="(!) For more information on the these types, please contact a sales representative or, visit our website." styleClass="subtext" />
 </VBox>
