@@ -10,17 +10,8 @@
 
 <VBox spacing="20.0" alignment="CENTER" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.NewClientController" stylesheets="@fonts.css" >
    <children>
-      <HBox spacing="20.0" alignment="CENTER" >
+      <HBox spacing="30.0" alignment="CENTER" >
          <children>
-            <VBox spacing="22.5" alignment="CENTER">
-               <children>
-                  <Label text="Choose a username." styleClass="normaltext" />
-                  <Label text="Choose a password." styleClass="normaltext" />
-                  <Label text="What the companies name?" styleClass="normaltext" />
-                  <Label text="Who manages the comapny finances?" styleClass="normaltext" />
-                  <Label text="Would you like to participate in our rewards program?" styleClass="normaltext" />
-               </children>
-            </VBox>
             <VBox spacing="15.0" alignment="CENTER">
                <children>
                   <TextField fx:id="usernameField" promptText="exampleUser" styleClass="normaltext" />
@@ -30,10 +21,19 @@
                   <CheckBox fx:id="rewardsProgramCheck" styleClass="normaltext" />
                </children>
             </VBox>
+            <VBox spacing="40.0" alignment="CENTER_LEFT">
+               <children>
+                  <Label text="Choose a username." styleClass="normaltext" />
+                  <Label text="Choose a password." styleClass="normaltext" />
+                  <Label text="What the companies name?" styleClass="normaltext" />
+                  <Label text="Who manages the comapny finances?" styleClass="normaltext" />
+                  <Label text="Would you like to participate in our rewards program?" styleClass="normaltext" />
+               </children>
+            </VBox>
          </children>
       </HBox>
-      <Button fx:id="confirmButton" text="Create Account" onAction="#createCorporateClient" />
-      <Button fx:id="backButton" text="Cancel" onAction="#cancel" />
-      <Label text="(!) Please enter finance managers contacts as a comma-seperated list." />
+      <Button fx:id="confirmButton" text="Create Account" onAction="#createCorporateClient" styleClass="continue-button" />
+      <Button fx:id="backButton" text="Cancel" onAction="#cancel" styleClass="continue-button" />
+      <Label text="(!) Please enter finance managers contacts as a comma-seperated list." styleClass="subtext" />
    </children>
 </VBox>
