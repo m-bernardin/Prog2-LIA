@@ -17,6 +17,13 @@ public class SavingsAccount extends EarningsAccount{
         }
         interestRate=0.02;
     }
+    // TODO javadoc
+    public SavingsAccount(double balance) throws InvalidTypeException {
+        super(balance);
+        accountID=IdCreator.createID(2,2);
+        interestRate=0.02;
+    }
+
     /**
      * Withdraws a specified amount from this account.
      * @param amnt - the amount to be withdrawn.

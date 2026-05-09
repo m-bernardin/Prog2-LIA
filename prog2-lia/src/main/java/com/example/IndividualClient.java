@@ -21,4 +21,19 @@ public class IndividualClient extends StandardClient{
         }
         setClientID(ID);
     }
+    // TODO javadoc
+    public IndividualClient(String username, String password, boolean test, String name, String contact) throws InvalidTypeException {
+        super(username, password, test, name, contact);
+        String ID="";
+        if(!test){
+            boolean validID=false;
+            while(!validID){
+                ID=IdCreator.createID(1,1);
+                if(!App.driver.exists(ID))validID=true;
+            }
+        }
+        else ID=IdCreator.createID(1,1);
+        setClientID(ID);
+    }
+    
 }

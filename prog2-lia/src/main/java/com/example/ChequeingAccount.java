@@ -15,6 +15,12 @@ public class ChequeingAccount extends Account{
             if(!App.driver.exists(accountID))validID=true;
         }
     }
+    // TODO javadoc
+    public ChequeingAccount(double balance) throws InvalidTypeException {
+        super(balance);
+        accountID=IdCreator.createID(2,1);
+    }
+
     /**
      * Withdraws a specified amount from this account.
      * @param amnt - the amount to be withdrawn.

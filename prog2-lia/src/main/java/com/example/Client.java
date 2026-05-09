@@ -48,10 +48,25 @@ public abstract class Client implements Maintainable{
     protected int monthlyFee=10;
     /**
      * The basic constructor for this class. Takes a username and password, then auto-generates the rest.
-     * @param username - the client's username.
-     * @param password - the client's password.
+     * @param username - this client's username.
+     * @param password - this client's password.
      */
     public Client(String username,String password){
+        this.username=username;
+        this.password=password;
+        accounts=new ArrayList<>();
+        accounts.add("X");
+        transactions=new HashSet<>();
+        clientID="";
+        dateOpened=LocalDate.now();
+    }
+    /**
+     * Modified version of this class's basic constructor.
+     * @param username - this client's username.
+     * @param password - this client's password
+     * @param test - if this will be used for a test.
+     */
+    public Client(String username, String password,boolean test) {
         this.username=username;
         this.password=password;
         accounts=new ArrayList<>();
@@ -163,6 +178,6 @@ public abstract class Client implements Maintainable{
      * @return the amount they must pay.
      */
     protected int calculateTotalMonthlyFee(){
-        return monthlyFee*accounts.size();
+        return monthlyFee*(accounts.size()-1);
     }
 }

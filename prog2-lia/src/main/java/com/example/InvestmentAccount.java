@@ -24,6 +24,14 @@ public class InvestmentAccount extends EarningsAccount{
         interestRate=0.05;
         dateOpened=LocalDate.now();
     }
+    
+    public InvestmentAccount(double balance) throws InvalidTypeException {
+        super(balance);
+        accountID=IdCreator.createID(2,3);
+        interestRate=0.05;
+        dateOpened=LocalDate.now();
+    }
+
     /**
      * Gets the date this account was opened.
      * @return this accounts opening date.

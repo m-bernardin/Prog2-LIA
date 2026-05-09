@@ -32,7 +32,25 @@ public class StudentClient extends StandardClient{
         }
         setClientID(ID);
         statusValid=false;
+        monthlyFee=0;
     }
+    // TODO javadoc
+    public StudentClient(String username, String password, boolean test, String name, String contact) throws InvalidTypeException {
+        super(username, password, test, name, contact);
+        String ID="";
+        if(!test){
+            boolean validID=false;
+            while(!validID){
+                ID=IdCreator.createID(1,2);
+                if(!App.driver.exists(ID))validID=true;
+            }
+        }
+        else ID=IdCreator.createID(1,2);
+        setClientID(ID);
+        statusValid=false;
+        monthlyFee=0;
+    }
+
     /**
      * Gets the date this client's full time student status expires.
      * @return the date this client's full time student status expires.

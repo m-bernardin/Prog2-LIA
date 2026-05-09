@@ -35,6 +35,22 @@ public class CorporateClient extends PremiumClient{
         }
         setClientID(ID);
     }
+    // TODO javadoc
+    public CorporateClient(String username, String password, boolean test, boolean rewardsProgramMember,String companyName, ArrayList<String> clientManagerContacts) throws InvalidTypeException {
+        super(username, password, test, rewardsProgramMember);
+        this.companyName = companyName;
+        this.clientManagerContacts = clientManagerContacts;
+        String ID="";
+        if(!test){
+            boolean validID=false;
+            while(!validID){
+                ID=IdCreator.createID(1,3);
+                if(!App.driver.exists(ID))validID=true;
+            }
+        }
+        else ID=IdCreator.createID(1,3);
+        setClientID(ID);
+    }
     /**
      * Gets the name of this company.
      * @return the name of this company.

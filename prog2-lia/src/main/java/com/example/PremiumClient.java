@@ -14,6 +14,12 @@ public abstract class PremiumClient extends Client{
         super(username, password);
         this.rewardsProgramMember=rewardsProgramMember;
     }
+    // TODO javadoc
+    public PremiumClient(String username, String password, boolean test, boolean rewardsProgramMember) {
+        super(username, password, test);
+        this.rewardsProgramMember = rewardsProgramMember;
+    }
+
     /**
      * If this user has opted into the rewards program.
      */

@@ -37,6 +37,23 @@ public class VipClient extends PremiumClient{
         setClientID(ID);
         monthlyFee=0;
     }
+    // TODO javadoc
+    public VipClient(String username, String password, boolean test, boolean rewardsProgramMember, String name,String contact) throws InvalidTypeException {
+        super(username, password, test, rewardsProgramMember);
+        this.name = name;
+        this.contact = contact;
+        String ID="";
+        if(!test){
+            boolean validID=false;
+            while(!validID){
+                ID=IdCreator.createID(1,2);
+                if(!App.driver.exists(ID))validID=true;
+            }
+        }
+        else ID=IdCreator.createID(1,2);
+        setClientID(ID);
+        monthlyFee=0;
+    }
     /**
      * Gets this client's name.
      * @return this client's name.

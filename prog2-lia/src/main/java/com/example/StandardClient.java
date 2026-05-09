@@ -24,6 +24,12 @@ public abstract class StandardClient extends Client{
         this.name = name;
         this.contact = contact;
     }
+    // TODO javadoc
+    public StandardClient(String username, String password, boolean test, String name, String contact) {
+        super(username, password, test);
+        this.name = name;
+        this.contact = contact;
+    }
     /**
      * Gets this client's name.
      * @return this client's name.

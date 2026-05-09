@@ -92,5 +92,23 @@
       "day": 7
     },
     "monthlyFee": 10
+  },
+  {
+    "statusValid": false,
+    "name": "Thomas \"Tom Ska\" Ridgwell",
+    "contact": "don\u0027t.",
+    "clientID": "cMFGtS-3y",
+    "accounts": [
+      "X"
+    ],
+    "username": "asdf",
+    "password": "asdf01",
+    "transactions": [],
+    "dateOpened": {
+      "year": 2026,
+      "month": 5,
+      "day": 9
+    },
+    "monthlyFee": 10
   }
 ]

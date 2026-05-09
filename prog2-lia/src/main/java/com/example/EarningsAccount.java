@@ -15,6 +15,11 @@ public abstract class EarningsAccount extends Account implements InterestBearing
     public EarningsAccount() throws InvalidTypeException {
         super();
     }
+    // TODO javadoc
+    public EarningsAccount(double balance) throws InvalidTypeException {
+        super(balance);
+    }
+
     /**
      * Gets the rate at which this account earns interest.
      * @return this accounts interestRate.

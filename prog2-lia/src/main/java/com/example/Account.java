@@ -20,6 +20,10 @@ public abstract class Account {
     public Account() throws InvalidTypeException{
         balance=0;
     }
+    // TODO javadoc
+    public Account(double balance) throws InvalidTypeException{
+        this.balance = balance;
+    }
     /**
      * Returns this accounts current balance.
      * @return balance
