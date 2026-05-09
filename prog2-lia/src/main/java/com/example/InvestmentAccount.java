@@ -24,7 +24,11 @@ public class InvestmentAccount extends EarningsAccount{
         interestRate=0.05;
         dateOpened=LocalDate.now();
     }
-    
+    /**
+     * Constructor for this class which bypasses duplicate ID check. Otherwise identical to main constructor for this class.
+     * @param balance - this account's starting balance.
+     * @throws InvalidTypeException if something goes wrong.
+     */
     public InvestmentAccount(double balance) throws InvalidTypeException {
         super(balance);
         accountID=IdCreator.createID(2,3);

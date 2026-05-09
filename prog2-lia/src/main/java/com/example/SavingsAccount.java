@@ -17,13 +17,16 @@ public class SavingsAccount extends EarningsAccount{
         }
         interestRate=0.02;
     }
-    // TODO javadoc
+    /**
+     * Constructor for this class which bypasses duplicate ID check. Otherwise identical to main constructor for this class.
+     * @param balance - this account's starting balance.
+     * @throws InvalidTypeException if something goes wrong.
+     */
     public SavingsAccount(double balance) throws InvalidTypeException {
         super(balance);
         accountID=IdCreator.createID(2,2);
         interestRate=0.02;
     }
-
     /**
      * Withdraws a specified amount from this account.
      * @param amnt - the amount to be withdrawn.

@@ -27,6 +27,7 @@ public class App extends Application {
      * @param stage - the primary stage for this app.
      * @throws IOException if something goes wrong..
      */
+    @SuppressWarnings("exports")
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("login"), 640, 480);

@@ -37,7 +37,16 @@ public class VipClient extends PremiumClient{
         setClientID(ID);
         monthlyFee=0;
     }
-    // TODO javadoc
+    /**
+     * Constructor for this class which bypasses duplicate ID check. Otherwise identical to main constructor for this class.
+     * @param username - this client's username.
+     * @param password - this client's password.
+     * @param test - if this will be used for a test.
+     * @param rewardsProgramMember - if this client has opted into the rewards program.
+     * @param name - this client's name.
+     * @param contact - this client's contact.
+     * @throws InvalidTypeException if somethin goes wrong.
+     */
     public VipClient(String username, String password, boolean test, boolean rewardsProgramMember, String name,String contact) throws InvalidTypeException {
         super(username, password, test, rewardsProgramMember);
         this.name = name;

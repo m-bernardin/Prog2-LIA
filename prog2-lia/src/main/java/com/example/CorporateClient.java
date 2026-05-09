@@ -35,7 +35,16 @@ public class CorporateClient extends PremiumClient{
         }
         setClientID(ID);
     }
-    // TODO javadoc
+    /**
+     * Constructor for this class which bypasses duplicate ID check. Otherwise identical to main constructor for this class.
+     * @param username - the client's username.
+     * @param password - the client's password.
+     * @param test - if this wil be used for a test.
+     * @param rewardsProgramMember - if the client has opted into the rewards program.
+     * @param companyName - the name of this company.
+     * @param clientManagerContacts - list of contacts for this company's finance managers; Essentially those who may access this account.
+     * @throws InvalidTypeException if the IdCreator recieved an invalid type.
+     */
     public CorporateClient(String username, String password, boolean test, boolean rewardsProgramMember,String companyName, ArrayList<String> clientManagerContacts) throws InvalidTypeException {
         super(username, password, test, rewardsProgramMember);
         this.companyName = companyName;

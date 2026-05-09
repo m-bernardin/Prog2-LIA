@@ -15,11 +15,14 @@ public abstract class EarningsAccount extends Account implements InterestBearing
     public EarningsAccount() throws InvalidTypeException {
         super();
     }
-    // TODO javadoc
+    /**
+     * Constructor for this class which bypasses duplicate ID check. Otherwise identical to main constructor for this class.
+     * @param balance - this account's starting balance.
+     * @throws InvalidTypeException if something goes wrong.
+     */
     public EarningsAccount(double balance) throws InvalidTypeException {
         super(balance);
     }
-
     /**
      * Gets the rate at which this account earns interest.
      * @return this accounts interestRate.

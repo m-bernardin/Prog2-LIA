@@ -54,7 +54,9 @@ public class Transaction{
         this.receivingAccount = receivingAccount;
         this.givingAccount = givingAccount;
     }
-    // TODO javadoc
+    /**
+     * Creates a blank transaction. Automatically sets all fields to default, uncharacteristic information.
+     */
     public Transaction() {
         amnt=0;
         receivingAccount=null;
@@ -63,7 +65,14 @@ public class Transaction{
         simpleDate=LocalDate.ofEpochDay(0);
         transactionID="x";
     }
-    // TODO javadoc
+    /**
+     * Constructor for this class which bypasses duplicate ID check. Otherwise identical to main constructor for this class.
+     * @param amnt - the amount involved in this transaction.
+     * @param receivingAccount - the ID of the account on the recieving end of this transaction, where applicable.
+     * @param givingAccount - the ID of the account on the giving end of this tr ansaction, where applicable.
+     * @param test - if this is for a test. Allows this constructor to be differientiated from the main constructor for this class.
+     * @throws InvalidTypeException if something goes wrong.
+     */
     public Transaction(double amnt, String receivingAccount, String givingAccount,boolean test) throws InvalidTypeException {
         transactionID=IdCreator.createID(3,0);
         date=LocalDateTime.now();

@@ -34,7 +34,15 @@ public class StudentClient extends StandardClient{
         statusValid=false;
         monthlyFee=0;
     }
-    // TODO javadoc
+    /**
+     * Constructor for this class which bypasses duplicate ID check. Otherwise identical to main constructor for this class.
+     * @param username - this client's username.
+     * @param password - this client's password.
+     * @param test - if this will be used for a test.
+     * @param name - this client's name.
+     * @param contact - this client's contact.
+     * @throws InvalidTypeException if something goes wrong.
+     */
     public StudentClient(String username, String password, boolean test, String name, String contact) throws InvalidTypeException {
         super(username, password, test, name, contact);
         String ID="";

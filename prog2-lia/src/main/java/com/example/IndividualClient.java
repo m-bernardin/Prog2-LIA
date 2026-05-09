@@ -21,7 +21,15 @@ public class IndividualClient extends StandardClient{
         }
         setClientID(ID);
     }
-    // TODO javadoc
+    /**
+     * Constructor for this class which bypasses duplicate ID check. Otherwise identical to main constructor for this class.
+     * @param username - the client's username.
+     * @param password - the client's password.
+     * @param test - if this will be used for a test.
+     * @param name - the client's name.
+     * @param contact - the client's contact.
+     * @throws InvalidTypeException if something goes wrong.
+     */
     public IndividualClient(String username, String password, boolean test, String name, String contact) throws InvalidTypeException {
         super(username, password, test, name, contact);
         String ID="";

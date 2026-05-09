@@ -15,12 +15,15 @@ public class ChequeingAccount extends Account{
             if(!App.driver.exists(accountID))validID=true;
         }
     }
-    // TODO javadoc
+    /**
+     * Constructor for this class which bypasses duplicate ID check. Otherwise identical to main constructor for this class.
+     * @param balance - this account's starting balance.
+     * @throws InvalidTypeException if something goes wrong.
+     */
     public ChequeingAccount(double balance) throws InvalidTypeException {
         super(balance);
         accountID=IdCreator.createID(2,1);
     }
-
     /**
      * Withdraws a specified amount from this account.
      * @param amnt - the amount to be withdrawn.

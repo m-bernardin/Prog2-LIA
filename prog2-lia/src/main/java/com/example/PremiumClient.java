@@ -14,12 +14,17 @@ public abstract class PremiumClient extends Client{
         super(username, password);
         this.rewardsProgramMember=rewardsProgramMember;
     }
-    // TODO javadoc
+    /**
+     * Constructor for this class which bypasses duplicate ID check. Otherwise identical to main constructor for this class.
+     * @param username - this client's username.
+     * @param password - this client's password.
+     * @param test - if this will be used for a test.
+     * @param rewardsProgramMember - if this client has opted into the rewards program.
+     */
     public PremiumClient(String username, String password, boolean test, boolean rewardsProgramMember) {
         super(username, password, test);
         this.rewardsProgramMember = rewardsProgramMember;
     }
-
     /**
      * If this user has opted into the rewards program.
      */

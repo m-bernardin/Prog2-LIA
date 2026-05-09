@@ -20,7 +20,11 @@ public abstract class Account {
     public Account() throws InvalidTypeException{
         balance=0;
     }
-    // TODO javadoc
+    /**
+     * Constructor for this class which bypasses duplicate ID check. Otherwise identical to main constructor for this class.
+     * @param balance - this account's starting balance.
+     * @throws InvalidTypeException if something goes wrong.
+     */
     public Account(double balance) throws InvalidTypeException{
         this.balance = balance;
     }
