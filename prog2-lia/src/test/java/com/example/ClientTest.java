@@ -46,57 +46,38 @@ public class ClientTest {
         vip1=null;
         sampleAccounts=null;
     }
-    // @Test
-    public void testCalculateTotalMonthlyFeeBase(){
-        build();
-        System.out.println("**accounts: "+individual1.getAccounts());
-        assertEquals(0,individual1.calculateTotalMonthlyFee());
-        individual1.addAccount(sampleAccounts.get(0).getAccountID());
-        assertEquals(10, individual1.calculateTotalMonthlyFee());
-        individual1.addAccount(sampleAccounts.get(1).getAccountID());
-        assertEquals(20,individual1.calculateTotalMonthlyFee());
-        teardown();
-    }
     @Test
     public void testCalculateTotalMonthlyFeeEmpty(){
-        build();
-        System.out.println("**accounts: "+individual1.getAccounts());
         assertEquals(0,individual1.calculateTotalMonthlyFee());
-        teardown();
     }
     @Test
     public void testCalculateTotalMonthlyFeeOne(){
-        build();
         individual1.addAccount(sampleAccounts.get(0).getAccountID());
-        System.out.println("**accounts: "+individual1.getAccounts());
         assertEquals(10, individual1.calculateTotalMonthlyFee());
-        teardown();
     }
     @Test
     public void testCalculateTotalMonthlyFeeTwo(){
-        build();
         individual1.addAccount(sampleAccounts.get(0).getAccountID());
         individual1.addAccount(sampleAccounts.get(1).getAccountID());
-        System.out.println("**accounts: "+individual1.getAccounts());
         assertEquals(20,individual1.calculateTotalMonthlyFee());
-        teardown();
     }
     @Test
     public void testMonthlyFeesWaivedStudent(){
-        build();
         student1.addAccount(sampleAccounts.get(0).getAccountID());
         assertEquals(0,student1.calculateTotalMonthlyFee());
         student1.addAccount(sampleAccounts.get(1).getAccountID());
         assertEquals(0,student1.calculateTotalMonthlyFee());
-        teardown();
     }
     @Test
     public void testMonthlyFeesWaivedVip(){
-        build();
         vip1.addAccount(sampleAccounts.get(0).getAccountID());
         assertEquals(0,vip1.calculateTotalMonthlyFee());
         vip1.addAccount(sampleAccounts.get(1).getAccountID());
         assertEquals(0,vip1.calculateTotalMonthlyFee());
-        teardown();
+    }
+    @Test
+    public void testAddManager(){
+        build();
+        
     }
 }

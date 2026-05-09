@@ -1,68 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.example.ClientTest" time="0.027" tests="6" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.example.ClientTest" time="0.064" tests="6" errors="0" skipped="0" failures="0">
   <properties>
-    <property name="jansi.mode" value="force"/>
-    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
-    <property name="java.vm.version" value="25.0.1+8-LTS-27"/>
-    <property name="sun.boot.library.path" value="/usr/lib/jvm/jdk-25.0.1-oracle-x64/lib"/>
-    <property name="maven.multiModuleProjectDirectory" value="/home/mathieu/GitHub/Prog2-LIA/prog2-lia"/>
-    <property name="java.vm.vendor" value="Oracle Corporation"/>
-    <property name="java.vendor.url" value="https://java.oracle.com/"/>
-    <property name="guice.disable.misplaced.annotation.check" value="true"/>
-    <property name="path.separator" value=":"/>
-    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
-    <property name="user.country" value="CA"/>
-    <property name="sun.java.launcher" value="SUN_STANDARD"/>
-    <property name="stdin.encoding" value="UTF-8"/>
-    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="/home/mathieu/GitHub/Prog2-LIA/prog2-lia"/>
-    <property name="java.vm.compressedOopsMode" value="Zero based"/>
-    <property name="java.runtime.version" value="25.0.1+8-LTS-27"/>
-    <property name="os.arch" value="amd64"/>
-    <property name="java.io.tmpdir" value="/tmp"/>
-    <property name="line.separator" value="&#10;"/>
-    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
-    <property name="stderr.encoding" value="UTF-8"/>
-    <property name="os.name" value="Linux"/>
-    <property name="classworlds.conf" value="/usr/share/maven/bin/m2.conf"/>
-    <property name="sun.jnu.encoding" value="UTF-8"/>
-    <property name="stdout.encoding" value="UTF-8"/>
-    <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib"/>
-    <property name="maven.conf" value="/usr/share/maven/conf"/>
-    <property name="jdk.debug" value="release"/>
-    <property name="java.class.version" value="69.0"/>
-    <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="os.version" value="6.12.85+deb13-amd64"/>
-    <property name="library.jansi.path" value="/usr/share/maven/lib/jansi-native"/>
-    <property name="user.home" value="/home/mathieu"/>
-    <property name="user.timezone" value="America/Toronto"/>
-    <property name="file.encoding" value="UTF-8"/>
     <property name="java.specification.version" value="25"/>
-    <property name="user.name" value="mathieu"/>
-    <property name="java.class.path" value="/usr/share/maven/boot/plexus-classworlds-2.x.jar"/>
-    <property name="org.slf4j.simpleLogger.defaultLogLevel" value="debug"/>
-    <property name="java.vm.specification.version" value="25"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/test-classes:/home/mathieu/.m2/repository/org/openjfx/javafx-controls/13/javafx-controls-13.jar:/home/mathieu/.m2/repository/org/openjfx/javafx-graphics/13/javafx-graphics-13.jar:/home/mathieu/.m2/repository/org/openjfx/javafx-base/13/javafx-base-13.jar:/home/mathieu/.m2/repository/org/openjfx/javafx-fxml/13/javafx-fxml-13.jar:/home/mathieu/.m2/repository/org/junit/jupiter/junit-jupiter-api/6.0.3/junit-jupiter-api-6.0.3.jar:/home/mathieu/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/home/mathieu/.m2/repository/org/junit/platform/junit-platform-commons/6.0.3/junit-platform-commons-6.0.3.jar:/home/mathieu/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/mathieu/.m2/repository/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar:/home/mathieu/.m2/repository/org/junit/jupiter/junit-jupiter-engine/6.0.3/junit-jupiter-engine-6.0.3.jar:/home/mathieu/.m2/repository/org/junit/platform/junit-platform-engine/6.0.3/junit-platform-engine-6.0.3.jar:"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher test -X"/>
-    <property name="java.home" value="/usr/lib/jvm/jdk-25.0.1-oracle-x64"/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="America/Toronto"/>
+    <property name="os.name" value="Linux"/>
+    <property name="java.vm.specification.version" value="25"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="CA"/>
+    <property name="sun.boot.library.path" value="/usr/lib/jvm/jdk-25.0.1-oracle-x64/lib"/>
+    <property name="sun.java.command" value="org.apache.maven.surefire.booter.ForkedBooter /home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/surefire 2026-05-09T15-53-50_394-jvmRun1 surefire-20260509155350507_1tmp surefire_0-20260509155350507_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/test-classes:/home/mathieu/.m2/repository/org/openjfx/javafx-controls/13/javafx-controls-13.jar:/home/mathieu/.m2/repository/org/openjfx/javafx-graphics/13/javafx-graphics-13.jar:/home/mathieu/.m2/repository/org/openjfx/javafx-base/13/javafx-base-13.jar:/home/mathieu/.m2/repository/org/openjfx/javafx-fxml/13/javafx-fxml-13.jar:/home/mathieu/.m2/repository/org/junit/jupiter/junit-jupiter-api/6.0.3/junit-jupiter-api-6.0.3.jar:/home/mathieu/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/home/mathieu/.m2/repository/org/junit/platform/junit-platform-commons/6.0.3/junit-platform-commons-6.0.3.jar:/home/mathieu/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/mathieu/.m2/repository/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar:/home/mathieu/.m2/repository/org/junit/jupiter/junit-jupiter-engine/6.0.3/junit-jupiter-engine-6.0.3.jar:/home/mathieu/.m2/repository/org/junit/platform/junit-platform-engine/6.0.3/junit-platform-engine-6.0.3.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/home/mathieu"/>
     <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
-    <property name="java.vm.info" value="mixed mode, sharing"/>
-    <property name="java.version" value="25.0.1"/>
-    <property name="native.encoding" value="UTF-8"/>
-    <property name="java.vendor" value="Oracle Corporation"/>
-    <property name="maven.home" value="/usr/share/maven"/>
-    <property name="file.separator" value="/"/>
+    <property name="jdk.module.path" value="/home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/classes:/home/mathieu/.m2/repository/org/openjfx/javafx-controls/13/javafx-controls-13-linux.jar:/home/mathieu/.m2/repository/org/openjfx/javafx-graphics/13/javafx-graphics-13-linux.jar:/home/mathieu/.m2/repository/org/openjfx/javafx-base/13/javafx-base-13-linux.jar:/home/mathieu/.m2/repository/org/openjfx/javafx-fxml/13/javafx-fxml-13-linux.jar:/home/mathieu/.m2/repository/com/google/code/gson/gson/2.14.0/gson-2.14.0.jar:/home/mathieu/.m2/repository/com/google/errorprone/error_prone_annotations/2.48.0/error_prone_annotations-2.48.0.jar"/>
     <property name="java.version.date" value="2025-10-21"/>
+    <property name="java.home" value="/usr/lib/jvm/jdk-25.0.1-oracle-x64"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/home/mathieu/GitHub/Prog2-LIA/prog2-lia"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="surefire.real.class.path" value="/home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-booter/3.2.5/surefire-booter-3.2.5.jar:/home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-api/3.2.5/surefire-api-3.2.5.jar:/home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-logger-api/3.2.5/surefire-logger-api-3.2.5.jar:/home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-shared-utils/3.2.5/surefire-shared-utils-3.2.5.jar:/home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-extensions-spi/3.2.5/surefire-extensions-spi-3.2.5.jar:/home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/test-classes:/home/mathieu/.m2/repository/org/openjfx/javafx-controls/13/javafx-controls-13.jar:/home/mathieu/.m2/repository/org/openjfx/javafx-graphics/13/javafx-graphics-13.jar:/home/mathieu/.m2/repository/org/openjfx/javafx-base/13/javafx-base-13.jar:/home/mathieu/.m2/repository/org/openjfx/javafx-fxml/13/javafx-fxml-13.jar:/home/mathieu/.m2/repository/org/junit/jupiter/junit-jupiter-api/6.0.3/junit-jupiter-api-6.0.3.jar:/home/mathieu/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/home/mathieu/.m2/repository/org/junit/platform/junit-platform-commons/6.0.3/junit-platform-commons-6.0.3.jar:/home/mathieu/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/mathieu/.m2/repository/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar:/home/mathieu/.m2/repository/org/junit/jupiter/junit-jupiter-engine/6.0.3/junit-jupiter-engine-6.0.3.jar:/home/mathieu/.m2/repository/org/junit/platform/junit-platform-engine/6.0.3/junit-platform-engine-6.0.3.jar:/home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-junit-platform/3.2.5/surefire-junit-platform-3.2.5.jar:/home/mathieu/.m2/repository/org/apache/maven/surefire/common-java5/3.2.5/common-java5-3.2.5.jar:/home/mathieu/.m2/repository/org/junit/platform/junit-platform-launcher/6.0.3/junit-platform-launcher-6.0.3.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="25.0.1+8-LTS-27"/>
+    <property name="user.name" value="mathieu"/>
+    <property name="stdout.encoding" value="UTF-8"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="6.12.85+deb13-amd64"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="/home/mathieu/.m2/repository"/>
     <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="java.version" value="25.0.1"/>
+    <property name="user.dir" value="/home/mathieu/GitHub/Prog2-LIA/prog2-lia"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="stderr.encoding" value="UTF-8"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="25.0.1+8-LTS-27"/>
+    <property name="stdin.encoding" value="UTF-8"/>
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
-    <property name="sun.cpu.endian" value="little"/>
+    <property name="java.class.version" value="69.0"/>
   </properties>
-  <testcase name="com.example.ClientTest.testCalculateTotalMonthlyFeeBase" classname="com.example.ClientTest" time="0.026"/>
-  <testcase name="com.example.ClientTest.testCalculateTotalMonthlyFeeEmpty" classname="com.example.ClientTest" time="0"/>
-  <testcase name="com.example.ClientTest.testCalculateTotalMonthlyFeeOne" classname="com.example.ClientTest" time="0"/>
-  <testcase name="com.example.ClientTest.testCalculateTotalMonthlyFeeTwo" classname="com.example.ClientTest" time="0"/>
-  <testcase name="com.example.ClientTest.testMonthlyFeesWaivedStudent" classname="com.example.ClientTest" time="0"/>
-  <testcase name="com.example.ClientTest.testMonthlyFeesWaivedVip" classname="com.example.ClientTest" time="0.001"/>
+  <testcase name="testCalculateTotalMonthlyFeeEmpty" classname="com.example.ClientTest" time="0.044"/>
+  <testcase name="testMonthlyFeesWaivedVip" classname="com.example.ClientTest" time="0.001"/>
+  <testcase name="testCalculateTotalMonthlyFeeOne" classname="com.example.ClientTest" time="0.001"/>
+  <testcase name="testCalculateTotalMonthlyFeeTwo" classname="com.example.ClientTest" time="0.001"/>
+  <testcase name="testMonthlyFeesWaivedStudent" classname="com.example.ClientTest" time="0.001"/>
+  <testcase name="testAddManager" classname="com.example.ClientTest" time="0.001"/>
 </testsuite>

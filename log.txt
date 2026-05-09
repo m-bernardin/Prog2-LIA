@@ -99,7 +99,6 @@ OS name: "linux", version: "6.12.85+deb13-amd64", arch: "amd64", family: "unix"
 [[1;36mDEBUG[m] Lifecycle default -> [validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy]
 [[1;36mDEBUG[m] Lifecycle site -> [pre-site, site, post-site, site-deploy]
 [[1;36mDEBUG[m] Creating adapter using nameMapper 'gav' and factory 'rwlock-local'
-[[1;36mDEBUG[m] Using mirror maven-default-http-blocker (http://0.0.0.0/) for apache.snapshots (http://repository.apache.org/snapshots).
 [[1;36mDEBUG[m] Lifecycle clean -> [pre-clean, clean, post-clean]
 [[1;36mDEBUG[m] Lifecycle default -> [validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy]
 [[1;36mDEBUG[m] Lifecycle site -> [pre-site, site, post-site, site-deploy]
@@ -249,10 +248,11 @@ OS name: "linux", version: "6.12.85+deb13-amd64", arch: "amd64", family: "unix"
   <verbose default-value="false">${maven.compiler.verbose}</verbose>
 </configuration>
 [[1;36mDEBUG[m] -----------------------------------------------------------------------
-[[1;36mDEBUG[m] Goal:          org.apache.maven.plugins:maven-surefire-plugin:2.17:test (default-test)
+[[1;36mDEBUG[m] Goal:          org.apache.maven.plugins:maven-surefire-plugin:3.2.5:test (default-test)
 [[1;36mDEBUG[m] Style:         Regular
 [[1;36mDEBUG[m] Configuration: <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
+  <additionalClasspathDependencies>${maven.test.additionalClasspathDependencies}</additionalClasspathDependencies>
   <additionalClasspathElements>${maven.test.additionalClasspath}</additionalClasspathElements>
   <argLine>${argLine}</argLine>
   <basedir default-value="${basedir}"/>
@@ -263,16 +263,26 @@ OS name: "linux", version: "6.12.85+deb13-amd64", arch: "amd64", family: "unix"
   <dependenciesToScan>${dependenciesToScan}</dependenciesToScan>
   <disableXmlReport default-value="false">${disableXmlReport}</disableXmlReport>
   <enableAssertions default-value="true">${enableAssertions}</enableAssertions>
+  <enableProcessChecker>${surefire.enableProcessChecker}</enableProcessChecker>
+  <encoding default-value="${project.reporting.outputEncoding}">${surefire.encoding}</encoding>
+  <excludeJUnit5Engines>${surefire.excludeJUnit5Engines}</excludeJUnit5Engines>
+  <excludedEnvironmentVariables>${surefire.excludedEnvironmentVariables}</excludedEnvironmentVariables>
   <excludedGroups>${excludedGroups}</excludedGroups>
-  <failIfNoSpecifiedTests>${surefire.failIfNoSpecifiedTests}</failIfNoSpecifiedTests>
-  <failIfNoTests>${failIfNoTests}</failIfNoTests>
+  <excludes>${surefire.excludes}</excludes>
+  <excludesFile>${surefire.excludesFile}</excludesFile>
+  <failIfNoSpecifiedTests default-value="true">${surefire.failIfNoSpecifiedTests}</failIfNoSpecifiedTests>
+  <failIfNoTests default-value="false">${failIfNoTests}</failIfNoTests>
+  <failOnFlakeCount default-value="0">${surefire.failOnFlakeCount}</failOnFlakeCount>
   <forkCount default-value="1">${forkCount}</forkCount>
-  <forkMode default-value="once">${forkMode}</forkMode>
+  <forkNode>${surefire.forkNode}</forkNode>
+  <forkedProcessExitTimeoutInSeconds default-value="30">${surefire.exitTimeout}</forkedProcessExitTimeoutInSeconds>
   <forkedProcessTimeoutInSeconds>${surefire.timeout}</forkedProcessTimeoutInSeconds>
   <groups>${groups}</groups>
+  <includeJUnit5Engines>${surefire.includeJUnit5Engines}</includeJUnit5Engines>
+  <includes>${surefire.includes}</includes>
+  <includesFile>${surefire.includesFile}</includesFile>
   <junitArtifactName default-value="junit:junit">${junitArtifactName}</junitArtifactName>
   <jvm>${jvm}</jvm>
-  <localRepository default-value="${localRepository}"/>
   <objectFactory>${objectFactory}</objectFactory>
   <parallel>${parallel}</parallel>
   <parallelMavenExecution default-value="${session.parallel}"/>
@@ -283,17 +293,26 @@ OS name: "linux", version: "6.12.85+deb13-amd64", arch: "amd64", family: "unix"
   <pluginArtifactMap>${plugin.artifactMap}</pluginArtifactMap>
   <pluginDescriptor default-value="${plugin}"/>
   <printSummary default-value="true">${surefire.printSummary}</printSummary>
+  <project default-value="${project}"/>
   <projectArtifactMap>${project.artifactMap}</projectArtifactMap>
+  <projectBuildDirectory default-value="${project.build.directory}"/>
   <redirectTestOutputToFile default-value="false">${maven.test.redirectTestOutputToFile}</redirectTestOutputToFile>
-  <remoteRepositories default-value="${project.pluginArtifactRepositories}"/>
   <reportFormat default-value="brief">${surefire.reportFormat}</reportFormat>
   <reportNameSuffix default-value="">${surefire.reportNameSuffix}</reportNameSuffix>
   <reportsDirectory default-value="${project.build.directory}/surefire-reports"/>
+  <rerunFailingTestsCount default-value="0">${surefire.rerunFailingTestsCount}</rerunFailingTestsCount>
   <reuseForks default-value="true">${reuseForks}</reuseForks>
-  <runOrder default-value="filesystem"/>
+  <runOrder default-value="filesystem">${surefire.runOrder}</runOrder>
+  <runOrderRandomSeed>${surefire.runOrder.random.seed}</runOrderRandomSeed>
+  <session default-value="${session}"/>
+  <shutdown default-value="exit">${surefire.shutdown}</shutdown>
   <skip default-value="false">${maven.test.skip}</skip>
+  <skipAfterFailureCount default-value="0">${surefire.skipAfterFailureCount}</skipAfterFailureCount>
   <skipExec>${maven.test.skip.exec}</skipExec>
   <skipTests default-value="false">${skipTests}</skipTests>
+  <suiteXmlFiles>${surefire.suiteXmlFiles}</suiteXmlFiles>
+  <systemPropertiesFile>${surefire.systemPropertiesFile}</systemPropertiesFile>
+  <tempDir default-value="surefire">${tempDir}</tempDir>
   <test>${test}</test>
   <testClassesDirectory default-value="${project.build.testOutputDirectory}"/>
   <testFailureIgnore default-value="false">${maven.test.failure.ignore}</testFailureIgnore>
@@ -303,17 +322,16 @@ OS name: "linux", version: "6.12.85+deb13-amd64", arch: "amd64", family: "unix"
   <threadCountClasses default-value="0">${threadCountClasses}</threadCountClasses>
   <threadCountMethods default-value="0">${threadCountMethods}</threadCountMethods>
   <threadCountSuites default-value="0">${threadCountSuites}</threadCountSuites>
-  <trimStackTrace default-value="true">${trimStackTrace}</trimStackTrace>
+  <trimStackTrace default-value="false">${trimStackTrace}</trimStackTrace>
   <useFile default-value="true">${surefire.useFile}</useFile>
   <useManifestOnlyJar default-value="true">${surefire.useManifestOnlyJar}</useManifestOnlyJar>
+  <useModulePath default-value="true">${surefire.useModulePath}</useModulePath>
   <useSystemClassLoader default-value="true">${surefire.useSystemClassLoader}</useSystemClassLoader>
   <useUnlimitedThreads default-value="false">${useUnlimitedThreads}</useUnlimitedThreads>
   <workingDirectory>${basedir}</workingDirectory>
-  <project default-value="${project}"/>
-  <session default-value="${session}"/>
 </configuration>
 [[1;36mDEBUG[m] =======================================================================
-[[1;36mDEBUG[m] Dependency collection stats {ConflictMarker.analyzeTime=345239, ConflictMarker.markTime=85480, ConflictMarker.nodeCount=35, ConflictIdSorter.graphTime=199194, ConflictIdSorter.topsortTime=216287, ConflictIdSorter.conflictIdCount=17, ConflictIdSorter.conflictIdCycleCount=4, ConflictResolver.totalTime=3095774, ConflictResolver.conflictItemCount=29, DfDependencyCollector.collectTime=42024336, DfDependencyCollector.transformTime=5075392}
+[[1;36mDEBUG[m] Dependency collection stats {ConflictMarker.analyzeTime=296446, ConflictMarker.markTime=77305, ConflictMarker.nodeCount=35, ConflictIdSorter.graphTime=174698, ConflictIdSorter.topsortTime=166422, ConflictIdSorter.conflictIdCount=17, ConflictIdSorter.conflictIdCycleCount=4, ConflictResolver.totalTime=2306776, ConflictResolver.conflictItemCount=29, DfDependencyCollector.collectTime=32963889, DfDependencyCollector.transformTime=3856081}
 [[1;36mDEBUG[m] com.example:prog2-lia:jar:1.0
 [[1;36mDEBUG[m]    org.openjfx:javafx-controls:jar:13:compile
 [[1;36mDEBUG[m]       org.openjfx:javafx-controls:jar:linux:13:compile
@@ -334,7 +352,7 @@ OS name: "linux", version: "6.12.85+deb13-amd64", arch: "amd64", family: "unix"
 [[1;36mDEBUG[m]       org.junit.platform:junit-platform-engine:jar:6.0.3:test
 [[1;34mINFO[m] 
 [[1;34mINFO[m] [1m--- [0;32mresources:3.3.1:resources[m [1m(default-resources)[m @ [36mprog2-lia[0;1m ---[m
-[[1;36mDEBUG[m] Dependency collection stats {ConflictMarker.analyzeTime=44203, ConflictMarker.markTime=71956, ConflictMarker.nodeCount=13, ConflictIdSorter.graphTime=16030, ConflictIdSorter.topsortTime=16040, ConflictIdSorter.conflictIdCount=9, ConflictIdSorter.conflictIdCycleCount=0, ConflictResolver.totalTime=388900, ConflictResolver.conflictItemCount=13, DfDependencyCollector.collectTime=43827512, DfDependencyCollector.transformTime=559691}
+[[1;36mDEBUG[m] Dependency collection stats {ConflictMarker.analyzeTime=48952, ConflictMarker.markTime=72726, ConflictMarker.nodeCount=13, ConflictIdSorter.graphTime=12183, ConflictIdSorter.topsortTime=14457, ConflictIdSorter.conflictIdCount=9, ConflictIdSorter.conflictIdCycleCount=0, ConflictResolver.totalTime=253575, ConflictResolver.conflictItemCount=13, DfDependencyCollector.collectTime=34027004, DfDependencyCollector.transformTime=419246}
 [[1;36mDEBUG[m] org.apache.maven.plugins:maven-resources-plugin:jar:3.3.1
 [[1;36mDEBUG[m]    org.codehaus.plexus:plexus-interpolation:jar:1.26:runtime
 [[1;36mDEBUG[m]    org.codehaus.plexus:plexus-utils:jar:3.5.1:compile
@@ -454,7 +472,7 @@ OS name: "linux", version: "6.12.85+deb13-amd64", arch: "amd64", family: "unix"
 [[1;36mDEBUG[m] library.jansi.path: /usr/share/maven/lib/jansi-native
 [[1;36mDEBUG[m] line.separator: 
 
-[[1;36mDEBUG[m] maven.build.timestamp: 2026-05-09T19:33:02Z
+[[1;36mDEBUG[m] maven.build.timestamp: 2026-05-09T19:53:49Z
 [[1;36mDEBUG[m] maven.build.version: Apache Maven 3.9.9
 [[1;36mDEBUG[m] maven.compiler.source: 11
 [[1;36mDEBUG[m] maven.compiler.target: 11
@@ -540,9 +558,10 @@ includes []
 [[1;36mDEBUG[m] no user filter components
 [[1;34mINFO[m] 
 [[1;34mINFO[m] [1m--- [0;32mcompiler:3.8.0:compile[m [1m(default-compile)[m @ [36mprog2-lia[0;1m ---[m
+[[1;36mDEBUG[m] Using mirror maven-default-http-blocker (http://0.0.0.0/) for apache.snapshots (http://repository.apache.org/snapshots).
 [[1;36mDEBUG[m] Using mirror maven-default-http-blocker (http://0.0.0.0/) for codehaus.snapshots (http://snapshots.repository.codehaus.org).
 [[1;36mDEBUG[m] Using mirror maven-default-http-blocker (http://0.0.0.0/) for ow2-snapshot (http://repository.ow2.org/nexus/content/repositories/snapshots).
-[[1;36mDEBUG[m] Dependency collection stats {ConflictMarker.analyzeTime=347603, ConflictMarker.markTime=176832, ConflictMarker.nodeCount=118, ConflictIdSorter.graphTime=95729, ConflictIdSorter.topsortTime=38042, ConflictIdSorter.conflictIdCount=45, ConflictIdSorter.conflictIdCycleCount=0, ConflictResolver.totalTime=1733466, ConflictResolver.conflictItemCount=72, DfDependencyCollector.collectTime=178758843, DfDependencyCollector.transformTime=2418853}
+[[1;36mDEBUG[m] Dependency collection stats {ConflictMarker.analyzeTime=311264, ConflictMarker.markTime=218740, ConflictMarker.nodeCount=118, ConflictIdSorter.graphTime=135074, ConflictIdSorter.topsortTime=47038, ConflictIdSorter.conflictIdCount=45, ConflictIdSorter.conflictIdCycleCount=0, ConflictResolver.totalTime=1585473, ConflictResolver.conflictItemCount=72, DfDependencyCollector.collectTime=119051253, DfDependencyCollector.transformTime=2320682}
 [[1;36mDEBUG[m] org.apache.maven.plugins:maven-compiler-plugin:jar:3.8.0
 [[1;36mDEBUG[m]    org.apache.maven:maven-plugin-api:jar:3.0:compile
 [[1;36mDEBUG[m]       org.apache.maven:maven-model:jar:3.0:compile
@@ -738,7 +757,7 @@ includes []
 [[1;36mDEBUG[m] library.jansi.path: /usr/share/maven/lib/jansi-native
 [[1;36mDEBUG[m] line.separator: 
 
-[[1;36mDEBUG[m] maven.build.timestamp: 2026-05-09T19:33:02Z
+[[1;36mDEBUG[m] maven.build.timestamp: 2026-05-09T19:53:49Z
 [[1;36mDEBUG[m] maven.build.version: Apache Maven 3.9.9
 [[1;36mDEBUG[m] maven.compiler.source: 11
 [[1;36mDEBUG[m] maven.compiler.target: 11
@@ -854,92 +873,111 @@ includes []
 [[1;34mINFO[m] Compiling 6 source files to /home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/test-classes
 [[1;36mDEBUG[m] incrementalBuildHelper#afterRebuildExecution
 [[1;34mINFO[m] 
-[[1;34mINFO[m] [1m--- [0;32msurefire:2.17:test[m [1m(default-test)[m @ [36mprog2-lia[0;1m ---[m
-[[1;36mDEBUG[m] Using mirror maven-default-http-blocker (http://0.0.0.0/) for apache.snapshots (http://people.apache.org/repo/m2-snapshot-repository).
-[[1;36mDEBUG[m] Using mirror maven-default-http-blocker (http://0.0.0.0/) for snapshots (http://snapshots.maven.codehaus.org/maven2).
-[[1;36mDEBUG[m] Using mirror maven-default-http-blocker (http://0.0.0.0/) for central (http://repo1.maven.org/maven2).
-[[1;36mDEBUG[m] Dependency collection stats {ConflictMarker.analyzeTime=183154, ConflictMarker.markTime=47189, ConflictMarker.nodeCount=98, ConflictIdSorter.graphTime=94898, ConflictIdSorter.topsortTime=22663, ConflictIdSorter.conflictIdCount=26, ConflictIdSorter.conflictIdCycleCount=0, ConflictResolver.totalTime=643749, ConflictResolver.conflictItemCount=69, DfDependencyCollector.collectTime=53416400, DfDependencyCollector.transformTime=1050273}
-[[1;36mDEBUG[m] org.apache.maven.plugins:maven-surefire-plugin:jar:2.17
-[[1;36mDEBUG[m]    org.apache.maven:maven-plugin-api:jar:2.0.9:compile
-[[1;36mDEBUG[m]    org.apache.maven.surefire:maven-surefire-common:jar:2.17:compile
-[[1;36mDEBUG[m]       org.apache.maven.surefire:surefire-booter:jar:2.17:compile (version managed from default)
-[[1;36mDEBUG[m]       org.apache.maven:maven-artifact:jar:2.0.9:compile (version managed from default)
-[[1;36mDEBUG[m]          org.codehaus.plexus:plexus-utils:jar:1.5.1:compile
-[[1;36mDEBUG[m]       org.apache.maven:maven-plugin-descriptor:jar:2.0.9:compile (version managed from default)
-[[1;36mDEBUG[m]          org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-9-stable-1:compile
-[[1;36mDEBUG[m]             junit:junit:jar:3.8.1:test (scope managed from default) (version managed from default)
-[[1;36mDEBUG[m]       org.apache.maven:maven-project:jar:2.0.9:compile (version managed from default)
-[[1;36mDEBUG[m]          org.apache.maven:maven-settings:jar:2.0.9:compile
-[[1;36mDEBUG[m]          org.apache.maven:maven-profile:jar:2.0.9:compile
-[[1;36mDEBUG[m]          org.apache.maven:maven-artifact-manager:jar:2.0.9:compile
-[[1;36mDEBUG[m]          org.apache.maven:maven-plugin-registry:jar:2.0.9:compile
-[[1;36mDEBUG[m]       org.apache.maven:maven-model:jar:2.0.9:compile (version managed from default)
-[[1;36mDEBUG[m]       org.apache.maven:maven-core:jar:2.0.9:compile (version managed from default) (exclusions managed from default)
-[[1;36mDEBUG[m]          org.apache.maven:maven-plugin-parameter-documenter:jar:2.0.9:compile
-[[1;36mDEBUG[m]          org.apache.maven.reporting:maven-reporting-api:jar:2.0.9:compile (version managed from default)
-[[1;36mDEBUG[m]          org.apache.maven:maven-repository-metadata:jar:2.0.9:compile
-[[1;36mDEBUG[m]          org.apache.maven:maven-error-diagnostics:jar:2.0.9:compile
-[[1;36mDEBUG[m]          org.apache.maven:maven-monitor:jar:2.0.9:compile
-[[1;36mDEBUG[m]          classworlds:classworlds:jar:1.1:compile
-[[1;36mDEBUG[m]       org.apache.commons:commons-lang3:jar:3.1:compile (version managed from default)
-[[1;36mDEBUG[m]    org.apache.maven.surefire:surefire-api:jar:2.17:compile
-[[1;36mDEBUG[m]    org.apache.maven:maven-toolchain:jar:2.0.9:compile
-[[1;36mDEBUG[m]    org.apache.maven.plugin-tools:maven-plugin-annotations:jar:3.2:compile
-[[1;36mDEBUG[m] Created new class realm plugin>org.apache.maven.plugins:maven-surefire-plugin:2.17
-[[1;36mDEBUG[m] Importing foreign packages into class realm plugin>org.apache.maven.plugins:maven-surefire-plugin:2.17
+[[1;34mINFO[m] [1m--- [0;32msurefire:3.2.5:test[m [1m(default-test)[m @ [36mprog2-lia[0;1m ---[m
+[[1;36mDEBUG[m] Using mirror maven-default-http-blocker (http://0.0.0.0/) for jboss-public-repository-group (http://repository.jboss.org/nexus/content/groups/public).
+[[1;36mDEBUG[m] Dependency collection stats {ConflictMarker.analyzeTime=224120, ConflictMarker.markTime=55234, ConflictMarker.nodeCount=78, ConflictIdSorter.graphTime=103954, ConflictIdSorter.topsortTime=40126, ConflictIdSorter.conflictIdCount=39, ConflictIdSorter.conflictIdCycleCount=0, ConflictResolver.totalTime=1127544, ConflictResolver.conflictItemCount=76, DfDependencyCollector.collectTime=109080687, DfDependencyCollector.transformTime=1588259}
+[[1;36mDEBUG[m] org.apache.maven.plugins:maven-surefire-plugin:jar:3.2.5
+[[1;36mDEBUG[m]    org.apache.maven.surefire:maven-surefire-common:jar:3.2.5:compile
+[[1;36mDEBUG[m]       org.apache.maven.surefire:surefire-api:jar:3.2.5:compile
+[[1;36mDEBUG[m]          org.apache.maven.surefire:surefire-logger-api:jar:3.2.5:compile
+[[1;36mDEBUG[m]       org.apache.maven.surefire:surefire-extensions-api:jar:3.2.5:compile
+[[1;36mDEBUG[m]       org.apache.maven.surefire:surefire-booter:jar:3.2.5:compile
+[[1;36mDEBUG[m]          org.apache.maven.surefire:surefire-extensions-spi:jar:3.2.5:compile
+[[1;36mDEBUG[m]       org.eclipse.aether:aether-util:jar:1.0.0.v20140518:compile
+[[1;36mDEBUG[m]          org.eclipse.aether:aether-api:jar:1.0.0.v20140518:compile
+[[1;36mDEBUG[m]       org.apache.maven.shared:maven-common-artifact-filters:jar:3.1.1:compile (version managed from default) (exclusions managed from default)
+[[1;36mDEBUG[m]          org.apache.maven:maven-artifact:jar:3.2.5:provided (scope managed from default) (version managed from default)
+[[1;36mDEBUG[m]             org.codehaus.plexus:plexus-utils:jar:4.0.0:provided (version managed from default)
+[[1;36mDEBUG[m]          org.apache.maven:maven-core:jar:3.2.5:provided (scope managed from default) (version managed from default)
+[[1;36mDEBUG[m]             org.apache.maven:maven-settings:jar:3.2.5:provided (version managed from default)
+[[1;36mDEBUG[m]             org.apache.maven:maven-settings-builder:jar:3.2.5:provided
+[[1;36mDEBUG[m]             org.apache.maven:maven-repository-metadata:jar:3.2.5:provided
+[[1;36mDEBUG[m]             org.apache.maven:maven-model-builder:jar:3.2.5:provided
+[[1;36mDEBUG[m]             org.apache.maven:maven-aether-provider:jar:3.2.5:provided
+[[1;36mDEBUG[m]                org.eclipse.aether:aether-spi:jar:1.0.0.v20140518:provided
+[[1;36mDEBUG[m]             org.eclipse.aether:aether-impl:jar:1.0.0.v20140518:provided
+[[1;36mDEBUG[m]             org.eclipse.sisu:org.eclipse.sisu.plexus:jar:0.9.0.M2:provided (version managed from default)
+[[1;36mDEBUG[m]                javax.annotation:javax.annotation-api:jar:1.2:provided
+[[1;36mDEBUG[m]                javax.enterprise:cdi-api:jar:1.2:provided
+[[1;36mDEBUG[m]                org.eclipse.sisu:org.eclipse.sisu.inject:jar:0.9.0.M2:provided (version managed from default)
+[[1;36mDEBUG[m]             org.sonatype.sisu:sisu-guice:jar:no_aop:3.2.3:provided
+[[1;36mDEBUG[m]                javax.inject:javax.inject:jar:1:provided
+[[1;36mDEBUG[m]                aopalliance:aopalliance:jar:1.0:provided
+[[1;36mDEBUG[m]                com.google.guava:guava:jar:16.0.1:provided
+[[1;36mDEBUG[m]             org.codehaus.plexus:plexus-interpolation:jar:1.21:provided
+[[1;36mDEBUG[m]             org.codehaus.plexus:plexus-classworlds:jar:2.5.2:provided
+[[1;36mDEBUG[m]             org.codehaus.plexus:plexus-component-annotations:jar:1.5.5:provided
+[[1;36mDEBUG[m]             org.sonatype.plexus:plexus-sec-dispatcher:jar:1.3:provided
+[[1;36mDEBUG[m]                org.sonatype.plexus:plexus-cipher:jar:1.4:provided
+[[1;36mDEBUG[m]          org.apache.maven:maven-plugin-api:jar:3.2.5:provided (scope managed from default) (version managed from default)
+[[1;36mDEBUG[m]          commons-io:commons-io:jar:2.15.1:compile (version managed from default)
+[[1;36mDEBUG[m]       org.codehaus.plexus:plexus-java:jar:1.2.0:compile (version managed from default)
+[[1;36mDEBUG[m]          org.ow2.asm:asm:jar:9.6:compile
+[[1;36mDEBUG[m]          com.thoughtworks.qdox:qdox:jar:2.0.3:compile
+[[1;36mDEBUG[m]       org.apache.maven.surefire:surefire-shared-utils:jar:3.2.5:compile
+[[1;36mDEBUG[m] Created new class realm plugin>org.apache.maven.plugins:maven-surefire-plugin:3.2.5
+[[1;36mDEBUG[m] Importing foreign packages into class realm plugin>org.apache.maven.plugins:maven-surefire-plugin:3.2.5
 [[1;36mDEBUG[m]   Imported:  < maven.api
-[[1;36mDEBUG[m] Populating class realm plugin>org.apache.maven.plugins:maven-surefire-plugin:2.17
-[[1;36mDEBUG[m]   Included: org.apache.maven.plugins:maven-surefire-plugin:jar:2.17
-[[1;36mDEBUG[m]   Included: org.apache.maven.surefire:maven-surefire-common:jar:2.17
-[[1;36mDEBUG[m]   Included: org.apache.maven.surefire:surefire-booter:jar:2.17
-[[1;36mDEBUG[m]   Included: org.codehaus.plexus:plexus-utils:jar:1.5.1
-[[1;36mDEBUG[m]   Included: org.apache.maven.reporting:maven-reporting-api:jar:2.0.9
-[[1;36mDEBUG[m]   Included: org.apache.commons:commons-lang3:jar:3.1
-[[1;36mDEBUG[m]   Included: org.apache.maven.surefire:surefire-api:jar:2.17
-[[1;36mDEBUG[m]   Included: org.apache.maven.plugin-tools:maven-plugin-annotations:jar:3.2
-[[1;36mDEBUG[m] Loading mojo org.apache.maven.plugins:maven-surefire-plugin:2.17:test from plugin realm ClassRealm[plugin>org.apache.maven.plugins:maven-surefire-plugin:2.17, parent: jdk.internal.loader.ClassLoaders$AppClassLoader@341d43cd]
-[[1;36mDEBUG[m] Configuring mojo execution 'org.apache.maven.plugins:maven-surefire-plugin:2.17:test:default-test' with basic configurator -->
+[[1;36mDEBUG[m] Populating class realm plugin>org.apache.maven.plugins:maven-surefire-plugin:3.2.5
+[[1;36mDEBUG[m]   Included: org.apache.maven.plugins:maven-surefire-plugin:jar:3.2.5
+[[1;36mDEBUG[m]   Included: org.apache.maven.surefire:maven-surefire-common:jar:3.2.5
+[[1;36mDEBUG[m]   Included: org.apache.maven.surefire:surefire-api:jar:3.2.5
+[[1;36mDEBUG[m]   Included: org.apache.maven.surefire:surefire-logger-api:jar:3.2.5
+[[1;36mDEBUG[m]   Included: org.apache.maven.surefire:surefire-extensions-api:jar:3.2.5
+[[1;36mDEBUG[m]   Included: org.apache.maven.surefire:surefire-booter:jar:3.2.5
+[[1;36mDEBUG[m]   Included: org.apache.maven.surefire:surefire-extensions-spi:jar:3.2.5
+[[1;36mDEBUG[m]   Included: org.apache.maven.shared:maven-common-artifact-filters:jar:3.1.1
+[[1;36mDEBUG[m]   Included: commons-io:commons-io:jar:2.15.1
+[[1;36mDEBUG[m]   Included: org.codehaus.plexus:plexus-java:jar:1.2.0
+[[1;36mDEBUG[m]   Included: org.ow2.asm:asm:jar:9.6
+[[1;36mDEBUG[m]   Included: com.thoughtworks.qdox:qdox:jar:2.0.3
+[[1;36mDEBUG[m]   Included: org.apache.maven.surefire:surefire-shared-utils:jar:3.2.5
+[[1;36mDEBUG[m] Loading mojo org.apache.maven.plugins:maven-surefire-plugin:3.2.5:test from plugin realm ClassRealm[plugin>org.apache.maven.plugins:maven-surefire-plugin:3.2.5, parent: jdk.internal.loader.ClassLoaders$AppClassLoader@341d43cd]
+[[1;36mDEBUG[m] Configuring mojo execution 'org.apache.maven.plugins:maven-surefire-plugin:3.2.5:test:default-test' with basic configurator -->
+[[1;36mDEBUG[m]   (f) additionalClasspathDependencies = []
 [[1;36mDEBUG[m]   (s) additionalClasspathElements = []
 [[1;36mDEBUG[m]   (s) basedir = /home/mathieu/GitHub/Prog2-LIA/prog2-lia
 [[1;36mDEBUG[m]   (s) childDelegation = false
-[[1;36mDEBUG[m]   (s) classesDirectory = /home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/classes
+[[1;36mDEBUG[m]   (f) classesDirectory = /home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/classes
 [[1;36mDEBUG[m]   (s) classpathDependencyExcludes = []
 [[1;36mDEBUG[m]   (s) dependenciesToScan = []
 [[1;36mDEBUG[m]   (s) disableXmlReport = false
 [[1;36mDEBUG[m]   (s) enableAssertions = true
+[[1;36mDEBUG[m]   (s) excludeJUnit5Engines = []
+[[1;36mDEBUG[m]   (f) excludedEnvironmentVariables = []
+[[1;36mDEBUG[m]   (s) excludes = []
+[[1;36mDEBUG[m]   (s) failIfNoSpecifiedTests = true
+[[1;36mDEBUG[m]   (s) failIfNoTests = false
+[[1;36mDEBUG[m]   (s) failOnFlakeCount = 0
 [[1;36mDEBUG[m]   (f) forkCount = 1
-[[1;36mDEBUG[m]   (s) forkMode = once
+[[1;36mDEBUG[m]   (s) forkedProcessExitTimeoutInSeconds = 30
+[[1;36mDEBUG[m]   (s) includeJUnit5Engines = []
+[[1;36mDEBUG[m]   (s) includes = []
 [[1;36mDEBUG[m]   (s) junitArtifactName = junit:junit
-[[1;36mDEBUG[m]   (s) localRepository =       id: local
-      url: file:///home/mathieu/.m2/repository/
-   layout: default
-snapshots: [enabled => true, update => always]
- releases: [enabled => true, update => always]
-   blocked: false
-
 [[1;36mDEBUG[m]   (f) parallelMavenExecution = false
 [[1;36mDEBUG[m]   (s) parallelOptimized = true
 [[1;36mDEBUG[m]   (s) perCoreThreadCount = true
-[[1;36mDEBUG[m]   (s) pluginArtifactMap = {org.apache.maven.plugins:maven-surefire-plugin=org.apache.maven.plugins:maven-surefire-plugin:maven-plugin:2.17:, org.apache.maven:maven-plugin-api=org.apache.maven:maven-plugin-api:jar:2.0.9:compile, org.apache.maven.surefire:maven-surefire-common=org.apache.maven.surefire:maven-surefire-common:jar:2.17:compile, org.apache.maven.surefire:surefire-booter=org.apache.maven.surefire:surefire-booter:jar:2.17:compile, org.apache.maven:maven-artifact=org.apache.maven:maven-artifact:jar:2.0.9:compile, org.codehaus.plexus:plexus-utils=org.codehaus.plexus:plexus-utils:jar:1.5.1:compile, org.apache.maven:maven-plugin-descriptor=org.apache.maven:maven-plugin-descriptor:jar:2.0.9:compile, org.codehaus.plexus:plexus-container-default=org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-9-stable-1:compile, org.apache.maven:maven-project=org.apache.maven:maven-project:jar:2.0.9:compile, org.apache.maven:maven-settings=org.apache.maven:maven-settings:jar:2.0.9:compile, org.apache.maven:maven-profile=org.apache.maven:maven-profile:jar:2.0.9:compile, org.apache.maven:maven-artifact-manager=org.apache.maven:maven-artifact-manager:jar:2.0.9:compile, org.apache.maven:maven-plugin-registry=org.apache.maven:maven-plugin-registry:jar:2.0.9:compile, org.apache.maven:maven-model=org.apache.maven:maven-model:jar:2.0.9:compile, org.apache.maven:maven-core=org.apache.maven:maven-core:jar:2.0.9:compile, org.apache.maven:maven-plugin-parameter-documenter=org.apache.maven:maven-plugin-parameter-documenter:jar:2.0.9:compile, org.apache.maven.reporting:maven-reporting-api=org.apache.maven.reporting:maven-reporting-api:jar:2.0.9:compile, org.apache.maven:maven-repository-metadata=org.apache.maven:maven-repository-metadata:jar:2.0.9:compile, org.apache.maven:maven-error-diagnostics=org.apache.maven:maven-error-diagnostics:jar:2.0.9:compile, org.apache.maven:maven-monitor=org.apache.maven:maven-monitor:jar:2.0.9:compile, classworlds:classworlds=classworlds:classworlds:jar:1.1:compile, org.apache.commons:commons-lang3=org.apache.commons:commons-lang3:jar:3.1:compile, org.apache.maven.surefire:surefire-api=org.apache.maven.surefire:surefire-api:jar:2.17:compile, org.apache.maven:maven-toolchain=org.apache.maven:maven-toolchain:jar:2.0.9:compile, org.apache.maven.plugin-tools:maven-plugin-annotations=org.apache.maven.plugin-tools:maven-plugin-annotations:jar:3.2:compile}
-[[1;36mDEBUG[m]   (f) pluginDescriptor = Component Descriptor: role: 'org.apache.maven.plugin.Mojo', implementation: 'org.apache.maven.plugin.surefire.SurefirePlugin', role hint: 'org.apache.maven.plugins:maven-surefire-plugin:2.17:test'
-role: 'org.apache.maven.plugin.Mojo', implementation: 'org.apache.maven.plugin.surefire.HelpMojo', role hint: 'org.apache.maven.plugins:maven-surefire-plugin:2.17:help'
+[[1;36mDEBUG[m]   (s) pluginArtifactMap = {org.apache.maven.plugins:maven-surefire-plugin=org.apache.maven.plugins:maven-surefire-plugin:maven-plugin:3.2.5:, org.apache.maven.surefire:maven-surefire-common=org.apache.maven.surefire:maven-surefire-common:jar:3.2.5:compile, org.apache.maven.surefire:surefire-api=org.apache.maven.surefire:surefire-api:jar:3.2.5:compile, org.apache.maven.surefire:surefire-logger-api=org.apache.maven.surefire:surefire-logger-api:jar:3.2.5:compile, org.apache.maven.surefire:surefire-extensions-api=org.apache.maven.surefire:surefire-extensions-api:jar:3.2.5:compile, org.apache.maven.surefire:surefire-booter=org.apache.maven.surefire:surefire-booter:jar:3.2.5:compile, org.apache.maven.surefire:surefire-extensions-spi=org.apache.maven.surefire:surefire-extensions-spi:jar:3.2.5:compile, org.eclipse.aether:aether-util=org.eclipse.aether:aether-util:jar:1.0.0.v20140518:compile, org.eclipse.aether:aether-api=org.eclipse.aether:aether-api:jar:1.0.0.v20140518:compile, org.apache.maven.shared:maven-common-artifact-filters=org.apache.maven.shared:maven-common-artifact-filters:jar:3.1.1:compile, commons-io:commons-io=commons-io:commons-io:jar:2.15.1:compile, org.codehaus.plexus:plexus-java=org.codehaus.plexus:plexus-java:jar:1.2.0:compile, org.ow2.asm:asm=org.ow2.asm:asm:jar:9.6:compile, com.thoughtworks.qdox:qdox=com.thoughtworks.qdox:qdox:jar:2.0.3:compile, org.apache.maven.surefire:surefire-shared-utils=org.apache.maven.surefire:surefire-shared-utils:jar:3.2.5:compile}
+[[1;36mDEBUG[m]   (f) pluginDescriptor = Component Descriptor: role: 'org.apache.maven.plugin.Mojo', implementation: 'org.apache.maven.plugins.maven_surefire_plugin.HelpMojo', role hint: 'org.apache.maven.plugins:maven-surefire-plugin:3.2.5:help'
+role: 'org.apache.maven.plugin.Mojo', implementation: 'org.apache.maven.plugin.surefire.SurefirePlugin', role hint: 'org.apache.maven.plugins:maven-surefire-plugin:3.2.5:test'
 ---
 [[1;36mDEBUG[m]   (s) printSummary = true
+[[1;36mDEBUG[m]   (s) project = MavenProject: com.example:prog2-lia:1.0 @ /home/mathieu/GitHub/Prog2-LIA/prog2-lia/pom.xml
 [[1;36mDEBUG[m]   (s) projectArtifactMap = {org.openjfx:javafx-controls=org.openjfx:javafx-controls:jar:linux:13:compile, org.openjfx:javafx-graphics=org.openjfx:javafx-graphics:jar:linux:13:compile, org.openjfx:javafx-base=org.openjfx:javafx-base:jar:linux:13:compile, org.openjfx:javafx-fxml=org.openjfx:javafx-fxml:jar:linux:13:compile, com.google.code.gson:gson=com.google.code.gson:gson:jar:2.14.0:compile, com.google.errorprone:error_prone_annotations=com.google.errorprone:error_prone_annotations:jar:2.48.0:compile, org.junit.jupiter:junit-jupiter-api=org.junit.jupiter:junit-jupiter-api:jar:6.0.3:test, org.opentest4j:opentest4j=org.opentest4j:opentest4j:jar:1.3.0:test, org.junit.platform:junit-platform-commons=org.junit.platform:junit-platform-commons:jar:6.0.3:test, org.apiguardian:apiguardian-api=org.apiguardian:apiguardian-api:jar:1.1.2:test, org.jspecify:jspecify=org.jspecify:jspecify:jar:1.0.0:test, org.junit.jupiter:junit-jupiter-engine=org.junit.jupiter:junit-jupiter-engine:jar:6.0.3:test, org.junit.platform:junit-platform-engine=org.junit.platform:junit-platform-engine:jar:6.0.3:test}
+[[1;36mDEBUG[m]   (s) projectBuildDirectory = /home/mathieu/GitHub/Prog2-LIA/prog2-lia/target
 [[1;36mDEBUG[m]   (s) redirectTestOutputToFile = false
-[[1;36mDEBUG[m]   (s) remoteRepositories = [      id: central
-      url: https://repo.maven.apache.org/maven2
-   layout: default
-snapshots: [enabled => false, update => daily]
- releases: [enabled => true, update => daily]
-   blocked: false
-]
 [[1;36mDEBUG[m]   (s) reportFormat = brief
 [[1;36mDEBUG[m]   (s) reportsDirectory = /home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/surefire-reports
+[[1;36mDEBUG[m]   (f) rerunFailingTestsCount = 0
 [[1;36mDEBUG[m]   (f) reuseForks = true
 [[1;36mDEBUG[m]   (s) runOrder = filesystem
+[[1;36mDEBUG[m]   (s) session = org.apache.maven.execution.MavenSession@6ec65b5e
+[[1;36mDEBUG[m]   (f) shutdown = exit
 [[1;36mDEBUG[m]   (s) skip = false
+[[1;36mDEBUG[m]   (f) skipAfterFailureCount = 0
 [[1;36mDEBUG[m]   (s) skipTests = false
+[[1;36mDEBUG[m]   (s) suiteXmlFiles = []
+[[1;36mDEBUG[m]   (s) tempDir = surefire
 [[1;36mDEBUG[m]   (s) testClassesDirectory = /home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/test-classes
 [[1;36mDEBUG[m]   (s) testFailureIgnore = false
 [[1;36mDEBUG[m]   (s) testNGArtifactName = org.testng:testng
@@ -947,57 +985,75 @@ snapshots: [enabled => false, update => daily]
 [[1;36mDEBUG[m]   (s) threadCountClasses = 0
 [[1;36mDEBUG[m]   (s) threadCountMethods = 0
 [[1;36mDEBUG[m]   (s) threadCountSuites = 0
-[[1;36mDEBUG[m]   (s) trimStackTrace = true
+[[1;36mDEBUG[m]   (s) trimStackTrace = false
 [[1;36mDEBUG[m]   (s) useFile = true
 [[1;36mDEBUG[m]   (s) useManifestOnlyJar = true
+[[1;36mDEBUG[m]   (f) useModulePath = true
 [[1;36mDEBUG[m]   (s) useSystemClassLoader = true
 [[1;36mDEBUG[m]   (s) useUnlimitedThreads = false
 [[1;36mDEBUG[m]   (s) workingDirectory = /home/mathieu/GitHub/Prog2-LIA/prog2-lia
-[[1;36mDEBUG[m]   (s) project = MavenProject: com.example:prog2-lia:1.0 @ /home/mathieu/GitHub/Prog2-LIA/prog2-lia/pom.xml
-[[1;36mDEBUG[m]   (s) session = org.apache.maven.execution.MavenSession@6ec65b5e
 [[1;36mDEBUG[m] -- end configuration --
-[[1;34mINFO[m] Surefire report directory: /home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/surefire-reports
+[[1;36mDEBUG[m] Using JVM: /usr/lib/jvm/jdk-25.0.1-oracle-x64/bin/java with Java version 25.0
+[[1;36mDEBUG[m] Resolved included and excluded patterns: **/Test*.java, **/*Test.java, **/*Tests.java, **/*TestCase.java, !**/*$*
+[[1;36mDEBUG[m] Surefire report directory: /home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/surefire-reports
+[[1;34mINFO[m] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[[1;36mDEBUG[m] Using the provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
 [[1;36mDEBUG[m] Setting system property [basedir]=[/home/mathieu/GitHub/Prog2-LIA/prog2-lia]
-[[1;36mDEBUG[m] Setting system property [user.dir]=[/home/mathieu/GitHub/Prog2-LIA/prog2-lia]
 [[1;36mDEBUG[m] Setting system property [localRepository]=[/home/mathieu/.m2/repository]
-[[1;36mDEBUG[m] dummy:dummy:jar:1.0 (selected for null)
-[[1;36mDEBUG[m]   org.apache.maven.surefire:surefire-booter:jar:2.17:compile (selected for compile)
-[[1;36mDEBUG[m]     org.apache.maven.surefire:surefire-api:jar:2.17:compile (selected for compile)
-[[1;36mDEBUG[m] Adding to surefire booter test classpath: /home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-booter/2.17/surefire-booter-2.17.jar Scope: compile
-[[1;36mDEBUG[m] Adding to surefire booter test classpath: /home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-api/2.17/surefire-api-2.17.jar Scope: compile
-[[1;36mDEBUG[m] Using JVM: /usr/lib/jvm/jdk-25.0.1-oracle-x64/bin/java
-[[1;36mDEBUG[m] dummy:dummy:jar:1.0 (selected for null)
-[[1;36mDEBUG[m]   org.apache.maven.surefire:surefire-junit3:jar:2.17:test (selected for test)
-[[1;36mDEBUG[m]     org.apache.maven.surefire:surefire-api:jar:2.17:test (selected for test)
-[[1;36mDEBUG[m] Adding to surefire test classpath: /home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-junit3/2.17/surefire-junit3-2.17.jar Scope: test
-[[1;36mDEBUG[m] Adding to surefire test classpath: /home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-api/2.17/surefire-api-2.17.jar Scope: test
-[[1;36mDEBUG[m] test classpath:  /home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/test-classes  /home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/classes  /home/mathieu/.m2/repository/org/openjfx/javafx-controls/13/javafx-controls-13.jar  /home/mathieu/.m2/repository/org/openjfx/javafx-controls/13/javafx-controls-13-linux.jar  /home/mathieu/.m2/repository/org/openjfx/javafx-graphics/13/javafx-graphics-13.jar  /home/mathieu/.m2/repository/org/openjfx/javafx-graphics/13/javafx-graphics-13-linux.jar  /home/mathieu/.m2/repository/org/openjfx/javafx-base/13/javafx-base-13.jar  /home/mathieu/.m2/repository/org/openjfx/javafx-base/13/javafx-base-13-linux.jar  /home/mathieu/.m2/repository/org/openjfx/javafx-fxml/13/javafx-fxml-13.jar  /home/mathieu/.m2/repository/org/openjfx/javafx-fxml/13/javafx-fxml-13-linux.jar  /home/mathieu/.m2/repository/com/google/code/gson/gson/2.14.0/gson-2.14.0.jar  /home/mathieu/.m2/repository/com/google/errorprone/error_prone_annotations/2.48.0/error_prone_annotations-2.48.0.jar  /home/mathieu/.m2/repository/org/junit/jupiter/junit-jupiter-api/6.0.3/junit-jupiter-api-6.0.3.jar  /home/mathieu/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar  /home/mathieu/.m2/repository/org/junit/platform/junit-platform-commons/6.0.3/junit-platform-commons-6.0.3.jar  /home/mathieu/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar  /home/mathieu/.m2/repository/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar  /home/mathieu/.m2/repository/org/junit/jupiter/junit-jupiter-engine/6.0.3/junit-jupiter-engine-6.0.3.jar  /home/mathieu/.m2/repository/org/junit/platform/junit-platform-engine/6.0.3/junit-platform-engine-6.0.3.jar
-[[1;36mDEBUG[m] provider classpath:  /home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-junit3/2.17/surefire-junit3-2.17.jar  /home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-api/2.17/surefire-api-2.17.jar
-[[1;36mDEBUG[m] test(compact) classpath:  test-classes  classes  javafx-controls-13.jar  javafx-controls-13-linux.jar  javafx-graphics-13.jar  javafx-graphics-13-linux.jar  javafx-base-13.jar  javafx-base-13-linux.jar  javafx-fxml-13.jar  javafx-fxml-13-linux.jar  gson-2.14.0.jar  error_prone_annotations-2.48.0.jar  junit-jupiter-api-6.0.3.jar  opentest4j-1.3.0.jar  junit-platform-commons-6.0.3.jar  apiguardian-api-1.1.2.jar  jspecify-1.0.0.jar  junit-jupiter-engine-6.0.3.jar  junit-platform-engine-6.0.3.jar
-[[1;36mDEBUG[m] provider(compact) classpath:  surefire-junit3-2.17.jar  surefire-api-2.17.jar
-
--------------------------------------------------------
- T E S T S
--------------------------------------------------------
-[[1;36mDEBUG[m] boot classpath:  /home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-booter/2.17/surefire-booter-2.17.jar  /home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-api/2.17/surefire-api-2.17.jar  /home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/test-classes  /home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/classes  /home/mathieu/.m2/repository/org/openjfx/javafx-controls/13/javafx-controls-13.jar  /home/mathieu/.m2/repository/org/openjfx/javafx-controls/13/javafx-controls-13-linux.jar  /home/mathieu/.m2/repository/org/openjfx/javafx-graphics/13/javafx-graphics-13.jar  /home/mathieu/.m2/repository/org/openjfx/javafx-graphics/13/javafx-graphics-13-linux.jar  /home/mathieu/.m2/repository/org/openjfx/javafx-base/13/javafx-base-13.jar  /home/mathieu/.m2/repository/org/openjfx/javafx-base/13/javafx-base-13-linux.jar  /home/mathieu/.m2/repository/org/openjfx/javafx-fxml/13/javafx-fxml-13.jar  /home/mathieu/.m2/repository/org/openjfx/javafx-fxml/13/javafx-fxml-13-linux.jar  /home/mathieu/.m2/repository/com/google/code/gson/gson/2.14.0/gson-2.14.0.jar  /home/mathieu/.m2/repository/com/google/errorprone/error_prone_annotations/2.48.0/error_prone_annotations-2.48.0.jar  /home/mathieu/.m2/repository/org/junit/jupiter/junit-jupiter-api/6.0.3/junit-jupiter-api-6.0.3.jar  /home/mathieu/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar  /home/mathieu/.m2/repository/org/junit/platform/junit-platform-commons/6.0.3/junit-platform-commons-6.0.3.jar  /home/mathieu/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar  /home/mathieu/.m2/repository/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar  /home/mathieu/.m2/repository/org/junit/jupiter/junit-jupiter-engine/6.0.3/junit-jupiter-engine-6.0.3.jar  /home/mathieu/.m2/repository/org/junit/platform/junit-platform-engine/6.0.3/junit-platform-engine-6.0.3.jar  /home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-junit3/2.17/surefire-junit3-2.17.jar
-[[1;36mDEBUG[m] boot(compact) classpath:  surefire-booter-2.17.jar  surefire-api-2.17.jar  test-classes  classes  javafx-controls-13.jar  javafx-controls-13-linux.jar  javafx-graphics-13.jar  javafx-graphics-13-linux.jar  javafx-base-13.jar  javafx-base-13-linux.jar  javafx-fxml-13.jar  javafx-fxml-13-linux.jar  gson-2.14.0.jar  error_prone_annotations-2.48.0.jar  junit-jupiter-api-6.0.3.jar  opentest4j-1.3.0.jar  junit-platform-commons-6.0.3.jar  apiguardian-api-1.1.2.jar  jspecify-1.0.0.jar  junit-jupiter-engine-6.0.3.jar  junit-platform-engine-6.0.3.jar  surefire-junit3-2.17.jar
-Forking command line: /bin/sh -c cd /home/mathieu/GitHub/Prog2-LIA/prog2-lia && /usr/lib/jvm/jdk-25.0.1-oracle-x64/bin/java -jar /home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/surefire/surefirebooter13653062100070760363.jar /home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/surefire/surefire4180183095056496238tmp /home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/surefire/surefire_06835080260958345757tmp
-Running com.example.ClientTest
-**accounts: [X]
-**accounts: [X]
-**accounts: [X, l3ehNr-23]
-**accounts: [X, lRbOnE-36, n49;gu-2h]
-Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.027 sec - in com.example.ClientTest
-
-Results :
-
-Tests run: 6, Failures: 0, Errors: 0, Skipped: 0
-
+[[1;36mDEBUG[m] Dependency collection stats {ConflictMarker.analyzeTime=93716, ConflictMarker.markTime=13706, ConflictMarker.nodeCount=7, ConflictIdSorter.graphTime=40376, ConflictIdSorter.topsortTime=9297, ConflictIdSorter.conflictIdCount=5, ConflictIdSorter.conflictIdCycleCount=0, ConflictResolver.totalTime=129613, ConflictResolver.conflictItemCount=6, DfDependencyCollector.collectTime=8407625, DfDependencyCollector.transformTime=306205}
+[[1;36mDEBUG[m] Found implementation of fork node factory: org.apache.maven.plugin.surefire.extensions.LegacyForkNodeFactory
+[[1;36mDEBUG[m] Using fork starter with configuration implementation org.apache.maven.plugin.surefire.booterclient.ModularClasspathForkConfiguration
+[[1;36mDEBUG[m] Dependency collection stats {ConflictMarker.analyzeTime=22692, ConflictMarker.markTime=22022, ConflictMarker.nodeCount=15, ConflictIdSorter.graphTime=27461, ConflictIdSorter.topsortTime=11031, ConflictIdSorter.conflictIdCount=10, ConflictIdSorter.conflictIdCycleCount=0, ConflictResolver.totalTime=139922, ConflictResolver.conflictItemCount=14, DfDependencyCollector.collectTime=7428680, DfDependencyCollector.transformTime=238887}
+[[1;36mDEBUG[m] Resolving artifact org.junit.platform:junit-platform-launcher:6.0.3
+[[1;36mDEBUG[m] Dependency collection stats {ConflictMarker.analyzeTime=13966, ConflictMarker.markTime=18605, ConflictMarker.nodeCount=11, ConflictIdSorter.graphTime=7684, ConflictIdSorter.topsortTime=10580, ConflictIdSorter.conflictIdCount=6, ConflictIdSorter.conflictIdCycleCount=0, ConflictResolver.totalTime=90700, ConflictResolver.conflictItemCount=10, DfDependencyCollector.collectTime=789560, DfDependencyCollector.transformTime=154790}
+[[1;36mDEBUG[m] Resolved artifact org.junit.platform:junit-platform-launcher:6.0.3 to [org.junit.platform:junit-platform-launcher:jar:6.0.3, org.junit.platform:junit-platform-engine:jar:6.0.3, org.opentest4j:opentest4j:jar:1.3.0, org.junit.platform:junit-platform-commons:jar:6.0.3, org.apiguardian:apiguardian-api:jar:1.1.2, org.jspecify:jspecify:jar:1.0.0]
+[[1;36mDEBUG[m] main module descriptor name: com.example
+[[1;36mDEBUG[m] test classpath:  /home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/test-classes  /home/mathieu/.m2/repository/org/openjfx/javafx-controls/13/javafx-controls-13.jar  /home/mathieu/.m2/repository/org/openjfx/javafx-graphics/13/javafx-graphics-13.jar  /home/mathieu/.m2/repository/org/openjfx/javafx-base/13/javafx-base-13.jar  /home/mathieu/.m2/repository/org/openjfx/javafx-fxml/13/javafx-fxml-13.jar  /home/mathieu/.m2/repository/org/junit/jupiter/junit-jupiter-api/6.0.3/junit-jupiter-api-6.0.3.jar  /home/mathieu/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar  /home/mathieu/.m2/repository/org/junit/platform/junit-platform-commons/6.0.3/junit-platform-commons-6.0.3.jar  /home/mathieu/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar  /home/mathieu/.m2/repository/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar  /home/mathieu/.m2/repository/org/junit/jupiter/junit-jupiter-engine/6.0.3/junit-jupiter-engine-6.0.3.jar  /home/mathieu/.m2/repository/org/junit/platform/junit-platform-engine/6.0.3/junit-platform-engine-6.0.3.jar
+[[1;36mDEBUG[m] test modulepath:  /home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/classes  /home/mathieu/.m2/repository/org/openjfx/javafx-controls/13/javafx-controls-13-linux.jar  /home/mathieu/.m2/repository/org/openjfx/javafx-graphics/13/javafx-graphics-13-linux.jar  /home/mathieu/.m2/repository/org/openjfx/javafx-base/13/javafx-base-13-linux.jar  /home/mathieu/.m2/repository/org/openjfx/javafx-fxml/13/javafx-fxml-13-linux.jar  /home/mathieu/.m2/repository/com/google/code/gson/gson/2.14.0/gson-2.14.0.jar  /home/mathieu/.m2/repository/com/google/errorprone/error_prone_annotations/2.48.0/error_prone_annotations-2.48.0.jar
+[[1;36mDEBUG[m] provider classpath:  /home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-junit-platform/3.2.5/surefire-junit-platform-3.2.5.jar  /home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-api/3.2.5/surefire-api-3.2.5.jar  /home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-logger-api/3.2.5/surefire-logger-api-3.2.5.jar  /home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-shared-utils/3.2.5/surefire-shared-utils-3.2.5.jar  /home/mathieu/.m2/repository/org/apache/maven/surefire/common-java5/3.2.5/common-java5-3.2.5.jar  /home/mathieu/.m2/repository/org/junit/platform/junit-platform-launcher/6.0.3/junit-platform-launcher-6.0.3.jar
+[[1;36mDEBUG[m] test(compact) classpath:  test-classes  javafx-controls-13.jar  javafx-graphics-13.jar  javafx-base-13.jar  javafx-fxml-13.jar  junit-jupiter-api-6.0.3.jar  opentest4j-1.3.0.jar  junit-platform-commons-6.0.3.jar  apiguardian-api-1.1.2.jar  jspecify-1.0.0.jar  junit-jupiter-engine-6.0.3.jar  junit-platform-engine-6.0.3.jar
+[[1;36mDEBUG[m] test(compact) modulepath:  classes  javafx-controls-13-linux.jar  javafx-graphics-13-linux.jar  javafx-base-13-linux.jar  javafx-fxml-13-linux.jar  gson-2.14.0.jar  error_prone_annotations-2.48.0.jar
+[[1;36mDEBUG[m] provider(compact) classpath:  surefire-junit-platform-3.2.5.jar  surefire-api-3.2.5.jar  surefire-logger-api-3.2.5.jar  surefire-shared-utils-3.2.5.jar  common-java5-3.2.5.jar  junit-platform-launcher-6.0.3.jar
+[[1;36mDEBUG[m] in-process classpath:  /home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-junit-platform/3.2.5/surefire-junit-platform-3.2.5.jar  /home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-api/3.2.5/surefire-api-3.2.5.jar  /home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-logger-api/3.2.5/surefire-logger-api-3.2.5.jar  /home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-shared-utils/3.2.5/surefire-shared-utils-3.2.5.jar  /home/mathieu/.m2/repository/org/apache/maven/surefire/common-java5/3.2.5/common-java5-3.2.5.jar  /home/mathieu/.m2/repository/org/junit/platform/junit-platform-launcher/6.0.3/junit-platform-launcher-6.0.3.jar  /home/mathieu/.m2/repository/org/apache/maven/surefire/maven-surefire-common/3.2.5/maven-surefire-common-3.2.5.jar  /home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-booter/3.2.5/surefire-booter-3.2.5.jar  /home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-extensions-api/3.2.5/surefire-extensions-api-3.2.5.jar  /home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-extensions-spi/3.2.5/surefire-extensions-spi-3.2.5.jar
+[[1;36mDEBUG[m] in-process(compact) classpath:  surefire-junit-platform-3.2.5.jar  surefire-api-3.2.5.jar  surefire-logger-api-3.2.5.jar  surefire-shared-utils-3.2.5.jar  common-java5-3.2.5.jar  junit-platform-launcher-6.0.3.jar  maven-surefire-common-3.2.5.jar  surefire-booter-3.2.5.jar  surefire-extensions-api-3.2.5.jar  surefire-extensions-spi-3.2.5.jar
+[[1;34mINFO[m] 
+[[1;34mINFO[m] -------------------------------------------------------
+[[1;34mINFO[m]  T E S T S
+[[1;34mINFO[m] -------------------------------------------------------
+[[1;36mDEBUG[m] Determined Maven Process ID 327580
+[[1;36mDEBUG[m] Fork Channel [1] connection string 'pipe://1' for the implementation class org.apache.maven.plugin.surefire.extensions.LegacyForkChannel
+[[1;36mDEBUG[m] boot classpath:  /home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-booter/3.2.5/surefire-booter-3.2.5.jar  /home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-api/3.2.5/surefire-api-3.2.5.jar  /home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-logger-api/3.2.5/surefire-logger-api-3.2.5.jar  /home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-shared-utils/3.2.5/surefire-shared-utils-3.2.5.jar  /home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-extensions-spi/3.2.5/surefire-extensions-spi-3.2.5.jar  /home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/test-classes  /home/mathieu/.m2/repository/org/openjfx/javafx-controls/13/javafx-controls-13.jar  /home/mathieu/.m2/repository/org/openjfx/javafx-graphics/13/javafx-graphics-13.jar  /home/mathieu/.m2/repository/org/openjfx/javafx-base/13/javafx-base-13.jar  /home/mathieu/.m2/repository/org/openjfx/javafx-fxml/13/javafx-fxml-13.jar  /home/mathieu/.m2/repository/org/junit/jupiter/junit-jupiter-api/6.0.3/junit-jupiter-api-6.0.3.jar  /home/mathieu/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar  /home/mathieu/.m2/repository/org/junit/platform/junit-platform-commons/6.0.3/junit-platform-commons-6.0.3.jar  /home/mathieu/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar  /home/mathieu/.m2/repository/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar  /home/mathieu/.m2/repository/org/junit/jupiter/junit-jupiter-engine/6.0.3/junit-jupiter-engine-6.0.3.jar  /home/mathieu/.m2/repository/org/junit/platform/junit-platform-engine/6.0.3/junit-platform-engine-6.0.3.jar  /home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-junit-platform/3.2.5/surefire-junit-platform-3.2.5.jar  /home/mathieu/.m2/repository/org/apache/maven/surefire/common-java5/3.2.5/common-java5-3.2.5.jar  /home/mathieu/.m2/repository/org/junit/platform/junit-platform-launcher/6.0.3/junit-platform-launcher-6.0.3.jar
+[[1;36mDEBUG[m] boot(compact) classpath:  surefire-booter-3.2.5.jar  surefire-api-3.2.5.jar  surefire-logger-api-3.2.5.jar  surefire-shared-utils-3.2.5.jar  surefire-extensions-spi-3.2.5.jar  test-classes  javafx-controls-13.jar  javafx-graphics-13.jar  javafx-base-13.jar  javafx-fxml-13.jar  junit-jupiter-api-6.0.3.jar  opentest4j-1.3.0.jar  junit-platform-commons-6.0.3.jar  apiguardian-api-1.1.2.jar  jspecify-1.0.0.jar  junit-jupiter-engine-6.0.3.jar  junit-platform-engine-6.0.3.jar  surefire-junit-platform-3.2.5.jar  common-java5-3.2.5.jar  junit-platform-launcher-6.0.3.jar
+[[1;36mDEBUG[m] Path to args file: /home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/surefire/surefireargs-20260509155350507_3
+[[1;36mDEBUG[m] args file content:
+--module-path
+"/home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/classes:/home/mathieu/.m2/repository/org/openjfx/javafx-controls/13/javafx-controls-13-linux.jar:/home/mathieu/.m2/repository/org/openjfx/javafx-graphics/13/javafx-graphics-13-linux.jar:/home/mathieu/.m2/repository/org/openjfx/javafx-base/13/javafx-base-13-linux.jar:/home/mathieu/.m2/repository/org/openjfx/javafx-fxml/13/javafx-fxml-13-linux.jar:/home/mathieu/.m2/repository/com/google/code/gson/gson/2.14.0/gson-2.14.0.jar:/home/mathieu/.m2/repository/com/google/errorprone/error_prone_annotations/2.48.0/error_prone_annotations-2.48.0.jar"
+--class-path
+"/home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-booter/3.2.5/surefire-booter-3.2.5.jar:/home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-api/3.2.5/surefire-api-3.2.5.jar:/home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-logger-api/3.2.5/surefire-logger-api-3.2.5.jar:/home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-shared-utils/3.2.5/surefire-shared-utils-3.2.5.jar:/home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-extensions-spi/3.2.5/surefire-extensions-spi-3.2.5.jar:/home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/test-classes:/home/mathieu/.m2/repository/org/openjfx/javafx-controls/13/javafx-controls-13.jar:/home/mathieu/.m2/repository/org/openjfx/javafx-graphics/13/javafx-graphics-13.jar:/home/mathieu/.m2/repository/org/openjfx/javafx-base/13/javafx-base-13.jar:/home/mathieu/.m2/repository/org/openjfx/javafx-fxml/13/javafx-fxml-13.jar:/home/mathieu/.m2/repository/org/junit/jupiter/junit-jupiter-api/6.0.3/junit-jupiter-api-6.0.3.jar:/home/mathieu/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/home/mathieu/.m2/repository/org/junit/platform/junit-platform-commons/6.0.3/junit-platform-commons-6.0.3.jar:/home/mathieu/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/mathieu/.m2/repository/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar:/home/mathieu/.m2/repository/org/junit/jupiter/junit-jupiter-engine/6.0.3/junit-jupiter-engine-6.0.3.jar:/home/mathieu/.m2/repository/org/junit/platform/junit-platform-engine/6.0.3/junit-platform-engine-6.0.3.jar:/home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-junit-platform/3.2.5/surefire-junit-platform-3.2.5.jar:/home/mathieu/.m2/repository/org/apache/maven/surefire/common-java5/3.2.5/common-java5-3.2.5.jar:/home/mathieu/.m2/repository/org/junit/platform/junit-platform-launcher/6.0.3/junit-platform-launcher-6.0.3.jar"
+--patch-module
+com.example="/home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/test-classes"
+--add-opens
+com.example/com.example=ALL-UNNAMED
+--add-reads
+com.example=ALL-UNNAMED
+--add-modules
+ALL-MODULE-PATH
+org.apache.maven.surefire.booter.ForkedBooter
+[[1;36mDEBUG[m] Forking command line: /bin/sh -c cd '/home/mathieu/GitHub/Prog2-LIA/prog2-lia' && '/usr/lib/jvm/jdk-25.0.1-oracle-x64/bin/java' '@/home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/surefire/surefireargs-20260509155350507_3' '/home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/surefire' '2026-05-09T15-53-50_394-jvmRun1' 'surefire-20260509155350507_1tmp' 'surefire_0-20260509155350507_2tmp'
+[[1;36mDEBUG[m] Fork Channel [1] connected to the client.
+[[1;34mINFO[m] Running com.example.[1mClientTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.064 s -- in com.example.[1mClientTest[m
+[[1;36mDEBUG[m] Closing the fork 1 after saying GoodBye.
+[[1;34mINFO[m] 
+[[1;34mINFO[m] Results:
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1;32mTests run: 6, Failures: 0, Errors: 0, Skipped: 0[m
+[[1;34mINFO[m] 
 [[1;34mINFO[m] [1m------------------------------------------------------------------------[m
 [[1;34mINFO[m] [1;32mBUILD SUCCESS[m
 [[1;34mINFO[m] [1m------------------------------------------------------------------------[m
-[[1;34mINFO[m] Total time:  1.564 s
-[[1;34mINFO[m] Finished at: 2026-05-09T15:33:03-04:00
+[[1;34mINFO[m] Total time:  1.806 s
+[[1;34mINFO[m] Finished at: 2026-05-09T15:53:51-04:00
 [[1;34mINFO[m] [1m------------------------------------------------------------------------[m
 [[1;36mDEBUG[m] Shutting down adapter factory; available factories [file-lock, rwlock-local, semaphore-local, noop]; available name mappers [discriminating, file-gav, file-hgav, file-static, gav, static]
 [[1;36mDEBUG[m] Shutting down 'file-lock' factory
@@ -1013,6 +1069,10 @@ App tests:
 
 Client tests:
 
+-------------------------------------------------------------------------------
+Test set: com.example.ClientTest
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.064 s -- in com.example.ClientTest
 
 Driver tests:
 
