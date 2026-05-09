@@ -47,17 +47,20 @@ public class Transaction{
             transactionID=IdCreator.createID(3,0);
             if(!App.driver.exists(transactionID))validID=true;
         }
-        if(receivingAccount==null&&givingAccount==null){
-            date=LocalDateTime.ofEpochSecond(0, 0, null);
-            simpleDate=LocalDate.ofEpochDay(0);
-        }
-        else{
-            date=LocalDateTime.now();
-            simpleDate=LocalDate.now();
-        }
+        date=LocalDateTime.now();
+        simpleDate=LocalDate.now();
         this.amnt = amnt;
         this.receivingAccount = receivingAccount;
         this.givingAccount = givingAccount;
+    }
+    // TODO javadoc
+    public Transaction() {
+        amnt=0;
+        receivingAccount=null;
+        givingAccount=null;
+        date=LocalDateTime.ofEpochSecond(0, 0, null);
+        simpleDate=LocalDate.ofEpochDay(0);
+        transactionID="x";
     }
     /**
      * Gets the date and time this transaction was made.
