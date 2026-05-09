@@ -25,3 +25,5 @@ replay_pid*
 # extra files 
 githubSsh.txt
 origin.txt
+log.txt
+prog2-lia/target/
