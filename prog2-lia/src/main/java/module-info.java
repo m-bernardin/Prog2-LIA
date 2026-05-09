@@ -3,6 +3,6 @@ module com.example {
     requires javafx.fxml;
     requires com.google.gson;
 
-    opens com.example to javafx.fxml,com.google.gson;
+    opens com.example to javafx.fxml,com.google.gson,org.junit.jupiter.api;
     exports com.example;
 }
