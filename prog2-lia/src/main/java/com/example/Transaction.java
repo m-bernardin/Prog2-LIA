@@ -2,6 +2,7 @@ package com.example;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 /**
  * Represents a single transfer between two accounts or, a deposit or withdrawal from a single account.
  * A withdrawal is represented by having a null giving account.
@@ -58,9 +59,18 @@ public class Transaction{
         amnt=0;
         receivingAccount=null;
         givingAccount=null;
-        date=LocalDateTime.ofEpochSecond(0, 0, null);
+        date=LocalDateTime.ofEpochSecond(0, 0, ZoneOffset.UTC);
         simpleDate=LocalDate.ofEpochDay(0);
         transactionID="x";
+    }
+    // TODO javadoc
+    public Transaction(double amnt, String receivingAccount, String givingAccount,boolean test) throws InvalidTypeException {
+        transactionID=IdCreator.createID(3,0);
+        date=LocalDateTime.now();
+        simpleDate=LocalDate.now();
+        this.amnt = amnt;
+        this.receivingAccount = receivingAccount;
+        this.givingAccount = givingAccount;
     }
     /**
      * Gets the date and time this transaction was made.

@@ -88,7 +88,7 @@ public class App extends Application {
      */
     public static boolean hasEmptyFields(String[] fields){
         for (String field : fields) {
-            if(field.equals(""))return true;
+            if(field.trim().equals(""))return true;
         }
         return false;
     }
