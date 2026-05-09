@@ -313,7 +313,7 @@ OS name: "linux", version: "6.12.85+deb13-amd64", arch: "amd64", family: "unix"
   <session default-value="${session}"/>
 </configuration>
 [[1;36mDEBUG[m] =======================================================================
-[[1;36mDEBUG[m] Dependency collection stats {ConflictMarker.analyzeTime=605485, ConflictMarker.markTime=130134, ConflictMarker.nodeCount=35, ConflictIdSorter.graphTime=337322, ConflictIdSorter.topsortTime=314119, ConflictIdSorter.conflictIdCount=17, ConflictIdSorter.conflictIdCycleCount=4, ConflictResolver.totalTime=3718036, ConflictResolver.conflictItemCount=29, DfDependencyCollector.collectTime=49848663, DfDependencyCollector.transformTime=6390242}
+[[1;36mDEBUG[m] Dependency collection stats {ConflictMarker.analyzeTime=345239, ConflictMarker.markTime=85480, ConflictMarker.nodeCount=35, ConflictIdSorter.graphTime=199194, ConflictIdSorter.topsortTime=216287, ConflictIdSorter.conflictIdCount=17, ConflictIdSorter.conflictIdCycleCount=4, ConflictResolver.totalTime=3095774, ConflictResolver.conflictItemCount=29, DfDependencyCollector.collectTime=42024336, DfDependencyCollector.transformTime=5075392}
 [[1;36mDEBUG[m] com.example:prog2-lia:jar:1.0
 [[1;36mDEBUG[m]    org.openjfx:javafx-controls:jar:13:compile
 [[1;36mDEBUG[m]       org.openjfx:javafx-controls:jar:linux:13:compile
@@ -334,7 +334,7 @@ OS name: "linux", version: "6.12.85+deb13-amd64", arch: "amd64", family: "unix"
 [[1;36mDEBUG[m]       org.junit.platform:junit-platform-engine:jar:6.0.3:test
 [[1;34mINFO[m] 
 [[1;34mINFO[m] [1m--- [0;32mresources:3.3.1:resources[m [1m(default-resources)[m @ [36mprog2-lia[0;1m ---[m
-[[1;36mDEBUG[m] Dependency collection stats {ConflictMarker.analyzeTime=116187, ConflictMarker.markTime=117120, ConflictMarker.nodeCount=13, ConflictIdSorter.graphTime=34936, ConflictIdSorter.topsortTime=35947, ConflictIdSorter.conflictIdCount=9, ConflictIdSorter.conflictIdCycleCount=0, ConflictResolver.totalTime=712104, ConflictResolver.conflictItemCount=13, DfDependencyCollector.collectTime=83728470, DfDependencyCollector.transformTime=1075525}
+[[1;36mDEBUG[m] Dependency collection stats {ConflictMarker.analyzeTime=44203, ConflictMarker.markTime=71956, ConflictMarker.nodeCount=13, ConflictIdSorter.graphTime=16030, ConflictIdSorter.topsortTime=16040, ConflictIdSorter.conflictIdCount=9, ConflictIdSorter.conflictIdCycleCount=0, ConflictResolver.totalTime=388900, ConflictResolver.conflictItemCount=13, DfDependencyCollector.collectTime=43827512, DfDependencyCollector.transformTime=559691}
 [[1;36mDEBUG[m] org.apache.maven.plugins:maven-resources-plugin:jar:3.3.1
 [[1;36mDEBUG[m]    org.codehaus.plexus:plexus-interpolation:jar:1.26:runtime
 [[1;36mDEBUG[m]    org.codehaus.plexus:plexus-utils:jar:3.5.1:compile
@@ -403,7 +403,7 @@ OS name: "linux", version: "6.12.85+deb13-amd64", arch: "amd64", family: "unix"
 [[1;36mDEBUG[m] env.QT_IM_MODULES: wayland;ibus
 [[1;36mDEBUG[m] env.SESSION_MANAGER: local/YeastInhalerII:@/tmp/.ICE-unix/3408,unix/YeastInhalerII:/tmp/.ICE-unix/3408
 [[1;36mDEBUG[m] env.SHELL: /bin/bash
-[[1;36mDEBUG[m] env.SHLVL: 1
+[[1;36mDEBUG[m] env.SHLVL: 2
 [[1;36mDEBUG[m] env.SSH_AGENT_PID: 3479
 [[1;36mDEBUG[m] env.SSH_AUTH_SOCK: /run/user/1000/keyring/ssh
 [[1;36mDEBUG[m] env.TERM: xterm-256color
@@ -454,7 +454,7 @@ OS name: "linux", version: "6.12.85+deb13-amd64", arch: "amd64", family: "unix"
 [[1;36mDEBUG[m] library.jansi.path: /usr/share/maven/lib/jansi-native
 [[1;36mDEBUG[m] line.separator: 
 
-[[1;36mDEBUG[m] maven.build.timestamp: 2026-05-09T19:18:05Z
+[[1;36mDEBUG[m] maven.build.timestamp: 2026-05-09T19:33:02Z
 [[1;36mDEBUG[m] maven.build.version: Apache Maven 3.9.9
 [[1;36mDEBUG[m] maven.compiler.source: 11
 [[1;36mDEBUG[m] maven.compiler.target: 11
@@ -542,7 +542,7 @@ includes []
 [[1;34mINFO[m] [1m--- [0;32mcompiler:3.8.0:compile[m [1m(default-compile)[m @ [36mprog2-lia[0;1m ---[m
 [[1;36mDEBUG[m] Using mirror maven-default-http-blocker (http://0.0.0.0/) for codehaus.snapshots (http://snapshots.repository.codehaus.org).
 [[1;36mDEBUG[m] Using mirror maven-default-http-blocker (http://0.0.0.0/) for ow2-snapshot (http://repository.ow2.org/nexus/content/repositories/snapshots).
-[[1;36mDEBUG[m] Dependency collection stats {ConflictMarker.analyzeTime=650750, ConflictMarker.markTime=181289, ConflictMarker.nodeCount=118, ConflictIdSorter.graphTime=164749, ConflictIdSorter.topsortTime=65352, ConflictIdSorter.conflictIdCount=45, ConflictIdSorter.conflictIdCycleCount=0, ConflictResolver.totalTime=1690236, ConflictResolver.conflictItemCount=72, DfDependencyCollector.collectTime=403436945, DfDependencyCollector.transformTime=2808151}
+[[1;36mDEBUG[m] Dependency collection stats {ConflictMarker.analyzeTime=347603, ConflictMarker.markTime=176832, ConflictMarker.nodeCount=118, ConflictIdSorter.graphTime=95729, ConflictIdSorter.topsortTime=38042, ConflictIdSorter.conflictIdCount=45, ConflictIdSorter.conflictIdCycleCount=0, ConflictResolver.totalTime=1733466, ConflictResolver.conflictItemCount=72, DfDependencyCollector.collectTime=178758843, DfDependencyCollector.transformTime=2418853}
 [[1;36mDEBUG[m] org.apache.maven.plugins:maven-compiler-plugin:jar:3.8.0
 [[1;36mDEBUG[m]    org.apache.maven:maven-plugin-api:jar:3.0:compile
 [[1;36mDEBUG[m]       org.apache.maven:maven-model:jar:3.0:compile
@@ -636,29 +636,7 @@ includes []
   /home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/generated-sources/annotations
 [[1;36mDEBUG[m] CompilerReuseStrategy: reuseCreated
 [[1;36mDEBUG[m] useIncrementalCompilation enabled
-[[1;36mDEBUG[m] Stale source detected: /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java/com/example/Client.java
-[[1;34mINFO[m] Changes detected - recompiling the module!
-[[1;36mDEBUG[m] Classpath:
-[[1;36mDEBUG[m]  /home/mathieu/.m2/repository/org/openjfx/javafx-controls/13/javafx-controls-13.jar
-[[1;36mDEBUG[m]  /home/mathieu/.m2/repository/org/openjfx/javafx-graphics/13/javafx-graphics-13.jar
-[[1;36mDEBUG[m]  /home/mathieu/.m2/repository/org/openjfx/javafx-base/13/javafx-base-13.jar
-[[1;36mDEBUG[m]  /home/mathieu/.m2/repository/org/openjfx/javafx-fxml/13/javafx-fxml-13.jar
-[[1;36mDEBUG[m] Modulepath:
-[[1;36mDEBUG[m]  /home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/classes
-[[1;36mDEBUG[m]  /home/mathieu/.m2/repository/org/openjfx/javafx-controls/13/javafx-controls-13-linux.jar
-[[1;36mDEBUG[m]  /home/mathieu/.m2/repository/org/openjfx/javafx-graphics/13/javafx-graphics-13-linux.jar
-[[1;36mDEBUG[m]  /home/mathieu/.m2/repository/org/openjfx/javafx-base/13/javafx-base-13-linux.jar
-[[1;36mDEBUG[m]  /home/mathieu/.m2/repository/org/openjfx/javafx-fxml/13/javafx-fxml-13-linux.jar
-[[1;36mDEBUG[m]  /home/mathieu/.m2/repository/com/google/code/gson/gson/2.14.0/gson-2.14.0.jar
-[[1;36mDEBUG[m]  /home/mathieu/.m2/repository/com/google/errorprone/error_prone_annotations/2.48.0/error_prone_annotations-2.48.0.jar
-[[1;36mDEBUG[m] Source roots:
-[[1;36mDEBUG[m]  /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java
-[[1;36mDEBUG[m]  /home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/generated-sources/annotations
-[[1;36mDEBUG[m] Command line options:
-[[1;36mDEBUG[m] -d /home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/classes -classpath /home/mathieu/.m2/repository/org/openjfx/javafx-controls/13/javafx-controls-13.jar:/home/mathieu/.m2/repository/org/openjfx/javafx-graphics/13/javafx-graphics-13.jar:/home/mathieu/.m2/repository/org/openjfx/javafx-base/13/javafx-base-13.jar:/home/mathieu/.m2/repository/org/openjfx/javafx-fxml/13/javafx-fxml-13.jar: --module-path /home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/classes:/home/mathieu/.m2/repository/org/openjfx/javafx-controls/13/javafx-controls-13-linux.jar:/home/mathieu/.m2/repository/org/openjfx/javafx-graphics/13/javafx-graphics-13-linux.jar:/home/mathieu/.m2/repository/org/openjfx/javafx-base/13/javafx-base-13-linux.jar:/home/mathieu/.m2/repository/org/openjfx/javafx-fxml/13/javafx-fxml-13-linux.jar:/home/mathieu/.m2/repository/com/google/code/gson/gson/2.14.0/gson-2.14.0.jar:/home/mathieu/.m2/repository/com/google/errorprone/error_prone_annotations/2.48.0/error_prone_annotations-2.48.0.jar: -sourcepath /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/main/java:/home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/generated-sources/annotations: -s /home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/generated-sources/annotations -g -nowarn --release 11 -encoding UTF-8
-[[1;36mDEBUG[m] incrementalBuildHelper#beforeRebuildExecution
-[[1;34mINFO[m] Compiling 28 source files to /home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/classes
-[[1;36mDEBUG[m] incrementalBuildHelper#afterRebuildExecution
+[[1;34mINFO[m] Nothing to compile - all classes are up to date
 [[1;34mINFO[m] 
 [[1;34mINFO[m] [1m--- [0;32mresources:3.3.1:testResources[m [1m(default-testResources)[m @ [36mprog2-lia[0;1m ---[m
 [[1;36mDEBUG[m] Loading mojo org.apache.maven.plugins:maven-resources-plugin:3.3.1:testResources from plugin realm ClassRealm[plugin>org.apache.maven.plugins:maven-resources-plugin:3.3.1, parent: jdk.internal.loader.ClassLoaders$AppClassLoader@341d43cd]
@@ -709,7 +687,7 @@ includes []
 [[1;36mDEBUG[m] env.QT_IM_MODULES: wayland;ibus
 [[1;36mDEBUG[m] env.SESSION_MANAGER: local/YeastInhalerII:@/tmp/.ICE-unix/3408,unix/YeastInhalerII:/tmp/.ICE-unix/3408
 [[1;36mDEBUG[m] env.SHELL: /bin/bash
-[[1;36mDEBUG[m] env.SHLVL: 1
+[[1;36mDEBUG[m] env.SHLVL: 2
 [[1;36mDEBUG[m] env.SSH_AGENT_PID: 3479
 [[1;36mDEBUG[m] env.SSH_AUTH_SOCK: /run/user/1000/keyring/ssh
 [[1;36mDEBUG[m] env.TERM: xterm-256color
@@ -760,7 +738,7 @@ includes []
 [[1;36mDEBUG[m] library.jansi.path: /usr/share/maven/lib/jansi-native
 [[1;36mDEBUG[m] line.separator: 
 
-[[1;36mDEBUG[m] maven.build.timestamp: 2026-05-09T19:18:07Z
+[[1;36mDEBUG[m] maven.build.timestamp: 2026-05-09T19:33:02Z
 [[1;36mDEBUG[m] maven.build.version: Apache Maven 3.9.9
 [[1;36mDEBUG[m] maven.compiler.source: 11
 [[1;36mDEBUG[m] maven.compiler.target: 11
@@ -880,7 +858,7 @@ includes []
 [[1;36mDEBUG[m] Using mirror maven-default-http-blocker (http://0.0.0.0/) for apache.snapshots (http://people.apache.org/repo/m2-snapshot-repository).
 [[1;36mDEBUG[m] Using mirror maven-default-http-blocker (http://0.0.0.0/) for snapshots (http://snapshots.maven.codehaus.org/maven2).
 [[1;36mDEBUG[m] Using mirror maven-default-http-blocker (http://0.0.0.0/) for central (http://repo1.maven.org/maven2).
-[[1;36mDEBUG[m] Dependency collection stats {ConflictMarker.analyzeTime=168706, ConflictMarker.markTime=47969, ConflictMarker.nodeCount=98, ConflictIdSorter.graphTime=103244, ConflictIdSorter.topsortTime=19596, ConflictIdSorter.conflictIdCount=26, ConflictIdSorter.conflictIdCycleCount=0, ConflictResolver.totalTime=577151, ConflictResolver.conflictItemCount=69, DfDependencyCollector.collectTime=60136560, DfDependencyCollector.transformTime=950741}
+[[1;36mDEBUG[m] Dependency collection stats {ConflictMarker.analyzeTime=183154, ConflictMarker.markTime=47189, ConflictMarker.nodeCount=98, ConflictIdSorter.graphTime=94898, ConflictIdSorter.topsortTime=22663, ConflictIdSorter.conflictIdCount=26, ConflictIdSorter.conflictIdCycleCount=0, ConflictResolver.totalTime=643749, ConflictResolver.conflictItemCount=69, DfDependencyCollector.collectTime=53416400, DfDependencyCollector.transformTime=1050273}
 [[1;36mDEBUG[m] org.apache.maven.plugins:maven-surefire-plugin:jar:2.17
 [[1;36mDEBUG[m]    org.apache.maven:maven-plugin-api:jar:2.0.9:compile
 [[1;36mDEBUG[m]    org.apache.maven.surefire:maven-surefire-common:jar:2.17:compile
@@ -1003,13 +981,13 @@ snapshots: [enabled => false, update => daily]
 -------------------------------------------------------
 [[1;36mDEBUG[m] boot classpath:  /home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-booter/2.17/surefire-booter-2.17.jar  /home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-api/2.17/surefire-api-2.17.jar  /home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/test-classes  /home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/classes  /home/mathieu/.m2/repository/org/openjfx/javafx-controls/13/javafx-controls-13.jar  /home/mathieu/.m2/repository/org/openjfx/javafx-controls/13/javafx-controls-13-linux.jar  /home/mathieu/.m2/repository/org/openjfx/javafx-graphics/13/javafx-graphics-13.jar  /home/mathieu/.m2/repository/org/openjfx/javafx-graphics/13/javafx-graphics-13-linux.jar  /home/mathieu/.m2/repository/org/openjfx/javafx-base/13/javafx-base-13.jar  /home/mathieu/.m2/repository/org/openjfx/javafx-base/13/javafx-base-13-linux.jar  /home/mathieu/.m2/repository/org/openjfx/javafx-fxml/13/javafx-fxml-13.jar  /home/mathieu/.m2/repository/org/openjfx/javafx-fxml/13/javafx-fxml-13-linux.jar  /home/mathieu/.m2/repository/com/google/code/gson/gson/2.14.0/gson-2.14.0.jar  /home/mathieu/.m2/repository/com/google/errorprone/error_prone_annotations/2.48.0/error_prone_annotations-2.48.0.jar  /home/mathieu/.m2/repository/org/junit/jupiter/junit-jupiter-api/6.0.3/junit-jupiter-api-6.0.3.jar  /home/mathieu/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar  /home/mathieu/.m2/repository/org/junit/platform/junit-platform-commons/6.0.3/junit-platform-commons-6.0.3.jar  /home/mathieu/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar  /home/mathieu/.m2/repository/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar  /home/mathieu/.m2/repository/org/junit/jupiter/junit-jupiter-engine/6.0.3/junit-jupiter-engine-6.0.3.jar  /home/mathieu/.m2/repository/org/junit/platform/junit-platform-engine/6.0.3/junit-platform-engine-6.0.3.jar  /home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-junit3/2.17/surefire-junit3-2.17.jar
 [[1;36mDEBUG[m] boot(compact) classpath:  surefire-booter-2.17.jar  surefire-api-2.17.jar  test-classes  classes  javafx-controls-13.jar  javafx-controls-13-linux.jar  javafx-graphics-13.jar  javafx-graphics-13-linux.jar  javafx-base-13.jar  javafx-base-13-linux.jar  javafx-fxml-13.jar  javafx-fxml-13-linux.jar  gson-2.14.0.jar  error_prone_annotations-2.48.0.jar  junit-jupiter-api-6.0.3.jar  opentest4j-1.3.0.jar  junit-platform-commons-6.0.3.jar  apiguardian-api-1.1.2.jar  jspecify-1.0.0.jar  junit-jupiter-engine-6.0.3.jar  junit-platform-engine-6.0.3.jar  surefire-junit3-2.17.jar
-Forking command line: /bin/sh -c cd /home/mathieu/GitHub/Prog2-LIA/prog2-lia && /usr/lib/jvm/jdk-25.0.1-oracle-x64/bin/java -jar /home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/surefire/surefirebooter16249992632150992364.jar /home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/surefire/surefire4959150093627093347tmp /home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/surefire/surefire_02384950010564144405tmp
+Forking command line: /bin/sh -c cd /home/mathieu/GitHub/Prog2-LIA/prog2-lia && /usr/lib/jvm/jdk-25.0.1-oracle-x64/bin/java -jar /home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/surefire/surefirebooter13653062100070760363.jar /home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/surefire/surefire4180183095056496238tmp /home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/surefire/surefire_06835080260958345757tmp
 Running com.example.ClientTest
 **accounts: [X]
 **accounts: [X]
-**accounts: [X, lEnUab-2x]
-**accounts: [X, lsXRtZ-3X, nxbutn-2l]
-Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.032 sec - in com.example.ClientTest
+**accounts: [X, l3ehNr-23]
+**accounts: [X, lRbOnE-36, n49;gu-2h]
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.027 sec - in com.example.ClientTest
 
 Results :
 
@@ -1018,11 +996,29 @@ Tests run: 6, Failures: 0, Errors: 0, Skipped: 0
 [[1;34mINFO[m] [1m------------------------------------------------------------------------[m
 [[1;34mINFO[m] [1;32mBUILD SUCCESS[m
 [[1;34mINFO[m] [1m------------------------------------------------------------------------[m
-[[1;34mINFO[m] Total time:  2.453 s
-[[1;34mINFO[m] Finished at: 2026-05-09T15:18:07-04:00
+[[1;34mINFO[m] Total time:  1.564 s
+[[1;34mINFO[m] Finished at: 2026-05-09T15:33:03-04:00
 [[1;34mINFO[m] [1m------------------------------------------------------------------------[m
 [[1;36mDEBUG[m] Shutting down adapter factory; available factories [file-lock, rwlock-local, semaphore-local, noop]; available name mappers [discriminating, file-gav, file-hgav, file-static, gav, static]
 [[1;36mDEBUG[m] Shutting down 'file-lock' factory
 [[1;36mDEBUG[m] Shutting down 'rwlock-local' factory
 [[1;36mDEBUG[m] Shutting down 'semaphore-local' factory
 [[1;36mDEBUG[m] Shutting down 'noop' factory
+
+Account tests:
+
+
+App tests:
+
+
+Client tests:
+
+
+Driver tests:
+
+
+IdCreator tests:
+
+
+Transaction tests:
+
