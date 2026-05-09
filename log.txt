@@ -331,7 +331,7 @@ OS name: "linux", version: "6.12.85+deb13-amd64", arch: "amd64", family: "unix"
   <workingDirectory>${basedir}</workingDirectory>
 </configuration>
 [[1;36mDEBUG[m] =======================================================================
-[[1;36mDEBUG[m] Dependency collection stats {ConflictMarker.analyzeTime=783998, ConflictMarker.markTime=128210, ConflictMarker.nodeCount=35, ConflictIdSorter.graphTime=312535, ConflictIdSorter.topsortTime=277940, ConflictIdSorter.conflictIdCount=17, ConflictIdSorter.conflictIdCycleCount=4, ConflictResolver.totalTime=4159438, ConflictResolver.conflictItemCount=29, DfDependencyCollector.collectTime=89508143, DfDependencyCollector.transformTime=8314168}
+[[1;36mDEBUG[m] Dependency collection stats {ConflictMarker.analyzeTime=750488, ConflictMarker.markTime=152336, ConflictMarker.nodeCount=35, ConflictIdSorter.graphTime=421291, ConflictIdSorter.topsortTime=326582, ConflictIdSorter.conflictIdCount=17, ConflictIdSorter.conflictIdCycleCount=4, ConflictResolver.totalTime=3740616, ConflictResolver.conflictItemCount=29, DfDependencyCollector.collectTime=62132414, DfDependencyCollector.transformTime=7208223}
 [[1;36mDEBUG[m] com.example:prog2-lia:jar:1.0
 [[1;36mDEBUG[m]    org.openjfx:javafx-controls:jar:13:compile
 [[1;36mDEBUG[m]       org.openjfx:javafx-controls:jar:linux:13:compile
@@ -352,7 +352,7 @@ OS name: "linux", version: "6.12.85+deb13-amd64", arch: "amd64", family: "unix"
 [[1;36mDEBUG[m]       org.junit.platform:junit-platform-engine:jar:6.0.3:test
 [[1;34mINFO[m] 
 [[1;34mINFO[m] [1m--- [0;32mresources:3.3.1:resources[m [1m(default-resources)[m @ [36mprog2-lia[0;1m ---[m
-[[1;36mDEBUG[m] Dependency collection stats {ConflictMarker.analyzeTime=66415, ConflictMarker.markTime=72836, ConflictMarker.nodeCount=13, ConflictIdSorter.graphTime=21731, ConflictIdSorter.topsortTime=17272, ConflictIdSorter.conflictIdCount=9, ConflictIdSorter.conflictIdCycleCount=0, ConflictResolver.totalTime=397614, ConflictResolver.conflictItemCount=13, DfDependencyCollector.collectTime=40726740, DfDependencyCollector.transformTime=612677}
+[[1;36mDEBUG[m] Dependency collection stats {ConflictMarker.analyzeTime=122920, ConflictMarker.markTime=73248, ConflictMarker.nodeCount=13, ConflictIdSorter.graphTime=26149, ConflictIdSorter.topsortTime=30487, ConflictIdSorter.conflictIdCount=9, ConflictIdSorter.conflictIdCycleCount=0, ConflictResolver.totalTime=527580, ConflictResolver.conflictItemCount=13, DfDependencyCollector.collectTime=74335849, DfDependencyCollector.transformTime=829186}
 [[1;36mDEBUG[m] org.apache.maven.plugins:maven-resources-plugin:jar:3.3.1
 [[1;36mDEBUG[m]    org.codehaus.plexus:plexus-interpolation:jar:1.26:runtime
 [[1;36mDEBUG[m]    org.codehaus.plexus:plexus-utils:jar:3.5.1:compile
@@ -472,7 +472,7 @@ OS name: "linux", version: "6.12.85+deb13-amd64", arch: "amd64", family: "unix"
 [[1;36mDEBUG[m] library.jansi.path: /usr/share/maven/lib/jansi-native
 [[1;36mDEBUG[m] line.separator: 
 
-[[1;36mDEBUG[m] maven.build.timestamp: 2026-05-09T20:29:40Z
+[[1;36mDEBUG[m] maven.build.timestamp: 2026-05-09T21:10:41Z
 [[1;36mDEBUG[m] maven.build.version: Apache Maven 3.9.9
 [[1;36mDEBUG[m] maven.compiler.source: 11
 [[1;36mDEBUG[m] maven.compiler.target: 11
@@ -561,7 +561,7 @@ includes []
 [[1;36mDEBUG[m] Using mirror maven-default-http-blocker (http://0.0.0.0/) for apache.snapshots (http://repository.apache.org/snapshots).
 [[1;36mDEBUG[m] Using mirror maven-default-http-blocker (http://0.0.0.0/) for codehaus.snapshots (http://snapshots.repository.codehaus.org).
 [[1;36mDEBUG[m] Using mirror maven-default-http-blocker (http://0.0.0.0/) for ow2-snapshot (http://repository.ow2.org/nexus/content/repositories/snapshots).
-[[1;36mDEBUG[m] Dependency collection stats {ConflictMarker.analyzeTime=382787, ConflictMarker.markTime=219501, ConflictMarker.nodeCount=118, ConflictIdSorter.graphTime=111409, ConflictIdSorter.topsortTime=37951, ConflictIdSorter.conflictIdCount=45, ConflictIdSorter.conflictIdCycleCount=0, ConflictResolver.totalTime=1478148, ConflictResolver.conflictItemCount=72, DfDependencyCollector.collectTime=156614980, DfDependencyCollector.transformTime=2268568}
+[[1;36mDEBUG[m] Dependency collection stats {ConflictMarker.analyzeTime=336992, ConflictMarker.markTime=242495, ConflictMarker.nodeCount=118, ConflictIdSorter.graphTime=126989, ConflictIdSorter.topsortTime=39734, ConflictIdSorter.conflictIdCount=45, ConflictIdSorter.conflictIdCycleCount=0, ConflictResolver.totalTime=1653763, ConflictResolver.conflictItemCount=72, DfDependencyCollector.collectTime=143103442, DfDependencyCollector.transformTime=2421544}
 [[1;36mDEBUG[m] org.apache.maven.plugins:maven-compiler-plugin:jar:3.8.0
 [[1;36mDEBUG[m]    org.apache.maven:maven-plugin-api:jar:3.0:compile
 [[1;36mDEBUG[m]       org.apache.maven:maven-model:jar:3.0:compile
@@ -757,7 +757,7 @@ includes []
 [[1;36mDEBUG[m] library.jansi.path: /usr/share/maven/lib/jansi-native
 [[1;36mDEBUG[m] line.separator: 
 
-[[1;36mDEBUG[m] maven.build.timestamp: 2026-05-09T20:29:40Z
+[[1;36mDEBUG[m] maven.build.timestamp: 2026-05-09T21:10:41Z
 [[1;36mDEBUG[m] maven.build.version: Apache Maven 3.9.9
 [[1;36mDEBUG[m] maven.compiler.source: 11
 [[1;36mDEBUG[m] maven.compiler.target: 11
@@ -840,7 +840,6 @@ includes []
 [[1;36mDEBUG[m] Stale source detected: /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/test/java/com/example/IdCreatorTest.java
 [[1;36mDEBUG[m] Stale source detected: /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/test/java/com/example/DriverTest.java
 [[1;36mDEBUG[m] Stale source detected: /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/test/java/com/example/AccountTest.java
-[[1;36mDEBUG[m] Stale source detected: /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/test/java/com/example/ClientTest.java
 [[1;36mDEBUG[m] Stale source detected: /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/test/java/com/example/Transaction.java
 [[1;36mDEBUG[m] Stale source detected: /home/mathieu/GitHub/Prog2-LIA/prog2-lia/src/test/java/com/example/AppTest.java
 [[1;34mINFO[m] Changes detected - recompiling the module!
@@ -876,7 +875,7 @@ includes []
 [[1;34mINFO[m] 
 [[1;34mINFO[m] [1m--- [0;32msurefire:3.2.5:test[m [1m(default-test)[m @ [36mprog2-lia[0;1m ---[m
 [[1;36mDEBUG[m] Using mirror maven-default-http-blocker (http://0.0.0.0/) for jboss-public-repository-group (http://repository.jboss.org/nexus/content/groups/public).
-[[1;36mDEBUG[m] Dependency collection stats {ConflictMarker.analyzeTime=220723, ConflictMarker.markTime=57758, ConflictMarker.nodeCount=78, ConflictIdSorter.graphTime=99245, ConflictIdSorter.topsortTime=38763, ConflictIdSorter.conflictIdCount=39, ConflictIdSorter.conflictIdCycleCount=0, ConflictResolver.totalTime=914833, ConflictResolver.conflictItemCount=76, DfDependencyCollector.collectTime=100642042, DfDependencyCollector.transformTime=1363554}
+[[1;36mDEBUG[m] Dependency collection stats {ConflictMarker.analyzeTime=160370, ConflictMarker.markTime=38984, ConflictMarker.nodeCount=78, ConflictIdSorter.graphTime=81053, ConflictIdSorter.topsortTime=36608, ConflictIdSorter.conflictIdCount=39, ConflictIdSorter.conflictIdCycleCount=0, ConflictResolver.totalTime=876103, ConflictResolver.conflictItemCount=76, DfDependencyCollector.collectTime=91615476, DfDependencyCollector.transformTime=1223946}
 [[1;36mDEBUG[m] org.apache.maven.plugins:maven-surefire-plugin:jar:3.2.5
 [[1;36mDEBUG[m]    org.apache.maven.surefire:maven-surefire-common:jar:3.2.5:compile
 [[1;36mDEBUG[m]       org.apache.maven.surefire:surefire-api:jar:3.2.5:compile
@@ -1001,12 +1000,12 @@ role: 'org.apache.maven.plugin.Mojo', implementation: 'org.apache.maven.plugin.s
 [[1;36mDEBUG[m] Using the provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
 [[1;36mDEBUG[m] Setting system property [basedir]=[/home/mathieu/GitHub/Prog2-LIA/prog2-lia]
 [[1;36mDEBUG[m] Setting system property [localRepository]=[/home/mathieu/.m2/repository]
-[[1;36mDEBUG[m] Dependency collection stats {ConflictMarker.analyzeTime=81814, ConflictMarker.markTime=14116, ConflictMarker.nodeCount=7, ConflictIdSorter.graphTime=42961, ConflictIdSorter.topsortTime=10319, ConflictIdSorter.conflictIdCount=5, ConflictIdSorter.conflictIdCycleCount=0, ConflictResolver.totalTime=132748, ConflictResolver.conflictItemCount=6, DfDependencyCollector.collectTime=2581594, DfDependencyCollector.transformTime=294732}
+[[1;36mDEBUG[m] Dependency collection stats {ConflictMarker.analyzeTime=117320, ConflictMarker.markTime=19747, ConflictMarker.nodeCount=7, ConflictIdSorter.graphTime=63088, ConflictIdSorter.topsortTime=11321, ConflictIdSorter.conflictIdCount=5, ConflictIdSorter.conflictIdCycleCount=0, ConflictResolver.totalTime=192491, ConflictResolver.conflictItemCount=6, DfDependencyCollector.collectTime=6419875, DfDependencyCollector.transformTime=421912}
 [[1;36mDEBUG[m] Found implementation of fork node factory: org.apache.maven.plugin.surefire.extensions.LegacyForkNodeFactory
 [[1;36mDEBUG[m] Using fork starter with configuration implementation org.apache.maven.plugin.surefire.booterclient.ModularClasspathForkConfiguration
-[[1;36mDEBUG[m] Dependency collection stats {ConflictMarker.analyzeTime=33964, ConflictMarker.markTime=45475, ConflictMarker.nodeCount=15, ConflictIdSorter.graphTime=91000, ConflictIdSorter.topsortTime=28403, ConflictIdSorter.conflictIdCount=10, ConflictIdSorter.conflictIdCycleCount=0, ConflictResolver.totalTime=331761, ConflictResolver.conflictItemCount=14, DfDependencyCollector.collectTime=12116658, DfDependencyCollector.transformTime=577572}
+[[1;36mDEBUG[m] Dependency collection stats {ConflictMarker.analyzeTime=18786, ConflictMarker.markTime=39904, ConflictMarker.nodeCount=15, ConflictIdSorter.graphTime=27682, ConflictIdSorter.topsortTime=12784, ConflictIdSorter.conflictIdCount=10, ConflictIdSorter.conflictIdCycleCount=0, ConflictResolver.totalTime=144521, ConflictResolver.conflictItemCount=14, DfDependencyCollector.collectTime=11565067, DfDependencyCollector.transformTime=258325}
 [[1;36mDEBUG[m] Resolving artifact org.junit.platform:junit-platform-launcher:6.0.3
-[[1;36mDEBUG[m] Dependency collection stats {ConflictMarker.analyzeTime=74419, ConflictMarker.markTime=38432, ConflictMarker.nodeCount=11, ConflictIdSorter.graphTime=27502, ConflictIdSorter.topsortTime=18825, ConflictIdSorter.conflictIdCount=6, ConflictIdSorter.conflictIdCycleCount=0, ConflictResolver.totalTime=222637, ConflictResolver.conflictItemCount=10, DfDependencyCollector.collectTime=3079277, DfDependencyCollector.transformTime=420367}
+[[1;36mDEBUG[m] Dependency collection stats {ConflictMarker.analyzeTime=13135, ConflictMarker.markTime=20187, ConflictMarker.nodeCount=11, ConflictIdSorter.graphTime=7624, ConflictIdSorter.topsortTime=9728, ConflictIdSorter.conflictIdCount=6, ConflictIdSorter.conflictIdCycleCount=0, ConflictResolver.totalTime=108303, ConflictResolver.conflictItemCount=10, DfDependencyCollector.collectTime=875924, DfDependencyCollector.transformTime=172503}
 [[1;36mDEBUG[m] Resolved artifact org.junit.platform:junit-platform-launcher:6.0.3 to [org.junit.platform:junit-platform-launcher:jar:6.0.3, org.junit.platform:junit-platform-engine:jar:6.0.3, org.opentest4j:opentest4j:jar:1.3.0, org.junit.platform:junit-platform-commons:jar:6.0.3, org.apiguardian:apiguardian-api:jar:1.1.2, org.jspecify:jspecify:jar:1.0.0]
 [[1;36mDEBUG[m] main module descriptor name: com.example
 [[1;36mDEBUG[m] test classpath:  /home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/test-classes  /home/mathieu/.m2/repository/org/openjfx/javafx-controls/13/javafx-controls-13.jar  /home/mathieu/.m2/repository/org/openjfx/javafx-graphics/13/javafx-graphics-13.jar  /home/mathieu/.m2/repository/org/openjfx/javafx-base/13/javafx-base-13.jar  /home/mathieu/.m2/repository/org/openjfx/javafx-fxml/13/javafx-fxml-13.jar  /home/mathieu/.m2/repository/org/junit/jupiter/junit-jupiter-api/6.0.3/junit-jupiter-api-6.0.3.jar  /home/mathieu/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar  /home/mathieu/.m2/repository/org/junit/platform/junit-platform-commons/6.0.3/junit-platform-commons-6.0.3.jar  /home/mathieu/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar  /home/mathieu/.m2/repository/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar  /home/mathieu/.m2/repository/org/junit/jupiter/junit-jupiter-engine/6.0.3/junit-jupiter-engine-6.0.3.jar  /home/mathieu/.m2/repository/org/junit/platform/junit-platform-engine/6.0.3/junit-platform-engine-6.0.3.jar
@@ -1021,11 +1020,11 @@ role: 'org.apache.maven.plugin.Mojo', implementation: 'org.apache.maven.plugin.s
 [[1;34mINFO[m] -------------------------------------------------------
 [[1;34mINFO[m]  T E S T S
 [[1;34mINFO[m] -------------------------------------------------------
-[[1;36mDEBUG[m] Determined Maven Process ID 339064
+[[1;36mDEBUG[m] Determined Maven Process ID 355161
 [[1;36mDEBUG[m] Fork Channel [1] connection string 'pipe://1' for the implementation class org.apache.maven.plugin.surefire.extensions.LegacyForkChannel
 [[1;36mDEBUG[m] boot classpath:  /home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-booter/3.2.5/surefire-booter-3.2.5.jar  /home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-api/3.2.5/surefire-api-3.2.5.jar  /home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-logger-api/3.2.5/surefire-logger-api-3.2.5.jar  /home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-shared-utils/3.2.5/surefire-shared-utils-3.2.5.jar  /home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-extensions-spi/3.2.5/surefire-extensions-spi-3.2.5.jar  /home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/test-classes  /home/mathieu/.m2/repository/org/openjfx/javafx-controls/13/javafx-controls-13.jar  /home/mathieu/.m2/repository/org/openjfx/javafx-graphics/13/javafx-graphics-13.jar  /home/mathieu/.m2/repository/org/openjfx/javafx-base/13/javafx-base-13.jar  /home/mathieu/.m2/repository/org/openjfx/javafx-fxml/13/javafx-fxml-13.jar  /home/mathieu/.m2/repository/org/junit/jupiter/junit-jupiter-api/6.0.3/junit-jupiter-api-6.0.3.jar  /home/mathieu/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar  /home/mathieu/.m2/repository/org/junit/platform/junit-platform-commons/6.0.3/junit-platform-commons-6.0.3.jar  /home/mathieu/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar  /home/mathieu/.m2/repository/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar  /home/mathieu/.m2/repository/org/junit/jupiter/junit-jupiter-engine/6.0.3/junit-jupiter-engine-6.0.3.jar  /home/mathieu/.m2/repository/org/junit/platform/junit-platform-engine/6.0.3/junit-platform-engine-6.0.3.jar  /home/mathieu/.m2/repository/org/apache/maven/surefire/surefire-junit-platform/3.2.5/surefire-junit-platform-3.2.5.jar  /home/mathieu/.m2/repository/org/apache/maven/surefire/common-java5/3.2.5/common-java5-3.2.5.jar  /home/mathieu/.m2/repository/org/junit/platform/junit-platform-launcher/6.0.3/junit-platform-launcher-6.0.3.jar
 [[1;36mDEBUG[m] boot(compact) classpath:  surefire-booter-3.2.5.jar  surefire-api-3.2.5.jar  surefire-logger-api-3.2.5.jar  surefire-shared-utils-3.2.5.jar  surefire-extensions-spi-3.2.5.jar  test-classes  javafx-controls-13.jar  javafx-graphics-13.jar  javafx-base-13.jar  javafx-fxml-13.jar  junit-jupiter-api-6.0.3.jar  opentest4j-1.3.0.jar  junit-platform-commons-6.0.3.jar  apiguardian-api-1.1.2.jar  jspecify-1.0.0.jar  junit-jupiter-engine-6.0.3.jar  junit-platform-engine-6.0.3.jar  surefire-junit-platform-3.2.5.jar  common-java5-3.2.5.jar  junit-platform-launcher-6.0.3.jar
-[[1;36mDEBUG[m] Path to args file: /home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/surefire/surefireargs-20260509162941643_3
+[[1;36mDEBUG[m] Path to args file: /home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/surefire/surefireargs-20260509171042463_3
 [[1;36mDEBUG[m] args file content:
 --module-path
 "/home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/classes:/home/mathieu/.m2/repository/org/openjfx/javafx-controls/13/javafx-controls-13-linux.jar:/home/mathieu/.m2/repository/org/openjfx/javafx-graphics/13/javafx-graphics-13-linux.jar:/home/mathieu/.m2/repository/org/openjfx/javafx-base/13/javafx-base-13-linux.jar:/home/mathieu/.m2/repository/org/openjfx/javafx-fxml/13/javafx-fxml-13-linux.jar:/home/mathieu/.m2/repository/com/google/code/gson/gson/2.14.0/gson-2.14.0.jar:/home/mathieu/.m2/repository/com/google/errorprone/error_prone_annotations/2.48.0/error_prone_annotations-2.48.0.jar"
@@ -1040,21 +1039,23 @@ com.example=ALL-UNNAMED
 --add-modules
 ALL-MODULE-PATH
 org.apache.maven.surefire.booter.ForkedBooter
-[[1;36mDEBUG[m] Forking command line: /bin/sh -c cd '/home/mathieu/GitHub/Prog2-LIA/prog2-lia' && '/usr/lib/jvm/jdk-25.0.1-oracle-x64/bin/java' '@/home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/surefire/surefireargs-20260509162941643_3' '/home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/surefire' '2026-05-09T16-29-41_510-jvmRun1' 'surefire-20260509162941643_1tmp' 'surefire_0-20260509162941643_2tmp'
+[[1;36mDEBUG[m] Forking command line: /bin/sh -c cd '/home/mathieu/GitHub/Prog2-LIA/prog2-lia' && '/usr/lib/jvm/jdk-25.0.1-oracle-x64/bin/java' '@/home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/surefire/surefireargs-20260509171042463_3' '/home/mathieu/GitHub/Prog2-LIA/prog2-lia/target/surefire' '2026-05-09T17-10-42_336-jvmRun1' 'surefire-20260509171042463_1tmp' 'surefire_0-20260509171042463_2tmp'
 [[1;36mDEBUG[m] Fork Channel [1] connected to the client.
 [[1;34mINFO[m] Running com.example.[1mClientTest[m
-[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.088 s -- in com.example.[1mClientTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.064 s -- in com.example.[1mClientTest[m
+[[1;34mINFO[m] Running com.example.[1mIdCreatorTest[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.018 s -- in com.example.[1mIdCreatorTest[m
 [[1;36mDEBUG[m] Closing the fork 1 after saying GoodBye.
 [[1;34mINFO[m] 
 [[1;34mINFO[m] Results:
 [[1;34mINFO[m] 
-[[1;34mINFO[m] [1;32mTests run: 8, Failures: 0, Errors: 0, Skipped: 0[m
+[[1;34mINFO[m] [1;32mTests run: 14, Failures: 0, Errors: 0, Skipped: 0[m
 [[1;34mINFO[m] 
 [[1;34mINFO[m] [1m------------------------------------------------------------------------[m
 [[1;34mINFO[m] [1;32mBUILD SUCCESS[m
 [[1;34mINFO[m] [1m------------------------------------------------------------------------[m
-[[1;34mINFO[m] Total time:  2.073 s
-[[1;34mINFO[m] Finished at: 2026-05-09T16:29:42-04:00
+[[1;34mINFO[m] Total time:  2.056 s
+[[1;34mINFO[m] Finished at: 2026-05-09T17:10:43-04:00
 [[1;34mINFO[m] [1m------------------------------------------------------------------------[m
 [[1;36mDEBUG[m] Shutting down adapter factory; available factories [file-lock, rwlock-local, semaphore-local, noop]; available name mappers [discriminating, file-gav, file-hgav, file-static, gav, static]
 [[1;36mDEBUG[m] Shutting down 'file-lock' factory
@@ -1073,13 +1074,17 @@ Client tests:
 -------------------------------------------------------------------------------
 Test set: com.example.ClientTest
 -------------------------------------------------------------------------------
-Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.088 s -- in com.example.ClientTest
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.064 s -- in com.example.ClientTest
 
 Driver tests:
 
 
 IdCreator tests:
 
+-------------------------------------------------------------------------------
+Test set: com.example.IdCreatorTest
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.018 s -- in com.example.IdCreatorTest
 
 Transaction tests:
 
