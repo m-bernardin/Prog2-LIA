@@ -1,28 +1,23 @@
 package com.example;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.ArrayList;
-import org.junit.jupiter.api.*;;
+import org.junit.jupiter.api.*;
 public class ClientTest {
-    private String testName;
     private IndividualClient individual1;
     private StudentClient student1;
     private CorporateClient corporate1;
     private VipClient vip1;
     private ArrayList<Account> sampleAccounts;
     @BeforeEach
-    public void build(){
-        try {
-            individual1=new IndividualClient("example","Example01!",true,"John Smith","johnSmith@example.org");
+    public void build() throws InvalidTypeException{
+        individual1=new IndividualClient("example","Example01!",true,"John Smith","johnSmith@example.org");
             student1=new StudentClient("example","Example01!",true,"Jane Doe","janeDoe@example.org");
             corporate1=new CorporateClient("example","Example01!",true,true,"Unicorporated Inc.",buildCorporateContacts());
             vip1=new VipClient("example","Example01!",true,false,"Nomen Nescio","nomenNescio@sample.gov");
             sampleAccounts=buildSampleAccounts();
-        } catch (InvalidTypeException e) {
-            System.out.println("**An error occured while running test "+testName+"; could not create test clients...");
-            return;
-        }
     }
     private ArrayList<Account> buildSampleAccounts() throws InvalidTypeException {
         ArrayList<Account> accounts=new ArrayList<>();
@@ -34,7 +29,7 @@ public class ClientTest {
     private ArrayList<String> buildCorporateContacts() {
         ArrayList<String> contacts=new ArrayList<>();
         contacts.add("jeanTremblay@unincInc.com");
-        contacts.add("unoWHo@unincInc.com");
+        contacts.add("unoWho@unincInc.com");
         contacts.add("JaneQPublic@unicInc.com");
         return contacts;
     }
@@ -77,7 +72,19 @@ public class ClientTest {
     }
     @Test
     public void testAddManager(){
-        build();
-        
+        corporate1.addManager("TCMits@unincInc.com");
+        String newestManager=corporate1.getClientManagerContacts().get(corporate1.getClientManagerContacts().size()-1);
+        boolean same=newestManager.equals("TCMits@unincInc.com");
+        assertTrue(same);
+    }
+    @Test
+    public void testRemoveManagerNegative(){
+        boolean removed=corporate1.removeManager("TCMits@unincInc.com");
+        assertFalse(removed);
+    }
+    @Test
+    public void testRemoveManagerPositive(){
+        boolean removed=corporate1.removeManager("unoWho@unincInc.com");
+        assertTrue(removed);
     }
 }
