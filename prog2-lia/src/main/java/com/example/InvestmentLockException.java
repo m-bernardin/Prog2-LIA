@@ -19,4 +19,7 @@ public class InvestmentLockException extends Exception{
     public InvestmentLockException(){
         printStackTrace();
     }
+    public InvestmentLockException(String providedID, String actualID){
+        super("Cannot transfer to account no. "+providedID+" as it is not the chequeing account of this account's owner.\nPlease try transfering to account no. "+actualID);
+    }
 }

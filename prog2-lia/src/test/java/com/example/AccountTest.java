@@ -49,4 +49,19 @@ public class AccountTest {
     public void testWithdrawLockedInvestmentNegative(){
         assertThrows(InvestmentLockException.class,()->investment2.withdraw(125));
     }
+    @Test
+    public void testConvertAllCurrenciesNoThrow(){
+        assertDoesNotThrow(()->Account.convert(50,"USD"));
+        assertDoesNotThrow(()->Account.convert(50,"GBP"));
+        assertDoesNotThrow(()->Account.convert(50,"JPY"));
+        assertDoesNotThrow(()->Account.convert(50,"EUR"));
+        assertDoesNotThrow(()->Account.convert(50,"AUD"));
+        assertDoesNotThrow(()->Account.convert(50,"CHF"));
+    }
+    @Test
+    public void testConvertInvalidThrows(){
+        assertThrows(InvalidTypeException.class,()->Account.convert(50,"CAD"));
+    }
+    // TODO test alt currency deposit if time to refactor
+    // TODO test apply interest if time to refactor
 }

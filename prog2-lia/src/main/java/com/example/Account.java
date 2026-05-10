@@ -55,9 +55,8 @@ public abstract class Account {
      * @return true if the deposit was successful; false otherwise.
      */
     public boolean deposit(double amnt){
-        boolean success=true;
         balance+=amnt;
-        return success;
+        return true;
     }
     /**
      * Adds the specified amount to this account's balance, in the specified currency.
@@ -87,7 +86,7 @@ public abstract class Account {
         withdraw(amnt);
         boolean validTransfer=App.driver.deposit(amnt,transferToID);
         if(!validTransfer){
-            App.driver.deposit(amnt,this.accountID);
+            deposit(amnt);
             return false;
         }
         return true;
@@ -107,7 +106,7 @@ public abstract class Account {
      * @return the converted amount.
      * @throws InvalidTypeException if the specified ISO currency code is not recognized by the system.
      */
-    private double convert(double amnt,String currencyCode) throws InvalidTypeException{
+    public static double convert(double amnt,String currencyCode) throws InvalidTypeException{
         if(currencyCode.equals("USD"))return amnt*1.3978;
         if(currencyCode.equals("GBP"))return amnt*1.8420;
         if(currencyCode.equals("JPY"))return amnt*0.009350;

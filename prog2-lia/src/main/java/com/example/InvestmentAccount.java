@@ -68,4 +68,15 @@ public class InvestmentAccount extends EarningsAccount{
     public String toString() {
         return "Investment account no. "+accountID+"\t balance: "+balance+"$";
     }
+    @Override
+    public boolean transfer(double amnt, String transferToID) throws InvestmentLockException, InsufficientFundsException, InvalidTypeException {
+        if(!transferToID.equals(App.driver.getChequing(accountID)))throw new InvestmentLockException(transferToID,App.driver.getChequing(accountID));
+        withdraw(amnt);
+        boolean validTransfer=App.driver.deposit(amnt,transferToID);
+        if(!validTransfer){
+            deposit(amnt);
+            return false;
+        }
+        return true;
+    }
 }
