@@ -1,7 +1,9 @@
 package com.example;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalDate;
 
@@ -62,6 +64,19 @@ public class AccountTest {
     public void testConvertInvalidThrows(){
         assertThrows(InvalidTypeException.class,()->Account.convert(50,"CAD"));
     }
-    // TODO test alt currency deposit if time to refactor
+    @Test
+    public void testAltCurrencyDepositNonPremiumNegative(){
+        assertFalse(chequeing1.deposit(50,"USD"));
+    }
+    @Test
+    public void testAltCurrencyDepositPremiumPositive(){
+        chequeing1.makePremiumOwned();
+        assertTrue(chequeing1.deposit(50,"USD"));
+    }
+    @Test
+    public void testAltCurrencyDepositInvalidCurrencyNegative(){
+        chequeing1.makePremiumOwned();
+        assertFalse(chequeing1.deposit(50,"CAD"));
+    }
     // TODO test apply interest if time to refactor
 }

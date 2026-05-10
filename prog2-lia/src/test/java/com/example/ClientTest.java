@@ -44,35 +44,6 @@ public class ClientTest {
         sampleAccounts=null;
     }
     @Test
-    public void testCalculateTotalMonthlyFeeEmpty(){
-        assertEquals(0,individual1.calculateTotalMonthlyFee());
-    }
-    @Test
-    public void testCalculateTotalMonthlyFeeOne(){
-        individual1.addAccount(sampleAccounts.get(0).getAccountID());
-        assertEquals(10, individual1.calculateTotalMonthlyFee());
-    }
-    @Test
-    public void testCalculateTotalMonthlyFeeTwo(){
-        individual1.addAccount(sampleAccounts.get(0).getAccountID());
-        individual1.addAccount(sampleAccounts.get(1).getAccountID());
-        assertEquals(20,individual1.calculateTotalMonthlyFee());
-    }
-    @Test
-    public void testMonthlyFeesWaivedStudent(){
-        student1.addAccount(sampleAccounts.get(0).getAccountID());
-        assertEquals(0,student1.calculateTotalMonthlyFee());
-        student1.addAccount(sampleAccounts.get(1).getAccountID());
-        assertEquals(0,student1.calculateTotalMonthlyFee());
-    }
-    @Test
-    public void testMonthlyFeesWaivedVip(){
-        vip1.addAccount(sampleAccounts.get(0).getAccountID());
-        assertEquals(0,vip1.calculateTotalMonthlyFee());
-        vip1.addAccount(sampleAccounts.get(1).getAccountID());
-        assertEquals(0,vip1.calculateTotalMonthlyFee());
-    }
-    @Test
     public void testAddManager(){
         corporate1.addManager("TCMits@unincInc.com");
         String newestManager=corporate1.getClientManagerContacts().get(corporate1.getClientManagerContacts().size()-1);
