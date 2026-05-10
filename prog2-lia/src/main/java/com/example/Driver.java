@@ -111,16 +111,23 @@ public class Driver{
             setActiveClient(client.getClientID());
             refreshAccounts();
             selectedAccount.addListener((obs,oldAccount,newAccount)->{
-                if(newAccount==null||newAccount.isBlank()){
+                if(newAccount==null||newAccount.isBlank()||newAccount.equals("")){
                     filteredTransactions.setPredicate(transaction->false);
                     return;
                 }
-                filteredTransactions.setPredicate(transaction->transaction.isAssociatedTo(newAccount));
+                filteredTransactions.setPredicate(transaction->transaction.isAssociatedTo(newAccount)||transaction.getTransactionID().equals("x"));
             });
             sortedTransactions.setComparator(Comparator.comparing(Transaction::getDateTime).reversed());
             refreshLatest();
             transactions.addListener((ListChangeListener<Transaction>)transaction->refreshLatest());
             transactions.addListener((ListChangeListener<Transaction>)transaction->refreshAccounts());
+            accounts.addListener((ListChangeListener<Account>)account->{
+                while(account.next()){
+                    if(account.wasAdded())refreshAccounts();
+                    else continue;
+                }
+            });
+            selectedAccount.set("");
             return true;
         }
         return false;
@@ -129,6 +136,7 @@ public class Driver{
      * Refreshes filteredAccounts when a new transactions is added.
      */
     private void refreshAccounts() {
+    accounts.sort(Comparator.comparing(Account::getAccountID));
         filteredAccounts.setPredicate(account -> getClient(activeClient).getAccounts().contains(account.getAccountID()));
     }
     /**
@@ -142,6 +150,7 @@ public class Driver{
      */
     public void logout(){
         activeClient=null;
+        selectedAccount.set("");
     }
     /**
      * Allows the new client controller to create individual clients.
@@ -539,7 +548,7 @@ public class Driver{
                 case 'n':
                     accounts.add(new Gson().fromJson(account, InvestmentAccount.class));
                     break;
-                case 'X':
+                case 'z':
                     accounts.add(new Gson().fromJson(account, BlankAccount.class));
                 default:
                     System.out.println("## could not find type...");

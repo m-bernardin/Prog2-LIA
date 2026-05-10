@@ -46,7 +46,7 @@ public abstract class Client{
         this.username=username;
         this.password=password;
         accounts=new ArrayList<>();
-        accounts.add("X");
+        accounts.add("z");
         transactions=new HashSet<>();
         clientID="";
         dateOpened=LocalDate.now();

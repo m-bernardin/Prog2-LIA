@@ -10,7 +10,7 @@ public class BlankAccount extends Account{
      */
     public BlankAccount() throws InvalidTypeException {
         super();
-        accountID="X";
+        accountID="z";
     }
     /**
      * Returns a representation of this class as a String.
