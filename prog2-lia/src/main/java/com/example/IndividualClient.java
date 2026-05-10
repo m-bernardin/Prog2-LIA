@@ -4,7 +4,7 @@ package com.example;
  */
 public class IndividualClient extends StandardClient{
     /**
-     * Constructor for this class. Automatically creates client ID.
+     * Constructor for this class. Automatically creates client ID (type (1,1)).
      * @param username - the client's username.
      * @param password - the client's password.
      * @param name - the client's name.
@@ -13,13 +13,7 @@ public class IndividualClient extends StandardClient{
      */
     public IndividualClient(String username, String password, String name, String contact) throws InvalidTypeException {
         super(username, password, name, contact);
-        boolean validID=false;
-        String ID="";
-        while(!validID){
-            ID=IdCreator.createID(1,1);
-            if(!App.driver.exists(ID))validID=true;
-        }
-        setClientID(ID);
+        setClientID(IdCreator.createSafeID(1,1));
     }
     /**
      * Constructor for this class which bypasses duplicate ID check. Otherwise identical to main constructor for this class.

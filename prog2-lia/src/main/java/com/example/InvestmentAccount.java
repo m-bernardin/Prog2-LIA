@@ -16,11 +16,7 @@ public class InvestmentAccount extends EarningsAccount{
      */
     public InvestmentAccount() throws InvalidTypeException {
         super();
-        boolean validID=false;
-        while(!validID){
-            accountID=IdCreator.createID(2,3);
-            if(!App.driver.exists(accountID))validID=true;
-        }
+        accountID=IdCreator.createSafeID(3,3);
         interestRate=0.05;
         dateOpened=LocalDate.now();
     }

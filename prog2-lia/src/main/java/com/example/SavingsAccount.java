@@ -10,11 +10,7 @@ public class SavingsAccount extends EarningsAccount{
      */
     public SavingsAccount() throws InvalidTypeException {
         super();
-        boolean validID=false;
-        while(!validID){
-            accountID=IdCreator.createID(2,2);
-            if(!App.driver.exists(accountID))validID=true;
-        }
+        accountID=IdCreator.createSafeID(2,2);
         interestRate=0.02;
     }
     /**

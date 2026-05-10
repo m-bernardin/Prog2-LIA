@@ -38,6 +38,16 @@ public class IdCreator {
         ID+="-"+convertBase64(checksum);
         return ID;
     }
+    // TODO javadoc
+    public static String createSafeID(int type,int subtype) throws InvalidTypeException{
+        boolean validID=false;
+        String ID=null;
+        while(!validID){
+            ID=createID(type, subtype);
+            if(!App.driver.exists(ID))validID=true;
+        }
+        return ID;
+    }
     /**
      * Generates the identifier component for an ID of type Transaction.
      * @return the identifier component generated.

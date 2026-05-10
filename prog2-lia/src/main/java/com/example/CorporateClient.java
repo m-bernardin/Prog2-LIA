@@ -15,7 +15,7 @@ public class CorporateClient extends PremiumClient{
      */
     private ArrayList<String> clientManagerContacts=new ArrayList<>();
     /**
-     * Constructor for this class. Automatically generates an ID as IdCreator type (1,3).
+     * Constructor for this class. Automatically generates a client ID (type (1,3)).
      * @param username - the client's username.
      * @param password - the client's password.
      * @param rewardsProgramMember - if the client has opted into the rewards program.
@@ -27,13 +27,7 @@ public class CorporateClient extends PremiumClient{
         super(username, password, rewardsProgramMember);
         this.companyName=companyName;
         this.clientManagerContacts=clientManagerContacts;
-        boolean validID=false;
-        String ID="";
-        while(!validID){
-            ID=IdCreator.createID(1,3);
-            if(!App.driver.exists(ID))validID=true;
-        }
-        setClientID(ID);
+        setClientID(IdCreator.createSafeID(1,3));
     }
     /**
      * Constructor for this class which bypasses duplicate ID check. Otherwise identical to main constructor for this class.

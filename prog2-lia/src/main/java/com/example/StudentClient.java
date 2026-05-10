@@ -24,13 +24,7 @@ public class StudentClient extends StandardClient{
      */
     public StudentClient(String username, String password, String name, String contact) throws InvalidTypeException {
         super(username, password, name, contact);
-        boolean validID=false;
-        String ID="";
-        while(!validID){
-            ID=IdCreator.createID(1,2);
-            if(!App.driver.exists(ID))validID=true;
-        }
-        setClientID(ID);
+        setClientID(IdCreator.createSafeID(1,2));
         statusValid=false;
     }
     /**

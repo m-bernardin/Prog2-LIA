@@ -1,12 +1,13 @@
 # General TODO
 - implement rewards program
-- charge monthly fees
-- apply monthly interest
-- monthly fee display works
+- maintain actually works
+  - charge monthly fees
+  - apply monthly interest
+- ~~monthly fee display works~~
 - display contact info on dashboard
 - update uml
 - make release when done
-- refactor maintain into accounts
+- ~~refactor maintain into accounts~~
 - account test
 - driver test
 - blank accounts display on all clients.

@@ -18,7 +18,7 @@ public class VipClient extends PremiumClient{
      */
     private String contact;
     /**
-     * Constructor for this class. Automatically generates an ID (type (1,4)) and sets monthlyFees to 0.
+     * Constructor for this class. Automatically generates a client ID (type (1,4)).
      * @param username - this client's username.
      * @param password - this client's password.
      * @param rewardsProgramMember - if this client has opted into the rewards program.
@@ -28,13 +28,7 @@ public class VipClient extends PremiumClient{
      */
     public VipClient(String username, String password, boolean rewardsProgramMember,String name,String contact) throws InvalidTypeException {
         super(username, password, rewardsProgramMember);
-        boolean validID=false;
-        String ID="";
-        while(!validID){
-            ID=IdCreator.createID(1,4);
-            if(!App.driver.exists(ID))validID=true;
-        }
-        setClientID(ID);
+        setClientID(IdCreator.createSafeID(1,4));
     }
     /**
      * Constructor for this class which bypasses duplicate ID check. Otherwise identical to main constructor for this class.
