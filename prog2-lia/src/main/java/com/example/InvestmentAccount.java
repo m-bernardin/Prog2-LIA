@@ -25,17 +25,17 @@ public class InvestmentAccount extends EarningsAccount{
         dateOpened=LocalDate.now();
     }
     /**
-     * Constructor for this class which bypasses duplicate ID check. Otherwise identical to main constructor for this class.
+     * Constructor for this class which bypasses duplicate ID check. Allows for specification of the date this account was opened. Otherwise identical to main constructor for this class.
      * @param balance - this account's starting balance.
+     * @param dateOpened - the date this account was opened.
      * @throws InvalidTypeException if something goes wrong.
      */
-    public InvestmentAccount(double balance) throws InvalidTypeException {
+    public InvestmentAccount(double balance,LocalDate dateOpened) throws InvalidTypeException {
         super(balance);
         accountID=IdCreator.createID(2,3);
         interestRate=0.05;
-        dateOpened=LocalDate.now();
+        this.dateOpened=dateOpened;
     }
-
     /**
      * Gets the date this account was opened.
      * @return this accounts opening date.
