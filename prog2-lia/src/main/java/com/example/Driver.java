@@ -212,15 +212,17 @@ public class Driver{
      */
     public boolean isPremium(String clientID){
         Client client=null;
-        if(clientID==null)return false;
-        for (Client search : clients) {
-            if(search.getClientID().equals(clientID)){
-                client=search;
-                break;
-            }
-        }
+        client=getClient(clientID);
         if(client==null)return false;
         if(client.getClass()==VipClient.class||client.getClass()==CorporateClient.class)return true;
+        return false;
+    }
+    // TODO javadoc
+    public boolean hasWaivedFees(String clientID){
+        Client client=null;
+        client=getClient(clientID);
+        if(client==null)return false;
+        if(client.getClass()==VipClient.class||client.getClass()==StudentClient.class)return true;
         return false;
     }
     /**
@@ -286,11 +288,12 @@ public class Driver{
      * @return the client found.
      * @throws NullPointerException if the client does not exist.
      */
-    public Client getClient(String clientID) throws NullPointerException{
+    public Client getClient(String clientID){
+        if(clientID==null)return null;
         for (Client client : clients) {
             if(client.getClientID().equals(clientID))return client;
         }
-        throw new NullPointerException();
+        return null;
     }
     /**
      * Gets the IDs of all earnings accounts owned by the specified client.
@@ -339,6 +342,8 @@ public class Driver{
     public void openChequeing() throws InvalidTypeException{
         ChequeingAccount newAccount=new ChequeingAccount();
         if(isPremium(activeClient))newAccount.setPremiumOwner(true);
+        if(hasWaivedFees(activeClient))newAccount.waiveFees();
+        if(hasWaivedFees(activeClient))
         getClient(activeClient).addAccount(newAccount.getAccountID());
         accounts.add(newAccount);
     }
@@ -350,6 +355,7 @@ public class Driver{
     public void openSavings() throws InvalidTypeException {
         SavingsAccount newAccount=new SavingsAccount();
         if(isPremium(activeClient))newAccount.setPremiumOwner(true);
+        if(hasWaivedFees(activeClient))newAccount.waiveFees();;
         newAccount.addInterest(getClient(activeClient).EXTRA_INTEREST);
         getClient(activeClient).addAccount(newAccount.getAccountID());
         accounts.add(newAccount);
@@ -362,6 +368,7 @@ public class Driver{
     public void openInvestment() throws InvalidTypeException {
         InvestmentAccount newAccount=new InvestmentAccount();
         if(isPremium(activeClient))newAccount.setPremiumOwner(true);
+        if(hasWaivedFees(activeClient))newAccount.waiveFees();
         newAccount.addInterest(getClient(activeClient).EXTRA_INTEREST);
         getClient(activeClient).addAccount(newAccount.getAccountID());
         accounts.add(newAccount);

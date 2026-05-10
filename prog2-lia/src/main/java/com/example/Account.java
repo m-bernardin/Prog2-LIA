@@ -19,6 +19,12 @@ public abstract class Account {
     public void setPremiumOwner(boolean premiumOwner) {
         this.premiumOwner = premiumOwner;
     }
+    // TODO javadoc
+    private int monthlyFees=10;
+    // TODO javadoc
+    public void waiveFees(){
+        monthlyFees=0;
+    }
     /**
      * This classes basic constructor. Sets balance to 0, but leaves accountID blank.
      * @throws InvalidTypeException if somehow an invalid type or subtype was supplied by a child's constructor  to the IdCCreator.

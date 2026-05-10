@@ -43,10 +43,6 @@ public abstract class Client implements Maintainable{
      */
     private LocalDate dateOpened;
     /**
-     * The amount this client must pay each month per owned account.
-     */
-    protected int monthlyFee=10;
-    /**
      * The basic constructor for this class. Takes a username and password, then auto-generates the rest.
      * @param username - this client's username.
      * @param password - this client's password.
