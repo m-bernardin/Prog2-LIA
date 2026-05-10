@@ -2,5 +2,5 @@
 cd ~/GitHub/Prog2-LIA/
 echo starting application...
 # look into --file for running from top
-mvn clean -e  -f prog2-lia/pom.xml javafx:run > ../log.txt
+mvn clean -e  -f prog2-lia/pom.xml javafx:run > log.txt
 echo application closed...

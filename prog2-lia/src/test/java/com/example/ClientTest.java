@@ -3,6 +3,8 @@ package com.example;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
 import org.junit.jupiter.api.*;
 public class ClientTest {
@@ -22,7 +24,7 @@ public class ClientTest {
     private ArrayList<Account> buildSampleAccounts() throws InvalidTypeException {
         ArrayList<Account> accounts=new ArrayList<>();
         accounts.add(new ChequeingAccount(0));
-        accounts.add(new InvestmentAccount(0));
+        accounts.add(new InvestmentAccount(0,LocalDate.now()));
         accounts.add(new SavingsAccount(0));
         return accounts;
     }
