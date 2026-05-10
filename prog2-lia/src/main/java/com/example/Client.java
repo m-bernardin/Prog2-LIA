@@ -8,7 +8,7 @@ import java.util.HashSet;
  * Represents a client at its most basic form.
  * @author Mathieu Bernardin
  */
-public abstract class Client implements Maintainable{
+public abstract class Client{
     /**
      * Percentage of extra interest applied to monthly interest on earnings accounts.
      */
@@ -72,13 +72,6 @@ public abstract class Client implements Maintainable{
         dateOpened=LocalDate.now();
     }
     /**
-     * Gets the fee this client must pay each per account each month.
-     * @return the fee this client must pay each per account each month.
-     */
-    public int getMonthlyFee() {
-        return monthlyFee;
-    }
-    /**
      * Sets the client's ID to the specified ID.
      * @param clientID - the ID to be changed to.
      */
@@ -121,59 +114,10 @@ public abstract class Client implements Maintainable{
         return accounts;
     }
     /**
-     * Implementation of the Maintainable interface. Defines what must be done each time this client logs in.
-     * @return true if the maintenance is successful; false otherwise.
-     * @throws InvalidTypeException if something went wrong on a deeper level.
-     */
-    @Override
-    public boolean maintain() throws InvalidTypeException {
-        Period periodSinceLastOpened=Period.between(LocalDate.now(), dateLastOpened);
-        int monthsSinceLastOpened=periodSinceLastOpened.getMonths()+periodSinceLastOpened.getYears()*12;
-        boolean sufficientFunds=true;
-        for(int i=0;i<monthsSinceLastOpened;++i){
-            sufficientFunds=applyMonthlyFee();
-            for (String accountID : App.driver.getOwnedEarningsAccounts(clientID)) {
-                try {
-                    App.driver.getEarningsAccount(accountID).applyInterest();
-                } catch (Exception e) {
-                    System.out.println("**non eaarnings account");
-                }
-            }
-        }
-        setDateLastOpened(LocalDate.now());
-        return sufficientFunds;
-    }
-    /**
-     * Charges monthly fees to this client's primary chequeing account.
-     * @return true if this operation was successful; false otherwise.
-     * @throws InvalidTypeException if something went wrong on a deeper level.
-     */
-    protected boolean applyMonthlyFee() throws InvalidTypeException{
-        boolean success=true;
-        try {
-            App.driver.withdraw(calculateTotalMonthlyFee(),App.driver.getChequing(getClientID()));
-        } catch (NullPointerException e) {
-            App.displayError("No chequing account found to charge for monthly fees.");
-            success=false;
-        } catch (InvestmentLockException e) {
-            App.displayError("System error: monthly fee was charged to locked investment account.");
-            success=false;
-        } catch (InsufficientFundsException e) {
-            App.displayError("Insufficient funds to charge monthly fees");
-        } return success;
-    }
-    /**
      * Adds a account as an owned account, based off a specified account ID.
      * @param accountID - the account ID to be added.
      */
     protected void addAccount(String accountID){
         accounts.add(accountID);
-    }
-    /**
-     * Gets the total amount this client must pay each omth for their open accounts.
-     * @return the amount they must pay.
-     */
-    protected int calculateTotalMonthlyFee(){
-        return monthlyFee*(accounts.size()-1);
     }
 }

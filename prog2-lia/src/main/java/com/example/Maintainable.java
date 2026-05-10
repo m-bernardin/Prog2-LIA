@@ -10,5 +10,5 @@ public interface Maintainable {
      * @return true if the operation was successful; false otherwise.
      * @throws InvalidTypeException 
      */
-    boolean maintain() throws InvalidTypeException;
+    void maintain();
 }

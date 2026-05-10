@@ -1,9 +1,11 @@
 package com.example;
+
+import java.time.LocalDate;
 /**
  * This class represents the most generic user account.
  * @author Mathieu Bernardin
  */
-public abstract class Account {
+public abstract class Account implements Maintainable{
     /**
      * The current balance of this account.
      */
@@ -21,6 +23,10 @@ public abstract class Account {
     }
     // TODO javadoc
     private int monthlyFees=10;
+    // TODO javadoc
+    public int getMonthlyFees() {
+        return monthlyFees;
+    }
     // TODO javadoc
     public void waiveFees(){
         monthlyFees=0;
@@ -126,5 +132,15 @@ public abstract class Account {
         if(currencyCode.equals("AUD"))return amnt*0.9009;
         if(currencyCode.equals("CHF"))return amnt*1.6846;
         throw new InvalidTypeException("Invalid currency code");
+    }
+    // TODO javadoc
+    private LocalDate dateLastOpened;
+    // TODO javadoc
+    public void setDateLastOpened(LocalDate dateLastOpened) {
+        this.dateLastOpened = dateLastOpened;
+    }
+    // TODO javadoc
+    public LocalDate getDateLastOpened() {
+        return dateLastOpened;
     }
 }

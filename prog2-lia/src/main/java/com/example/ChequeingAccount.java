@@ -1,4 +1,8 @@
 package com.example;
+
+import java.time.LocalDate;
+import java.time.Period;
+
 /**
  * Represents a chequeing account. Essentially a concrete implementation of the parent.
  * @author Mathieu Bernardin
@@ -44,5 +48,18 @@ public class ChequeingAccount extends Account{
     @Override
     public String toString() {
         return "Chequeing account no. "+accountID+"\t balance: "+balance+"$";
+    }
+    /**
+     * Implementation of the Maintainable interface. Defines what must be done each time the owner of this account logs in.
+     * @return true if the maintenance is successful; false otherwise.
+     */
+    @Override
+    public void maintain(){
+        Period periodSinceLastOpened=Period.between(LocalDate.now(), getDateLastOpened());
+        int monthsSinceLastOpened=periodSinceLastOpened.getMonths()+periodSinceLastOpened.getYears()*12;
+        for(int i=0;i<monthsSinceLastOpened;++i){
+            balance-=getMonthlyFees();
+        }
+        setDateLastOpened(LocalDate.now());
     }
 }

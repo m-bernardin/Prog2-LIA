@@ -35,7 +35,6 @@ public class VipClient extends PremiumClient{
             if(!App.driver.exists(ID))validID=true;
         }
         setClientID(ID);
-        monthlyFee=0;
     }
     /**
      * Constructor for this class which bypasses duplicate ID check. Otherwise identical to main constructor for this class.
@@ -61,7 +60,6 @@ public class VipClient extends PremiumClient{
         }
         else ID=IdCreator.createID(1,2);
         setClientID(ID);
-        monthlyFee=0;
     }
     /**
      * Gets this client's name.

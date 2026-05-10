@@ -32,7 +32,6 @@ public class StudentClient extends StandardClient{
         }
         setClientID(ID);
         statusValid=false;
-        monthlyFee=0;
     }
     /**
      * Constructor for this class which bypasses duplicate ID check. Otherwise identical to main constructor for this class.
@@ -56,9 +55,7 @@ public class StudentClient extends StandardClient{
         else ID=IdCreator.createID(1,2);
         setClientID(ID);
         statusValid=false;
-        monthlyFee=0;
     }
-
     /**
      * Gets the date this client's full time student status expires.
      * @return the date this client's full time student status expires.
@@ -90,10 +87,11 @@ public class StudentClient extends StandardClient{
     /**
      * Verifies this client's full time student status is still valid, if its invalid, updates it accordingly.
      */
-    @Override
-    public boolean maintain() throws InvalidTypeException {
-        if(LocalDate.now().isAfter(statusExpiryDate))statusValid=false;
-        setDateLastOpened(LocalDate.now());
-        return true;
-    }
+    // TODO reimplement
+    // @Override
+    // public boolean maintain() throws InvalidTypeException {
+    //     if(LocalDate.now().isAfter(statusExpiryDate))statusValid=false;
+    //     setDateLastOpened(LocalDate.now());
+    //     return true;
+    // }
 }

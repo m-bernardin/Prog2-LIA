@@ -1,4 +1,8 @@
 package com.example;
+
+import java.time.LocalDate;
+import java.time.Period;
+
 /**
  * Represents an account which can earn interest on its balance.
  * @author Mathieu Bernardin
@@ -41,5 +45,19 @@ public abstract class EarningsAccount extends Account implements InterestBearing
     // TODO javadoc
     public void addInterest(double interest){
         interestRate+=interest;
+    }
+    /**
+     * Implementation of the Maintainable interface. Defines what must be done each time the owner of this account logs in.
+     * @return true if the maintenance is successful; false otherwise.
+     */
+    @Override
+    public void maintain(){
+        Period periodSinceLastOpened=Period.between(LocalDate.now(), getDateLastOpened());
+        int monthsSinceLastOpened=periodSinceLastOpened.getMonths()+periodSinceLastOpened.getYears()*12;
+        for(int i=0;i<monthsSinceLastOpened;++i){
+            balance*=interestRate;
+            balance-=getMonthlyFees();
+        }
+        setDateLastOpened(LocalDate.now());
     }
 }
