@@ -32,6 +32,7 @@ public class ChequeingAccount extends Account{
     @Override
     public void withdraw(double amnt) throws InsufficientFundsException{
         if(balance>=amnt){
+            if(rewardsProgramMember)points+=amnt*2.5;
             balance-=amnt;
             return;
         }
@@ -44,6 +45,18 @@ public class ChequeingAccount extends Account{
     @Override
     public String toString() {
         return "Chequeing account no. "+accountID+"\t balance: "+balance+"$";
+    }
+    // TODO javadoc
+    @Override
+    public void withdraw(double amnt, boolean rewardable) throws InvestmentLockException, InsufficientFundsException {
+        if(!rewardable){
+            if(balance>=amnt){
+                balance-=amnt;
+                return;
+            }
+            throw new InsufficientFundsException();
+        }
+        withdraw(amnt);
     }
     /**
      * Implementation of the Maintainable interface. Defines what must be done each time the owner of this account logs in.

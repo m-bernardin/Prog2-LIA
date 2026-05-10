@@ -10,7 +10,7 @@
 - ~~refactor maintain into accounts~~
 - ~~account test~~
 - driver test
-- blank accounts display on all clients.
-- hide non owned transactions on login
+- ~~blank accounts display on all clients.~~
+- ~~hide non owned transactions on login~~
 - ~~earnings accounts can only be created on clients with chequeing accounts~~
 - ~~student status expired shows on dashboard~~

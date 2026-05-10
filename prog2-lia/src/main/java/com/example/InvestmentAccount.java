@@ -49,12 +49,28 @@ public class InvestmentAccount extends EarningsAccount{
     public void withdraw(double amnt) throws InvestmentLockException, InsufficientFundsException {
         if(dateOpened.plusYears(1).isBefore(LocalDate.now())){
             if(balance>=amnt){
+                if(rewardsProgramMember)points+=amnt*2.5;
                 balance-=amnt;
                 return;
             }
             throw new InsufficientFundsException();
         }
         throw new InvestmentLockException(LocalDate.now().until(dateOpened.plusYears(1)).toString());
+    }
+    // TODO javadoc
+    @Override
+    public void withdraw(double amnt, boolean rewardable) throws InvestmentLockException, InsufficientFundsException {
+        if(!rewardable){
+            if(dateOpened.plusYears(1).isBefore(LocalDate.now())){
+                if(balance>=amnt){
+                    balance-=amnt;
+                    return;
+                }
+                throw new InsufficientFundsException();
+            }
+            throw new InvestmentLockException(LocalDate.now().until(dateOpened.plusYears(1)).toString());
+        }
+        withdraw(amnt);
     }
     /**
      * Gets a String representation of this account.
@@ -77,7 +93,7 @@ public class InvestmentAccount extends EarningsAccount{
     @Override
     public boolean transfer(double amnt, String transferToID) throws InvestmentLockException, InsufficientFundsException, InvalidTypeException {
         if(!transferToID.equals(App.driver.getChequing(accountID)))throw new InvestmentLockException(transferToID,App.driver.getChequing(accountID));
-        withdraw(amnt);
+        withdraw(amnt,false);
         boolean validTransfer=App.driver.deposit(amnt,transferToID);
         if(!validTransfer){
             deposit(amnt);

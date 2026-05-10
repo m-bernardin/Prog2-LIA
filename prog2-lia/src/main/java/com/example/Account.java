@@ -10,6 +10,14 @@ public abstract class Account implements Maintainable{
      * The current balance of this account.
      */
     protected double balance;
+    // TODO javadoc
+    protected double points;
+    // TDOD javadoc
+    protected boolean rewardsProgramMember;
+    // TODO javadoc
+    public void optIntoRewardsProgram(){
+        rewardsProgramMember=true;
+    }
     /**
      * This accounts unique ID.
      * IdCreator type 2.
@@ -79,6 +87,8 @@ public abstract class Account implements Maintainable{
      * @throws InsufficientFundsException if a user attempts to withdraw more than this accounts current balance from this account 
      */
     public abstract void withdraw(double amnt) throws InvestmentLockException, InsufficientFundsException;
+    // TODO javadoc
+    public abstract void withdraw(double amnt,boolean rewardable) throws InvestmentLockException, InsufficientFundsException;
     /**
      * Adds the specified amount to this account's balance.
      * @param amnt - the amount to be deposited.
@@ -113,7 +123,7 @@ public abstract class Account implements Maintainable{
      * @throws InvalidTypeException if an invalid type was provided to the IdCreator by the Transaction record creator.
      */
     public boolean transfer(double amnt,String transferToID) throws InvestmentLockException, InsufficientFundsException, InvalidTypeException{
-        withdraw(amnt);
+        withdraw(amnt,false);
         boolean validTransfer=App.driver.deposit(amnt,transferToID);
         if(!validTransfer){
             deposit(amnt);

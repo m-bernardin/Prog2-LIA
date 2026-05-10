@@ -239,6 +239,20 @@ public class Driver{
         return false;
     }
     /**
+     * Checks if the specified client has opted into the rewards program.
+     * @param clientID - the ID of the client to be checked.
+     * @return true if they have opted into the rewards program; false otherwise.
+     */
+    public boolean isRewardsProgramMember(String clientID){
+        Client client=null;
+        client=getClient(clientID);
+        if(client==null)return false;
+        PremiumClient castedClient;
+        if(client.getClass()==VipClient.class||client.getClass()==CorporateClient.class)castedClient=(PremiumClient)client;
+        else return false;
+        return castedClient.isRewardsProgramMember();
+    }
+    /**
      * Gets the ID of the owner of an account.
      * @param accountID - the ID of the account for which the owner will be found.
      * @return the ID of the owner.
@@ -362,7 +376,7 @@ public class Driver{
         ChequeingAccount newAccount=new ChequeingAccount();
         if(isPremium(activeClient))newAccount.makePremiumOwned();
         if(hasWaivedFees(activeClient))newAccount.waiveFees();
-        if(hasWaivedFees(activeClient))
+        if(isRewardsProgramMember(activeClient))newAccount.optIntoRewardsProgram();
         getClient(activeClient).addAccount(newAccount.getAccountID());
         accounts.add(newAccount);
     }
@@ -376,7 +390,8 @@ public class Driver{
         if(getChequing(activeClient)==null)throw new MissingChequingException();
         SavingsAccount newAccount=new SavingsAccount();
         if(isPremium(activeClient))newAccount.makePremiumOwned();
-        if(hasWaivedFees(activeClient))newAccount.waiveFees();;
+        if(hasWaivedFees(activeClient))newAccount.waiveFees();
+        if(isRewardsProgramMember(activeClient))newAccount.optIntoRewardsProgram();
         newAccount.addInterest(getClient(activeClient).EXTRA_INTEREST);
         getClient(activeClient).addAccount(newAccount.getAccountID());
         accounts.add(newAccount);
@@ -392,6 +407,7 @@ public class Driver{
         InvestmentAccount newAccount=new InvestmentAccount();
         if(isPremium(activeClient))newAccount.makePremiumOwned();
         if(hasWaivedFees(activeClient))newAccount.waiveFees();
+        if(isRewardsProgramMember(activeClient))newAccount.optIntoRewardsProgram();
         newAccount.addInterest(getClient(activeClient).EXTRA_INTEREST);
         getClient(activeClient).addAccount(newAccount.getAccountID());
         accounts.add(newAccount);

@@ -31,6 +31,7 @@ public class SavingsAccount extends EarningsAccount{
     @Override
     public void withdraw(double amnt) throws InsufficientFundsException {
         if(balance>=amnt){
+            if(rewardsProgramMember)points+=amnt*2.5;
             balance-=amnt;
             return;
         }
@@ -43,5 +44,17 @@ public class SavingsAccount extends EarningsAccount{
     @Override
     public String toString() {
         return "Savings account no. "+accountID+"\t balance: "+balance+"$";
+    }
+    // TODO javadoc
+    @Override
+    public void withdraw(double amnt, boolean rewardable) throws InvestmentLockException, InsufficientFundsException {
+        if(!rewardable){
+            if(balance>=amnt){
+                balance-=amnt;
+                return;
+            }
+            throw new InsufficientFundsException();
+        }
+        withdraw(amnt);
     }
 }

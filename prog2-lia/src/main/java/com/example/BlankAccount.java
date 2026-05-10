@@ -28,7 +28,21 @@ public class BlankAccount extends Account{
     public void withdraw(double amnt) throws InvestmentLockException, InsufficientFundsException {
         throw new InsufficientFundsException();
     }
-    // TODO override other methods to fail
+    // TODO javadoc
+    @Override
+    public boolean deposit(double amnt) {
+        return false;
+    }
+    // TODO javadoc
+    @Override
+    public boolean transfer(double amnt, String transferToID) throws InvestmentLockException, InsufficientFundsException, InvalidTypeException {
+        return false;
+    }
+    // TODO javadoc
+    @Override
+    public boolean deposit(double amnt, String currencyCode) {
+        return false;
+    }
     /**
      * Implementation of the Maintainable interface. Functionally does nothing as this account requires no maintainance.
      */
