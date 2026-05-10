@@ -72,20 +72,10 @@ public class StudentClient extends StandardClient{
         return statusValid;
     }
     /**
-     * Sets this client's full time student status to the specified quality.
-     * @param statusValid the new quality of client's full time student status.
-     */
-    public void setStatusValid(boolean statusValid) {
-        this.statusValid = statusValid;
-    }
-    /**
      * Verifies this client's full time student status is still valid, if its invalid, updates it accordingly.
      */
-    // TODO reimplement
-    // @Override
-    // public boolean maintain() throws InvalidTypeException {
-    //     if(LocalDate.now().isAfter(statusExpiryDate))statusValid=false;
-    //     setDateLastOpened(LocalDate.now());
-    //     return true;
-    // }
+    public void validateStatus(){
+        if(LocalDate.now().isAfter(statusExpiryDate))statusValid=false;
+        if(LocalDate.now().isBefore(statusExpiryDate))statusValid=true;
+    }
 }

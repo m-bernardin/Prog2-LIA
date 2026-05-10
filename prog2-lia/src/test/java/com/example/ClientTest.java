@@ -60,4 +60,16 @@ public class ClientTest {
         boolean removed=corporate1.removeManager("unoWho@unincInc.com");
         assertTrue(removed);
     }
+    @Test
+    public void testValidateStatusExpires(){
+        student1.setStatusExpiryDate(LocalDate.parse("1992-12-01"));
+        student1.validateStatus();
+        assertFalse(student1.isStatusValid());
+    }
+    @Test
+    public void testValidateStatusValid(){
+        student1.setStatusExpiryDate(LocalDate.parse("2371-04-23"));
+        student1.validateStatus();
+        assertTrue(student1.isStatusValid());
+    }
 }
