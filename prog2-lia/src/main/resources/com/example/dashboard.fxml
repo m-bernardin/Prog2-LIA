@@ -38,6 +38,7 @@
                   <Button fx:id="openAccountButton" text="Open" onAction="#openAccount" styleClass="action-button" />
                   <Label fx:id="monthlyFeeLabel" text="" styleClass="subtext" />
                   <Label text="(!) Please contact a bank associate to close an account." styleClass="subtext" />
+                  <Label fx:id="statusExpiredField" text="(!) Your student status has expired. Please contact a bank associate to renew your status" styleClass="subtext" />
                </children>
             </VBox>
             <VBox fx:id="transactionManagerBox" alignment="TOP_LEFT" spacing="15.0">

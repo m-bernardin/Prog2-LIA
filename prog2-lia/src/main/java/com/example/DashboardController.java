@@ -42,6 +42,9 @@ public class DashboardController {
      */
     @FXML
     private Label monthlyFeeLabel;
+    // TODO javadoc
+    @FXML
+    private Label statusExpiredField;
     /**
      * Called when the scene is intialised.
      * Sets up the accountView and transactionView.
@@ -64,6 +67,10 @@ public class DashboardController {
         if(App.driver.hasWaivedFees(activeClientID))monthlyFee=0;
         monthlyFeeLabel.setText("(!) Each open account will cost you "+monthlyFee+"$ each month.");
         welcomeLabel.setText("Welcome, "+name+"!");
+        boolean statusValid=false;
+        if(clientType==StudentClient.class)if(((StudentClient)App.driver.getClient(activeClientID)).isStatusValid())statusValid=true;
+        if(clientType!=StudentClient.class)statusValid=true;
+        if(statusValid)statusExpiredField.setText("");
     }
     /**
      * Allows the openAccountButton to function. Opens an account of the type selected in the typeSelector for the active client.
