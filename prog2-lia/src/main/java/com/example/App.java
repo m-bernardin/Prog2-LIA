@@ -30,7 +30,7 @@ public class App extends Application {
     @SuppressWarnings("exports")
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("login"), 640, 480);
+        scene = new Scene(loadFXML("login"), 3200,1800);
         stage.setScene(scene);
         stage.show();
         stage.setTitle("Awesome Banking");

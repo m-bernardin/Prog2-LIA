@@ -268,11 +268,16 @@ public class Driver{
      * @return the ID of the found account.
      * @throws NullPointerException if the client does not exist or they do not have chequeing account open. 
      */
-    public String getChequing(String clientID) throws NullPointerException{
+    public String getChequing(String clientID){
+        if(clientID==null)return null;
+        System.out.println("**accounts in this client: "+getClient(clientID).getAccounts().toString());
+        if(getClient(clientID).getAccounts()==null)return null;
+        if(getClient(clientID).getAccounts().isEmpty())return null;
+        if(getClient(clientID).getAccounts().size()==1)return null;
         for (String accountID : getClient(clientID).getAccounts()) {
             if(getAccount(accountID).getClass()==ChequeingAccount.class)return accountID;
         }
-        throw new NullPointerException();
+        return null;
     }
     /**
      * Gets the account associated with the specified ID.
@@ -281,10 +286,11 @@ public class Driver{
      * @throws NullPointerException if the account does not exist.
      */
     public Account getAccount(String accountID) throws NullPointerException{
+        if(accountID==null)return null;
         for (Account account : accounts) {
             if(account.getAccountID().equals(accountID))return account;
         }
-        throw new NullPointerException();
+        return null;
     }
     /**
      * Gets the client associated with specified ID.
@@ -354,9 +360,11 @@ public class Driver{
     /**
      * Allows controllers to open a savings account for the currently logged in client.
      * @throws InvalidTypeException if something goes wrong.
+     * @throws MissingChequingException if the client does not own an open chequeing account.
      */
     @SuppressWarnings("static-access")
-    public void openSavings() throws InvalidTypeException {
+    public void openSavings() throws MissingChequingException, InvalidTypeException {
+        if(getChequing(activeClient)==null)throw new MissingChequingException();
         SavingsAccount newAccount=new SavingsAccount();
         if(isPremium(activeClient))newAccount.makePremiumOwned();
         if(hasWaivedFees(activeClient))newAccount.waiveFees();;
@@ -367,9 +375,11 @@ public class Driver{
     /**
      * Allows controllers to open an investment account for the currently logged in client.
      * @throws InvalidTypeException if something goes wrong.
+     * @throws MissingChequingException if the client does not own an open chequeing account. 
      */
     @SuppressWarnings("static-access")
-    public void openInvestment() throws InvalidTypeException {
+    public void openInvestment() throws MissingChequingException, InvalidTypeException {
+        if(getChequing(activeClient)==null)throw new MissingChequingException();
         InvestmentAccount newAccount=new InvestmentAccount();
         if(isPremium(activeClient))newAccount.makePremiumOwned();
         if(hasWaivedFees(activeClient))newAccount.waiveFees();

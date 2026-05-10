@@ -79,8 +79,13 @@ public class DashboardController {
             else App.displayError("Please make choose a valid option.");
         } catch (InvalidTypeException e) {
             App.displayError("System error: error finding account type");
+            return;
+        } catch (MissingChequingException e){
+            App.displayError("Please open a chequeing account first.");
+            return;
         } catch (NullPointerException e){
             App.displayError("Please select an account type.");
+            return;
         }
         App.displayMessage("New "+selection.toLowerCase()+" account opened.");
     }
