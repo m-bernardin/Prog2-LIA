@@ -136,14 +136,14 @@ public class Driver{
      * Refreshes filteredAccounts when a new transactions is added.
      */
     private void refreshAccounts() {
-    accounts.sort(Comparator.comparing(Account::getAccountID));
+        accounts.sort(Comparator.comparing(Account::getAccountID));
         filteredAccounts.setPredicate(account -> getClient(activeClient).getAccounts().contains(account.getAccountID()));
     }
     /**
      * Refreshes latestTransactions when a new transactions is added.
      */
     private void refreshLatest() {
-        latestTransactions.setPredicate(transaction->sortedTransactions.indexOf(transaction)<10);
+        latestTransactions.setPredicate(transaction->sortedTransactions.indexOf(transaction)<10||transaction.getTransactionID().equals("x"));
     }
     /**
      * Logs out the current user.
@@ -515,7 +515,7 @@ public class Driver{
                     clients.add(new Gson().fromJson(client, VipClient.class));
                     break;
                 default:
-                    System.out.println("## could not find type...");
+                    System.out.println("## could not find client type...");
                     break;
             }
         }
@@ -551,7 +551,7 @@ public class Driver{
                 case 'z':
                     accounts.add(new Gson().fromJson(account, BlankAccount.class));
                 default:
-                    System.out.println("## could not find type...");
+                    System.out.println("## could not find account type...");
                     break;
             }
         }

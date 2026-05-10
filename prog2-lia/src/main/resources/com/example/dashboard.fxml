@@ -24,7 +24,7 @@
             <VBox fx:id="accountCentreBox" alignment="CENTER_LEFT" spacing="15.0">
                <children>
                   <Label text="Account Centre" styleClass="normaltext" />
-                  <ListView fx:id="accountsView" styleClass="normaltext" minHeight="750" minWidth="1000" />
+                  <ListView fx:id="accountsView" styleClass="normaltext" minHeight="765" minWidth="1000" />
                   <Label text="Open a New Account" styleClass="normaltext" />
                   <ComboBox fx:id="typeSelector" styleClass="action-button" >
                      <items>
@@ -54,7 +54,7 @@
             <VBox fx:id="transactionHistoryBox" alignment="TOP_LEFT" spacing="15.0">
                <children>
                   <Label text="Your Recent Transactions" styleClass="normaltext" />
-                  <ListView fx:id="transactionsView" styleClass="normaltext" minWidth="1500" minHeight="750" />
+                  <ListView fx:id="transactionsView" styleClass="normaltext" minWidth="1500" minHeight="765" />
                </children>
             </VBox>
          </children>

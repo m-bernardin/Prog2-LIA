@@ -52,6 +52,8 @@ public class DashboardController {
     @FXML
     public void initialize(){
         accountsView.setItems(App.driver.filteredAccounts);
+        // accountsView.getSelectionModel().select(0);
+        // TODO get rid of this NullPointer because of no selection
         accountsView.getSelectionModel().selectedItemProperty().addListener((obs,old,newSelection)->App.driver.selectedAccount.set(newSelection.getAccountID()));
         transactionsView.setItems(App.driver.getLatestTransactions());
         String activeClientID=App.driver.getActiveClient();

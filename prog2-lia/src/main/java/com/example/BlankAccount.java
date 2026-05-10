@@ -21,13 +21,14 @@ public class BlankAccount extends Account{
         return "No more accounts to show...";
     }
     /**
-     * Implements the parent's method to do nothing.
+     * Adjusts the parent's method to do nothing.
      * @throws InsufficientFundsException always.
      */
     @Override
     public void withdraw(double amnt) throws InvestmentLockException, InsufficientFundsException {
         throw new InsufficientFundsException();
     }
+    // TODO override other methods to fail
     /**
      * Implementation of the Maintainable interface. Functionally does nothing as this account requires no maintainance.
      */
