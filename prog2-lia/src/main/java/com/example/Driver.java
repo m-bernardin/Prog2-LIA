@@ -206,7 +206,7 @@ public class Driver{
         return success;
     }
     /**
-     * Finds out if a given client is a premium client.
+     * * Checks if the specified client is a premium client i.e. They are a Vip or Corporate client.
      * @param clientID - the ID of the client to be checked.
      * @return true if it is premium; false otherwise.
      */
@@ -217,7 +217,11 @@ public class Driver{
         if(client.getClass()==VipClient.class||client.getClass()==CorporateClient.class)return true;
         return false;
     }
-    // TODO javadoc
+    /**
+     * Checks if the specified client has their monthly maintainance fees waived i.e. They are a Vip or Student client.
+     * @param clientID - the ID of the client to be checked.
+     * @return true if their fees are waived; false otherwise.
+     */
     public boolean hasWaivedFees(String clientID){
         Client client=null;
         client=getClient(clientID);
@@ -341,7 +345,7 @@ public class Driver{
      */
     public void openChequeing() throws InvalidTypeException{
         ChequeingAccount newAccount=new ChequeingAccount();
-        if(isPremium(activeClient))newAccount.setPremiumOwner(true);
+        if(isPremium(activeClient))newAccount.makePremiumOwned();
         if(hasWaivedFees(activeClient))newAccount.waiveFees();
         if(hasWaivedFees(activeClient))
         getClient(activeClient).addAccount(newAccount.getAccountID());
@@ -354,7 +358,7 @@ public class Driver{
     @SuppressWarnings("static-access")
     public void openSavings() throws InvalidTypeException {
         SavingsAccount newAccount=new SavingsAccount();
-        if(isPremium(activeClient))newAccount.setPremiumOwner(true);
+        if(isPremium(activeClient))newAccount.makePremiumOwned();
         if(hasWaivedFees(activeClient))newAccount.waiveFees();;
         newAccount.addInterest(getClient(activeClient).EXTRA_INTEREST);
         getClient(activeClient).addAccount(newAccount.getAccountID());
@@ -367,7 +371,7 @@ public class Driver{
     @SuppressWarnings("static-access")
     public void openInvestment() throws InvalidTypeException {
         InvestmentAccount newAccount=new InvestmentAccount();
-        if(isPremium(activeClient))newAccount.setPremiumOwner(true);
+        if(isPremium(activeClient))newAccount.makePremiumOwned();
         if(hasWaivedFees(activeClient))newAccount.waiveFees();
         newAccount.addInterest(getClient(activeClient).EXTRA_INTEREST);
         getClient(activeClient).addAccount(newAccount.getAccountID());

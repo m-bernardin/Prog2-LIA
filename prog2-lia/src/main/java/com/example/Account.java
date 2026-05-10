@@ -15,19 +15,31 @@ public abstract class Account implements Maintainable{
      * IdCreator type 2.
      */
     protected String accountID;
-    // TODO javadoc
+    /**
+     * If this account is owned by a client with a premium account.
+     */
     private boolean premiumOwner=false;
-    // TODO javadoc
-    public void setPremiumOwner(boolean premiumOwner) {
-        this.premiumOwner = premiumOwner;
+    /**
+     * Makes this account owned by a premium client.
+     * @param premiumOwner
+     */
+    public void makePremiumOwned(){
+        premiumOwner=true;
     }
-    // TODO javadoc
+    /**
+     * The amount charged to this account each month.
+     */
     private int monthlyFees=10;
-    // TODO javadoc
+    /**
+     * Gets the amount charged to this account each month.
+     * @return the amount charged to this account each month.
+     */
     public int getMonthlyFees() {
         return monthlyFees;
     }
-    // TODO javadoc
+    /**
+     * Sets monthly fees for this account to 0.
+     */
     public void waiveFees(){
         monthlyFees=0;
     }
@@ -96,7 +108,7 @@ public abstract class Account implements Maintainable{
      * @param amnt - the amount to be transfered.
      * @param transferToID - the ID of the account to be transfered to.
      * @return true if the transfer was succesful; false otherwise.
-     * @throws InvestmentLockException if this account is an Investment account which has not been open for more than a year.
+     * @throws InvestmentLockException if this account is an Investment account which has not been open for more than a year or the transfer was attempted to an account which is not this account's associated chequeing account.
      * @throws InsufficientFundsException if this account does not have enough funds for this transfer.
      * @throws InvalidTypeException if an invalid type was provided to the IdCreator by the Transaction record creator.
      */
@@ -133,13 +145,20 @@ public abstract class Account implements Maintainable{
         if(currencyCode.equals("CHF"))return amnt*1.6846;
         throw new InvalidTypeException("Invalid currency code");
     }
-    // TODO javadoc
+    /**
+     * The date the owner of this account last logged in.
+     */
     private LocalDate dateLastOpened;
-    // TODO javadoc
-    public void setDateLastOpened(LocalDate dateLastOpened) {
-        this.dateLastOpened = dateLastOpened;
+    /**
+     * Sets the date the owner of this account last logged in to the current date.
+     */
+    public void updateDateLastOpened(){
+        dateLastOpened=LocalDate.now();
     }
-    // TODO javadoc
+    /**
+     * Gets the date the owner of this account last logged in.
+     * @return the date the owner of this account last logged in.
+     */
     public LocalDate getDateLastOpened() {
         return dateLastOpened;
     }

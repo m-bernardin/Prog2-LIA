@@ -56,6 +56,6 @@ public class ChequeingAccount extends Account{
         for(int i=0;i<monthsSinceLastOpened;++i){
             balance-=getMonthlyFees();
         }
-        setDateLastOpened(LocalDate.now());
+        updateDateLastOpened();
     }
 }

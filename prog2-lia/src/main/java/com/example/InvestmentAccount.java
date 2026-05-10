@@ -64,7 +64,16 @@ public class InvestmentAccount extends EarningsAccount{
     public String toString() {
         return "Investment account no. "+accountID+"\t balance: "+balance+"$";
     }
-    // TODO javadoc
+    /**
+     * Transfers a specified amount from this account to another specified account.
+     * Verifies this account has been open for more than a year and that the transfer is being made to this account's associated chequeing account.
+     * @param amnt - the amount to be transfered.
+     * @param transferToID - the ID of the account to be transfered to.
+     * @return true if the transfer was succesful; false otherwise.
+     * @throws InvestmentLockException if this account is an Investment account which has not been open for more than a year or the transfer was attempted to an account which is not this account's associated chequeing account.
+     * @throws InsufficientFundsException if this account does not have enough funds for this transfer.
+     * @throws InvalidTypeException if an invalid type was provided to the IdCreator by the Transaction record creator.
+     */
     @Override
     public boolean transfer(double amnt, String transferToID) throws InvestmentLockException, InsufficientFundsException, InvalidTypeException {
         if(!transferToID.equals(App.driver.getChequing(accountID)))throw new InvestmentLockException(transferToID,App.driver.getChequing(accountID));

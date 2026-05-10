@@ -28,7 +28,9 @@ public class BlankAccount extends Account{
     public void withdraw(double amnt) throws InvestmentLockException, InsufficientFundsException {
         throw new InsufficientFundsException();
     }
-    // TODO
+    /**
+     * Implementation of the Maintainable interface. Functionally does nothing as this account requires no maintainance.
+     */
     @Override
     public void maintain() {}
 }

@@ -37,12 +37,14 @@ public abstract class EarningsAccount extends Account implements InterestBearing
     /**
      * Applies interest to this account.
      */
-    @SuppressWarnings("static-access")
     @Override
     public void applyInterest() {
         balance+=balance*(interestRate);
     }
-    // TODO javadoc
+    /**
+     * Applies a specified amount of extra interest to this account.
+     * @param interest - the extra interest to be applied.
+     */
     public void addInterest(double interest){
         interestRate+=interest;
     }
@@ -58,6 +60,6 @@ public abstract class EarningsAccount extends Account implements InterestBearing
             balance*=interestRate;
             balance-=getMonthlyFees();
         }
-        setDateLastOpened(LocalDate.now());
+        updateDateLastOpened();
     }
 }

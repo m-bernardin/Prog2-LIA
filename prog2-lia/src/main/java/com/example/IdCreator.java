@@ -8,7 +8,7 @@ import java.util.Random;
  */
 public class IdCreator {
     /**
-     * Main way with which other classes interact with this class. Outputs an unchecked 
+     * Outputs an unchecked ID of the specified type and subtype.
      * @param type - the type of ID to be created.
      * @param subtype - the subtype of ID to be created.
      * @return the created ID.
@@ -38,7 +38,13 @@ public class IdCreator {
         ID+="-"+convertBase64(checksum);
         return ID;
     }
-    // TODO javadoc
+    /**
+     * Main way with which other classes interact with this class. Outputs a non-duplicate ID of the specified type and subtype.
+     * @param type - the type of ID to be created.
+     * @param subtype - the subtype of ID to be created.
+     * @return the created ID.
+     * @throws InvalidTypeException - if the type or subtype provided is invalid.
+     */
     public static String createSafeID(int type,int subtype) throws InvalidTypeException{
         boolean validID=false;
         String ID=null;
