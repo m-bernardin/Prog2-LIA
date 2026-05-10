@@ -1,6 +1,6 @@
 echo Running tests...
 cd ~/GitHub/Prog2-LIA/prog2-lia
-mvn test -X > ../log.txt
+mvn test -e -X -B > ../log.txt
 echo '
 Account tests:
 ' >> ../log.txt

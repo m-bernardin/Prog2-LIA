@@ -1,32 +1,12 @@
 [
   {
-    "name": "asd asd",
-    "clientID": "bVa4;E-2V",
-    "accounts": [
-      "lUgzy6-2E",
-      "lZlVq2-2Y",
-      "leczpo-23",
-      "n7QbVL-35",
-      "lzrRCs-3a",
-      "nwLxEG-3p"
-    ],
-    "username": "asd",
-    "password": "asd",
-    "transactions": [],
-    "dateOpened": {
-      "year": 2026,
-      "month": 5,
-      "day": 1
-    },
-    "monthlyFee": 10
-  },
-  {
     "name": "Mathieu Bernardin",
     "contact": "mjrb4mjrb@gmail.com",
     "clientID": "bU;MNc-3L",
     "accounts": [
       "lVW3zE-3m",
-      "n;ka22-1U"
+      "n;ka22-1U",
+      "X"
     ],
     "username": "mBernardin",
     "password": "9166",
@@ -35,41 +15,6 @@
       "year": 2026,
       "month": 5,
       "day": 2
-    },
-    "monthlyFee": 10
-  },
-  {
-    "rewardsProgramMember": true,
-    "clientID": "eyN7ZX-3w",
-    "accounts": [
-      "X"
-    ],
-    "username": "gooner",
-    "password": "gonner123",
-    "transactions": [],
-    "dateOpened": {
-      "year": 2026,
-      "month": 5,
-      "day": 7
-    },
-    "monthlyFee": 0
-  },
-  {
-    "name": "gooner",
-    "contact": "gooner",
-    "clientID": "bMamIG-2N",
-    "accounts": [
-      "X",
-      "na8fnc-1r",
-      "ld3bt0-1d"
-    ],
-    "username": "gooner",
-    "password": "gooner",
-    "transactions": [],
-    "dateOpened": {
-      "year": 2026,
-      "month": 5,
-      "day": 7
     },
     "monthlyFee": 10
   },
@@ -110,5 +55,108 @@
       "day": 9
     },
     "monthlyFee": 10
+  },
+  {
+    "name": "Mark Thompson",
+    "contact": "mark.thompson@email.com",
+    "clientID": "bXCqQY-3S",
+    "accounts": [
+      "lxABLz-3h",
+      "mGz3d4-1T"
+    ],
+    "username": "mthompson",
+    "password": "pass123",
+    "transactions": [
+      "uLg0hE-2m"
+    ],
+    "dateLastOpened": {
+      "year": 2026,
+      "month": 5,
+      "day": 3
+    },
+    "dateOpened": {
+      "year": 2024,
+      "month": 11,
+      "day": 14
+    },
+    "monthlyFee": 10
+  },
+  {
+    "name": "Sarah Williams",
+    "contact": "514-555-1942",
+    "clientID": "bop95U-22",
+    "accounts": [
+      "lgg8uY-2n"
+    ],
+    "username": "sarahw",
+    "password": "winter2025",
+    "transactions": [
+      "u9TB98-2k",
+      "u7kB6p-1Z"
+    ],
+    "dateLastOpened": {
+      "year": 2026,
+      "month": 4,
+      "day": 28
+    },
+    "dateOpened": {
+      "year": 2025,
+      "month": 1,
+      "day": 9
+    },
+    "monthlyFee": 10
+  },
+  {
+    "rewardsProgramMember": false,
+    "clientID": "d2AKB;-35",
+    "accounts": [
+      "mvDx:y-3t",
+      "ndT2nF-2t"
+    ],
+    "username": "jamie_student",
+    "password": "studyHard",
+    "transactions": [
+      "u5O:Pp-3v",
+      "uPFoDb-34",
+      "u8ZJNb-3c"
+    ],
+    "dateLastOpened": {
+      "year": 2026,
+      "month": 5,
+      "day": 5
+    },
+    "dateOpened": {
+      "year": 2025,
+      "month": 9,
+      "day": 1
+    },
+    "monthlyFee": 0
+  },
+  {
+    "rewardsProgramMember": false,
+    "clientID": "eIeXpE-34",
+    "accounts": [
+      "lzZezU-3u",
+      "nOyhiz-2N",
+      "m;cHEU-3I"
+    ],
+    "username": "nexustech",
+    "password": "secureCorp!",
+    "transactions": [
+      "uF20zu-2a",
+      "uybB2b-1Z",
+      "uLktfn-2A"
+    ],
+    "dateLastOpened": {
+      "year": 2026,
+      "month": 5,
+      "day": 6
+    },
+    "dateOpened": {
+      "year": 2023,
+      "month": 6,
+      "day": 12
+    },
+    "monthlyFee": 25
   }
 ]

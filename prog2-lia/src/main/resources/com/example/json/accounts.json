@@ -76,5 +76,52 @@
     "interestRate": 0.05,
     "balance": 0.0,
     "accountID": "nvklwO-2N"
+  },
+  {
+    "balance": 2450.75,
+    "accountID": "lxABLz-3h"
+  },
+  {
+    "interestRate": 0.01,
+    "balance": 11200.5,
+    "accountID": "mGz3d4-1T"
+  },
+  {
+    "balance": 640.2,
+    "accountID": "lgg8uY-2n"
+  },
+  {
+    "interestRate": 0.01,
+    "balance": 8700.0,
+    "accountID": "mvDx:y-3t"
+  },
+  {
+    "dateOpened": {
+      "year": 2025,
+      "month": 2,
+      "day": 14
+    },
+    "interestRate": 0.05,
+    "balance": 25000.0,
+    "accountID": "ndT2nF-2t"
+  },
+  {
+    "balance": 130.44,
+    "accountID": "lzZezU-3u"
+  },
+  {
+    "dateOpened": {
+      "year": 2023,
+      "month": 6,
+      "day": 13
+    },
+    "interestRate": 0.05,
+    "balance": 750000.0,
+    "accountID": "nOyhiz-2N"
+  },
+  {
+    "interestRate": 0.01,
+    "balance": 152000.0,
+    "accountID": "m;cHEU-3I"
   }
 ]

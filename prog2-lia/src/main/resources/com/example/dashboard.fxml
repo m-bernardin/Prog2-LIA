@@ -53,7 +53,7 @@
             <VBox fx:id="transactionHistoryBox" alignment="TOP_LEFT" spacing="15.0">
                <children>
                   <Label text="Your Recent Transactions" styleClass="normaltext" />
-                  <ListView fx:id="transactionsView" styleClass="normaltext" minWidth="1450" minHeight="750" />
+                  <ListView fx:id="transactionsView" styleClass="normaltext" minWidth="1500" minHeight="750" />
                </children>
             </VBox>
          </children>
