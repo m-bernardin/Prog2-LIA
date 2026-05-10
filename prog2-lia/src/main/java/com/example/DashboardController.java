@@ -60,7 +60,8 @@ public class DashboardController {
         else if(clientType==VipClient.class)name=((VipClient)App.driver.getClient(activeClientID)).getName();
         else if(clientType==CorporateClient.class)name=((CorporateClient)App.driver.getClient(activeClientID)).getCompanyName();
         else name="Invalid Name";
-        String monthlyFee=App.driver.getClient(activeClientID).getMonthlyFee()+"";
+        int monthlyFee=10;
+        if(App.driver.hasWaivedFees(activeClientID))monthlyFee=0;
         monthlyFeeLabel.setText("(!) Each open account will cost you "+monthlyFee+"$ each month.");
         welcomeLabel.setText("Welcome, "+name+"!");
     }

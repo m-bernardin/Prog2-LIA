@@ -1,7 +1,6 @@
 package com.example;
 
 import java.time.LocalDate;
-import java.time.Period;
 import java.util.ArrayList;
 import java.util.HashSet;
 /**
@@ -34,10 +33,6 @@ public abstract class Client{
      * Set of unique IDs of all transactions associated with this account.
      */
     protected HashSet<String> transactions=new HashSet<>();
-    /**
-     * The date that this client last logged in.
-     */
-    private LocalDate dateLastOpened;
     /**
      * The date that this client first logged in.
      */
@@ -91,13 +86,6 @@ public abstract class Client{
      */
     public String getPassword() {
         return password;
-    }
-    /**
-     * Sets the date this client last logged in to the specified date.
-     * @param dateLastOpened - the date to be changed to.
-     */
-    public void setDateLastOpened(LocalDate dateLastOpened) {
-        this.dateLastOpened = dateLastOpened;
     }
     /**
      * Gets the client's ID.

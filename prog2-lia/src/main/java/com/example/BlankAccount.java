@@ -28,4 +28,7 @@ public class BlankAccount extends Account{
     public void withdraw(double amnt) throws InvestmentLockException, InsufficientFundsException {
         throw new InsufficientFundsException();
     }
+    // TODO
+    @Override
+    public void maintain() {}
 }
