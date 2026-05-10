@@ -13,6 +13,12 @@ public abstract class Account {
      * IdCreator type 2.
      */
     protected String accountID;
+    // TODO javadoc
+    private boolean premiumOwner=false;
+    // TODO javadoc
+    public void setPremiumOwner(boolean premiumOwner) {
+        this.premiumOwner = premiumOwner;
+    }
     /**
      * This classes basic constructor. Sets balance to 0, but leaves accountID blank.
      * @throws InvalidTypeException if somehow an invalid type or subtype was supplied by a child's constructor  to the IdCCreator.
@@ -65,7 +71,7 @@ public abstract class Account {
      * @return true if the deposit was successful; false otherwise.
      */
     public boolean deposit(double amnt,String currencyCode){
-        if(!App.driver.isPremium(App.driver.getOwner(this.accountID)))return false;
+        if(!premiumOwner)return false;
         try {
             deposit(convert(amnt, currencyCode));
         } catch (InvalidTypeException e) {

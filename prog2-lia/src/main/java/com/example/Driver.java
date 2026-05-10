@@ -337,7 +337,8 @@ public class Driver{
      * @throws InvalidTypeException if something goes wrong.
      */
     public void openChequeing() throws InvalidTypeException{
-        Account newAccount=new ChequeingAccount();
+        ChequeingAccount newAccount=new ChequeingAccount();
+        if(isPremium(activeClient))newAccount.setPremiumOwner(true);
         getClient(activeClient).addAccount(newAccount.getAccountID());
         accounts.add(newAccount);
     }
@@ -345,8 +346,11 @@ public class Driver{
      * Allows controllers to open a savings account for the currently logged in client.
      * @throws InvalidTypeException if something goes wrong.
      */
+    @SuppressWarnings("static-access")
     public void openSavings() throws InvalidTypeException {
-        Account newAccount=new SavingsAccount();
+        SavingsAccount newAccount=new SavingsAccount();
+        if(isPremium(activeClient))newAccount.setPremiumOwner(true);
+        newAccount.addInterest(getClient(activeClient).EXTRA_INTEREST);
         getClient(activeClient).addAccount(newAccount.getAccountID());
         accounts.add(newAccount);
     }
@@ -354,8 +358,11 @@ public class Driver{
      * Allows controllers to open an investment account for the currently logged in client.
      * @throws InvalidTypeException if something goes wrong.
      */
+    @SuppressWarnings("static-access")
     public void openInvestment() throws InvalidTypeException {
-        Account newAccount=new InvestmentAccount();
+        InvestmentAccount newAccount=new InvestmentAccount();
+        if(isPremium(activeClient))newAccount.setPremiumOwner(true);
+        newAccount.addInterest(getClient(activeClient).EXTRA_INTEREST);
         getClient(activeClient).addAccount(newAccount.getAccountID());
         accounts.add(newAccount);
     }
