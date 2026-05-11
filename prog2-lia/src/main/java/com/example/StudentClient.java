@@ -75,6 +75,10 @@ public class StudentClient extends StandardClient{
      * Verifies this client's full time student status is still valid, if its invalid, updates it accordingly.
      */
     public void validateStatus(){
+        if(statusExpiryDate==null){
+            statusValid=false;
+            return;
+        }
         if(LocalDate.now().isAfter(statusExpiryDate))statusValid=false;
         if(LocalDate.now().isBefore(statusExpiryDate))statusValid=true;
     }

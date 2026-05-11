@@ -69,11 +69,13 @@ public class ChequeingAccount extends Account{
      */
     @Override
     public void maintain(){
-        Period periodSinceLastOpened=Period.between(LocalDate.now(), getDateLastOpened());
+        LocalDate dateLastOpened=getDateLastOpened();
+        if(dateLastOpened==null)return;
+        updateDateLastOpened();
+        Period periodSinceLastOpened=Period.between(LocalDate.now(),dateLastOpened);
         int monthsSinceLastOpened=periodSinceLastOpened.getMonths()+periodSinceLastOpened.getYears()*12;
         for(int i=0;i<monthsSinceLastOpened;++i){
             balance-=getMonthlyFees();
         }
-        updateDateLastOpened();
     }
 }

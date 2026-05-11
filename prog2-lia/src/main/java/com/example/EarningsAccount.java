@@ -54,12 +54,14 @@ public abstract class EarningsAccount extends Account implements InterestBearing
      */
     @Override
     public void maintain(){
-        Period periodSinceLastOpened=Period.between(LocalDate.now(), getDateLastOpened());
+        LocalDate dateLastOpened=getDateLastOpened();
+        if(dateLastOpened==null)return;
+        updateDateLastOpened();
+        Period periodSinceLastOpened=Period.between(LocalDate.now(),dateLastOpened);
         int monthsSinceLastOpened=periodSinceLastOpened.getMonths()+periodSinceLastOpened.getYears()*12;
         for(int i=0;i<monthsSinceLastOpened;++i){
             balance*=interestRate;
             balance-=getMonthlyFees();
         }
-        updateDateLastOpened();
     }
 }
