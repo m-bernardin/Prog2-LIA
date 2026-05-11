@@ -13,22 +13,37 @@ public abstract class Account implements Maintainable{
      * The current balance of this account.
      */
     protected double balance;
-    // TODO javadoc
-    private transient DoubleProperty pointsProperty=new SimpleDoubleProperty();
-    // TODO javadoc
+    /**
+     * The amount of points this account holds.
+     */
     protected double points=0;
-    // TDOD javadoc
+    /**
+     * Observable wrapper for points.
+     */
+    private transient DoubleProperty pointsProperty=new SimpleDoubleProperty(points);
+    /**
+     * If the owner of this account has opted into the rewards program.
+     */
     protected boolean rewardsProgramMember;
-    // TODO javadoc
+    /**
+     * Opts this account into the rewards program.
+     */
     public void optIntoRewardsProgram(){
         rewardsProgramMember=true;
     }
-    // TODO javadoc
+    /**
+     * Sets both points-related fields to the specified amount.
+     * @param points - the new amount of points for this account.
+     */
     public void setPoints(double points){
         this.points=points;
         pointsProperty.set(points);
     }
-    // TODO javadoc
+    /**
+     * Gets the amount of points this account holds, as an observable wrapper.
+     * @return the amount of points this account holds, as an observable wrapper.
+     */
+    @SuppressWarnings("exports")
     public DoubleProperty getPoints(){
         return pointsProperty;
     }
@@ -101,7 +116,12 @@ public abstract class Account implements Maintainable{
      * @throws InsufficientFundsException if a user attempts to withdraw more than this accounts current balance from this account 
      */
     public abstract void withdraw(double amnt) throws InvestmentLockException, InsufficientFundsException;
-    // TODO javadoc
+    /**
+     * Withdraws a specified amount from this account, while allowing for specifying if points may be earned from this withdrawal .
+     * @param amnt - the amount to be withdrawn.
+     * @param rewardable - if points may be earned from this withdrawal.
+     * @throws InsufficientFundsException if this account does not have sufficient funds for this withdrawal.
+     */
     public abstract void withdraw(double amnt,boolean rewardable) throws InvestmentLockException, InsufficientFundsException;
     /**
      * Adds the specified amount to this account's balance.

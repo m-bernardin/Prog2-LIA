@@ -57,7 +57,13 @@ public class InvestmentAccount extends EarningsAccount{
         }
         throw new InvestmentLockException(LocalDate.now().until(dateOpened.plusYears(1)).toString());
     }
-    // TODO javadoc
+    /**
+     * Withdraws a specified amount from this account, but only if it has been open for more than a year. Allows for specifying if points may be earned from this withdrawal.
+     * @param amnt - the amount to be withdrawn.
+     * @param rewardable - if points may be earned from this withdrawal.
+     * @throws InsufficientFundsException if there are not enough funds for the withdrawal in this account.
+     * @throws InvestmentLockException if this account has been open for less than a year.
+     */
     @Override
     public void withdraw(double amnt, boolean rewardable) throws InvestmentLockException, InsufficientFundsException {
         if(!rewardable){

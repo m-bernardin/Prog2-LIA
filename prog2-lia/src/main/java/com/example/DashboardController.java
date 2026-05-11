@@ -47,22 +47,34 @@ public class DashboardController {
      */
     @FXML
     private Label monthlyFeeLabel;
-    // TODO javadoc
+    /**
+     * Link to the label where a message that a student client's student status has expired.
+     */
     @FXML
     private Label statusExpiredField;
-    // TODO javadoc
+    /**
+     * Link to the label where the client's contact is display.
+     */
     @FXML
     private Label contactLabel;
-    // TODO javadoc
+    /**
+     * Link to the label where a message about the client's status as a rewards program member is displayed.
+     */
     @FXML
     private Label rewardsProgramMemberLabel;
-    // TODO javadoc
+    /**
+     * Link to the field where a message noting how long the client has been with the bank is displayed
+     */
     @FXML
     private Label memberSinceLabel;
-    // TODO javadoc
+    /**
+     * Link to the label where the client's total points earned is displayed, if applicable.
+     */
     @FXML
     private Label pointsLabel;
-    // TODO javadoc
+    /**
+     * Property tracking the total of the client's points across all owned accounts.
+     */
     private DoubleProperty points=new SimpleDoubleProperty(0);
     /**
      * Called when the scene is intialised.
@@ -123,11 +135,14 @@ public class DashboardController {
             System.out.println("**rewards program member detected");
         }
     }
-    // TODO javadoc
+    /**
+     * Adds the specified amount to the points property and the pointsLabel 
+     * @param addedPoints - the points to be added.
+     */
     private void refreshPoints(Number addedPoints) {
         System.out.println("**points refreshed");
         points.set(points.get()+addedPoints.doubleValue());
-        rewardsProgramMemberLabel.setText("You currently have "+points.get()+" points.");
+        pointsLabel.setText("You currently have "+points.get()+" points.");
     }
     /**
      * Allows the openAccountButton to function. Opens an account of the type selected in the typeSelector for the active client.

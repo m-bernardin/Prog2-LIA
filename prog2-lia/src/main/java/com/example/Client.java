@@ -37,7 +37,10 @@ public abstract class Client{
      * The date that this client first logged in.
      */
     private LocalDate dateOpened;
-    // TODO javadoc
+    /**
+     * Gets the date this account's owner last logged in.
+     * @return the date this account's owner last logged in.
+     */
     public LocalDate getDateOpened() {
         return dateOpened;
     }

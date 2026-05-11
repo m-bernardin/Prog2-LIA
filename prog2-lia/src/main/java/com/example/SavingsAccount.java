@@ -45,7 +45,12 @@ public class SavingsAccount extends EarningsAccount{
     public String toString() {
         return "Savings account no. "+accountID+"\t balance: "+balance+"$";
     }
-    // TODO javadoc
+    /**
+     * Withdraws a specified amount from this account, while allowing for specifying if points may be earned from this withdrawal .
+     * @param amnt - the amount to be withdrawn.
+     * @param rewardable - if points may be earned from this withdrawal.
+     * @throws InsufficientFundsException if this account does not have sufficient funds for this withdrawal.
+     */
     @Override
     public void withdraw(double amnt, boolean rewardable) throws InvestmentLockException, InsufficientFundsException {
         if(!rewardable){

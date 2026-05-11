@@ -28,17 +28,23 @@ public class BlankAccount extends Account{
     public void withdraw(double amnt) throws InvestmentLockException, InsufficientFundsException {
         throw new InsufficientFundsException();
     }
-    // TODO javadoc
+    /**
+     * Adjusts the parent's method to do nothing.
+     */
     @Override
     public boolean deposit(double amnt) {
         return false;
     }
-    // TODO javadoc
+    /**
+     * Adjusts the parent's method to do nothing.
+     */
     @Override
     public boolean transfer(double amnt, String transferToID) throws InvestmentLockException, InsufficientFundsException, InvalidTypeException {
         return false;
     }
-    // TODO javadoc
+    /**
+     * Adjusts the parent's method to do nothing.
+     */
     @Override
     public boolean deposit(double amnt, String currencyCode) {
         return false;
@@ -48,7 +54,10 @@ public class BlankAccount extends Account{
      */
     @Override
     public void maintain() {}
-    // TODO javadoc
+    /**
+     * Adjusts the parent's method to do nothing.
+     * @throws InsufficientFundsException always.
+     */
     @Override
     public void withdraw(double amnt, boolean rewardable) throws InvestmentLockException, InsufficientFundsException {
         throw new InsufficientFundsException();
