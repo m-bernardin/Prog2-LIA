@@ -131,6 +131,7 @@ public class Driver{
             for (String accountID:getClient(getActiveClient()).getAccounts()) {
                 getAccount(accountID).maintain();
             }
+            if(client.getClass()==StudentClient.class)((StudentClient)client).validateStatus();
             return true;
         }
         return false;

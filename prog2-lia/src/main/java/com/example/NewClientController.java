@@ -16,27 +16,27 @@ public class NewClientController {
     /**
      * Link to the field where the user enters their username.
      */
-    @FXML TextField usernameField;
+    @FXML private TextField usernameField;
     /**
      * Link to the field where the user enters their password.
      */
-    @FXML TextField passwordField;
+    @FXML private TextField passwordField;
     /**
      * Link to the field where the user enters their name or company's name.
      */
-    @FXML TextField nameField;
+    @FXML private TextField nameField;
     /**
      * Link to the field where the user enters their contact.
      */
-    @FXML TextField emailField;
+    @FXML private TextField emailField;
     /**
      * Link to the selector for client type.
      */
-    @FXML ComboBox<String> typeSelector;
+    @FXML private ComboBox<String> typeSelector;
     /**
      * Link to the checkbox where the user may opt into the rewards program, where applicable.
      */
-    @FXML CheckBox rewardsProgramCheck;
+    @FXML private CheckBox rewardsProgramCheck;
     /**
      * Allows for creation of individual clients based off entered info.
      * @param event - the FXML event.

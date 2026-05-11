@@ -20,58 +20,51 @@ public class DashboardController {
     /**
      * Link to the field where the user enters the ID for a transfer, if appplicable.
      */
-    @FXML TextField transferToField;
+    @FXML private TextField transferToField;
     /**
      * Link to the field where the user enters the amount for a transfer.
      */
-    @FXML TextField amntField;
+    @FXML private TextField amntField;
     /**
      * Link to the list of accounts for the active client.
      */
-    @FXML ListView<Account> accountsView;
+    @FXML private ListView<Account> accountsView;
     /**
      * Link to the selector for account opening.
      */
-    @FXML ComboBox<String> typeSelector;
+    @FXML private ComboBox<String> typeSelector;
     /**
      * Link to the list of transactions for the active client.
      */
-    @FXML ListView<Transaction> transactionsView;
+    @FXML private ListView<Transaction> transactionsView;
     /**
      * Link to the label where the welcome text is displayed.
      */
-    @FXML
-    private Label welcomeLabel;
+    @FXML private Label welcomeLabel;
     /**
      * Link to the label where the message for the user's monthly account fees is displayed.
      */
-    @FXML
-    private Label monthlyFeeLabel;
+    @FXML private Label monthlyFeeLabel;
     /**
      * Link to the label where a message that a student client's student status has expired.
      */
-    @FXML
-    private Label statusExpiredField;
+    @FXML private Label statusExpiredField;
     /**
      * Link to the label where the client's contact is display.
      */
-    @FXML
-    private Label contactLabel;
+    @FXML private Label contactLabel;
     /**
      * Link to the label where a message about the client's status as a rewards program member is displayed.
      */
-    @FXML
-    private Label rewardsProgramMemberLabel;
+    @FXML private Label rewardsProgramMemberLabel;
     /**
      * Link to the field where a message noting how long the client has been with the bank is displayed
      */
-    @FXML
-    private Label memberSinceLabel;
+    @FXML private Label memberSinceLabel;
     /**
      * Link to the label where the client's total points earned is displayed, if applicable.
      */
-    @FXML
-    private Label pointsLabel;
+    @FXML private Label pointsLabel;
     /**
      * Property tracking the total of the client's points across all owned accounts.
      */
