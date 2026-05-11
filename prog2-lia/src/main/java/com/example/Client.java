@@ -38,13 +38,6 @@ public abstract class Client{
      */
     private LocalDate dateOpened;
     /**
-     * Gets the date this account's owner last logged in.
-     * @return the date this account's owner last logged in.
-     */
-    public LocalDate getDateOpened() {
-        return dateOpened;
-    }
-    /**
      * The basic constructor for this class. Takes a username and password, then auto-generates the rest.
      * @param username - this client's username.
      * @param password - this client's password.
@@ -72,6 +65,13 @@ public abstract class Client{
         transactions=new HashSet<>();
         clientID="";
         dateOpened=LocalDate.now();
+    }
+    /**
+     * Gets the date this account's owner last logged in.
+     * @return the date this account's owner last logged in.
+     */
+    public LocalDate getDateOpened() {
+        return dateOpened;
     }
     /**
      * Sets the client's ID to the specified ID.

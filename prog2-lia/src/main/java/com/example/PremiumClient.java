@@ -5,6 +5,10 @@ package com.example;
  */
 public abstract class PremiumClient extends Client{
     /**
+     * If this user has opted into the rewards program.
+     */
+    private boolean rewardsProgramMember;
+    /**
      * Constructor for this class.
      * @param username - this client's username.
      * @param password - this client's password.
@@ -25,10 +29,6 @@ public abstract class PremiumClient extends Client{
         super(username, password, test);
         this.rewardsProgramMember = rewardsProgramMember;
     }
-    /**
-     * If this user has opted into the rewards program.
-     */
-    private boolean rewardsProgramMember;
     /**
      * Gets this client's reward program status.
      * @return if this client has opted into the rewards program.

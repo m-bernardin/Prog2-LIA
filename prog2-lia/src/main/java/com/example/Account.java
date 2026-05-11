@@ -10,6 +10,23 @@ import javafx.beans.property.SimpleDoubleProperty;
  */
 public abstract class Account implements Maintainable{
     /**
+     * Converts a specified amount to its equivalent in a specified currency.
+     * Data pulled from https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/; averages for 2025
+     * @param amnt - the amount to be converted.
+     * @param currencyCode - the ISO currency code of the currency to be converted to.
+     * @return the converted amount.
+     * @throws InvalidTypeException if the specified ISO currency code is not recognized by the system.
+     */
+    public static double convert(double amnt,String currencyCode) throws InvalidTypeException{
+        if(currencyCode.equals("USD"))return amnt*1.3978;
+        if(currencyCode.equals("GBP"))return amnt*1.8420;
+        if(currencyCode.equals("JPY"))return amnt*0.009350;
+        if(currencyCode.equals("EUR"))return amnt*1.5782;
+        if(currencyCode.equals("AUD"))return amnt*0.9009;
+        if(currencyCode.equals("CHF"))return amnt*1.6846;
+        throw new InvalidTypeException("Invalid currency code");
+    }
+    /**
      * The current balance of this account.
      */
     protected double balance;
@@ -25,6 +42,38 @@ public abstract class Account implements Maintainable{
      * If the owner of this account has opted into the rewards program.
      */
     protected boolean rewardsProgramMember;
+    /**
+     * This accounts unique ID.
+     * IdCreator type 2.
+     */
+    protected String accountID;
+    /**
+     * If this account is owned by a client with a premium account.
+     */
+    private boolean premiumOwner=false;
+    /**
+     * The amount charged to this account each month.
+     */
+    private int monthlyFees=10;
+    /**
+     * The date the owner of this account last logged in.
+     */
+    private LocalDate dateLastOpened;
+    /**
+     * This classes basic constructor. Sets balance to 0, but leaves accountID blank.
+     * @throws InvalidTypeException if somehow an invalid type or subtype was supplied by a child's constructor  to the IdCCreator.
+     */
+    public Account() throws InvalidTypeException{
+        balance=0;
+    }
+    /**
+     * Constructor for this class which bypasses duplicate ID check. Otherwise identical to main constructor for this class.
+     * @param balance - this account's starting balance.
+     * @throws InvalidTypeException if something goes wrong.
+     */
+    public Account(double balance) throws InvalidTypeException{
+        this.balance = balance;
+    }
     /**
      * Opts this account into the rewards program.
      */
@@ -48,25 +97,12 @@ public abstract class Account implements Maintainable{
         return pointsProperty;
     }
     /**
-     * This accounts unique ID.
-     * IdCreator type 2.
-     */
-    protected String accountID;
-    /**
-     * If this account is owned by a client with a premium account.
-     */
-    private boolean premiumOwner=false;
-    /**
      * Makes this account owned by a premium client.
      * @param premiumOwner
      */
     public void makePremiumOwned(){
         premiumOwner=true;
     }
-    /**
-     * The amount charged to this account each month.
-     */
-    private int monthlyFees=10;
     /**
      * Gets the amount charged to this account each month.
      * @return the amount charged to this account each month.
@@ -79,21 +115,6 @@ public abstract class Account implements Maintainable{
      */
     public void waiveFees(){
         monthlyFees=0;
-    }
-    /**
-     * This classes basic constructor. Sets balance to 0, but leaves accountID blank.
-     * @throws InvalidTypeException if somehow an invalid type or subtype was supplied by a child's constructor  to the IdCCreator.
-     */
-    public Account() throws InvalidTypeException{
-        balance=0;
-    }
-    /**
-     * Constructor for this class which bypasses duplicate ID check. Otherwise identical to main constructor for this class.
-     * @param balance - this account's starting balance.
-     * @throws InvalidTypeException if something goes wrong.
-     */
-    public Account(double balance) throws InvalidTypeException{
-        this.balance = balance;
     }
     /**
      * Returns this accounts current balance.
@@ -172,27 +193,6 @@ public abstract class Account implements Maintainable{
     public String toString() {
         return "account ID: "+accountID+"\tbalance: "+balance+"$";
     }
-    /**
-     * Converts a specified amount to its equivalent in a specified currency.
-     * Data pulled from https://www.bankofcanada.ca/rates/exchange/annual-average-exchange-rates/; averages for 2025
-     * @param amnt - the amount to be converted.
-     * @param currencyCode - the ISO currency code of the currency to be converted to.
-     * @return the converted amount.
-     * @throws InvalidTypeException if the specified ISO currency code is not recognized by the system.
-     */
-    public static double convert(double amnt,String currencyCode) throws InvalidTypeException{
-        if(currencyCode.equals("USD"))return amnt*1.3978;
-        if(currencyCode.equals("GBP"))return amnt*1.8420;
-        if(currencyCode.equals("JPY"))return amnt*0.009350;
-        if(currencyCode.equals("EUR"))return amnt*1.5782;
-        if(currencyCode.equals("AUD"))return amnt*0.9009;
-        if(currencyCode.equals("CHF"))return amnt*1.6846;
-        throw new InvalidTypeException("Invalid currency code");
-    }
-    /**
-     * The date the owner of this account last logged in.
-     */
-    private LocalDate dateLastOpened;
     /**
      * Sets the date the owner of this account last logged in to the current date.
      */

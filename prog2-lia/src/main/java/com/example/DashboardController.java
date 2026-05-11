@@ -136,15 +136,6 @@ public class DashboardController {
         }
     }
     /**
-     * Adds the specified amount to the points property and the pointsLabel 
-     * @param addedPoints - the points to be added.
-     */
-    private void refreshPoints(Number addedPoints) {
-        System.out.println("**points refreshed");
-        points.set(points.get()+addedPoints.doubleValue());
-        pointsLabel.setText("You currently have "+points.get()+" points.");
-    }
-    /**
      * Allows the openAccountButton to function. Opens an account of the type selected in the typeSelector for the active client.
      * @throws IOException if something goes wrong.
      */
@@ -167,6 +158,15 @@ public class DashboardController {
             return;
         }
         App.displayMessage("New "+selection.toLowerCase()+" account opened.");
+    }
+    /**
+     * Adds the specified amount to the points property and the pointsLabel 
+     * @param addedPoints - the points to be added.
+     */
+    private void refreshPoints(Number addedPoints) {
+        System.out.println("**points refreshed");
+        points.set(points.get()+addedPoints.doubleValue());
+        pointsLabel.setText("You currently have "+points.get()+" points.");
     }
     /**
      * Allows the transferButton to function. Transfers an amnt specified in the amntField from the selected account to the account specified in the transferToIDField;

@@ -136,19 +136,6 @@ public class Driver{
         return false;
     }
     /**
-     * Refreshes filteredAccounts when a new transactions is added.
-     */
-    private void refreshAccounts() {
-        accounts.sort(Comparator.comparing(Account::getAccountID));
-        filteredAccounts.setPredicate(account -> getClient(activeClient).getAccounts().contains(account.getAccountID()));
-    }
-    /**
-     * Refreshes latestTransactions when a new transactions is added.
-     */
-    private void refreshLatest() {
-        latestTransactions.setPredicate(transaction->sortedTransactions.indexOf(transaction)<10||transaction.getTransactionID().equals("x"));
-    }
-    /**
      * Logs out the current user.
      */
     public void logout(){
@@ -426,6 +413,19 @@ public class Driver{
             if(client.getClientID().equals(ID))return true;
         }
         return false;
+    }
+    /**
+     * Refreshes filteredAccounts when a new transactions is added.
+     */
+    private void refreshAccounts() {
+        accounts.sort(Comparator.comparing(Account::getAccountID));
+        filteredAccounts.setPredicate(account -> getClient(activeClient).getAccounts().contains(account.getAccountID()));
+    }
+    /**
+     * Refreshes latestTransactions when a new transactions is added.
+     */
+    private void refreshLatest() {
+        latestTransactions.setPredicate(transaction->sortedTransactions.indexOf(transaction)<10||transaction.getTransactionID().equals("x"));
     }
     /**
      * Saves client data in memory to json.

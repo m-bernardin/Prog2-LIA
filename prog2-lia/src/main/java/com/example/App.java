@@ -23,38 +23,6 @@ public class App extends Application {
      */
     private static Scene scene;
     /**
-     * Sets up the basics for this app.
-     * @param stage - the primary stage for this app.
-     * @throws IOException if something goes wrong..
-     */
-    @SuppressWarnings("exports")
-    @Override
-    public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("login"), 3840,2160);
-        stage.setScene(scene);
-        stage.show();
-        stage.setTitle("Awesome Banking");
-    }
-    /**
-     * Sets the current scene to be displayed.
-     * @param fxml - the fxml of the scene to be displayed.
-     * @throws IOException if this fxml does not exist.
-     */
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-    }
-    /**
-     * Loads an fxml file to a scene.
-     * @param fxml - the fxml to be loaded.
-     * @return the loaded scene, as a Parent.
-     * @throws IOException if somethign goes wrong.
-     * @see Parent
-     */
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
-    }
-    /**
      * This project's main method. Loads a Driver class for object managment, loads all data from json, then launches the app. Saves all the data after app is closed.
      * @param args - arguments provided from the cli.
      */
@@ -101,5 +69,37 @@ public class App extends Application {
         Alert alert=new Alert(AlertType.INFORMATION);
         alert.setContentText(message);
         alert.show();
+    }
+    /**
+     * Sets the current scene to be displayed.
+     * @param fxml - the fxml of the scene to be displayed.
+     * @throws IOException if this fxml does not exist.
+     */
+    static void setRoot(String fxml) throws IOException {
+        scene.setRoot(loadFXML(fxml));
+    }
+    /**
+     * Loads an fxml file to a scene.
+     * @param fxml - the fxml to be loaded.
+     * @return the loaded scene, as a Parent.
+     * @throws IOException if somethign goes wrong.
+     * @see Parent
+     */
+    private static Parent loadFXML(String fxml) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+        return fxmlLoader.load();
+    }
+    /**
+     * Sets up the basics for this app.
+     * @param stage - the primary stage for this app.
+     * @throws IOException if something goes wrong..
+     */
+    @SuppressWarnings("exports")
+    @Override
+    public void start(Stage stage) throws IOException {
+        scene = new Scene(loadFXML("login"), 3840,2160);
+        stage.setScene(scene);
+        stage.show();
+        stage.setTitle("Awesome Banking");
     }
 }
