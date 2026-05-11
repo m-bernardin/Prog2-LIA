@@ -5,7 +5,7 @@
   - ~~apply monthly interest~~
 - ~~monthly fee display works~~
 - display contact info on dashboard
-- update uml
+- ~~update uml~~
 - make release when done
 - ~~refactor maintain into accounts~~
 - ~~account test~~
