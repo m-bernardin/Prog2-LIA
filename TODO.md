@@ -1,8 +1,8 @@
 # General TODO
-- implement rewards program
-- maintain actually works
-  - charge monthly fees
-  - apply monthly interest
+- ~~implement rewards program~~
+- ~~maintain actually works~~
+  - ~~charge monthly fees~~
+  - ~~apply monthly interest~~
 - ~~monthly fee display works~~
 - display contact info on dashboard
 - update uml
@@ -14,3 +14,5 @@
 - ~~hide non owned transactions on login~~
 - ~~earnings accounts can only be created on clients with chequeing accounts~~
 - ~~student status expired shows on dashboard~~
+- make points update on first login
+- verify maintain functions

@@ -37,6 +37,10 @@ public abstract class Client{
      * The date that this client first logged in.
      */
     private LocalDate dateOpened;
+    // TODO javadoc
+    public LocalDate getDateOpened() {
+        return dateOpened;
+    }
     /**
      * The basic constructor for this class. Takes a username and password, then auto-generates the rest.
      * @param username - this client's username.

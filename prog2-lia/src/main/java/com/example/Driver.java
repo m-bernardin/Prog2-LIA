@@ -128,6 +128,9 @@ public class Driver{
                 }
             });
             selectedAccount.set("");
+            for (String accountID:getClient(getActiveClient()).getAccounts()) {
+                getAccount(accountID).maintain();
+            }
             return true;
         }
         return false;

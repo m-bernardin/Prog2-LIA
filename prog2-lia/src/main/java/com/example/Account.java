@@ -1,6 +1,9 @@
 package com.example;
 
 import java.time.LocalDate;
+
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 /**
  * This class represents the most generic user account.
  * @author Mathieu Bernardin
@@ -11,12 +14,23 @@ public abstract class Account implements Maintainable{
      */
     protected double balance;
     // TODO javadoc
-    protected double points;
+    private transient DoubleProperty pointsProperty=new SimpleDoubleProperty();
+    // TODO javadoc
+    protected double points=0;
     // TDOD javadoc
     protected boolean rewardsProgramMember;
     // TODO javadoc
     public void optIntoRewardsProgram(){
         rewardsProgramMember=true;
+    }
+    // TODO javadoc
+    public void setPoints(double points){
+        this.points=points;
+        pointsProperty.set(points);
+    }
+    // TODO javadoc
+    public DoubleProperty getPoints(){
+        return pointsProperty;
     }
     /**
      * This accounts unique ID.

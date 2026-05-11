@@ -1,60 +1,88 @@
 [
   {
     "balance": 0.0,
+    "points": 0.0,
+    "rewardsProgramMember": false,
     "accountID": "lMBE3O-37",
     "premiumOwner": false,
     "monthlyFees": 10
   },
   {
     "balance": 0.0,
+    "points": 0.0,
+    "rewardsProgramMember": false,
     "accountID": "lUgzy6-2E",
     "premiumOwner": false,
     "monthlyFees": 10
   },
   {
     "balance": 74042.72,
+    "points": 0.0,
+    "rewardsProgramMember": false,
     "accountID": "lVW3zE-3m",
     "premiumOwner": false,
     "monthlyFees": 10
   },
   {
     "balance": 80.0,
+    "points": 0.0,
+    "rewardsProgramMember": false,
     "accountID": "lZlVq2-2Y",
     "premiumOwner": false,
     "monthlyFees": 10
   },
   {
     "balance": 7000.0,
+    "points": 0.0,
+    "rewardsProgramMember": false,
     "accountID": "ld3bt0-1d",
     "premiumOwner": false,
     "monthlyFees": 10
   },
   {
     "balance": 36.0,
+    "points": 0.0,
+    "rewardsProgramMember": false,
     "accountID": "leczpo-23",
     "premiumOwner": false,
     "monthlyFees": 10
   },
   {
     "balance": 640.2,
+    "points": 0.0,
+    "rewardsProgramMember": false,
     "accountID": "lgg8uY-2n",
     "premiumOwner": false,
     "monthlyFees": 10
   },
   {
+    "balance": 26.0,
+    "points": 85.0,
+    "rewardsProgramMember": true,
+    "accountID": "lo13XX-2D",
+    "premiumOwner": true,
+    "monthlyFees": 0
+  },
+  {
     "balance": 2450.75,
+    "points": 0.0,
+    "rewardsProgramMember": false,
     "accountID": "lxABLz-3h",
     "premiumOwner": false,
     "monthlyFees": 10
   },
   {
     "balance": 130.44,
+    "points": 0.0,
+    "rewardsProgramMember": false,
     "accountID": "lzZezU-3u",
     "premiumOwner": false,
     "monthlyFees": 10
   },
   {
     "balance": 0.0,
+    "points": 0.0,
+    "rewardsProgramMember": false,
     "accountID": "lzrRCs-3a",
     "premiumOwner": false,
     "monthlyFees": 10
@@ -62,6 +90,8 @@
   {
     "interestRate": 0.01,
     "balance": 152000.0,
+    "points": 0.0,
+    "rewardsProgramMember": false,
     "accountID": "m;cHEU-3I",
     "premiumOwner": false,
     "monthlyFees": 10
@@ -69,6 +99,8 @@
   {
     "interestRate": 0.01,
     "balance": 11200.5,
+    "points": 0.0,
+    "rewardsProgramMember": false,
     "accountID": "mGz3d4-1T",
     "premiumOwner": false,
     "monthlyFees": 10
@@ -76,6 +108,8 @@
   {
     "interestRate": 0.02,
     "balance": 0.0,
+    "points": 0.0,
+    "rewardsProgramMember": false,
     "accountID": "mb:DkT-3h",
     "premiumOwner": false,
     "monthlyFees": 0
@@ -83,6 +117,8 @@
   {
     "interestRate": 0.02,
     "balance": 0.0,
+    "points": 0.0,
+    "rewardsProgramMember": false,
     "accountID": "mfBlqs-2l",
     "premiumOwner": false,
     "monthlyFees": 10
@@ -90,6 +126,8 @@
   {
     "interestRate": 0.01,
     "balance": 8700.0,
+    "points": 0.0,
+    "rewardsProgramMember": false,
     "accountID": "mvDx:y-3t",
     "premiumOwner": false,
     "monthlyFees": 10
@@ -102,6 +140,8 @@
     },
     "interestRate": 0.05,
     "balance": 0.0,
+    "points": 0.0,
+    "rewardsProgramMember": false,
     "accountID": "n7QbVL-35",
     "premiumOwner": false,
     "monthlyFees": 10
@@ -114,6 +154,8 @@
     },
     "interestRate": 0.05,
     "balance": 0.0,
+    "points": 0.0,
+    "rewardsProgramMember": false,
     "accountID": "n;ka22-1U",
     "premiumOwner": false,
     "monthlyFees": 10
@@ -126,6 +168,8 @@
     },
     "interestRate": 0.05,
     "balance": 750000.0,
+    "points": 0.0,
+    "rewardsProgramMember": false,
     "accountID": "nOyhiz-2N",
     "premiumOwner": false,
     "monthlyFees": 10
@@ -138,6 +182,8 @@
     },
     "interestRate": 0.05,
     "balance": 0.0,
+    "points": 0.0,
+    "rewardsProgramMember": false,
     "accountID": "na8fnc-1r",
     "premiumOwner": false,
     "monthlyFees": 10
@@ -150,6 +196,8 @@
     },
     "interestRate": 0.05,
     "balance": 25000.0,
+    "points": 0.0,
+    "rewardsProgramMember": false,
     "accountID": "ndT2nF-2t",
     "premiumOwner": false,
     "monthlyFees": 10
@@ -162,6 +210,8 @@
     },
     "interestRate": 0.05,
     "balance": 0.0,
+    "points": 0.0,
+    "rewardsProgramMember": false,
     "accountID": "nvklwO-2N",
     "premiumOwner": false,
     "monthlyFees": 10
@@ -174,12 +224,16 @@
     },
     "interestRate": 0.05,
     "balance": 5121.0,
+    "points": 0.0,
+    "rewardsProgramMember": false,
     "accountID": "nwLxEG-3p",
     "premiumOwner": false,
     "monthlyFees": 10
   },
   {
     "balance": 0.0,
+    "points": 0.0,
+    "rewardsProgramMember": false,
     "accountID": "z",
     "premiumOwner": false,
     "monthlyFees": 10

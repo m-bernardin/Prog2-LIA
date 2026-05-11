@@ -48,4 +48,9 @@ public class BlankAccount extends Account{
      */
     @Override
     public void maintain() {}
+    // TODO javadoc
+    @Override
+    public void withdraw(double amnt, boolean rewardable) throws InvestmentLockException, InsufficientFundsException {
+        throw new InsufficientFundsException();
+    }
 }

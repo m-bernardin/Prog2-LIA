@@ -1,6 +1,11 @@
 package com.example;
 
 import java.io.IOException;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -45,6 +50,20 @@ public class DashboardController {
     // TODO javadoc
     @FXML
     private Label statusExpiredField;
+    // TODO javadoc
+    @FXML
+    private Label contactLabel;
+    // TODO javadoc
+    @FXML
+    private Label rewardsProgramMemberLabel;
+    // TODO javadoc
+    @FXML
+    private Label memberSinceLabel;
+    // TODO javadoc
+    @FXML
+    private Label pointsLabel;
+    // TODO javadoc
+    private DoubleProperty points=new SimpleDoubleProperty(0);
     /**
      * Called when the scene is intialised.
      * Sets up the accountView and transactionView.
@@ -57,22 +76,58 @@ public class DashboardController {
         accountsView.getSelectionModel().selectedItemProperty().addListener((obs,old,newSelection)->App.driver.selectedAccount.set(newSelection.getAccountID()));
         transactionsView.setItems(App.driver.getLatestTransactions());
         String activeClientID=App.driver.getActiveClient();
+        Client activeClient=App.driver.getClient(activeClientID);
         @SuppressWarnings("rawtypes")
         Class clientType=App.driver.getClient(activeClientID).getClass();
         String name;
-        if(clientType==IndividualClient.class)name=((IndividualClient)App.driver.getClient(activeClientID)).getName();
-        else if(clientType==StudentClient.class)name=((StudentClient)App.driver.getClient(activeClientID)).getName();
-        else if(clientType==VipClient.class)name=((VipClient)App.driver.getClient(activeClientID)).getName();
-        else if(clientType==CorporateClient.class)name=((CorporateClient)App.driver.getClient(activeClientID)).getCompanyName();
+        if(clientType==IndividualClient.class)name=((IndividualClient)activeClient).getName();
+        else if(clientType==StudentClient.class)name=((StudentClient)activeClient).getName();
+        else if(clientType==VipClient.class)name=((VipClient)activeClient).getName();
+        else if(clientType==CorporateClient.class)name=((CorporateClient)activeClient).getCompanyName();
         else name="Invalid Name";
         int monthlyFee=10;
         if(App.driver.hasWaivedFees(activeClientID))monthlyFee=0;
         monthlyFeeLabel.setText("(!) Each open account will cost you "+monthlyFee+"$ each month.");
         welcomeLabel.setText("Welcome, "+name+"!");
         boolean statusValid=false;
-        if(clientType==StudentClient.class)if(((StudentClient)App.driver.getClient(activeClientID)).isStatusValid())statusValid=true;
+        if(clientType==StudentClient.class)if(((StudentClient)activeClient).isStatusValid())statusValid=true;
         if(clientType!=StudentClient.class)statusValid=true;
         if(statusValid)statusExpiredField.setText("");
+        String contact="";
+        if(clientType==IndividualClient.class||clientType==StudentClient.class)contact=((StandardClient)activeClient).getContact();
+        if(clientType==VipClient.class)contact=((VipClient)activeClient).getContact();
+        if(clientType==CorporateClient.class){
+            ArrayList<String> contacts=((CorporateClient)activeClient).getClientManagerContacts();
+            for(int i=0;i<contacts.size();++i){
+                contact+=contacts.get(i);
+                if(i!=contacts.size()-2)contact+=", ";
+                else contact+=", or ";
+            }
+        } else contact="invalid contact";
+        contactLabel.setText("We will contact you at "+contact+".");
+        boolean rewardsProgramMember=false;
+        boolean premiumClient=false;
+        if(clientType==CorporateClient.class||clientType==VipClient.class){
+            premiumClient=true;
+            rewardsProgramMember=App.driver.isPremium(activeClientID);
+        }
+        if(rewardsProgramMember)rewardsProgramMemberLabel.setText("You are currently a member of our rewards porgram.");
+        else if(premiumClient)rewardsProgramMemberLabel.setText("You are not curerntly a member of our rewards program.");
+        else rewardsProgramMemberLabel.setText("(!) Did you know? We have a rewards program! To opt in, contact a bank associate to upgrade to vip position.");
+        memberSinceLabel.setText("You have been with since "+activeClient.getDateOpened().format(DateTimeFormatter.ofPattern("d MMM uuuu"))+", thank you for your loyalty!");
+        if(rewardsProgramMember){
+            for (String accountID:activeClient.getAccounts()) {
+                App.driver.getAccount(accountID).getPoints().addListener((obs,oldValue,newValue)->refreshPoints(newValue.doubleValue()-oldValue.doubleValue()));
+                refreshPoints(App.driver.getAccount(accountID).getPoints().getValue());
+            }
+            System.out.println("**rewards program member detected");
+        }
+    }
+    // TODO javadoc
+    private void refreshPoints(Number addedPoints) {
+        System.out.println("**points refreshed");
+        points.set(points.get()+addedPoints.doubleValue());
+        rewardsProgramMemberLabel.setText("You currently have "+points.get()+" points.");
     }
     /**
      * Allows the openAccountButton to function. Opens an account of the type selected in the typeSelector for the active client.

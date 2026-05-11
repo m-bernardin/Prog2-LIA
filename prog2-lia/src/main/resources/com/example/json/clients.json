@@ -144,5 +144,21 @@
       "month": 6,
       "day": 12
     }
+  },
+  {
+    "rewardsProgramMember": true,
+    "clientID": "eZwWCf-3q",
+    "accounts": [
+      "z",
+      "lo13XX-2D"
+    ],
+    "username": "dosWHO",
+    "password": "unodos1/2",
+    "transactions": [],
+    "dateOpened": {
+      "year": 2026,
+      "month": 5,
+      "day": 10
+    }
   }
 ]

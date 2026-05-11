@@ -41,21 +41,34 @@
                   <Label fx:id="statusExpiredField" text="(!) Your student status has expired. Please contact a bank associate to renew your status" styleClass="subtext" />
                </children>
             </VBox>
-            <VBox fx:id="transactionManagerBox" alignment="TOP_LEFT" spacing="15.0">
+            <VBox fx:id="clientActionsBox" alignment="TOP_LEFT" spacing="20.0" maxWidth="550" >
                <children>
-                  <Label text="Manage This Account" styleClass="normaltext" />
-                  <TextField fx:id="transferToField" promptText="Where? (accountID)" styleClass="normaltext" />
-                  <TextField fx:id="amntField" promptText="How much?" styleClass="normaltext" />
-                  <Button fx:id="transferButton" text="Transfer" onAction="#transfer" styleClass="action-button" />
-                  <Button fx:id="depositButton" text="Deposit" onAction="#deposit" styleClass="action-button" />
-                  <Button fx:id="withdrawButton" text="Withdraw" onAction="#withdraw" styleClass="action-button" />
+                  <VBox fx:id="transactionManagerBox" alignment="CENTER" spacing="15.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+                     <children>
+                        <Label text="Manage This Account" styleClass="normaltext" />
+                        <TextField fx:id="transferToField" promptText="Where? (accountID)" styleClass="normaltext" />
+                        <TextField fx:id="amntField" promptText="How much?" styleClass="normaltext" />
+                        <Button fx:id="transferButton" text="Transfer" onAction="#transfer" styleClass="action-button" />
+                        <Button fx:id="depositButton" text="Deposit" onAction="#deposit" styleClass="action-button" />
+                        <Button fx:id="withdrawButton" text="Withdraw" onAction="#withdraw" styleClass="action-button" />
+                     </children>
+                  </VBox>
+                  <VBox fx:id="clientInfoBox" alignment="CENTER_LEFT" spacing="15.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+                     <children>
+                        <Label text="Your info" styleClass="normaltext" />
+                        <Label fx:id="contactLabel" text="" styleClass="subtext" />
+                        <Label fx:id="rewardsProgramMemberLabel" text="" styleClass="subtext" />
+                        <Label fx:id="memberSinceLabel" text="" styleClass="subtext" />
+                        <Label text="(!) To change any of this info, please contact a bank associate" styleClass="subtext" />
+                        <Label fx:id="pointsLabel" text="" />
+                     </children>
+                  </VBox>
                </children>
             </VBox>
             <VBox fx:id="transactionHistoryBox" alignment="TOP_LEFT" spacing="15.0">
                <children>
                   <Label text="Your Recent Transactions" styleClass="normaltext" />
                   <ListView fx:id="transactionsView" styleClass="normaltext" minWidth="1500" minHeight="765" />
-                  <Label fx:id="pointsField" text="" />
                </children>
             </VBox>
          </children>

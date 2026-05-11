@@ -49,7 +49,7 @@ public class InvestmentAccount extends EarningsAccount{
     public void withdraw(double amnt) throws InvestmentLockException, InsufficientFundsException {
         if(dateOpened.plusYears(1).isBefore(LocalDate.now())){
             if(balance>=amnt){
-                if(rewardsProgramMember)points+=amnt*2.5;
+                if(rewardsProgramMember)setPoints(points+(amnt*2.5));
                 balance-=amnt;
                 return;
             }

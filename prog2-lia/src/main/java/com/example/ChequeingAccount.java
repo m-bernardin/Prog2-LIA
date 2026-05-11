@@ -32,7 +32,7 @@ public class ChequeingAccount extends Account{
     @Override
     public void withdraw(double amnt) throws InsufficientFundsException{
         if(balance>=amnt){
-            if(rewardsProgramMember)points+=amnt*2.5;
+            if(rewardsProgramMember)setPoints(points+(amnt*2.5));
             balance-=amnt;
             return;
         }

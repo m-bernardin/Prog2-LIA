@@ -5,7 +5,7 @@
 }
 .info-field{
     -fx-font-family: "Arial";
-    -fx-font-size: 35px; 
+    -fx-font-size: 35px;
 }
 .continue-button{
     -fx-font-family: "Arial";
@@ -13,11 +13,12 @@
 }
 .subtext{
     -fx-font-family: "Arial";
-    -fx-font-size: 30px
+    -fx-font-size: 30px;
+    -fx-wrap-text: true;
 }
 .big-selector{
     -fx-font-family: "Arial";
-    -fx-font-size: 35px
+    -fx-font-size: 35px;
 }
 .normaltext{
     -fx-font-family: "Arial";
